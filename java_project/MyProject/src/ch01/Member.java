@@ -13,10 +13,10 @@ public class Member {
 		age = 30;
 		height = 183.2;
 		hasBook = true;
-		System.out.println(name);
-		System.out.println(age);
-		System.out.println(height);
-		System.err.println(hasBook);
+		System.out.println("이름 : "+name);
+		System.out.println("나이 : "+age);
+		System.out.println("키 : "+height);
+		System.err.println("자바책여부 : "+hasBook);
 		
 	}
 
