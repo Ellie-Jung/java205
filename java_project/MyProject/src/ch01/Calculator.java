@@ -20,6 +20,5 @@ public class Calculator {
 		c.minus(9, 3);
 		c.multi(3, 5);
 		c.div(7, 3);
-		
 	}
 }
