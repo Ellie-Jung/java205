@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Member {
 
-	Calendar calendar = Calendar.getInstance(); //싱글톤.//캘린더 클래스는 메소드만 존재. 캘린더 클래스의인스턴스를 가져온다 바로 (getInstance)
+	Calendar calendar = Calendar.getInstance(); //싱글톤 클래스는 메소드만 존재. 캘린더 클래스의인스턴스를 가져온다 바로 (getInstance) YEAR :상수 -> 처음 생성할때 초기화할수 있음
 	int thisYear = calendar.get(Calendar.YEAR); //줄여서 int thisYear = Calendar.getInstance().get(Calendar.YEAR)
 
 	int ageCal(int year) { //
