@@ -8,7 +8,6 @@ public class Member {
 
 	Calendar calendar = Calendar.getInstance();
 	int thisYear = calendar.get(Calendar.YEAR);
-	int year;
 
 	void vaccine(int year) {
 		if ((thisYear - year) < 15 || thisYear - year >= 65) {
