@@ -1,7 +1,5 @@
 package ch06;
-
 import java.util.Arrays;
-
 public class Student {
 	// 배열 -> 변수의 집합. 변수를 묶음으로 사용. 같은 "타입"의 변수들을 묶는다.
 	//class 도 타입이다 !! ->참조형 타입
@@ -11,7 +9,6 @@ public class Student {
 	private int eng;
 	private int math;
 	 
-	
 	Student() {}
 	Student(String name, int kor, int eng,int math){
 		this.name=name;
@@ -53,11 +50,9 @@ public class Student {
 
 	void printInfo() {
 		System.out.println(getName() +" "+ getKor() +" "+ getEng() +" "+ getMath() +" "+ sum() +" "+ avg());
-
 	}
 
 	public static void main(String[] args) {
-	
 		int sumKor=0;
 		int sumEng=0;
 		int sumMath=0;
@@ -87,5 +82,4 @@ public class Student {
 		System.out.println("영어총점 " +sumEng+"영어평균 "+ sumEng/stu.length);
 		System.out.println("수학총점 " +sumMath+"수학평균 "+ sumMath/stu.length);
 	}
-
 }
