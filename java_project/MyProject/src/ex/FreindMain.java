@@ -12,7 +12,7 @@ class Friend{
 		boolean result = false ;
 		if(o !=null && o instanceof Friend) {
 			Friend f= (Friend)o;
-			if(myName.equals(f.myName)) {
+			if(myName.equals(f.myName)) { //-> myName.equals((Friend)o.myName)
 				result = true;
 			}
 		}
@@ -32,5 +32,6 @@ public class FreindMain {
 		System.out.println(f1==f3); //참조변수 주소값 비교
 		System.out.println(f1.equals(f3)); //오버라이딩 안하면 위에랑 같은결과나옴. 거짓 ->오버라이딩해주어야함. //String은 오버라이딩 되어있음
 
+		
 	}
 }
