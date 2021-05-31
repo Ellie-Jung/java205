@@ -11,7 +11,7 @@ public class CheckString {
 		String chk = sc.nextLine();
 		chk = chk.trim();
 
-		if(chk.length() ==0) {
+		if(chk.trim().length() ==0) {
 			System.out.println("공백이 입력되었습니다.");
 		}else 
 			System.out.println(chk+"이/가 입력되었습니다.");

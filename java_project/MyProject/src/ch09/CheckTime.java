@@ -6,7 +6,7 @@ public class CheckTime {
 
 		long currentTime = System.currentTimeMillis();
 		
-		int sum=0;
+		long sum=0;
 		for(int i=1 ; i<=100000000;i++) {
 			sum +=i;
 		}
