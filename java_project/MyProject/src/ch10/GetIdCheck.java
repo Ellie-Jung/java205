@@ -17,7 +17,7 @@ public class GetIdCheck {
 			 chk=ch [i];
 		}
 		try {
-			if(userId.length()==0 || !(chk >=65&& chk<=90 ) && !(chk>=48 &&chk<=57)) {
+			if(userId.length()==0 || !((chk >=65&& chk<=90 ) ||(chk>=48 &&chk<=57))) {
 				throw new BadIdInputException("잘못입력하셨습니다.");
 			}
 		}catch (BadIdInputException e) {
