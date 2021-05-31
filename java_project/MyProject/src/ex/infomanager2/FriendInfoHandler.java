@@ -5,7 +5,9 @@ import java.util.Scanner;
 public class FriendInfoHandler {
 
 	//저장데이터 (객체)를 배열로 저장하고 관리하는 기능을 가지는 클래스
+	//2021-05-31 배열을 컬렉션으로 바꾹
 	Friend[] friends; //입력받은 친구를 저장할 배열
+	//배열을 ArrayList로 바꾸기
 	int numOfFriend; //배열의 입력 index역할, 정보의 개수
 
 	//생성자에서 배열 
