@@ -9,7 +9,6 @@ public class CheckString {
 
 		System.out.print("이름을 입력해 주세요 >>");
 		String chk = sc.nextLine();
-		chk = chk.trim();
 
 		if(chk.trim().length() ==0) {
 			System.out.println("공백이 입력되었습니다.");
