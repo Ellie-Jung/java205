@@ -17,7 +17,7 @@ public class HighFriend extends Friend {
 	}
 
 	@Override
-	public void showBasicInfo() {
+	public void showBasicInfo() {  //추상메서드 구현하기.(완성)
 		System.out.println("이름 : "+name);
 		System.out.println("전화 : "+phonNumber);
 	}

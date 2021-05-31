@@ -1,6 +1,6 @@
 package ex.infomanager2;
 //상속을 목적으로 하는 클래스
-public class Friend {
+public abstract class Friend implements ShowData{// 추상클래스로 변경하기. ->인스턴스를 생성할수 없다. (완성을 시켜야함) 
 
 	//이름, 전화번호, 주소 
 	String name;
@@ -13,9 +13,7 @@ public class Friend {
 		this.phonNumber = phonNumber;
 		this.address = address;
 	}
-
 	
-
 	public void showData() {
 		System.out.println("이   름 : "+name);
 		System.out.println("전화번호 : "+phonNumber);
@@ -23,7 +21,8 @@ public class Friend {
 		
 	}
 	
-	public void showBasicInfo() {} //상속을해서 오버라이딩하라고 틀 제시.
+//	public void showBasicInfo() {}
+//	public abstract void showBasicInfo();//추상메서드로 변경하기
 	
 	
 }
