@@ -14,7 +14,7 @@ public class Person {
 		boolean result = false;
 		if(obj !=null && obj instanceof Person) {
 			Person p = (Person)obj;
-			if(p.personNumber ==this.personNumber)
+			if(p.personNumber.equals(personNumber))
 			result =true;
 		}
 		return result;
