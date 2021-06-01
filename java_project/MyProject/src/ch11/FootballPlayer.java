@@ -1,38 +1,51 @@
 package ch11;
 
-import java.util.*;
-
-public class FootballPlayer {
+public class FootballPlayer implements Comparable<FootballPlayer> {
 
 	String name;
 	int number;
 	String team;
 	int age;
 	
+
 	FootballPlayer(String name, int number, String team, int age) {
 		this.name=name;
 		this.number = number;
 		this.team = team;
 		this.age = age;
 	}
-	
-	
-	public static void main(String[] args) {
-		List<FootballPlayer> list = new ArrayList<FootballPlayer>();
-		list.add(new FootballPlayer("손흥민", 5, "대한팀", 30));
-		list.add(new FootballPlayer("메시", 7, "민국팀", 37));
-		list.add(new FootballPlayer("이동국", 8, "대한팀", 35));
-		list.add(new FootballPlayer("안정환", 10, "민국팀", 40));
-		
-		for(int i =0; i<list.size();i++) {
-			System.out.println(list.get(i).age);
-		}
-		
-		Iterator<FootballPlayer> itr =list.iterator();
-		while(itr.hasNext()) {
-			System.out.println(itr.next().name);
-		}
-
-		
+	public void showData() {
+		System.out.printf("%s, %d, %s, %d\n",this.name, this.number, this.team, this.age);
 	}
+	
+	@Override
+	public int hashCode() {
+		return age/10;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		boolean result = false;
+		if(obj!=null && obj instanceof FootballPlayer) {
+			FootballPlayer f = (FootballPlayer)obj;
+			if(f.name ==name&& f.number==number &&f.team==team && f.age==age) {
+				result = true;
+			}
+		}
+		return result;
+	}
+	@Override
+	public int compareTo(FootballPlayer o) {
+		//팀이름순으로 정렬
+		if(this.team.compareTo(o.team)>0) return 1;
+		else if(this.team.compareTo(o.team)<0) return -1;
+		else { //같은팀 선수들은 이름순으로 정렬
+			if(this.name.compareTo(o.name)>0) return 1;
+			else if (this.name.compareTo(o.name)<0) return -1;
+			else { //같은이름의 선수는 번호순으로 저장
+				return this.number-o.number;
+			}
+		} 
+	}
+	
+	
 }
