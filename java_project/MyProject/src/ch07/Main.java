@@ -4,13 +4,13 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		Female f = new Female("이영자","881017-2045789",170.6f);
-		Male m= new Male("홍명보","024871-3451785",70.5f);
+		Person f = new Female("이영자","881017-2045789",170.6f);
+		Person m= new Male("홍명보","024871-3451785",70.5f);
 
 		f.sayHi();
-		f.sleeping();
+		((Female) f).sleeping();
 		m.sayHi();
-		m.dancing();
+		((Male) m).dancing();
 	}
 
 }
