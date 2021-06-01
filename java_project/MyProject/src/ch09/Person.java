@@ -9,11 +9,13 @@ public class Person {
 	}
 	@Override
 	public boolean equals(Object obj) {
-		if(obj instanceof Person) {
+		boolean result = false;
+		if(obj !=null && obj instanceof Person) {
 			Person p = (Person)obj;
-			return personNumber== p.personNumber ;
+			if(p.personNumber ==this.personNumber)
+			result =true;
 		}
-		else return false;
+		return result;
 	}
 
 		public static void main(String[] args) {
