@@ -3,7 +3,8 @@ package ch11;
 import java.util.*;
 
 public class ListTest {
-	public static void main(String[] args) {
+	public static void main(String[] args) { 
+		//1. 축구선수 인스턴스를 저장할 수 있는 List<E> 컬렉션 인스턴스를 생성해서 인스턴스를 저장,출력하기
 
 		//List<E> 컬렉션 인스턴스 생성하기
 		List<FootballPlayer> list = new ArrayList<FootballPlayer>();
@@ -21,7 +22,7 @@ public class ListTest {
 		//데이터 출력
 		Iterator<FootballPlayer> itr =list.iterator();
 		while(itr.hasNext()) {
-			itr.next().showData();
+			System.out.println(itr.next()); //toString이용한 출력
 		}
 
 	}
