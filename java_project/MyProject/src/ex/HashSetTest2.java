@@ -34,6 +34,25 @@ class SimpleNumber{ //hashcode와 equals를 적절하게 오버라이딩 해야�
 		this.num = num;
 	}
 	
+	@Override
+	public int hashCode() { //적절하게 오버라이딩 해야한다.
+		return num%3; // 0,1,2로 그룹화됨
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		boolean result = false; //변수 선언, 초기화
+		//obj는 null이 아니고, obj는 SimpleNumber 타입으로 형변환이 가능해야함.
+		if(obj!= null && obj instanceof SimpleNumber ) {
+			SimpleNumber s = (SimpleNumber)obj;
+			if(this.num == s.num) {
+				result = true;
+			}
+		}
+	
+		return  result;
+	}
+
 	public String toString() {
 		return String.valueOf(num);//숫자를 문자열로 바꿔줌
 	}
