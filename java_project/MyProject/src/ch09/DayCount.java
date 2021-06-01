@@ -7,7 +7,8 @@ import java.util.Scanner;
 public class DayCount {
 
 	public static void main(String[] args) {
-	
+	//생일을 기준으로 오늘가지 몇 일을 살았는지 출력하는 프로그램 만들기.
+		
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("태어난 년도를 입력하세요");
 		int year = scanner.nextInt();
