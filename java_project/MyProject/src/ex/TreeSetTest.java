@@ -20,6 +20,7 @@ public class TreeSetTest {
 		treeSet.add(3);
 		treeSet.add(2);
 		
+		//정렬
 		Iterator<Integer> itr = treeSet.iterator();
 		while(itr.hasNext()) {
 			System.out.println(itr.next());
