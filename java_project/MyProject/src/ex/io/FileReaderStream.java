@@ -26,6 +26,7 @@ public class FileReaderStream {
 //			for(int i = 0; i<readLen ; i++) {
 //				System.out.println(cbuf[i]);
 //			}
+			
 			//출력 2
 			System.out.println(new String (cbuf)); // toString()호출
 			
