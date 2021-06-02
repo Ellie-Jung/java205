@@ -8,7 +8,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ObjectSerializable {
+public class ObjectSerializable  {
 
 	public static void main(String[] args) {
 		
@@ -20,15 +20,6 @@ public class ObjectSerializable {
 			out.writeObject(new Circle(3, 5, 7.0));
 			out.writeObject("Hello");
 			
-			
-			System.out.println("인스턴스 저장 완료");
-			
-			//인스턴스 복원 //읽어올때 순서대로 해야함 (저장한 순서)//Circle클래스가 동일하게 있어야함 (ex.io.Circle)
-			ObjectInputStream in = new ObjectInputStream(new FileInputStream("Object.ser"));
-			//복원 순서는 저장 순서에 맞게 복원
-			Circle c1 = (Circle) in.readObject();
-			Circle c2 = (Circle) in.readObject();
-			String str = (String) in.readObject();
 			//저장
 			ArrayList<Circle> list = new ArrayList<>();
 			list.add(new Circle(1, 2, 3.4));
@@ -40,6 +31,15 @@ public class ObjectSerializable {
 			out.writeObject(list);
 			
 			out.close();
+			
+			System.out.println("인스턴스 저장 완료");
+			
+			//인스턴스 복원 //읽어올때 순서대로 해야함 (저장한 순서)//Circle클래스가 동일하게 있어야함 (ex.io.Circle)
+			ObjectInputStream in = new ObjectInputStream(new FileInputStream("Object.ser"));
+			//복원 순서는 저장 순서에 맞게 복원
+			Circle c1 = (Circle) in.readObject();
+			Circle c2 = (Circle) in.readObject();
+			String str = (String) in.readObject();
 			
 			System.out.println("복원된 인스턴스의 데이트를 출력");
 			
