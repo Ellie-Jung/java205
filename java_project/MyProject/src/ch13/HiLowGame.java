@@ -1,7 +1,7 @@
 package ch13;
 
 public class HiLowGame {
-	
+	public static boolean check= false;
 	public static void main(String[] args) {
 
 		CountingThread t1 = new CountingThread(); //10초카운팅 스레드 생성

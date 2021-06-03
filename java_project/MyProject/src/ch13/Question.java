@@ -20,9 +20,11 @@ class Question extends Thread{
 				System.out.println("더 큰 숫자 입니다.");
 			}else {
 				System.out.println("정답입니다. !!");
+			
 				break;
 			}
 		}
+		HiLowGame.check = true;
 		System.exit(0);
 	}
 }
