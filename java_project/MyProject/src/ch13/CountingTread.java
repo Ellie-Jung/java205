@@ -5,7 +5,7 @@ class CountingThread extends Thread{
 	// 10초 카운팅 스레드 만들기
 	@Override
 	public void run() {
-		for(int i=20; i>0; i--) {
+		for(int i=10; i>0; i--) {
 			if(HiLowGame.check) {
 				break;
 			}
