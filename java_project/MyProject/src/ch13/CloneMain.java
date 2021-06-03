@@ -14,15 +14,15 @@ public class CloneMain {
 		System.out.println("복사할 대상의 파일 경로를 포함한 파일이름을 입력하세요.");
 		String path = sc.nextLine();
 		File f = new File(path);
-		if(!f.exists()) {
-			System.out.println("파일이 없습니다.");
+		if(!(f.isFile()&& f.exists())) {
+			System.out.println("파일이 존재하지 않습니다.");
 			return;
 		}
 			
 		System.out.println("복사해 올 위치 경로를 입력하세요.");
 		String clonePath = sc.nextLine();
 		File f2= new File(clonePath);
-		if(!f2.exists()) {
+		if(!f2.isDirectory()) {
 			System.out.println("복사할 경로를 잘못 입력하셨습니다..");
 			return;
 		}
