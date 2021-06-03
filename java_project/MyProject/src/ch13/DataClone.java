@@ -21,7 +21,7 @@ public class DataClone extends Thread {
 			//파일의 데이터 읽어올 스트림 생성
 			InputStream in = new BufferedInputStream(new FileInputStream(path));
 			//파일을 쓰기위한 스트림 생성
-			OutputStream out = new BufferedOutputStream(new FileOutputStream(clonePath));
+			OutputStream out = new BufferedOutputStream(new FileOutputStream(clonePath+new File(path).getName()));
 			
 			int copyByte=0; //데이터 크기체크
 			
