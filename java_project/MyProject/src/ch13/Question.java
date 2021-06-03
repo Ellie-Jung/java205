@@ -6,7 +6,10 @@ class Question extends Thread{
 
 	@Override
 	public void run() {
+		//1~100사이의 랜덤 한 숫자 추출 
 		int answer = (int)(Math.random()*100);
+		
+		//정답 받아서 비교하기
 		while(true) {
 			String input= JOptionPane.showInputDialog("숫자맞추기 게임입니다. 1~100사이의 숫자를 맞춰주세요") ;
 			int num = Integer.parseInt(input);
@@ -21,6 +24,5 @@ class Question extends Thread{
 			}
 		}
 		System.exit(0);
-
 	}
 }
