@@ -19,7 +19,7 @@ public class RunnableThread {
 		
 		try {
 			t1.join(); // join메서드를 호출하지 않는다면, 추가로 생성된 두 쓰레드가 작업을 완료하기전에 메인쓰레드가 값을 참조하여 쓰레기 값이 출력될수 있다.
-			t2.join(); 
+			t2.join(); // join() 해당 쓰레드가 종료될때까지 (메인쓰레드의)실행을 멈출때 사용
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
