@@ -11,6 +11,7 @@ public class CloneMain {
 		Scanner sc = new Scanner(System.in);
 		CloneMain c = new CloneMain();
 		
+		
 		System.out.println("복사할 대상의 파일 경로를 포함한 파일이름을 입력하세요.");
 		String path = sc.nextLine();
 		File f = new File(path);
