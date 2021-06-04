@@ -11,11 +11,11 @@ public class MessageServer {
 
 	public static void main(String[] args) {
 
-		DataInputStream din = null;
-		DataOutputStream dout = null;
 		ServerSocket ss = null;
 		Socket s =null;
 		
+		DataInputStream din = null;
+		DataOutputStream dout = null;
 
 		try {
 			ss = new ServerSocket(8888);
@@ -42,7 +42,7 @@ public class MessageServer {
 
 				str2 = sc.nextLine();
 				dout.writeUTF(str2);
-				dout.flush();
+				
 			}
 
 
