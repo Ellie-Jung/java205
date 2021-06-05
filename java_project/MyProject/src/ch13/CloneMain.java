@@ -11,6 +11,7 @@ public class CloneMain {
 		Scanner sc = new Scanner(System.in);
 		CloneMain c = new CloneMain();
 		
+		
 		System.out.println("복사할 대상의 파일 경로를 포함한 파일이름을 입력하세요.");
 		String path = sc.nextLine();
 		File f = new File(path);
@@ -22,7 +23,7 @@ public class CloneMain {
 		System.out.println("복사해 올 위치 경로를 입력하세요.");
 		String clonePath = sc.nextLine();
 		File f2= new File(clonePath);
-		if(!f2.isDirectory()) {
+		if(!(f2.isDirectory()&& f2.exists())) {
 			System.out.println("복사할 경로를 잘못 입력하셨습니다..");
 			return;
 		}
