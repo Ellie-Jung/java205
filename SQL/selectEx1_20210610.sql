@@ -62,7 +62,7 @@ order by ename
 --9. 1981년도에 입사한 사원의 이름과 입사일을 출력하시오. (like 연산자와 와일드카드 사용)
 select ename, hiredate
 from emp
-where hiredate like '81/%'
+where hiredate like '81%'
 ;
 ​
 
@@ -93,7 +93,7 @@ where ename like '__R%'
 --13. 이름에 A와 E를 모두 포함하고 있는 사원의 이름을 표시하시오.
 select ename
 from emp
-where ename like '%A%E%'
+where ename like '%A%' and ename like '%E%'
 ;
 ​
 
