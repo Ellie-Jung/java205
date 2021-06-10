@@ -112,4 +112,3 @@ select ename, sal, comm
 from emp
 where comm >=500
 ;
- commit;

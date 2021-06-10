@@ -55,4 +55,3 @@ select name, address
 from customer
 where name like '김%아'
 ;
-commit;
