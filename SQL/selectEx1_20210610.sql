@@ -100,11 +100,15 @@ where ename like '%A%E%'
 --14. 담당업무가 CLERK, 또는 SALESMAN이면서 급여가 $1600, $950 또는 $1300이 아닌 사원의 이름, 담당업무, 급여를 출력하시오.
 select ename, job, sal
 from emp
-where (job='CLERK' or job='SALESMAN')
-and (sal= 1600 or sal= 950 or sal !=1300)
+where (job='CLERK' or job='SALESMAN')and not sal in(1600,950,1300);
+and (sal in(1600,950) not  sal=1300)
 ​;
 
 ​
 
 --15. 커미션이 $500 이상인 사원의 이름과 급여 및 커미션을 출력하시오.
-
+select ename, sal, comm
+from emp
+where comm >=500
+;
+ commit;
