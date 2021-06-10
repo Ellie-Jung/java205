@@ -32,4 +32,29 @@ from emp
 where mod(sal,2)=1; --조건으로 함수값쓸수 있다. 
 
 
+--문자함수
+--concat (문자, 문자) -> 두개의 문자가 합해서 나옴 (문자열)-> ''||''
+select concat('abc','efg'), 'abc'||'efg'
+from dual;
 
+--substr : 문자열 추출
+--substr(문자열, 시작위치, 길이) --첫번째 문자열부터 3개, 여기서는 시작은 1부터 (0아님)
+select substr('apple', 1,3) 
+from dual;
+
+select substr('apple',-3) --뒤에서 세개 뽑아내기
+from dual;
+
+-- replace : 특정 문자열 (패턴) 다른 문자열(패턴)으로 변경
+select replace ('JACK and JUE','J','BL')
+from dual;
+
+select replace ('JACK and JUE','J','****')
+from dual;
+
+select sysdate
+from dual;
+
+--이런식으로 사용할수 있다.
+select empno, ename , replace(ename, 'A', 'L') ,sal, round(sal,-2)
+from emp ;
