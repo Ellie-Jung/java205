@@ -58,3 +58,60 @@ from dual;
 --이런식으로 사용할수 있다.
 select empno, ename , replace(ename, 'A', 'L') ,sal, round(sal,-2)
 from emp ;
+
+
+
+
+--------------------------------------------------------------------------------
+--2021.06.11
+
+
+-- 형변환 함수
+-- 날짜  -> 문자 , 숫자 -> 문자
+-- to_char(날짜 데이터, '패턴'),  to_char(숫자, '패턴')
+--현재 날짜 출력 (sysdate)
+select sysdate,to_char(sysdate, 'YYYY.MM.DD. HH24:MI:SS')   
+from dual;
+
+select ename, hiredate, to_char(hiredate,'YYYY.MM.DD.')
+from emp
+;
+
+select * from orders;
+select orderid, orderdate, to_char(orderdate,'YYYY.MM.DD.')
+from orders
+;
+
+
+--숫자 -> 문자 (L은 현지통화)
+select to_char(123456, '0,000,000,000'), to_char(123456, 'L9,999,999,999')
+from dual
+;
+
+select ename, sal, to_char(sal*1100, 'L999,999,999')
+from emp
+;
+
+
+-- 문자  -> 숫자,
+-- to_number(문자열, 패턴)
+select to_number('1,000,000','9,999,999'),to_number('1,000,000','9,999,999')+100000
+from dual;
+
+
+-- 문자 -> 날짜
+-- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
