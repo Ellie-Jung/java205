@@ -25,12 +25,12 @@ from emp;
 ​
 
 --20. 올해 몇 칠이 지났는지 출력하시오. 현재날짜에서 올해 1월 1일을 뺀 결과를 출력하고 TO_DATE 함수를 사용하여 데이터 형을 일치 시키시오.
-select trunc(sysdate-(to_date('2021-01-01')))as dday
+select trunc(sysdate-(to_date('2021-01-01','yyyy/mm/dd')))as dday
 from dual;
 
 ​
---21. 사원들의 상관 사번을 출력하되 상관이 없는 사원에 대해서는 NULL 값 대신 0으로 출력하시오.
-select ename,nvl(mgr,0)
+--21. 사원들의 상관 사번을 출력하되 상관이 없는 사원에 대해서는 NULL 값 대신 0으로 출력하시오. 
+select ename,nvl(mgr,0) --nvl(컬럼, 컬럼의타입에 맞춘 값)
 from emp;
 ​
 
@@ -49,13 +49,12 @@ from emp;
 select  max(sal)as salmax, min(sal) as salmin,sum(sal)as salsum , round(avg(sal)) as salavg
 from emp;
 ​
-select *from emp;
 
 ​
 --24. 각 담당 업무 유형별로 급여 최고액, 최저액, 총액 및 평균 액을 출력하시오. 평균에 대해서는 정수로 반올림 하시오.
 select job,  max(sal)as salmax, min(sal) as salmin,sum(sal)as salsum , round(avg(sal)) as salavg
 from emp
-group by job
+group by job --컬럼에 job 관련만 출력가능하다.
 ;
 
 --25. COUNT(*) 함수를 이용하여 담당업무가 동일한 사원 수를 출력하시오.
@@ -76,9 +75,10 @@ from emp
 --28. 직급별 사원의 최저 급여를 출력하시오. 관리자를 알 수 없는 사원과 최저 급여가 2000 미만인 그룹은 제외시키고 결과를 급여에 대한 내림차순으로 정렬하여 출력하시오.
 select job ,min(sal)
 from emp
-where mgr is not null
+where mgr is not null --그룹핑에서 아예 빼는 조건
 group by job
-having min(sal)>2000 
+having min(sal)>=2000  --group 에 대한 조건
+order by min(sal) desc
 ;
 ​
 
@@ -103,6 +103,22 @@ select deptno, decode(deptno,10,'ACCOUNTING',
 from emp
 group by deptno
 ;
+---조인이용
+-- 스키마(컬럼 여러개들)를 합친다 (컬럼들을 합침)
+select e.deptno, d.loc, d.dname, round(avg(sal)),count(*)
+from emp e , dept d
+where e.deptno = d.deptno
+group by e.deptno, d.loc, d.dname
+order by e.deptno
+;
+
+--서브쿼리 이용
+select deptno,
+        (select dname from dept d where e.deptno = d.deptno),
+        (select loc from dept d where e.deptno = d.deptno)
+from emp e
+group by deptno;
+
 ​
 ​
 
@@ -110,10 +126,12 @@ group by deptno
 --( hint. Decode, group by )
 
 select job,deptno as dno,
-        decode(deptno,10,sum(sal))as "부서10",decode(deptno,20,sum(sal))as "부서20",decode(deptno,30,sum(sal))as "부서30",
+        nvl(decode(deptno,10,sum(sal)),0)as "부서10",
+        nvl(decode(deptno,20,sum(sal)),0)as "부서20",
+        nvl(decode(deptno,30,sum(sal)),0)as "부서30",
         sum(sal) as "총액"
 from emp
 group by deptno,job
-order by deptno
+order by deptno, job
 ;
 
