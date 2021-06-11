@@ -2,7 +2,7 @@ package ch01;
 
 import java.util.Scanner;
 
-public class Contact {
+public class Contact { //변수 캡슐화처리
 	private String name;
 	private String phoneNum;
 	private String email;
@@ -10,9 +10,8 @@ public class Contact {
 	private String birthday;
 	private String group;
 	
-	Contact() {}
-	
-	Contact(String name, String phoneNum, String email, String address, String birthday, String group) {
+	public Contact() {}
+	public Contact(String name, String phoneNum, String email, String address, String birthday, String group) {
 		this.name = name;
 		this.phoneNum = phoneNum;
 		this.email = email;
@@ -88,7 +87,7 @@ public class Contact {
 		System.out.print("그룹을 입력해주세요>>");
 		c.setGroup(sc.nextLine());
 
-//		Contact c = new Contact(name,phoneNum,email,address,birthday,group);
+
 		System.out.println(c.getName());
 		System.out.println(c.getPhoneNum());
 		System.out.println(c.getEmail());
