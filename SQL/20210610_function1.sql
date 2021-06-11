@@ -15,7 +15,7 @@ from dual
 ;
 
  -- 1하면 소숫점 첫재짜리에서 반올림  , -1하면 양수쪽으로 (정수방향) 첫째자리 15에서 5에서 반올림, -2면 십의자리에서 반올림
-select ROUND(15.193,1), ROUND(15.193,-1), round(15.193,-2)
+select ROUND(15.193,1), ROUND(15.193,-1), round(15.193,-2), round(15.193)
 from dual
 ;
 
@@ -100,16 +100,58 @@ from dual;
 
 
 -- 문자 -> 날짜
--- 
+-- to_date(문자열, 패턴), trunc 소수점아래 절사
+select to_Date('2012.05.17','YYYY.MM.DD'), 
+        trunc(sysdate-to_date('2012.05.17','YYYY.MM.DD'))
+from dual;
+
+
+-- decode 함수 : 분기를 위해 사용 자바의 switch -case  유사
+-- decode ( 컬럼, =에 해당하는 조건1의 값, 조건1이 참일때 사용할 값,
+--                          조건 2 값, 조건2가 참일대 사용할 값 , ...)
+
+-- emp테이블에서 부서번호에 맞는 부서이름을 출력 
+select * from dept;
+
+--10 ACCOUNTING
+--20 RESERCH
+--30 SALES
+--40 OPERATIONS
+
+select ename, deptno, 
+       decode(deptno, 10, 'ACCOUNTING',
+                      20, 'RESEARCH',
+                      30, 'SALES',
+                      40, 'OPERATIONS'
+                      )as dname
+from emp
+order by dname;
+
+--직급에 따라 급여를 인상하도록하자. 직급이 'ANALYSYT' 인 사원은 5%,  SALESMAN은 10%, 'MANAGER' 인사원은 15%, CLERK 20%인상
+
+
+select ename, sal,
+          decode(job, 'ANALYST',sal*1.05,        --5프로인상
+                      'SALESMAN' , sal*1.1,      --10프로인상  
+                      'MANAGER',sal*1.15,
+                      'CLERK',sal*1.2
+                      )as upsal
+from emp;
 
 
 
+--case 함수도 분기할 때 사용
+--case when  조건식 then 참일때 값
 
-
-
-
-
-
+select ename, deptno,
+        case when deptno =10 then 'ACCOUNTING'
+            when deptno = 20 then 'RESEARCH'
+            when deptno = 30 then 'SALES'
+            when deptno = 40 then 'OPERATIONNS'
+        END as deptname
+from emp
+order by deptno desc
+;
 
 
 
