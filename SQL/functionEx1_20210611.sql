@@ -25,7 +25,7 @@ from emp;
 ​
 
 --20. 올해 몇 칠이 지났는지 출력하시오. 현재날짜에서 올해 1월 1일을 뺀 결과를 출력하고 TO_DATE 함수를 사용하여 데이터 형을 일치 시키시오.
-select to_date(sysdate)-to_date('2021-01-01')as dday
+select trunc(sysdate-(to_date('2021-01-01')))as dday
 from dual;
 
 ​
