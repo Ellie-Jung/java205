@@ -1,8 +1,8 @@
-package ch03;
+package ch04;
 
-import ch01.Contact;
+import ch04.Contact1;
 
-public class CompanyContact extends Contact {
+public class CompanyContact extends Contact1 {
 	
 	private String companyName;
 	private String deptName;
@@ -30,8 +30,6 @@ public class CompanyContact extends Contact {
 	}
 
 
-	public CompanyContact() {
-	}
 	public CompanyContact(String name, String phoneNum, String email, String address, String birthday, String group) {
 		super(name, phoneNum, email, address, birthday, group);
 		this.companyName= companyName;

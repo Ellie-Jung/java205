@@ -58,6 +58,7 @@ public class Contact { //변수 캡슐화처리
 		this.group = group;
 	}
 
+
 	public void printInfo() {
 		System.out.println("이름 : "+getName());
 		System.out.println("전화번호 : "+getPhoneNum());
