@@ -1,8 +1,9 @@
 package ch02;
 
 import java.util.Scanner;
-
 import ch01.Contact;
+import ch03.CompanyContact;
+import ch03.CustomerContact;
 
 public class SmartPhone {
 	static Scanner sc = new Scanner(System.in);
@@ -76,15 +77,11 @@ public class SmartPhone {
 	}
 	
 	void printInfo() {
-		for( Contact e: con) {
-			System.out.println("이름 : "+e.getName());
-			System.out.println("전화번호 : "+e.getPhoneNum());
-			System.out.println("이메일 : "+e.getEmail());
-			System.out.println("주소 : "+e.getAddress());
-			System.out.println("생일 : "+e.getBirthday());
-			System.out.println("그룹 : "+e.getGroup());
-			System.out.println("--------------------------------");
+		for(int i=0; i<con.length;i++) {
+			con[i].printInfo();
+			System.out.println("--------------------------");
 		}
+
 
 	}
 
@@ -111,9 +108,14 @@ public class SmartPhone {
 			String group = sc.nextLine();
 			System.out.println("-----------------------");
 
-			Contact c = new Contact(name,phoneNum,email,address,birthday,group); //사용자로부터 받은 값으로 인스턴스생성
-			smartPhone.addInfo(c); //인스턴스를 배열에 추가
-
+//			Contact c = new Contact(name,phoneNum,email,address,birthday,group); //사용자로부터 받은 값으로 인스턴스생성
+//			smartPhone.addInfo(c); //인스턴스를 배열에 추가
+			
+//			Contact c1 = new CustomerContact(name,phoneNum,email,address,birthday,group);
+//			smartPhone.addInfo(c1);
+			Contact c2 = new CompanyContact(name,phoneNum,email,address,birthday,group);
+			smartPhone.addInfo(c2);
+			
 		}
 
 		smartPhone.printInfo(); //배열의 모든 요소 출력
@@ -123,6 +125,9 @@ public class SmartPhone {
 
 		smartPhone.editInfo(); //배열의 요소를 수정
 		smartPhone.printInfo(); // 수정 확인
+		
+		
+		
 	}
 
 }
