@@ -2,7 +2,7 @@
 
 
 --32. EQUI 조인을 사용하여 SCOTT 사원의 부서번호와 부서 이름을 출력하시오.
-select emp.deptno, dname
+select emp.deptno, dept.dname
 from emp, dept
 where emp.deptno = dept.deptno and ename = 'SCOTT';
 
