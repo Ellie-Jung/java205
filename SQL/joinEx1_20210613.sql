@@ -9,7 +9,8 @@ where emp.deptno = dept.deptno and ename = 'SCOTT';
 --ANSI join
 select emp.deptno, dept.dname
 from emp join dept
-on emp.deptno = dept.deptno and ename = 'SCOTT';
+on emp.deptno = dept.deptno 
+where emp.ename = 'SCOTT';
 
 --33. INNER JOIN과 ON 연산자를 사용하여 사원 이름과 함께 그 사원이 소속된 부서이름과 지역 명을 출력하시오.
 select e.ename, d.dname, d.loc
@@ -22,8 +23,14 @@ from emp e ,dept d
 where e.deptno = d.deptno;
 
 --36. 조인과 WildCARD를 사용하여 이름에 ‘A’가 포함된 모든 사원의 이름과 부서명을 출력하시오.
+--natural join
 select e.ename, d.dname
-from emp e join dept d
+from emp e natural join dept d
+where ename like '%A%';
+
+--using 
+select e.ename, d.dname
+from emp e  join dept d
 using(deptno)
 where ename like '%A%';
 
@@ -71,9 +78,11 @@ from emp e, emp d
 where e.deptno = d.deptno and e.ename ='SCOTT' and d.ename!= 'SCOTT';
 
 --ANSI join
-select e.ename, e.deptno, d.ename
+select e.ename, deptno, d.ename
 from emp e join emp d
-on e.deptno = d.deptno and e.ename ='SCOTT' and d.ename!= 'SCOTT';
+using(deptno)
+where e.ename ='SCOTT' and d.ename!= 'SCOTT';
+
 
 --41. SELF JOIN을 사용하여 WARD 사원보다 늦게 입사한 사원의 이름과 입사일을 출력하시오.
 select d.ename, d.hiredate
