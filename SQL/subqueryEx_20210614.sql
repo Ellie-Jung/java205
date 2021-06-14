@@ -21,39 +21,41 @@ where sal <=(select min(sal) from emp)
 
 --46. 평균급여가 가장 적은 직급의 직급 이름과 직급의 평균을 구하시오.
 
-select ename, avg(sal)
+select job, avg(sal)
 from emp
-where ;
-
-
+group by job
+having avg(sal) = (select  min(avg(sal)) from emp group by job )
+;
 
 
 --47. 각 부서의 최소 급여를 받는 사원의 이름, 급여, 부서번호를 표시하시오.
 
-select e1.ename, e1.sal, e1.deptno
-from emp e1
-where min(sal) all (select min(sal) from emp group by job)
-;
-select min(sal)
-from emp e
-group by job; 
+select ename, sal, deptno
+from emp
+where sal in(select min(sal) from emp group by deptno)
+order by deptno;
 
 
 --48. 담당업무가 ANALYST 인 사원보다 급여가 적으면서 업무가 ANALYST가 아닌 사원들을 표시(사원번호, 이름, 담당 업무, 급여)하시오.
-------------
+
+select empno, ename, job, sal
+from emp
+where job != 'ANALYST' and sal< all(select sal from emp where job ='ANALYST')
+order by empno;
 
 
 --49. 부하직원이 없는 사원의 이름을 표시하시오.
 
+select e.ename
+from emp e
+where empno not in(select distinct mgr from emp m where e.empno = m.mgr);
+
 
 --50. 부하직원이 있는 사원의 이름을 표시하시오.
 
-select ename
-from emp
-
-select ename
-from emp, (select empno from emp where 
-where mgr is not null;
+select e.ename
+from emp e
+where empno  in(select distinct mgr from emp m where e.empno = m.mgr);
 
 
 --51. BLAKE와 동일한 부서에 속한 사원의 이름과 입사일을 표시하는 질의를 작성하시오. ( 단 BLAKE는 제외 )
@@ -100,6 +102,12 @@ where sal >(select avg(sal) from emp )and  deptno in(select deptno from emp wher
 
 
 --58. 평균급여가 가장 적은 업무를 찾으시오.
+
+select job, avg(sal)
+from emp
+group by job
+having avg(sal)=(select min(avg(sal)) from emp group by job);
+
 
 
 --59. 담당업무가 MANAGER 인 사원이 소속된 부서와 동일한 부서의 사원을 표시하시오.
