@@ -138,6 +138,12 @@ from orders
 where saleprice > all(select saleprice from orders where custid =3 );
 
 
+SELECT * FROM EMP
+WHERE SAL > ANY (SELECT SAL FROM EMP WHERE DEPTNO=30); -- 하나라도 참이면 참
+
+SELECT * FROM EMP
+WHERE SAL > ALL (SELECT SAL FROM EMP WHERE DEPTNO =30);
+
 
 --EXISTS 연산자로 대한민국에 거주하는 고객에게 판매한 도서의 총 판매액을 구하시오.
 
