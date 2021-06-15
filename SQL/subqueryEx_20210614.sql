@@ -206,7 +206,7 @@ where sal >(select avg(sal) from emp )and  deptno in(select deptno from emp wher
 select job, avg(sal)
 from emp
 group by job
-having avg(sal)<= all(select min(avg(sal))  --모든 직무별 평균급여
+having avg(sal)<= all(select avg(sal)  --모든 직무별 평균급여
                       from emp 
                       group by job);
 
