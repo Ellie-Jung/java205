@@ -41,6 +41,7 @@ insert into phoneInfo_univ(idx, fr_u_major,fr_u_year,fr_ref) values( 1,'물리�
 insert into phoneInfo_univ(idx, fr_u_major,fr_ref) values( 2,'국문학',211);
 insert into phoneInfo_univ(idx, fr_u_major,fr_u_year,fr_ref) values( 5,'영문학', '3',511);
 
+
 ----SELECT (READ)
 select * from phoneinfo_univ;
 select * from phoneInfo_basic pb left outer join phoneinfo_univ pu
@@ -81,7 +82,14 @@ on pb.idx=pu.fr_ref
 left outer join phoneInfo_com pc
 on pb.idx=pc.fr_ref;
 
+select*
+from phoneInfo_basic pb,phoneinfo_univ pu, phoneInfo_com pc
+where pb.idx=pu.fr_ref(+) and pb.idx=pc.fr_ref(+);
+
+
 --삭제 (자식먼저 삭제하고 부모 삭제)
 delete from phoneInfo_com where idx=1; 
 delete from phoneInfo_univ where idx=1; 
 delete from phoneInfo_basic where idx=111;
+
+rollback;
