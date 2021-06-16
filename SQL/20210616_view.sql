@@ -16,6 +16,8 @@ where deptno =30;
 
 select * from emp_view30;
 
+SELECT VIEW_NAME, TEXT
+FROM USER_VIEWS;
 
 -- 뷰 삭제
 drop view emp_view30;
@@ -51,13 +53,16 @@ from emp
 order by hiredate
 ;
 
+-- 입사일을 기준으로 정렬된 뷰 생성
 create or replace view view_HIR
 as
 select *from emp order by hiredate
 ;
 
+-- 해당 뷰에 ROWNUM 추가해서 정렬
 select rownum, ename, hiredate from view_hir;
 
+-- 정렬된 뷰에서 상위 5개 검색하기
 select rownum, ename, hiredate
 from view_hir
 where rownum<6
