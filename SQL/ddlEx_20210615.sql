@@ -1,7 +1,7 @@
 --2021.06.15
 --DDL EX
 
-create table phoneInfo_basic ( idx NUMBER(6),
+create table phoneInfo_basic ( idx NUMBER(6), ---대리키 만들어서 행을 좀 구별하고 검색등 편해짐
                               fr_name VARCHAR2(20) NOT NULL,
                               fr_phonenumber VARCHAR2(20) NOT NULL,
                               fr_email VARCHAR2(20),
