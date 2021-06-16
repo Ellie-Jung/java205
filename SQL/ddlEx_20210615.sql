@@ -28,4 +28,11 @@ create table phoneInfo_com (  idx NUMBER(6),
                               
                               constraint phoneInfo_com_idx_PK PRIMARY KEY(idx),
                               constraint phoneInfo_com_fr_ref_FK FOREIGN KEY (fr_ref) REFERENCES phoneInfo_basic(idx)
-                              );                             
+                             
+                              );                        
+                              
+
+   
+                              
+                              
+                              
