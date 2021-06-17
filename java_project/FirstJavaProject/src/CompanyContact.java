@@ -1,6 +1,3 @@
-package ch03;
-
-import ch01.Contact;
 
 public class CompanyContact extends Contact {
 	
@@ -32,7 +29,7 @@ public class CompanyContact extends Contact {
 
 	public CompanyContact() {
 	}
-	public CompanyContact(String name, String phoneNum, String email, String address, String birthday, String group) {
+	public CompanyContact(String name, String phoneNum, String email, String address, String birthday, String group,String companyName, String deptName, String rank) {
 		super(name, phoneNum, email, address, birthday, group);
 		this.companyName= companyName;
 		this.deptName= deptName;

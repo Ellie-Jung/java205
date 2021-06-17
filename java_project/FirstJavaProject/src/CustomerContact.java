@@ -1,6 +1,6 @@
-package ch03;
 
-import ch01.Contact;
+
+
 
 public class CustomerContact extends Contact {
 
@@ -29,15 +29,22 @@ public class CustomerContact extends Contact {
 	
 	
 	
-	public CustomerContact(String name, String phoneNum, String email, String address, String birthday, String group) {
+	public CustomerContact(String name, String phoneNum, String email, String address, String birthday, String group,String accountName, String item, String rank) {
 		super(name, phoneNum, email, address, birthday, group);
 		this.accountName = accountName;
 		this.item = item;
 		this.rank=rank;
 	}
+	
+	
 
-	public void printInfo() {
-		super.printInfo();
+	public void showData() {
+		System.out.println("이름 : "+getName());
+		System.out.println("전화번호 : "+getPhoneNum());
+		System.out.println("이메일 : "+getEmail());
+		System.out.println("주소 : "+getAddress());
+		System.out.println("생일 : "+getBirthday());
+		System.out.println("그룹 : "+getGroup());
 		System.out.println("거래처 회사 이름 :"+getAccountName());
 		System.out.println("거래 품목 : "+getItem());
 		System.out.println("직급 : "+getRank());
