@@ -13,11 +13,11 @@
 desc phoneInfo_basic ;
 
 ----INSERT (CREATE)
-insert into phoneInfo_basic(idx, fr_name, fr_phonenumber, fr_email, fr_address) values( 111,'김씨', '123-456','hab@naver.com','서울시 강남구');
-insert into phoneInfo_basic(idx, fr_name, fr_phonenumber, fr_email, fr_address) values( 211,'박씨', '223-456','bdab@naver.com','부산시 사하구');
-insert into phoneInfo_basic(idx, fr_name, fr_phonenumber, fr_email, fr_address) values( 311,'강씨', '571-456','jdskl@naver.com','서울시 마포구');
-insert into phoneInfo_basic(idx, fr_name, fr_phonenumber) values( 411,'정씨', '643-456');
-insert into phoneInfo_basic values( 511,'박씨', '223-456','bdab@naver.com','부산시 사하구','2016/05/05');
+insert into phoneInfo_basic(idx, fr_name, fr_phonenumber, fr_email, fr_address) values( pi_idx_pk.nextval,'김씨', '123-456','hab@naver.com','서울시 강남구');
+insert into phoneInfo_basic(idx, fr_name, fr_phonenumber, fr_email, fr_address) values( pi_idx_pk.nextval,'박씨', '223-456','bdab@naver.com','부산시 사하구');
+insert into phoneInfo_basic(idx, fr_name, fr_phonenumber, fr_email, fr_address) values( pi_idx_pk.nextval,'강씨', '571-456','jdskl@naver.com','서울시 마포구');
+insert into phoneInfo_basic(idx, fr_name, fr_phonenumber) values( pi_idx_pk.nextval,'정씨', '643-456');
+
 
 ----SELECT (READ)
 select * from phoneInfo_basic ;
@@ -37,9 +37,10 @@ desc phoneinfo_univ;
 
 
 ---- INSERT (CREATE)
-insert into phoneInfo_univ(idx, fr_u_major,fr_u_year,fr_ref) values( 1,'물리학', '2',111);
-insert into phoneInfo_univ(idx, fr_u_major,fr_ref) values( 2,'국문학',211);
-insert into phoneInfo_univ(idx, fr_u_major,fr_u_year,fr_ref) values( 5,'영문학', '3',511);
+insert into phoneInfo_basic values( pi_idx_pk.nextval,'박씨', '223-456','bdab@naver.com','부산시 사하구','2016/05/05');
+insert into phoneInfo_univ(idx, fr_u_major,fr_u_year,fr_ref) values( pi_u_idx_pk.nextval,'물리학', '2',pi_idx_pk.currval);
+insert into phoneInfo_univ(idx, fr_u_major,fr_ref) values( pi_u_idx_pk.nextval,'국문학',pi_idx_pk.cuurval);
+insert into phoneInfo_univ(idx, fr_u_major,fr_u_year,fr_ref) values( pi_u_idx_pk.nextval,'영문학', '3',pi_idx_pk.currval);
 
 
 ----SELECT (READ)
@@ -59,8 +60,9 @@ delete from phophoneinfo_basic where idx= 511; --부모 지워야 완전히 삭�
 --3. phoneinfo_com 테이블의 SELECT, UPDATE, DELETE, INSERT 하는 SQL
 
 ---- INSERT (CREATE)
-insert into phoneInfo_com values( 1,'삼성', 111);
-insert into phoneInfo_com(idx, fr_c_company,fr_ref) values( 5,'현대', 511);
+insert into phoneInfo_basic values( pi_idx_pk.nextval,'박씨', '223-456','bdab@naver.com','부산시 사하구','2016/05/05');
+insert into phoneInfo_com values( pi_c_idx_pk.nextval,'삼성', pi_idx_pk.currval);
+insert into phoneInfo_com(idx, fr_c_company,fr_ref) values( pi_c_idx_pk.nextval,'현대', 511);
 
 ----SELECT (READ)
 select * from phoneinfo_com;
@@ -92,4 +94,14 @@ delete from phoneInfo_com where idx=1;
 delete from phoneInfo_univ where idx=1; 
 delete from phoneInfo_basic where idx=111;
 
-rollback;
+
+
+---대학친구, 회사 친구 테이블 -> 기본키 (대리키)  -> sequence 생성 ->insert 개선 
+
+--sequence :번호 재생기
+create sequence pi_idx_pk;
+create sequence pi_u_idx_pk start with 7 increment by 1;  --중복되지 않는 위치에서 시작하는게 좋다
+create sequence pi_c_idx_pk start with 7 increment by 1;
+
+drop sequence pi_c_idx_pk;
+
