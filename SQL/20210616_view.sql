@@ -72,14 +72,7 @@ order by ename
 
 
 
---sequence :번호 재생기
-create sequence pi_idx_pk;
 
-select pi_idx_pk.nextval --기본정보 값 insert할때 이 값을 넣어준다. (기본키로 설정할때)
-from dual; --할때마다 1씩 증가
-
-select pi_idx_pk.currval
-from dual; --현재 시퀀스가 가진 값을 확인
 
 
 
