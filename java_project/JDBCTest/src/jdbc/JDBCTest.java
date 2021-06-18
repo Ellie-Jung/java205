@@ -12,34 +12,33 @@ public class JDBCTest {
 
 	public static void main(String[] args) {
 
-		//¿¬°á °´Ã¼ : ¿¬°á Á¤º¸¸¦ °¡Áø´Ù.
-		Connection conn = null;          //try-catch¹® ¹Û¿¡ º¯¼ö¸¦ ¼±¾ğÇØ¾ßÇÑ´Ù.
-		//sqlÀ» ½ÇÇàÇÒ ¸Ş¼Òµå Á¦°ø
+		//ì—°ê²° ê°ì²´ : ì—°ê²° ì •ë³´ë¥¼ ê°€ì§„ë‹¤.
+		Connection conn = null;          //try-catchë¬¸ ë°–ì— ë³€ìˆ˜ë¥¼ ì„ ì–¸í•´ì•¼í•œë‹¤.
+		//sqlì„ ì‹¤í–‰í•  ë©”ì†Œë“œ ì œê³µ
 		Statement stmt = null;
-		//executeQuery () ¹İÈ¯Å¸ÀÔ -> selectÀÇ °á°ú (Ç¥)¸¦ ´ã´Â °´Ã¼ 
+		//executeQuery () ë°˜í™˜íƒ€ì… -> selectì˜ ê²°ê³¼ (í‘œ)ë¥¼ ë‹´ëŠ” ê°ì²´ 
 		ResultSet rs = null;
-		//Statement -> PreparedStatement : ¼º´É°³¼±
+		//Statement -> PreparedStatement : ì„±ëŠ¥ê°œì„ 
 		PreparedStatement pstmt = null;
 
 		try {
-			//1. µå¶óÀÌ¹ö ·Îµå
+			//1.ë“œë¼ì´ë²„ ë¡œë“œ
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			System.out.println("µå¶óÀÌ¹ö ·Îµå ¼º°ø !");
+			System.out.println("ë“œë¼ì´ë²„ ë¡œë“œ ì„±ê³µ !!");
 
-			//2. ¿¬°á
+			//2. ì—°ê²°
 			String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";
 			String user = "hr";
 			String pw = "tiger";
 
 			conn = DriverManager.getConnection(jdbcUrl,user,pw);
-			System.out.println("µ¥ÀÌÅÍ º£ÀÌ½º ¿¬°á ¼º°ø");
+			System.out.println("ë°ì´í„° ë² ì´ìŠ¤ ì—°ê²° ì„±ê³µ");
 
 			
-			//3. sqlÃ³¸®
-			
+			//3. sqlì²˜ë¦¬
 			stmt = conn.createStatement();
 			
-			int dno= 10; // ÀÌ·±½ÄÀ¸·Î ÇØ´çÇÏ´Â Á¤º¸ Ã£À»¼ö ÀÖ°í, »ç¿ëÀÚ¿¡°Ô ÀÔ·Â ¹ŞÀ»¼öµµ ÀÖ´Ù. 
+			int dno= 10; //ì´ëŸ°ì‹ìœ¼ë¡œ í•´ë‹¹í•˜ëŠ” ì •ë³´ ì°¾ì„ìˆ˜ ìˆê³ , ì‚¬ìš©ìì—ê²Œ ì…ë ¥ ë°›ì„ìˆ˜ë„ ìˆë‹¤. 
 			String otype = "deptno";
 			
 			String sqlSelect = "select * from dept where deptno="+dno+" order by "+otype ;
@@ -47,10 +46,10 @@ public class JDBCTest {
 			
 	
 			
-			rs =stmt.executeQuery(sqlSelect); //resultSet ¹İÈ¯ÇÑ´Ù.
+			rs =stmt.executeQuery(sqlSelect); //resultSet ë°˜í™˜í•œë‹¤..
 			
-			//rs.next() -> ´ÙÀ½ÇàÀÇ Á¸Àç À¯¹« È®ÀÎ
-			while(rs.next()) { //trueÀÏ¶§, ´ÙÀ½ÇàÀÌ ÀÖÀ»¶§ 
+			//rs.next() -> ë‹¤ìŒí–‰ì˜ ì¡´ì¬ ìœ ë¬´ í™•ì¸
+			while(rs.next()) { //trueì¼ë•Œ, ë‹¤ìŒí–‰ì´ ìˆì„ë•Œ 
 				int deptno = rs.getInt("deptno");
 				System.out.print(deptno+"\t");
 				String dname = rs.getString("dname");
@@ -61,15 +60,15 @@ public class JDBCTest {
 			
 			
 			//////////////////////////////////////////////////
-			///PreparedStatement  -> Sql ¸ÕÀú µî·Ï - > ¸Å°³º¯¼öÃ³·³ ?¸¦ ÀÌ¿ëÇØ¼­ ³ªÁß¿¡ º¯¼ö¸¦ ¹ÙÀÎµù
+			///PreparedStatement  -> Sqlë¨¼ì € ë“±ë¡ - > ë§¤ê°œë³€ìˆ˜ì²˜ëŸ¼ ?ë¥¼ ì´ìš©í•´ì„œ ë‚˜ì¤‘ì— ë³€ìˆ˜ë¥¼ ë°”ì¸ë”©
 			
-			System.out.println("PreparedStatement »ç¿ë");
+			System.out.println("PreparedStatement ì‚¬ìš©");
 			System.out.println("==================================================");
 			
-			String sqlSelect2 = "select * from dept where deptno = ? "; //ÀÌ°É ¿Ï¼ºµÈ °´Ã¼·Î º¸´Â°ÅÀÓ .Ã³À½ °´Ã¼»ı¼ºÇÒ¶§ ÀÌ°É µî·ÏÇÏ°í ¸Ş¼Òµå¸¦ ÅëÇØ ³ªÁß¿¡ °ªÀ» ³Ö¾îÁÜ//¼º´É°³¼±
+			String sqlSelect2 = "select * from dept where deptno = ? "; //ì´ê±¸ ì™„ì„±ëœ ê°ì²´ë¡œ ë³´ëŠ”ê±°ì„ .ì²˜ìŒ ê°ì²´ìƒì„±í• ë•Œ ì´ê±¸ ë“±ë¡í•˜ê³  ë©”ì†Œë“œë¥¼ í†µí•´ ë‚˜ì¤‘ì— ê°’ì„ ë„£ì–´ì¤Œ//ì„±ëŠ¥ê°œì„ 
 			pstmt = conn.prepareStatement(sqlSelect2);
-			// ?º¯¼ö¿¡ µ¥ÀÌÅÍ ¹ÙÀÎµù (º¯¼ö³Ö¾îÁÜ)
-			pstmt.setInt(1, 10); // Ã¹¹øÂ° ¹°À½Ç¥, °Å±â¿¡ 10¹ø ºÎ¼­ ³Ö´Â´Ù.
+			// ?ë³€ìˆ˜ì— ë°ì´í„° ë°”ì¸ë”© (ë³€ìˆ˜ë„£ì–´ì¤Œ)
+			pstmt.setInt(1, 10); // ì²«ë²ˆì§¸ ë¬¼ìŒí‘œ, ê±°ê¸°ì— 10ë²ˆ ë¶€ì„œ ë„£ëŠ”ë‹¤.
 			
 			rs =pstmt.executeQuery();
 			while(rs.next()) {
@@ -88,11 +87,11 @@ public class JDBCTest {
 			
 			
 		} catch (ClassNotFoundException e) {
-			System.out.println("µå¶óÀÌ¹ö Å¬·¡½º Ã£Áö¸øÇÔ !!!");
+			System.out.println("ë“œë¼ì´ë²„ í´ë˜ìŠ¤ ì°¾ì§€ëª»í•¨ !!!");
 			e.printStackTrace();
 			
 		}catch (SQLException e) {
-			System.out.println("µ¥ÀÌÅÍ º£ÀÌ½º ¿¬°á ½ÇÆĞ !!!");
+			System.out.println("ë°ì´í„° ë² ì´ìŠ¤ ì—°ê²° ì‹¤íŒ¨ !!!");
 			e.printStackTrace();
 		}finally {
 			//4. close

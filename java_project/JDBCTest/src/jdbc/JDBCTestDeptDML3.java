@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 
-public class JDBCTestDeptDML2 {
+public class JDBCTestDeptDML3 {
 
 	public static void main(String[] args) {
 
@@ -41,25 +41,32 @@ public class JDBCTestDeptDML2 {
 			conn.setAutoCommit(false);
 			
 			
-			System.out.println("부서 정보의 삭제를 시작합니다. ");
-			System.out.println("부서 번호를 입력해주세요. ");
-			String deptno  = sc.nextLine();
+			//사용자에게 정보를 받아 데이터를 수정
+			//10 dev seoul ==> " "으로 나눠준다 문자열을. 
+			System.out.println("부서 데이터의 수정을 시작합니다. ");
+			System.out.println("10 dev seoul 형식으로 데이터를 입력해 주세요.");
+			String input = sc.nextLine();
 			
+			//String[]  문자열을 자르는 배열 생성
+			String[] inputs = input.split(" ");   //split (" +") 하면 빈공간의 길이에 상관없이 잘라준다.
 			
-			//3. sql처리
-			// 사용자에게 정보를 받아서 부서 데이터를 삭제하는 프로그램을 만들어보자.
+//			for(String str : inputs) {
+//				System.out.println(str);
+//			}
+// 			
+			String sql = "update dept01 set dname =?, loc = ? where deptno = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, inputs[1]);
+			pstmt.setString(2, inputs[2]);
+			pstmt.setInt(3, Integer.parseInt(inputs[0]));
 			
-			String sql = "delete from dept01 where deptno = ?";
-			pstmt  = conn.prepareStatement(sql);   //PreparedStatement
-			pstmt.setInt(1, Integer.parseInt(deptno));
+			int result = pstmt.executeUpdate();
 			
-			int result = pstmt.executeUpdate(); 
-			
-			if (result >0) {
+			if(result >0) {
 				
-				System.out.println(result +"개 행이 삭제되었습니다.");
+				System.out.println("수정되었습니다.");
 			}else {
-				System.out.println("조건에 맞는 데이터가 존재하지 않습니다.");
+				System.out.println("찾으시는 부서가 존재하지 않습니다. ");
 			}
 			
 			

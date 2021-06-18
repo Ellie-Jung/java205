@@ -12,43 +12,43 @@ public class JDBCTestEMP {
 
 	public static void main(String[] args) {
 
-		//¿¬°á °´Ã¼ : ¿¬°á Á¤º¸¸¦ °¡Áø´Ù.
-		Connection conn = null;          //try-catch¹® ¹Û¿¡ º¯¼ö¸¦ ¼±¾ğÇØ¾ßÇÑ´Ù.
-		//sqlÀ» ½ÇÇàÇÒ ¸Ş¼Òµå Á¦°ø
+		//ì—°ê²° ê°ì²´ : ì—°ê²° ì •ë³´ë¥¼ ê°€ì§„ë‹¤.
+		Connection conn = null;          //try-catchë¬¸ ë°–ì— ë³€ìˆ˜ë¥¼ ì„ ì–¸í•´ì•¼í•œë‹¤.
+		//sqlì„ ì‹¤í–‰í•  ë©”ì†Œë“œ ì œê³µ
 		Statement stmt = null;
-		//executeQuery () ¹İÈ¯Å¸ÀÔ -> selectÀÇ °á°ú (Ç¥)¸¦ ´ã´Â °´Ã¼ 
+		//executeQuery () ë°˜í™˜íƒ€ì… -> selectì˜ ê²°ê³¼ (í‘œ)ë¥¼ ë‹´ëŠ” ê°ì²´ 
 		ResultSet rs = null;
-		//Statement -> PreparedStatement : ¼º´É°³¼±
+		//Statement -> PreparedStatement : ì„±ëŠ¥ê°œì„ 
 		PreparedStatement pstmt = null;
 
 		try {
-			//1. µå¶óÀÌ¹ö ·Îµå
+			//1. ë“œë¼ì´ë²„ ë¡œë“œ
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			System.out.println("µå¶óÀÌ¹ö ·Îµå ¼º°ø !");
+			System.out.println("ë“œë¼ì´ë²„ ë¡œë“œ ì„±ê³µ !");
 
-			//2. ¿¬°á
+			//2. ì—°ê²°
 			String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";
 			String user = "hr";
 			String pw = "tiger";
 
 			conn = DriverManager.getConnection(jdbcUrl,user,pw);
-			System.out.println("µ¥ÀÌÅÍ º£ÀÌ½º ¿¬°á ¼º°ø");
+			System.out.println("ë°ì´í„° ë² ì´ìŠ¤ ì—°ê²° ì„±ê³µ");
 
 			
-			//3. sqlÃ³¸®
-			//»ç¿ø ¹øÈ£, »ç¿øÀÌ¸§, Á÷±Ş, sal, ºÎ¼­ÀÌ¸§, ºÎ¼­À§Ä¡ Ãâ·ÂÇÏ´Â Ç¥ ¸¸µé¾îº¸ÀÚ
+			//3. sqlì²˜ë¦¬
+			//ì‚¬ì› ë²ˆí˜¸, ì‚¬ì›ì´ë¦„, ì§ê¸‰, sal, ë¶€ì„œì´ë¦„, ë¶€ì„œìœ„ì¹˜ ì¶œë ¥í•˜ëŠ” í‘œ ë§Œë“¤ì–´ë³´ì
 			
 			// 1) Statement 
 			stmt= conn.createStatement();
 			
-			// 2) sql ÀÛ¼º
+			// 2) sql ì‘ì„±
 			String sql = "select e.empno, e.ename, e.job, e.sal, d.dname,d.loc from emp e, dept d where e.deptno = d.deptno";
 			
-			// 3) ResultSet °´Ã¼·Î µ¥ÀÌÅÍ ¹Ş±â
+			// 3) ResultSet ê°ì²´ë¡œ ë°ì´í„° ë°›ê¸°
 			rs = stmt.executeQuery(sql);
 			
-			// 4) Ãâ·Â
-			while (rs.next()) {  //Ã¹¹øÂ° , µÎ¹ø¤Š, ÄÃ·³ÀÇ À§Ä¡·Î Ã£À»¼ö ÀÖµû
+			// 4) ì¶œë ¥
+			while (rs.next()) {  //ì²«ë²ˆì§¸ , ë‘ë²ˆì¨°, ì»¬ëŸ¼ì˜ ìœ„ì¹˜ë¡œ ì°¾ì„ìˆ˜ ìˆë”°
 				System.out.println(rs.getInt(1)+"\t"+rs.getString(2)+rs.getString(3)+"\t"+
 								   rs.getInt(4)+"\t"+rs.getString(5)+"\t"+rs.getString(6));
 			}
@@ -60,11 +60,11 @@ public class JDBCTestEMP {
 			
 			
 		} catch (ClassNotFoundException e) {
-			System.out.println("µå¶óÀÌ¹ö Å¬·¡½º Ã£Áö¸øÇÔ !!!");
+			System.out.println("ë“œë¼ì´ë²„ í´ë˜ìŠ¤ ì°¾ì§€ëª»í•¨ !!!");
 			e.printStackTrace();
 			
 		}catch (SQLException e) {
-			System.out.println("µ¥ÀÌÅÍ º£ÀÌ½º ¿¬°á ½ÇÆĞ !!!");
+			System.out.println("ë°ì´í„° ë² ì´ìŠ¤ ì—°ê²° ì‹¤íŒ¨ !!!");
 			e.printStackTrace();
 		}finally {
 			//4. close
