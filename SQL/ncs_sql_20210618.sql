@@ -23,7 +23,9 @@ create table Contact ( pIdx  NUMBER(10),
                        grade NUMBER(10),
                        comname VARCHAR2(20),
                        deptname VARCHAR2(20),
-                       job VARCHAR2(20),
+                       rank VARCHAR2(20),
+                       meetingname VARCHAR2(20),
+                       nickname VARCHAR2(20),
                        
                        
                        
