@@ -14,13 +14,13 @@
 --=============================
 --
 create table Contact ( pIdx  NUMBER(10),
-                       name VARCHAR2(10) NOT NULL,
-                       phonenum VARCHAR2(20) NOT NULL,
-                       email VARCHAR2(20) DEFAULT '미등록' NOT NULL ,
-                       address VARCHAR2(20) DEFAULT '미등록' NOT NULL,
-                       friendtype VARCHAR2(10) NOT NULL,
+                       name VARCHAR2(10)CONSTRAINT CONTACT_NAME_NN NOT NULL,
+                       phonenum VARCHAR2(20)CONSTRAINT CONTACT_PHONENUM_NN NOT NULL,
+                       address VARCHAR2(20) DEFAULT '미등록' CONSTRAINT CONTACT_ADDRESS_NN NOT NULL,
+                       email VARCHAR2(20) DEFAULT '미등록' CONSTRAINT CONTACT_EMAIL_NN NOT NULL ,
+                       friendtype VARCHAR2(10) CONSTRAINT CONTACT_FRIENDTYPE_NN NOT NULL,
                        major  VARCHAR2(20),
-                       grade NUMBER(10),
+                       grade NUMBER(1),
                        comname VARCHAR2(20),
                        deptname VARCHAR2(20),
                        rank VARCHAR2(20),
@@ -48,11 +48,12 @@ delete from dept where deptno = 50;
 select * from user_tables;
 
 --6. EMP 테이블의 구조를 확인하는 SQL을 작성하시오.
-select * from emp;
+desc emp;
 
 --7. 사용자가 정의한 제약조건들을 확인하는 SQL문을 작성하시오.
 select * from user_constraints;
 DESC user_constraints; 
+
 
 --#2 아래 요구사항에 맞도록 고급 SQL 문을 작성하시오.
 
@@ -65,7 +66,6 @@ as
 select * from emp natural join dept
 order by empno;
 
-select * from emp_view;
 
 --3. EMP 테이블에서 모든 사원의 부서번호를 이름이 'SCOTT'인 사원의 부서번호로 변경하는 SQL을 작성하시오.
 update emp set deptno =(select deptno from emp where ename ='SCOTT'); 
