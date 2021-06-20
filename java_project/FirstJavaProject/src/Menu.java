@@ -19,7 +19,9 @@ public class Menu {
 			System.out.println("===============================");
 			
 			System.out.print("번호를 선택해주세요 >>");
-			int num = sc.nextInt();
+			int  num = Integer.parseInt(sc.nextLine());
+			
+			
 			
 			switch (num) {
 			
