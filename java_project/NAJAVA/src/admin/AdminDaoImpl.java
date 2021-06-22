@@ -6,11 +6,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import orders.Product;
 
 
 
 
-public class AdminDaoImpl implements AdminDao {
+
+public class AdminDaoImpl {
 
 	// 1. 외부 클래스 또는 인스턴스에서 해당 클래스로 인스턴스를 생성하지 못하도록 처리.
 	private  AdminDaoImpl(){   //생성자에 프라이빗 붙인다. 외부에서 생성자 호출 불가능.외부에서 인스턴스 호출이 불가능해진다.
@@ -44,9 +46,9 @@ public class AdminDaoImpl implements AdminDao {
 
 			list = new ArrayList<>();
 
-			//데이터를 Dept 객체로 생성 -> list에 저장
+			//데이터를 Order 객체로 생성 -> list에 저장
 			while (rs.next()) {
-				list.add(new Order(rs.getInt(1), rs.getInt(2),rs.getInt(3),rs.getString(4) ));
+				list.add(new Order(rs.getInt(1), rs.getInt(2),rs.getInt(3),rs.getInt(4),rs.getString(5),rs.getInt(6),rs.getInt(7) ));
 			}
 
 		} catch (SQLException e) {
@@ -76,31 +78,39 @@ public class AdminDaoImpl implements AdminDao {
 
 		Statement stmt = null;
 		ResultSet rs = null;
-		
+
 		try {
 			stmt = conn.createStatement();
-			String sql = "select sum(iprice) from product natural join iorder";
-			
+			String sql = "select sum(oprice) from product natural join iorder";
+
 			//결과 받아오기
 			rs = stmt.executeQuery(sql);
-			
-			
-			
+
+
+
 			while (rs.next()) {  //첫번째 , 두번쨰, 컬럼의 위치로 찾을수 있따
 				result =rs.getInt(1);
 			}
-			
-			
+
+
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			if(stmt != null) {
+				try {
+					stmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
-		
+
+
+
 		return result;
 	}
-	
-	
-	
-	
+
+
 	//달별 매출 보기
 	int getSalesMonth(Connection conn, String dno) {
 
@@ -108,32 +118,152 @@ public class AdminDaoImpl implements AdminDao {
 
 		Statement stmt = null;
 		ResultSet rs = null;
-		
+
 		try {
 			stmt = conn.createStatement();
-			
-			
-			String sql = "select sum(iprice) from product natural join iorder where orderdate like "+dno;
-			
+
+
+			String sql = "select sum(oprice) from product natural join iorder where substr(orderdate,1,5) = '"+dno+"'";
+
+
+
 			//결과 받아오기
 			rs = stmt.executeQuery(sql);
-			
-			
-			
+
+
+
 			while (rs.next()) {  //첫번째 , 두번쨰, 컬럼의 위치로 찾을수 있따
 				result =rs.getInt(1);
 			}
-			
-			
+
+
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			if(stmt != null) {
+				try {
+					stmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
-		
+
+
+
 		return result;
 	}
+
+	//일별 매출 보기
+	int getSalesDay(Connection conn, String dday) {
+
+		int result =0;
+
+		Statement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			stmt = conn.createStatement();
+
+
+			String sql = "select sum(oprice) from product natural join iorder where substr(orderdate,4,5) = '" +dday+"'";
+
+
+			//결과 받아오기
+			rs = stmt.executeQuery(sql);
+
+
+
+			while (rs.next()) {  //첫번째 , 두번쨰, 컬럼의 위치로 찾을수 있따
+				result =rs.getInt(1);
+			}
+
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			if(stmt != null) {
+				try {
+					stmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+
+
+		return result;
+	}
+
+	//재고 보기
+	 ArrayList<Product> getInventory(Connection conn){
+		 ArrayList<Product> list= null;
+
+			//데이터 베이스의 테이블 이용 select결과를 -> list에 저장 
+			Statement stmt = null;
+			ResultSet rs = null;
+			
+			try {
+				stmt = conn.createStatement();
+				String sql = "select * from product order by icode";
+				
+				//결과 받아오기
+				rs = stmt.executeQuery(sql);
+
+				list = new ArrayList<>();
+
+				//데이터를 product 객체로 생성 -> list에 저장
+				while (rs.next()) {
+					list.add(new Product(rs.getInt(1),rs.getString(2), rs.getInt(3),rs.getInt(4) ));
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				if(stmt != null) {
+					try {
+						stmt.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+
+
+			
+			return list;
+	 }
 	
-	
-	
+	 
+//	//재고 넣기
+//	 
+//	int putInstance(Connection conn, Product product){
+//		int result = 0;
+//		
+//		PreparedStatement pstmt = null;
+//		
+//		
+//		try {
+//			String sql = "update dept set count=? where icode = ?";
+//			pstmt = conn.prepareStatement(sql);
+//			pstmt.setInt(1, product.getCount());
+//			pstmt.setInt(2, product.getIcode());
+//		
+//			
+//			result = pstmt.executeUpdate();
+//			
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		
+//		return result;
+//		
+//	}
+	 
+	 
+
 }
 
 

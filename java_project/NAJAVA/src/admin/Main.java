@@ -5,20 +5,23 @@ import java.util.Scanner;
 public class Main {
 	public static void main(String[] args) {
 
-		AdminServiceImpl ad = new AdminServiceImpl(AdminDaoImpl.getInstance());
-
 		Scanner sc = new Scanner(System.in);
 
+		AdminMenu am = new AdminMenu();
+		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
-			ad.orderList();
+			am.AdminMenu();
+//			ad.orderList();
 
-			ad.salseManagement();
+//			ad.salseManagement();
 			
-			ad.salseManagementMonth();
+//			ad.salseManagementMonth();
 			
+//			ad.salseManagementDaily();
 			
+//			ad.inventory();
 			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
