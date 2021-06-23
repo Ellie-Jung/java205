@@ -1,6 +1,7 @@
 package admin;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -215,7 +216,7 @@ public class AdminDaoImpl {
 
 				//데이터를 product 객체로 생성 -> list에 저장
 				while (rs.next()) {
-					list.add(new Product(rs.getInt(1),rs.getString(2), rs.getInt(3),rs.getInt(4) ));
+					list.add(new Product(rs.getInt(1),rs.getInt(2), rs.getString(3),rs.getInt(4) ));
 				}
 
 			} catch (SQLException e) {
@@ -238,29 +239,39 @@ public class AdminDaoImpl {
 	 
 //	//재고 넣기
 //	 
-//	int putInstance(Connection conn, Product product){
-//		int result = 0;
-//		
-//		PreparedStatement pstmt = null;
-//		
-//		
-//		try {
-//			String sql = "update dept set count=? where icode = ?";
-//			pstmt = conn.prepareStatement(sql);
-//			pstmt.setInt(1, product.getCount());
-//			pstmt.setInt(2, product.getIcode());
-//		
-//			
-//			result = pstmt.executeUpdate();
-//			
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		
-//		
-//		return result;
-//		
-//	}
+	int putInstance(Connection conn, Product product){
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		
+		try {
+			String sql = "update product set count=count+? where icode = ?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, product.getCount());
+			pstmt.setInt(2, product.getIcode());
+		
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			if(pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+
+		}
+		
+		
+		return result;
+		
+	}
 	 
 	 
 

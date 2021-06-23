@@ -6,7 +6,7 @@ public class Main {
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
-
+//	/	AdminServiceImpls ad = new ad
 		AdminMenu am = new AdminMenu();
 		
 		try {
@@ -22,6 +22,8 @@ public class Main {
 //			ad.salseManagementDaily();
 			
 //			ad.inventory();
+			
+			
 			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

@@ -25,7 +25,7 @@ public class AdminMenu {
 			
 			System.out.println("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 관리자 메뉴 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
 			System.out.println();
-			System.out.println("1번 : 회원 정보 리스트 | 2번 : 회원 삭제 | 3번 : 전체 판매 리스트 | 4번 : 총 매출 | 5번 : 월 별 매출 | 6번 : 일일 매출 | 7번 : 재고 조회 | 8번 : 종료");
+			System.out.println("1번 : 회원 정보 리스트 | 2번 : 회원 삭제 | 3번 : 전체 판매 리스트 | 4번 : 총 매출 | 5번 : 월 별 매출 | 6번 : 일일 매출 | 7번 : 재고 조회 | 8번 : 재고 입력 | 9번 : 종료 ");
 			System.out.println();
 			System.out.println(" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ");
 			System.out.println();
@@ -57,6 +57,9 @@ public class AdminMenu {
 				svcmanager.inventory();
 				break;
 			case 8 :
+				svcmanager.putIndentory();
+				break;
+			case 9 :
 			System.out.println("이전메뉴로 돌아갑니다.");
 				return;
 			}

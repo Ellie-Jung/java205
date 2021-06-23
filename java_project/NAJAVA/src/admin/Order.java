@@ -59,7 +59,6 @@ public class Order {
 	
 	
 	public Order(int oidx, int ordercode, int icode, int idx, String orderdate, int count, int oprice) {
-		super();
 		this.oidx = oidx;
 		this.ordercode = ordercode;
 		this.icode = icode;

@@ -2,16 +2,31 @@ package orders;
 
 public class Product {
 	private int icode;
+	private int count;
 	private String iname;
 	private int iprice;
-	private int count;
 
-	public Product(int icode, String iname, int iprice,int count) {
+	
+	
+	
+	public Product(int icode, int count, String iname, int iprice) {
 		this.icode = icode;
+		this.count = count;
 		this.iname = iname;
 		this.iprice = iprice;
+	}
+
+
+
+
+	public Product(int icode,  int count) {
+		this.icode = icode;
 		this.count = count;
 	}
+
+
+
+
 	public int getIcode() {
 		return icode;
 	}

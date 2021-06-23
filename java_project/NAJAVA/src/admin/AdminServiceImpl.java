@@ -14,6 +14,11 @@ public class AdminServiceImpl implements AdminService {
 
 	private AdminDaoImpl dao;  //의존성을 낮추기위해 여기서 바로 인스턴스를 생성하면 안된다. 선언만 
 	private Scanner sc;
+	
+	//2. 연결
+	String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";
+	String user = "hr";
+	String pw = "tiger";
 
 
 	public AdminServiceImpl(AdminDaoImpl dao) { //생성자
@@ -28,12 +33,9 @@ public class AdminServiceImpl implements AdminService {
 	void orderList() {
 		//Connection 객체 생성 -트랜젝션 처리
 		Connection conn = null;
-
-		//2. 연결
-		String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";
-		String user = "hr";
-		String pw = "tiger";
-
+		
+		
+	
 		try {
 			conn = DriverManager.getConnection(jdbcUrl,user,pw);
 			List<Order> list = dao.getOrderList(conn);
@@ -63,10 +65,7 @@ public class AdminServiceImpl implements AdminService {
 		//Connection 객체 생성 -트랜젝션 처리
 		Connection conn = null;
 
-		//2. 연결 // 모든 메서드에서 공통으로 쓰이기때문에 메서드 밖으로 빼는게 좋다. 
-		String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";
-		String user = "hr";
-		String pw = "tiger";
+		
 
 		try {
 			conn = DriverManager.getConnection(jdbcUrl,user,pw);
@@ -86,10 +85,7 @@ public class AdminServiceImpl implements AdminService {
 		//Connection 객체 생성 -트랜젝션 처리
 		Connection conn = null;
 
-		//2. 연결 // 모든 메서드에서 공통으로 쓰이기때문에 메서드 밖으로 빼는게 좋다. 
-		String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";
-		String user = "hr";
-		String pw = "tiger";
+		
 
 		try {
 			conn = DriverManager.getConnection(jdbcUrl,user,pw);
@@ -113,10 +109,6 @@ public class AdminServiceImpl implements AdminService {
 		//Connection 객체 생성 -트랜젝션 처리
 		Connection conn = null;
 
-		//2. 연결 // 모든 메서드에서 공통으로 쓰이기때문에 메서드 밖으로 빼는게 좋다. 
-		String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";
-		String user = "hr";
-		String pw = "tiger";
 
 		try {
 			conn = DriverManager.getConnection(jdbcUrl,user,pw);
@@ -142,10 +134,7 @@ public class AdminServiceImpl implements AdminService {
 		//Connection 객체 생성 -트랜젝션 처리
 		Connection conn = null;
 
-		//2. 연결
-		String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";
-		String user = "hr";
-		String pw = "tiger";
+	
 
 		try {
 			conn = DriverManager.getConnection(jdbcUrl,user,pw);
@@ -157,7 +146,7 @@ public class AdminServiceImpl implements AdminService {
 			System.out.println("-----------------------------------------------");
 
 			for(Product product : list) {
-				System.out.printf("%d \t %s \t %d \t %d \n", product.getIcode(),product.getIname(),product.getIprice(),product.getCount());
+				System.out.printf("%d \t %d \t %s \t %d \n", product.getIcode(),product.getCount(),product.getIname(),product.getIprice());
 
 			}
 		} catch (SQLException e) {
@@ -167,28 +156,39 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 //	//재고 넣기
-//	void putIndentory() {
-//
-//		//Connection 객체 생성 -트랜젝션 처리
-//		Connection conn = null;
-//
-//		//2. 연결
-//		String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";
-//		String user = "hr";
-//		String pw = "tiger";
-//		
-//		try {
-//			conn = DriverManager.getConnection(jdbcUrl,user,pw);
-//			
-//			System.out.println("재고 수량을 입력합니다. 코드번호를 입력해주세요.");
-//			int icode = sc.nextInt();
-//			System.out.println("추가하실 재고 수량을 입력해주세요.");
-//			int
-//			
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//	}
+	void putIndentory() {
+
+		//Connection 객체 생성 -트랜젝션 처리
+		Connection conn = null;
+		
+		inventory();
+		
+		try {
+			conn = DriverManager.getConnection(jdbcUrl,user,pw);
+			
+			System.out.println("재고 수량을 입력합니다. 코드번호를 입력해주세요.");
+			int icode = sc.nextInt();
+			System.out.println("추가하실 재고 수량을 입력해주세요.");
+			int count = sc.nextInt();
+			
+			Product product = new Product (icode , count);
+			
+			int result = dao.putInstance(conn,product);
+			
+			if(result >0) {
+				System.out.println(" 수정되었습니다.");
+				System.out.println();
+				inventory();
+			}else {
+				System.out.println("수정실패 ");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
 
 
 
