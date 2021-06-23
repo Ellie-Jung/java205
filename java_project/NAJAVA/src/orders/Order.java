@@ -1,4 +1,4 @@
-package admin;
+package orders;
 
 public class Order {
 	

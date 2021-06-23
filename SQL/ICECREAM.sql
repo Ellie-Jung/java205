@@ -24,7 +24,7 @@ CREATE TABLE  PRODUCT (
                               
                               
 CREATE TABLE IORDER (           oidx NUMBER(6) CONSTRAINT ORDER_OCODE_PK PRIMARY KEY,
-                                ORDERCODE NUMBER(6) ,
+                                ORDERCODE NUMBER(30) ,
                                 ICODE NUMBER(6) CONSTRAINT ORDER_ICODE_FK REFERENCES PRODUCT(ICODE) NOT NULL,
                                 IDX NUMBER(6) CONSTRAINT ORDER_IDX_FK REFERENCES MEMBER(IDX) NOT NULL ,
                                 ORDERDATE  DATE DEFAULT SYSDATE,
