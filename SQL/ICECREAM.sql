@@ -13,9 +13,10 @@ CREATE TABLE  MEMBER (
           
 CREATE TABLE  PRODUCT (
                                 ICODE NUMBER(6) CONSTRAINT PRODUCT_ICODE_PK PRIMARY KEY,
+                                 COUNT INTEGER,
                                 INAME  VARCHAR2(50)CONSTRAINT PRODUCT_NAME_NN NOT NULL ,
-                                IPRICE  INTEGER , 
-                                COUNT INTEGER
+                                IPRICE  INTEGER  
+                               
                               ) ;          
           
           
@@ -45,25 +46,35 @@ insert into member values (member_idx_seq.nextval, 'apple','1234','홍길동', '
 insert into member values (member_idx_seq.nextval, 'banana','1234','강호동', '01045741234','djwd@gmail.com');
 
 
---product dml --- icode, iname, iprice, count
-insert into product values (1,'바닐라 아이스크림', '2000',5);
-insert into product values (2,'초코 아이스크림', '2500',6);
-insert into product values (3,'딸기 아이스크림', '2500',3);
-insert into product values (4,'바나나 아이스크림', '2700',6);
-insert into product values (5,'커피 아이스크림', '2700',2);
-insert into product values (6,'민트 아이스크림', '2800',2);
-insert into product values (7,'요거트 아이스크림', '3000',5);
+--product dml --- icode, count iname, iprice,
+insert into product values (1,5,'바닐라 아이스크림', '2000');
+insert into product values (2,6,'초코 아이스크림', '2500');
+insert into product values (3,3,'딸기 아이스크림', '2500');
+insert into product values (4,6,'바나나 아이스크림', '2700');
+insert into product values (5,2,'커피 아이스크림', '2700');
+insert into product values (6,2,'민트 아이스크림', '2800');
+insert into product values (7,5,'요거트 아이스크림', '3000');
 
 --iorder dml -- oidx, ordercode, icode,idx,orderdate,count,price
-insert into iorder values (iorder_oidx_seq.nextval, '', 1,3,sysdate,5,10000);
-insert into iorder values (iorder_oidx_seq.nextval, '', 1,4,'21/06/22',5,10000);
-insert into iorder values (iorder_oidx_seq.nextval, '', 1,4,'21/05/22',5,10000);
+insert into iorder values (iorder_oidx_seq.nextval, '', 1,member_idx_seq.currval,sysdate,5,10000);
+insert into iorder values (iorder_oidx_seq.nextval, '', 1,1,'21/06/22',5,10000);
+insert into iorder values (iorder_oidx_seq.nextval, '', 1,2,'21/05/22',5,10000);
 
 
 commit;
               
-
+update product set count=5 where icode = 1;
               
 select * from iorder;
 select * from member;
 select * from product;
+
+
+
+
+
+
+update product set count =count-(select count from iorder where oidx = 1)where icode=1;
+
+
+

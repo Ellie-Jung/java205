@@ -10,7 +10,10 @@ public class DeptManager {
 
 	private DeptDao dao;  //의존성을 낮추기위해 여기서 바로 인스턴스를 생성하면 안된다. 선언만 
 	private Scanner sc;
-
+	//2. 연결
+	String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";
+	String user = "hr";
+	String pw = "tiger";
 
 	public DeptManager(DeptDao dao) { //생성자
 		this.dao = dao;
@@ -25,10 +28,7 @@ public class DeptManager {
 		//Connection 객체 생성 -트랜젝션 처리
 		Connection conn = null;
 
-		//2. 연결
-		String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";
-		String user = "hr";
-		String pw = "tiger";
+
 
 		try {
 			conn = DriverManager.getConnection(jdbcUrl,user,pw);
@@ -64,10 +64,6 @@ public class DeptManager {
 		//Connection 객체 생성 -트랜젝션 처리
 		Connection conn = null;
 
-		//2. 연결
-		String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";
-		String user = "hr";
-		String pw = "tiger";
 
 		try {
 			conn = DriverManager.getConnection(jdbcUrl,user,pw);
@@ -108,11 +104,7 @@ public class DeptManager {
 		//Connection 객체 생성 -트랜젝션 처리
 		Connection conn = null;
 
-		//2. 연결 // 모든 메서드에서 공통으로 쓰이기때문에 메서드 밖으로 빼는게 좋다. 
-		String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";
-		String user = "hr";
-		String pw = "tiger";
-
+	
 		try {
 			conn = DriverManager.getConnection(jdbcUrl,user,pw);
 
@@ -148,15 +140,11 @@ public class DeptManager {
 		//Connection 객체 생성 -트랜젝션 처리
 		Connection conn = null;
 
-		//2. 연결 // 모든 메서드에서 공통으로 쓰이기때문에 메서드 밖으로 빼는게 좋다. 
-		String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";
-		String user = "hr";
-		String pw = "tiger";
 
 
 		try {
 			conn = DriverManager.getConnection(jdbcUrl,user,pw);
-		
+
 			deptList();
 			System.out.println("삭제를 원하시는 부서번호를 입력해주세요 ");
 			int deptno = Integer.parseInt(sc.nextLine());

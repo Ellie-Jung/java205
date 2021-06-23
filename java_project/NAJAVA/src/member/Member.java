@@ -49,6 +49,15 @@ public class Member {
 		this.phonenum = phonenum;
 	}
 	
+	
+	public Member(String id, String password, String name, String email, String phonenum) {
+		super();
+		this.id = id;
+		this.password = password;
+		this.name = name;
+		this.email = email;
+		this.phonenum = phonenum;
+	}
 	public Member(int idx, String password, String name, String email, String phonenum,String id ) {
 		this.idx = idx;
 		this.id = id;
