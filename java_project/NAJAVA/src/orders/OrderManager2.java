@@ -133,27 +133,26 @@ public class OrderManager2 {
 			conn = DriverManager.getConnection(jdbcUrl, user, pw);
 
 			arr = odao.getOrderList(conn, order);
-			
+			int sum =0;
 //			System.out.println("회원번호를 입력해주세요");
 //			int tmp = sc.nextInt();
 //			int cnt = 0;
 			
+			System.out.println("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■영수증■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
+			System.out.println("-----------------------------------------------------------------");
 			for (int i = 0; i < arr.size(); i++) {
 //				if(tmp == arr.get(i).getIdx()) {
-					System.out.println("----------------------------영수증--------------------------------");
-					System.out.println("----------------------------------------------------------------");
-					System.out.printf("주문코드 : /d \t  " , arr.get(i).getOidx());
-					System.out.println("상품번호 : " + arr.get(i).getIcode());
-					System.out.println("회원번호 : " + arr.get(i).getIdx());
-					System.out.println("주문날짜 : \t, 구매개수 : " + arr.get(i).getOrderdate());
-					System.out.println("구매갯수 : " + arr.get(i).getCount());
-					System.out.println("구매가격 : " + arr.get(i).getOprice());
-					System.out.println("----------------------------------------------------------------");
+					System.out.printf(" 상품번호 : %d번 | 구매 수량 : %d개 | 구매가격 : %d원 |주문날짜 :%s \n" ,arr.get(i).getIcode(),arr.get(i).getCount(),arr.get(i).getOprice(),arr.get(i).getOrderdate());
 //					cnt++;
+					sum += arr.get(i).getOprice();
 //				}
 			}
+			System.out.println("-----------------------------------------------------------------");
+			System.out.println("      총 구매 내역 :  \t\t "+sum +"원");
+			System.out.println("-----------------------------------------------------------------");
+			System.out.println();
+			System.out.println();
 			
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

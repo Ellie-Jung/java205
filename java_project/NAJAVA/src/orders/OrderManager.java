@@ -113,7 +113,7 @@ public class OrderManager {
 
 			arr = odao.getOrderList(conn, order);
 
-
+			int sum =0;
 
 			for (int i = 0; i < arr.size(); i++) {
 				//				if(tmp == arr.get(i).getIdx()) {
@@ -127,10 +127,11 @@ public class OrderManager {
 				System.out.println("구매갯수 : " + arr.get(i).getCount());
 				System.out.println("구매가격 : " + arr.get(i).getOprice());
 				System.out.println("----------------------------------------------------------------");
-
+				sum += arr.get(i).getOprice();
 				//					break;
 				//				}
 			}
+			System.out.println("총 구매 내역 : " + sum);
 
 		} catch (SQLException e) {
 			e.printStackTrace();
