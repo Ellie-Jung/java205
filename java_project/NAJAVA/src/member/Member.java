@@ -11,6 +11,24 @@ public class Member {
 	private String email;
 	private String phonenum;
 	
+
+	public Member(String id, String password, String name, String email, String phonenum) {
+		super();
+		this.id = id;
+		this.password = password;
+		this.name = name;
+		this.email = email;
+		this.phonenum = phonenum;
+	}
+	public Member(int idx, String password, String name, String email, String phonenum,String id ) {
+		this.idx = idx;
+		this.id = id;
+		this.password = password;
+		this.name = name;
+		this.email = email;
+		this.phonenum = phonenum;
+		
+	}
 	
 	public int getIdx() {
 		return idx;
@@ -50,23 +68,6 @@ public class Member {
 	}
 	
 	
-	public Member(String id, String password, String name, String email, String phonenum) {
-		super();
-		this.id = id;
-		this.password = password;
-		this.name = name;
-		this.email = email;
-		this.phonenum = phonenum;
-	}
-	public Member(int idx, String password, String name, String email, String phonenum,String id ) {
-		this.idx = idx;
-		this.id = id;
-		this.password = password;
-		this.name = name;
-		this.email = email;
-		this.phonenum = phonenum;
-		
-	}
 	@Override
 	public String toString() {
 		return "Member [idx=" + idx + ", id=" + id + ", password=" + password + ", name=" + name + ", email=" + email

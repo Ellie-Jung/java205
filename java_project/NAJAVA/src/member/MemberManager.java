@@ -38,9 +38,9 @@ public class MemberManager {
 			String password = sc.nextLine().trim();
 			System.out.print("이름를 입력하세요 :  ");
 			String name = sc.nextLine().trim();
-			System.out.print("주소를 입력하세요 > ");
+			System.out.print("주소를 입력하세요 : ");
 			String address = sc.nextLine().trim();
-			System.out.print("전화번호를 입력하세요 > ");
+			System.out.print("전화번호를 입력하세요 : ");
 			String phonenum = sc.nextLine().trim();
 				
 //			}

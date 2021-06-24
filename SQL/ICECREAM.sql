@@ -50,7 +50,7 @@ insert into member values (member_idx_seq.nextval, 'banana','1234','강호동', 
 insert into product values (1,5,'바닐라 아이스크림', '2000');
 insert into product values (2,6,'초코 아이스크림', '2500');
 insert into product values (3,3,'딸기 아이스크림', '2500');
-insert into product values (4,6,'바나나 아이스크림', '2700');
+insert into product values (4,6,'바나나 아이스크림', '2500');
 insert into product values (5,2,'커피 아이스크림', '2700');
 insert into product values (6,2,'민트 아이스크림', '2800');
 insert into product values (7,5,'요거트 아이스크림', '3000');
