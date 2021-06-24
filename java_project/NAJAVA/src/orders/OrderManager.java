@@ -34,7 +34,7 @@ public class OrderManager {
 		Connection conn = null;
 
 		try {
-			Order or = new Order();
+			Order or =null;
 
 			conn = DriverManager.getConnection(jdbcUrl, user, pw);
 
@@ -43,6 +43,7 @@ public class OrderManager {
 
 
 			while (true) {
+				or = new Order();
 				p.productList();
 				System.out.println("주문하실 메뉴 번호를 선택해주세요.");
 				int a = sc.nextInt();
@@ -50,7 +51,6 @@ public class OrderManager {
 				System.out.println("주문 수량을 선택해주세요.");
 				int b = sc.nextInt();
 				or.setCount(b);
-				arr.add(or);
 				
 				for (int i = 0; i < pro.size(); i++) {
 					if(pro.get(i).getIcode() == a) {
@@ -59,33 +59,28 @@ public class OrderManager {
 					}
 				}
 
-				System.out.println("주문 완료 [1] 예 , 돌아가기  [2] 아니오  ");
+				arr.add(or);
+				
+				System.out.println(" [1]  계속 주문하기 ,  [2] 결제하기  , [3] 돌아가기 ");
 				String input = sc.next();
 				
 
 				if (input.equalsIgnoreCase(	"1")) {
 					
 					System.out.println();
-
-					System.out.println("주문 계속 [1] 예 , 주문 완료하고 결제 [2] 아니오 ");
-					String input2 = sc.nextLine();
-					if(input2.equals("1")) {
-						continue;
-					}else if(input2.equals("2")) {
-						System.out.println("결제합니다.");
-						break;
-					}else {
-						System.out.println("잘못입력하셨습니다.");
-						return;
-					}
-
+					continue;
 
 				} else if (input.equalsIgnoreCase("2")) {
 					System.out.println("감사합니다. ");
 					break;
+				}else if (input.equalsIgnoreCase("3")) {
+					arr.clear();
+					System.out.println("이전으로 돌아갑니다.");
+					return;
+				
 				} else {
-					System.out.println("잘못입력하셨습니다. 다시 주문화면으로 이동합니다.");
-					continue;
+					System.out.println("잘못입력하셨습니다. .");
+					return;
 				}
 			}			
 			

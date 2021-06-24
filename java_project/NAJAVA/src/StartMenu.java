@@ -21,10 +21,10 @@ public class StartMenu {
 			System.out.println("■■■■■■■■■■■■■■■ 원하시는 번호를 선택해 주세요. ■■■■■■■■■■■■■■■■■");
 
 			try {
-				choice= sc.nextInt();
-				if(choice<1 || choice>4  ) {
+				choice= Integer.parseInt(sc.nextLine());
+				if(choice<1 || choice>4 ) {
 
-					throw new Exception("잘못입력하셨습니다. 1,2,3,4번 중 하나를 선택해주세요. ");
+					throw new Exception();
 				}
 
 				switch(choice) {
@@ -45,7 +45,7 @@ public class StartMenu {
 
 				}
 			} catch (Exception e) {
-				System.out.println(e.getMessage());
+				System.out.println("잘못입력하셨습니다. 1,2,3,4번 중 하나를 선택해주세요. ");
 			}
 
 
