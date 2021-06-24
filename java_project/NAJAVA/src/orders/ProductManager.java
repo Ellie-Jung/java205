@@ -17,7 +17,7 @@ public class ProductManager {
 	String user = "hr";
 	String pw = "tiger";
 	
-	ProductManager() {
+	public ProductManager() {
 		sc = new Scanner(System.in);
 		dao = new ProductDao();
 		arr = new ArrayList<Order>();

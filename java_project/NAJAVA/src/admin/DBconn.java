@@ -5,23 +5,21 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBconn {
+	private static String driver = "oracle.jdbc.driver.OracleDriver";
+	private static String url = "jdbc:oracle:thin:@localhost:1521:xe";
+	private static String id = "hr";
+	private static String pw = "tiger";
 	private static DBconn db = new DBconn();
-	private String driver = "oracle.jdbc.driver.OracleDriver";
-	private String url = "jdbc:oracle:thin:@localhost:1521:xe";
-	private String id = "hr";
-	private String pw = "tiger";
-	
+
 	private DBconn() {}
-	
+
 	public static DBconn getInstance() {
 		return db;
 	}
-	
-	public Connection getConnection() {
+
+	public static Connection getConnection() {
 		Connection conn = null;
-		
-		
-		
+
 		try {
 			Class.forName(driver);
 			conn = DriverManager.getConnection(url, id, pw);
@@ -32,4 +30,4 @@ public class DBconn {
 		}
 		return conn;
 	}
-			}
+}

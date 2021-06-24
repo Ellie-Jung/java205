@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import admin.DBconn;
+
 
 public class OrderManager {
 	ProductManager p;
@@ -16,10 +18,11 @@ public class OrderManager {
 	ArrayList<Product> pro;
 	ArrayList<Order> arr;
 	long ordercode;
-
-	String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";
-	String user = "hr";
-	String pw = "tiger";
+	private static Connection conn = DBconn.getConnection();
+	
+//	String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";
+//	String user = "hr";
+//	String pw = "tiger";
 
 
 	public OrderManager() {
@@ -31,12 +34,12 @@ public class OrderManager {
 	}
 
 	void orderinsert() {
-		Connection conn = null;
+//		Connection conn = null;
 		arr.clear();
 		try {
 			Order or =null;
 
-			conn = DriverManager.getConnection(jdbcUrl, user, pw);
+//			conn = DriverManager.getConnection(jdbcUrl, user, pw);
 
 			conn.setAutoCommit(false);
 			pro = pdao.getProductList(conn);
@@ -70,10 +73,10 @@ public class OrderManager {
 					System.out.println();
 					continue;
 
-				} else if (input.equalsIgnoreCase("2")) {
+				} else if (input.equals("2")) {
 					System.out.println("감사합니다. ");
 					break;
-				}else if (input.equalsIgnoreCase("3")) {
+				}else if (input.equals("3")) {
 					arr.clear();
 					System.out.println("이전으로 돌아갑니다.");
 					return;
@@ -84,7 +87,7 @@ public class OrderManager {
 				}
 			}			
 			
-			ordercode = System.nanoTime();
+			ordercode = System.nanoTime(); //같은 회원의 주문 확인을 위한 주문테이블의 키값 .//구동중인 JVM에서 임의로 고정된 구간으로부터 현재 나노세컨즈nanoseconds 값을 반환
 
 			for (int i = 0; i < arr.size(); i++) {
 
@@ -113,10 +116,10 @@ public class OrderManager {
 	}
 
 	void orderList(long ordercode) {
-		Connection conn = null;
+//		Connection conn = null;
 		Order order = new Order();
 		try {		
-			conn = DriverManager.getConnection(jdbcUrl, user, pw);
+//			conn = DriverManager.getConnection(jdbcUrl, user, pw);
 
 			arr = odao.getOrderList(conn, order);
 
@@ -137,7 +140,7 @@ public class OrderManager {
 			System.out.println("-----------------------------------------------------------------");
 			System.out.println();
 			System.out.println();
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

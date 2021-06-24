@@ -9,7 +9,7 @@ public class AdminMenu {
 		Scanner sc = new Scanner(System.in);
 
 		AdminMemberManager manager = new AdminMemberManager(AdminMemberDao.getInstance());
-		AdminServiceImpl svcmanager = new AdminServiceImpl(AdminDaoImpl.getInstance());
+		AdminManager svcmanager = new AdminManager(AdminDao.getInstance());
 
 		AdminMenu fMemu = new AdminMenu();
 		

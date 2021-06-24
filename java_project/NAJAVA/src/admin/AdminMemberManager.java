@@ -1,5 +1,6 @@
 package admin;
 
+import java.lang.reflect.Member;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -30,15 +31,15 @@ public class AdminMemberManager {
 		try {
 			conn = DriverManager.getConnection(jdbcUrl, user, pw);
 
-			List<AdminMember> list = dao.getMemberList(conn);
+			List<member.Member> list = dao.getMemberList(conn);
 			System.out.println("==============================");
 			System.out.println("회원 정보 리스트");
 			System.out.println("-----------------------------");
-			System.out.println("회원번호 \t 아이디 \t 비밀번호 \t 이름 \t 연락처 \t 이메일");
+			System.out.println("회원번호 \t 아이디 \t 비밀번호 \t  이름 \t 연락처 \t 이메일");
 			System.out.println("-----------------------------");
 
-			for (AdminMember adminMember : list) {
-				System.out.printf("%d \t %s \t %s \t %s \t %s \t %s \n", adminMember.getIdx(), adminMember.getId(), adminMember.getPw(), adminMember.getName(), adminMember.getPhonenum(), adminMember.getEmail());
+			for (member.Member Member : list) {
+				System.out.printf("%d\t %s\t  %s \t %s\t %s\t  %s\t \n", Member.getIdx(), Member.getId(), Member.getPassword(), Member.getName(), Member.getPhonenum(), Member.getEmail());
 			}
 
 			System.out.println("-----------------------------");

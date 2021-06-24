@@ -8,28 +8,59 @@ public class Member {
 	private String id;
 	private String password;
 	private String name;
-	private String email;
 	private String phonenum;
+	private String email;
 	
-
-	public Member(String id, String password, String name, String email, String phonenum) {
-		super();
+	
+	public Member(String password, String name, String phonenum, String email) {
+		this.password = password;
+		this.name = name;
+		this.phonenum = phonenum;
+		this.email = email;
+	}
+	
+	public Member(String id, String password, String name, String phonenum, String email) {
 		this.id = id;
 		this.password = password;
 		this.name = name;
-		this.email = email;
 		this.phonenum = phonenum;
+		this.email = email;
 	}
-	public Member(int idx, String password, String name, String email, String phonenum,String id ) {
+	
+	public Member(int idx, String password, String name, String phonenum, String email) {
+		this.idx = idx;
+		this.password = password;
+		this.name = name;
+		this.phonenum = phonenum;
+		this.email = email;
+	}
+	
+	public Member(int idx, String id, String password, String name, String phonenum, String email) {
 		this.idx = idx;
 		this.id = id;
 		this.password = password;
 		this.name = name;
-		this.email = email;
 		this.phonenum = phonenum;
-		
+		this.email = email;
 	}
-	
+//
+//	public Member(String id, String password, String name, String email, String phonenum) {
+//		this.id = id;
+//		this.password = password;
+//		this.name = name;
+//		this.email = email;
+//		this.phonenum = phonenum;
+//	}
+//	public Member(int idx, String password, String name, String email, String phonenum,String id ) {
+//		this.idx = idx;
+//		this.id = id;
+//		this.password = password;
+//		this.name = name;
+//		this.email = email;
+//		this.phonenum = phonenum;
+//		
+//	}
+//	
 	public int getIdx() {
 		return idx;
 	}

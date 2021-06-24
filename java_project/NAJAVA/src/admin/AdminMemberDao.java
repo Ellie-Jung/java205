@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import member.Member;
+
 public class AdminMemberDao {
 	// 싱글톤 패턴 : 여러개의 인스턴스를 생성하지 못하도록 하는 코딩 스타일
 		// 1. 외부 클래스 또는 인스턴스에서 해당 클래스로 인스턴스를 생성하지 못하도록 처리
@@ -25,12 +27,10 @@ public class AdminMemberDao {
 		
 		
 
-		// 1. 전체 데이터 검색 기능
-		// 반환 타입 List<Dept>
-		// 매개변수 - Connection 객체 : Statement
-		ArrayList<AdminMember> getMemberList(Connection conn) {
+		// 모든 회원데이터 검색 리스트
+		ArrayList<Member> getMemberList(Connection conn) {
 
-			ArrayList<AdminMember> list = null;
+			ArrayList<Member> list = null;
 
 			// 데이터 베이스의 Member테이블 이용 select 결과를 -> list 저장
 			Statement stmt = null;
@@ -48,12 +48,11 @@ public class AdminMemberDao {
 				// 데이터를 Member 객체로 생성 -> list에 저장
 				while (rs.next()) {
 					
-					AdminMember d = new AdminMember(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
+					Member d = new Member(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
 					list.add(d);
 				}
 
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 
 			} finally {
@@ -62,7 +61,6 @@ public class AdminMemberDao {
 					try {
 						rs.close();
 					} catch (SQLException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}
@@ -71,7 +69,6 @@ public class AdminMemberDao {
 					try {
 						stmt.close();
 					} catch (SQLException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}
@@ -88,7 +85,6 @@ public class AdminMemberDao {
 		int deleteMember(Connection conn, int idx) {
 			
 			int result = 0;
-			// 데이터 베이스 처리 sql
 			PreparedStatement pstmt = null;
 			
 			String sql = "delete from member where idx = ? ";
