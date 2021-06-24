@@ -10,7 +10,8 @@ import java.util.Scanner;
 public class AdminMemberManager {
 	private AdminMemberDao dao;
 	private Scanner sc;
-
+	private static Connection conn = DBconn.getConnection();
+	
 	public AdminMemberManager(AdminMemberDao dao) {
 		this.dao = dao;
 		sc = new Scanner(System.in);
@@ -21,15 +22,15 @@ public class AdminMemberManager {
 	// AdminMember 에서 데이터 리스트를 받고 출력 처리
 	void AdminMemberList() {
 
-		// Connection 객체 생성 -> 트렌젝션 처리
-		Connection conn = null;
+//		// Connection 객체 생성 -> 트렌젝션 처리
+//		Connection conn = null;
 
-		// 2. 연결
-		String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";
-		String user = "hr";
-		String pw = "tiger";
+//		// 2. 연결
+//		String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";
+//		String user = "hr";
+//		String pw = "tiger";
 		try {
-			conn = DriverManager.getConnection(jdbcUrl, user, pw);
+//			conn = DriverManager.getConnection(jdbcUrl, user, pw);
 
 			List<member.Member> list = dao.getMemberList(conn);
 			System.out.println("==============================");
@@ -45,7 +46,7 @@ public class AdminMemberManager {
 			System.out.println("-----------------------------");
 	
 
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -56,16 +57,16 @@ public class AdminMemberManager {
 	// 삭제할 데이터의 회원번호 입력 
 	// 해당 회원번호의 데이터 delete
 	void AdminMemberDel() {
-		// Connection 객체 생성 -> 트렌젝션 처리
-		Connection conn = null;
-
-		// 2. 연결
-		String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";
-		String user = "hr";
-		String pw = "tiger";
+//		// Connection 객체 생성 -> 트렌젝션 처리
+//		Connection conn = null;
+//
+//		// 2. 연결
+//		String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";
+//		String user = "hr";
+//		String pw = "tiger";
 		
 		try {
-			conn = DriverManager.getConnection(jdbcUrl, user, pw);
+//			conn = DriverManager.getConnection(jdbcUrl, user, pw);
 			
 			AdminMemberList();
 			System.out.println("삭제를 원하시는 회원번호를 입력해주세요.");
@@ -79,7 +80,7 @@ public class AdminMemberManager {
 				System.out.println("해당 부서의 정보가 없습니다.");
 			}
 
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
