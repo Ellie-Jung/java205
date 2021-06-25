@@ -48,13 +48,13 @@ insert into member values (member_idx_seq.nextval, 'banana','1234','강호동', 
 
 
 --product dml --- icode, iname, iprice, count
-insert into product values (1,'바닐라 아이스크림', '2000',5);
-insert into product values (2,'초코 아이스크림', '2500',6);
-insert into product values (3,'딸기 아이스크림', '2500',3);
-insert into product values (4,'바나나 아이스크림', '2700',6);
-insert into product values (5,'커피 아이스크림', '2700',2);
-insert into product values (6,'민트 아이스크림', '2800',2);
-insert into product values (7,'요거트 아이스크림', '3000',5);
+insert into product values (1,'바닐라 아이스크림', '2000',100);
+insert into product values (2,'초코 아이스크림', '2500',100);
+insert into product values (3,'딸기 아이스크림', '2500',100);
+insert into product values (4,'바나나 아이스크림', '2700',1000);
+insert into product values (5,'커피 아이스크림', '2700',1000);
+insert into product values (6,'민트 아이스크림', '2800',1000);
+insert into product values (7,'요거트 아이스크림', '3000',1000);
 
 
 --iorder dml -- oidx, ordercode, icode,idx,orderdate,count,price
