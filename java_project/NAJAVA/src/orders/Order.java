@@ -12,6 +12,11 @@ public class Order {
 	
 	public Order() {
 	}
+	
+	public Order(int idx) {
+		this.idx = idx;
+	}
+	
 	public Order(int icode, int count) {
 		this.icode = icode;
 		this.count = count;

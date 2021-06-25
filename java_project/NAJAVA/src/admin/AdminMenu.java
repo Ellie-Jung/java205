@@ -1,9 +1,7 @@
 package admin;
 
-import java.io.InputStream;
 import java.util.Scanner;
 
-import orders.ProductManager;
 import product.ProductMenu;
 
 public class AdminMenu {

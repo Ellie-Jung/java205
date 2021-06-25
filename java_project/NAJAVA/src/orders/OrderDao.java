@@ -6,10 +6,19 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import product.Product;
+
 
 public class OrderDao {
 
+	private OrderDao() {};
+	static private OrderDao dao = new OrderDao();
+	public static OrderDao getInstance() {
+		return dao;
+	}
+
 	public ArrayList<Order> getOrderList(Connection conn, Order order) {
+
 
 		ArrayList<Order> list = null;
 		Statement stmt = null;
@@ -55,15 +64,14 @@ public class OrderDao {
 		PreparedStatement pstmt = null;
 		try {
 
-			String sql = "insert into iorder values (iorder_oidx_seq.nextval, ?, ?, 2, sysdate, ?, ?)";
+			String sql = "insert into iorder values (iorder_oidx_seq.nextval, ?, ?, ?, sysdate, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setLong(1, order.getOrdercode());
 			pstmt.setInt(2, order.getIcode());
-			pstmt.setInt(3, order.getCount());
-			pstmt.setInt(4, order.getOprice());
-
+			pstmt.setInt(3, order.getIdx());
+			pstmt.setInt(4, order.getCount());
+			pstmt.setInt(5, order.getOprice());
 			result = pstmt.executeUpdate();
-
 
 		} catch (SQLException e) {
 			e.printStackTrace();

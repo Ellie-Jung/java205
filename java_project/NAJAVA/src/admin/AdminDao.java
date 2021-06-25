@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import orders.Order;
-import orders.Product;
+import product.Product;
 
 
 public class AdminDao {
@@ -47,7 +47,7 @@ public class AdminDao {
 
 			//데이터를 Order 객체로 생성 -> list에 저장
 			while (rs.next()) {
-				list.add(new Order(rs.getInt(1), rs.getInt(2),rs.getInt(3),rs.getInt(4),rs.getString(5),rs.getInt(6),rs.getInt(7) ));
+				list.add(new Order(rs.getInt(1), rs.getLong(2),rs.getInt(3),rs.getInt(4),rs.getString(5),rs.getInt(6),rs.getInt(7) ));
 			}
 
 		} catch (SQLException e) {
@@ -80,7 +80,7 @@ public class AdminDao {
 
 		try {
 			stmt = conn.createStatement();
-			String sql = "select sum(oprice) from product natural join iorder";
+			String sql = "select sum(oprice) from product join iorder using (icode)";
 
 			//결과 받아오기
 			rs = stmt.executeQuery(sql);
@@ -122,7 +122,7 @@ public class AdminDao {
 			stmt = conn.createStatement();
 
 
-			String sql = "select sum(oprice) from product natural join iorder where substr(orderdate,1,5) = '"+dno+"'";
+			String sql = "select sum(oprice) from product  join iorder using (icode) where substr(orderdate,1,5) = '"+dno+"'";
 
 
 
@@ -165,7 +165,7 @@ public class AdminDao {
 			stmt = conn.createStatement();
 
 
-			String sql = "select sum(oprice) from product natural join iorder where substr(orderdate,4,5) = '" +dday+"'";
+			String sql = "select sum(oprice) from product join iorder using (icode) where substr(orderdate,4,5) = '" +dday+"'";
 
 
 			//결과 받아오기
@@ -214,7 +214,7 @@ public class AdminDao {
 
 			//데이터를 product 객체로 생성 -> list에 저장
 			while (rs.next()) {
-				list.add(new Product(rs.getInt(1),rs.getInt(2), rs.getString(3),rs.getInt(4) ));
+				list.add(new Product(rs.getInt(1), rs.getString(2),rs.getInt(3),rs.getInt(4) ));
 			}
 
 		} catch (SQLException e) {

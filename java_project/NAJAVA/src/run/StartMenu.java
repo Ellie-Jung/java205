@@ -1,11 +1,24 @@
+package run;
 import java.util.Scanner;
+
 import admin.AdminMenu;
+import member.MemberDao;
+import member.MemberManager;
+import orders.OrderDao;
+import orders.OrderManager;
+import product.ProductDao;
+import product.ProductManager;
 
 public class StartMenu {
-	void FirstMenu() {
+	public void FirstMenu() {
 
 		Scanner sc = new Scanner(System.in);
-		AdminMenu am = new AdminMenu();
+//		OrderManager oManager = new OrderManager(OrderDao.getInstance(), ProductDao.getInstance());
+		MemberManager mManager = new MemberManager(MemberDao.getInstance());
+//		ProductManager pManager = new ProductManager(ProductDao.getInstance());
+		AdminMenu admMenu = new AdminMenu();
+		
+		
 		int choice;
 
 		while(true) {
@@ -21,26 +34,27 @@ public class StartMenu {
 			System.out.println("■■■■■■■■■■■■■■■ 원하시는 번호를 선택해 주세요. ■■■■■■■■■■■■■■■■■");
 
 			try {
-				choice= Integer.parseInt(sc.nextLine());
+				choice= Integer.parseInt(sc.next());
 				if(choice<1 || choice>4 ) {
-
 					throw new Exception();
 				}
 
 				switch(choice) {
 				case 1 : 
 					System.out.println("로그인");
+					mManager.Login();
 					break;
 				case 2 : 
 					System.out.println("회원가입");
+					mManager.memberInsert();
 					break;
 				case 3 :
-					am.AdminMenu();				
+					admMenu.AdminMenu();				
 					break;
 				case 4 : 
 					System.out.println("시스템을 종료합니다.");
 					System.out.println("감사합니다. ");
-					return;
+					System.exit(4);
 
 
 				}

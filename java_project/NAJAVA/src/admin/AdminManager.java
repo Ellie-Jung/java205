@@ -1,14 +1,12 @@
 package admin;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
 import orders.Order;
-import orders.Product;
+import product.Product;
 
 public class AdminManager {
 
@@ -68,7 +66,7 @@ public class AdminManager {
 
 			int sum = dao.getSales(conn);
 
-			System.out.println("총 매출은 "+ sum);
+			System.out.println("총 매출은 "+ sum +"원 입니다. ");
 
 
 //		} catch (SQLException e) {
@@ -93,7 +91,7 @@ public class AdminManager {
 			 boolean check = Pattern.matches("\\d{2}/\\d{2}", dno);
 	         if(check == true) {
 	            int sum = dao.getSalesMonth(conn, dno);
-	            System.out.println("총 매출은 "+ sum + "입니다. ");
+	            System.out.println("총 매출은 "+ sum + "원 입니다. ");
 	         } else {
 	            System.out.println("입력 값이 올바르지 않습니다.");
 	            return;
@@ -125,7 +123,7 @@ public class AdminManager {
 	         if(check == true) {
 	            int sum = dao.getSalesDay(conn, dday);
 
-	            System.out.println("총 매출은 "+ sum);
+	            System.out.println("총 매출은 "+ sum+"원 입니다. ");
 	         } else { 
 	            System.out.println("입력 값이 올바르지 않습니다.");
 	            return;
@@ -199,7 +197,6 @@ public class AdminManager {
          	System.out.println("숫자로만 입력해주세요.");
 		} catch (Exception e) {
 			System.out.println("잘못 입력하셨습니다.");
-			e.printStackTrace();
 		}
 		
 		

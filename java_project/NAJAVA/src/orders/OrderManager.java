@@ -1,13 +1,15 @@
 package orders;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 import admin.DBconn;
+import member.MemberManager;
+import product.Product;
+import product.ProductDao;
+import product.ProductManager;
 
 
 public class OrderManager {
@@ -25,13 +27,14 @@ public class OrderManager {
 //	String pw = "tiger";
 
 
-	public OrderManager() {
-		odao = new OrderDao();
-		p = new ProductManager();
-		pdao = new ProductDao();
+	public OrderManager(OrderDao order, ProductDao product) {
+		this.pdao = product;
+		this.odao = order;
+		p = new ProductManager(pdao);
 		arr = new ArrayList<Order>();
 		sc = new Scanner(System.in);
 	}
+
 
 	void orderinsert() {
 //		Connection conn = null;
@@ -46,7 +49,7 @@ public class OrderManager {
 
 
 			while (true) {
-				or = new Order();
+				or = new Order(MemberManager.idx);
 				p.productList();
 				System.out.println("주문하실 메뉴 번호를 선택해주세요.");
 				int a = sc.nextInt();

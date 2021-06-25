@@ -4,116 +4,457 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Iterator;
 import java.util.Scanner;
 
-
+import admin.DBconn;
+import orders.OrderDao;
+import orders.OrderManager;
+import product.ProductDao;
+import run.StartMenu;
 
 public class MemberManager {
-
-	private MemberDao dao;  //의존성을 낮추기위해 여기서 바로 인스턴스를 생성하면 안된다. 선언만 
-	private Scanner sc;
-	String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";
-	String user = "hr";
-	String pw = "tiger";
-	List<Member> mlist;
-
-
-	public MemberManager(MemberDao dao) { //생성자
-		this.dao = dao;
-		sc= new Scanner(System.in);
-		mlist = new ArrayList<>();
+	Scanner sc = new Scanner(System.in);
+	ArrayList<Member> mList;
+	private MemberDao dao;
+	Member member;	// 멤버 객체
+	OrderManager oManager;
+	public static int idx;
+	private static Connection conn = DBconn.getConnection();
+	
+	public MemberManager(MemberDao mem) {
+		this.mList = new ArrayList<Member>();
+		this.oManager = new OrderManager(OrderDao.getInstance(), ProductDao.getInstance());
+		this.member = new Member();
+		this.dao = mem;
 	}
 
-	//회원가입
-	void MemberJoin() {//회원 가입
-		Connection con = null;
+//	String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";
+//	String user = "hr";
+//	String pw = "tiger";
+
+	// 회원 정보리스트 수정 필요 
+	void MemberList() {
+//		Connection conn = null;
+
 		try {
-			con = DriverManager.getConnection(jdbcUrl, user, pw);
-			System.out.println("회원가입 시작합니다.");
-			
-			idchk();//아이디확인
-			
-			System.out.print("비밀번호를 입력하세요 : ");
-			String password = sc.nextLine().trim();
-			System.out.print("이름를 입력하세요 :  ");
-			String name = sc.nextLine().trim();
-			System.out.print("주소를 입력하세요 : ");
-			String address = sc.nextLine().trim();
-			System.out.print("전화번호를 입력하세요 : ");
-			String phonenum = sc.nextLine().trim();
-				
-//			}
-//			System.out.println("비밀번호를 입력해주세요.");
-//			String password = getStrInput("password : ");
-//			String password2 = getStrInput("password confirm : ");
-//			String name = getStrInput("name : ");
-//			String email = getStrInput("email : ");
-//			String phonenum = getStrInput("phonenum : ");
-//
-//
-//			if(idCheck(id)) {
-//				System.out.println("중복된 id입니다.");
-//			} else if (password.equals(password2)) {
-//				Member mem = new Member( id , password, name, email, phonenum);
-//				mlist.add(mem);
-//				int result = dao.joinMember(con, mem);
-//
-//				if(result > 0) {
-//					System.out.println("입력되었습니다.");
-//				} else {
-//					System.out.println("입력 실패하였습니다.");
-//				}
-//				System.out.println(id + "님 가입을 축하드립니다.");
-//			} else {
-//				System.out.println("비밀번호를 확인해주세요.");
-//			}
-//
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+//			conn = DriverManager.getConnection(jdbcUrl, user, pw);
 
-		
-		
-		
-		
-	}
-
-	
-	void idchk () {
-		while(true) {
+			mList = dao.getMemberList(conn);
 			
-			System.out.println("아이디를 입력해주세요 (영문 또는 숫자만 허용)");
-			String id = sc.nextLine();
-			id = id.trim();
-			
-			try {
-				if(!(id.length()==0)){
-					char chk = 0;
-					for(int i =0; i<id.length(); i++) {
-						chk = id.toLowerCase().charAt(i);
-					}
-					if(!(chk>='a'&&chk<='z'  || chk>='A'&&chk<='Z'|| chk>='0' && chk<='9')){
-						throw new Exception("아이디는 숫자나 영문만 가능합니다.");
-					}else {
-						System.out.println("아이디는 "+ id+"입니다.");
-					}
-				}else 
-					System.out.println("빈칸을 입력하셨습니다.");
-				
-				
-			} catch (Exception e) {
-				System.out.println(e.getMessage());
-				continue;
+			System.out.println("-------------회원 정보 리스트-------------");
+			System.out.println("-------------------------------------");
+			for (int i = 0; i < mList.size(); i++) {
+				if(idx==mList.get(i).getIdx()) {
+					System.out.println("회원 ID : " + mList.get(i).getId());
+					System.out.println("회원 PW : " + mList.get(i).getPassword());
+					System.out.println("회원이름 : " + mList.get(i).getName());
+					System.out.println("회원 핸드폰 : " + mList.get(i).getPhonenum());
+					System.out.println("회원 이메일 : " + mList.get(i).getEmail());
+					System.out.println("-------------------------------------");
+				}
 			}
-			break;
+
+		} catch (Exception e) {
+			System.out.println("잘못입력하셨습니다. ");
+		}
+	}
+
+	// 테스트 출력용 
+	private void SelectMember() {
+		Iterator<Member> ite = mList.iterator();
+
+		while(ite.hasNext()) {
+			System.out.println(ite.next() + " ");
+		}
+	}
+
+	// 회원가입
+	public void memberInsert() {
+//		Connection conn = null;
+		try {
+//			conn = DriverManager.getConnection(jdbcUrl, user, pw);
+			mList = dao.getMemberList(conn);
+			while(true) {
+
+				String id = getStrInput("ID : ");
+				if(idCheck(id)) {
+					System.out.println("중복된 id입니다.");
+					continue;
+				}
+				String pw = getStrInput("PW : ");
+				String pw2 = getStrInput("PW CONFIRM : ");
+				if(!(pw.equals(pw2))) {
+					System.out.println("비밀번호를 잘못입력하셨습니다. 다시입력하세요.");
+					continue;
+				}
+				String name = getStrInput("NAEM : ");
+				String phone = getStrInput("PHONE : ");
+				String email = getStrInput("EMAIL : ");
+
+				if (pw.equals(pw2)) {
+					Member mem = new Member(id, pw, name, phone, email);
+					dao.inserMemberDTO(conn, mem);
+					System.out.println(id + "님 가입을 축하드립니다.");
+					break;
+				} else {
+					System.out.println("비밀번호를 확인해주세요.");
+				}
+			}
+		} catch (Exception e) {
+			System.out.println("잘못입력하셨습니다. ");
+
 		}
 
 	}
+
+	// 가입할때 아이디 중복 체크
+	private boolean idCheck(String id) {
+		boolean check = true;
+		Member member = FindByID(id);
+		if(member == null) {
+			check = false;
+			return check;
+		}
+		return check;
+	}
+
+	// 로그인 구현 기능
+	public void Login() {
+//		Connection conn = null;
+		try {
+//			conn = DriverManager.getConnection(jdbcUrl, user, pw);
+			String id = getStrInput("id : ");
+			String password = getStrInput("pw : ");
+
+			mList = dao.getMemberList(conn);
+
+			Member member = FindByID(id);
+
+			if(member == null) {
+				System.out.println("등록되지 않은 ID입니다.");
+			} else if(member.getPassword().equals(password)) {
+				System.out.println("[" + member.getId() + "]님께서 로그인 하셨습니다.");
+				idx = member.getIdx();
+				memberMenu();
+			} else {
+				System.out.println("비밀번호가 틀렸습니다.");
+			}
+
+		} catch (Exception e) {
+			System.out.println("잘못입력하셨습니다. ");
+
+		}
+	}
 	
 	
+	// 아이디 비교 하는 메소드 
+	private Member FindByID(String id) {
+		for(Member memberDTO : mList) { 
+			if(memberDTO.getId().equals(id)) {
+				return memberDTO;
+			}
+		}
+		return null;
+	}
+
+	// 입력값 메소드
+	private String getStrInput(String msg) {
+		System.out.println(msg);
+		return sc.nextLine();
+	}
+	// 입력값 메소드
+	private int getNumInput(String msg) {
+		System.out.println(msg);
+		return sc.nextInt();
+	}
+	
+	// 회원정보 수정
+	void memberUpdate() {
+//		Connection conn = null;
+
+		try {
+//			conn = DriverManager.getConnection(jdbcUrl, user, pw);
+			while(true) {
+				System.out.println("회원정보를 수정합니다.");
+
+				String pw = getStrInput("수정하실 패스워드 : ");
+				String name = getStrInput("수정하실 이름 : ");
+				String phone = getStrInput("수정하실 핸드폰번호 : ");
+				String email = getStrInput("수정하실 메일 : ");
 
 
+				System.out.println("입력한 사항이 모두 맞습니까? 예(1) 아니오(2)");
+				int input = Integer.parseInt(sc.nextLine());
 
+				if(input == 1) {
+					System.out.println("수정이 완료되었습니다.");
+					Member member = new Member(idx, pw, name, phone, email);
+					int result = dao.updateMember(conn, member);
+					break;
+				} else if(input == 2) {
+					System.out.println("메인으로 이동");
+					break;
+				} else {
+					System.out.println("잘못 누르셨습니다. 초기 메뉴로 이동합니다.");
+					break;
+				}
+			}
+		} catch (Exception e) {
+			System.out.println("잘못입력하셨습니다. ");
 
+		}
+	}
+	
+	// 메인 돌려보는 메소드
+	public void memberMenu() {
+		StartMenu startMenu = new StartMenu();
+		int choice;
+		while(true) {
+			System.out.println("[1]회원정보수정 [2]회원정보보기 [3]주문 [4]로그아웃");
+			try {
+				choice= Integer.parseInt(sc.nextLine());
+				if(choice<1 || choice>4) {
+					throw new Exception("잘못입력하셨습니다. 1,2,3번 중 하나를 선택해주세요. ");
+				}
+				switch(choice) {
+				case 1:
+					memberUpdate();
+					break;
+				case 2:
+					MemberList();
+					break;
+				case 3:
+					oManager.menu();
+					break;
+				case 4:
+					startMenu.FirstMenu();
+					break;
+				}
+			} catch(Exception e) {
+				System.out.println("잘못입력하셨습니다. 숫자 1~3번 만 입력하세요.");
+			}
+		}
+	}
 }
+
+//public class MemberManager {
+//
+//	private MemberDao dao;  //의존성을 낮추기위해 여기서 바로 인스턴스를 생성하면 안된다. 선언만 
+//	Scanner sc;
+//	List<Member> mList;
+//	private static Connection conn = DBconn.getConnection();
+//	Member member;
+//	OrderManager oManager ;
+//	static int idx;
+//
+//	//	String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";
+//	//	String user = "hr";
+//	//	String pw = "tiger";
+//
+//	public MemberManager(MemberDao member) {
+//		this.mList = new ArrayList<Member>();
+//		this.oManager = new OrderManager(OrderDao.getInstance(), ProductDao.getInstance());
+//		this.member = new Member();
+//		this.dao = member;
+//	}
+//
+//	// 회원 정보리스트 수정 필요 
+//	void MemberList() {
+//		//		Connection conn = null;
+//
+//		try {
+//			//			conn = DriverManager.getConnection(jdbcUrl, user, pw);
+//
+//			mList = dao.getMemberList(conn);
+//
+//			System.out.println("회원 정보 리스트");
+//			System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
+//			System.out.println("id\t pw\t 이름\t 번호\t 메일");
+//			System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
+//
+//			for(Member member : mList) {
+//				System.out.printf("%s\t %s\t %s\t %s\t %s \n",
+//						member.getIdx(),
+//						member.getId(), 
+//						member.getPassword(),
+//						member.getName(),
+//						member.getPhonenum(),
+//						member.getEmail());
+//			}
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
+//
+//
+//
+//	// 회원가입
+//	public void memberInsert() {
+//		//		Connection conn = null;
+//
+//		try {
+//			//			conn = DriverManager.getConnection(jdbcUrl, user, pw);
+//			mList = dao.getMemberList(conn);
+//
+//			while(true) {
+//
+//				String id = getStrInput("ID : ");
+//				if(idCheck(id)) {
+//					System.out.println("중복된 id입니다.");
+//					continue;
+//				}
+//				String pw = getStrInput("PW : ");
+//				String pw2 = getStrInput("PW CONFIRM : ");
+//				if(!(pw.equals(pw2))) {
+//					System.out.println("비밀번호를 잘못입력하셨습니다. 다시입력하세요.");
+//					continue;
+//				}
+//				String name = getStrInput("NAEM : ");
+//				String phone = getStrInput("PHONE : ");
+//				String email = getStrInput("EMAIL : ");
+//
+//				if (pw.equals(pw2)) {
+//					Member mem = new Member(id, pw, name, phone, email);
+//					dao.insertMember(conn, mem);
+//					System.out.println(id + "님 가입을 축하드립니다.");
+//					break;
+//				} else {
+//					System.out.println("비밀번호를 확인해주세요.");
+//				}
+//			}
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//
+//	}
+//
+//	// 가입할때 아이디 중복 체크
+//	private boolean idCheck(String id) {
+//		boolean check = true;
+//		Member member = FindByID(id);
+//		if(member == null) {
+//			check = false;
+//			return check;
+//		}
+//		return check;
+//	}
+//
+//	// 로그인 구현 기능 수정 필요
+//	public int Login() {
+//		//		Connection conn = null;
+//		int result = 0;
+//		try {
+//			//			conn = DriverManager.getConnection(jdbcUrl, user, pw);
+//			String id = getStrInput("id : ");
+//			String password = getStrInput("pw : ");
+//
+//			mList = dao.getMemberList(conn);
+//
+//			Member member = FindByID(id);
+//
+//			if(member == null) {
+//				System.out.println("등록되지 않은 ID입니다.");
+//			} else if(member.getPassword().equals(password)) {
+//				System.out.println("[" + member.getId() + "]님께서 로그인 하셨습니다.");
+//				idx = member.getIdx();
+//			} else {
+//				System.out.println("비밀번호가 틀렸습니다.");
+//			}
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return result;
+//	}
+//	// aaa = ?? select id from member ==> result 
+//	// 아이디 비교 하는 메소드 
+//	private Member FindByID(String id) {
+//		for(Member memberDTO : mList) { 
+//			if(memberDTO.getId().equals(id)) {
+//				return memberDTO;
+//			}
+//		}
+//		return null;
+//	}
+//
+//	// 입력값 메소드
+//	private String getStrInput(String msg) {
+//		System.out.println(msg);
+//		return sc.nextLine();
+//	}
+//	private int getNumInput(String msg) {
+//		System.out.println(msg);
+//		return sc.nextInt();
+//	}
+//
+//	void memberUpdate() {
+//		//		Connection conn = null;
+//		//		this.idx = idx;
+//
+//		try {
+//			//			conn = DriverManager.getConnection(jdbcUrl, user, pw);
+//			while(true) {
+//				System.out.println("회원정보를 수정합니다.");
+//
+//				String pw = getStrInput("수정하실 패스워드 : ");
+//				String name = getStrInput("수정하실 이름 : ");
+//				String phone = getStrInput("수정하실 핸드폰번호 : ");
+//				String email = getStrInput("수정하실 메일 : ");
+//
+//
+//				System.out.println("입력한 사항이 모두 맞습니까? 예(1) 아니오(2)");
+//				int input = Integer.parseInt(sc.nextLine());
+//
+//				if(input == 1) {
+//					System.out.println("수정이 완료되었습니다.");
+//					Member member = new Member(idx, pw, name, phone, email);
+//					int result = dao.updateMember(conn, member);
+//					break;
+//				} else if(input == 2) {
+//					System.out.println("메인으로 이동");
+//					break;
+//				} else {
+//					System.out.println("잘못 누르셨습니다. 초기 메뉴로 이동합니다.");
+//					break;
+//				}
+//			}
+//
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
+//
+//	// 메인 돌려보는 메소드
+//	public void memberEdit() {
+//		int choice;
+//		while(true) {
+//			System.out.println("[1]회원정보수정 [2]회원정보보기 [3]주문 [4]돌아가기");
+//			try {
+//				choice= Integer.parseInt(sc.nextLine());
+//				if(choice<1 || choice>4) {
+//					throw new Exception("잘못입력하셨습니다. 1,2,3번 중 하나를 선택해주세요. ");
+//				}
+//				switch(choice) {
+//				case 1:
+//					memberUpdate();
+//					break;
+//				case 2:
+//					MemberList();
+//					break;
+//				case 3:
+//					oManager.menu();
+//					break;
+//				case 4:
+//					break;
+//				}
+//			} catch(Exception e) {
+//				System.out.println("잘못입력하셨습니다. 숫자 1~3번 만 입력하세요.");
+//			}
+//		}
+//
+//	}
+//}

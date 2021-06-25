@@ -2,8 +2,8 @@ package product;
 
 public class Product {
 	private int icode;
-	private int count;
 	private String iname;
+	private int count;
 	private int iprice;
 
 	
