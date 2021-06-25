@@ -13,9 +13,10 @@ CREATE TABLE  MEMBER (
           
 CREATE TABLE  PRODUCT (
                                 ICODE NUMBER(6) CONSTRAINT PRODUCT_ICODE_PK PRIMARY KEY,
-                                 COUNT INTEGER,
+                                 
                                 INAME  VARCHAR2(50)CONSTRAINT PRODUCT_NAME_NN NOT NULL ,
-                                IPRICE  INTEGER  
+                                IPRICE  INTEGER  ,
+                                COUNT INTEGER
                                
                               ) ;          
           

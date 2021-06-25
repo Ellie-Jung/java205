@@ -11,7 +11,10 @@ public class Member {
 	private String phonenum;
 	private String email;
 	
-	
+	public Member() {}
+	public Member(int idx) {
+		this.idx = idx;
+	}
 	public Member(String password, String name, String phonenum, String email) {
 		this.password = password;
 		this.name = name;

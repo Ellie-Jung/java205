@@ -3,6 +3,9 @@ package admin;
 import java.io.InputStream;
 import java.util.Scanner;
 
+import orders.ProductManager;
+import product.ProductMenu;
+
 public class AdminMenu {
 
 	public static void AdminMenu() {
@@ -10,7 +13,8 @@ public class AdminMenu {
 
 		AdminMemberManager manager = new AdminMemberManager(AdminMemberDao.getInstance());
 		AdminManager svcmanager = new AdminManager(AdminDao.getInstance());
-
+		ProductMenu pMenu = new ProductMenu();
+		
 		AdminMenu fMemu = new AdminMenu();
 		
 		System.out.println("패스워드를 입력하세요 ");
@@ -25,7 +29,7 @@ public class AdminMenu {
 			
 			System.out.println("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 관리자 메뉴 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
 			System.out.println();
-			System.out.println("1번 : 회원 정보 리스트 | 2번 : 회원 삭제 | 3번 : 전체 판매 리스트 | 4번 : 총 매출 | 5번 : 월 별 매출 | 6번 : 일일 매출 | 7번 : 재고 조회 | 8번 : 재고 입력 | 9번 : 메뉴 수정 0번 : 종료 | ");
+			System.out.println("1번 : 회원 정보 리스트 | 2번 : 휴면 계정 설정 | 3번 : 전체 판매 리스트 | 4번 : 총 매출 | 5번 : 월 별 매출 | 6번 : 일일 매출 | 7번 : 재고 조회 | 8번 : 재고 입력 | 9번 : 메뉴 수정 0번 : 종료 | ");
 			System.out.println();
 			System.out.println(" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ");
 			System.out.println();
@@ -44,7 +48,8 @@ public class AdminMenu {
 					break;
 					
 				case 2 :
-					manager.AdminMemberDel();
+					manager.AdminMemberChange();
+					manager.AdminMemberList();
 					break;
 				case 3 : 
 					svcmanager.orderList();
@@ -65,7 +70,7 @@ public class AdminMenu {
 					svcmanager.putIndentory();
 					break;
 				case 9 :
-				
+					pMenu.ProductMenu();
 					break;
 				case 0 :
 				System.out.println("이전메뉴로 돌아갑니다.");
