@@ -63,7 +63,7 @@ public class ProductManager {
 	            Product p = new Product();
 	            while(true) {
 	               System.out.println("아이스크림 메뉴번호를 입력해주세요.");
-	               int icode = sc.nextInt();
+	               int icode = Integer.parseInt(sc.nextLine());
 	               int cnt = 0;
 	               for (int i = 0; i < pro.size(); i++) {
 	                  if(icode == pro.get(i).getIcode()) {
@@ -78,21 +78,21 @@ public class ProductManager {
 	               }
 	            }
 	            System.out.println("아이스크림 상품명을 입력해주세요. ");
-	            p.setIname(sc.next());
+	            p.setIname(sc.nextLine());
 	            System.out.println("아이스크림 가격을 입력해주세요.");
-	            p.setIprice(sc.nextInt());
+	            p.setIprice(Integer.parseInt(sc.nextLine()));
 	            System.out.println("아이스크림 수량을 입력해주세요.");
-	            p.setCount(sc.nextInt());
+	            p.setCount(Integer.parseInt(sc.nextLine()));
 	            
 	            
-	            System.out.println("입력하시겠습니까?[y],[n]");
-	            String input = sc.next();
-	            if(input.equalsIgnoreCase("y")) {
+	            System.out.println("입력하시겠습니까?[1] 예 ,[2] 아니오");
+	            int input = Integer.parseInt(sc.nextLine());
+	            if(input==1) {
 	               pro.add(p);
 	               int result = dao.insertProduct(conn, p);
 	               System.out.println("입력되셨습니다.");
 	               break;
-	            } else if(input.equalsIgnoreCase("n")) {
+	            } else if(input==2) {
 	               System.out.println("다시입력해주세요.");
 	            } else {
 	               System.out.println("잘못입력하셨습니다. 초기화면으로 이동합니다.");
@@ -107,7 +107,8 @@ public class ProductManager {
 	      }
 	   }
 	   
-	   void productUpdate() {
+
+	void productUpdate() {
 //	         Connection conn = null;
 
 	         try {
@@ -116,33 +117,38 @@ public class ProductManager {
 	            while(true) {
 	               
 	               System.out.println("수정할 아이스크림 정보를 입력해주세요.");
-	               System.out.println("상품번호, 상품이름, 상품가격, 상품 갯수 순으로 입력해주세요.");           
+	               System.out.println("상품번호, 상품이름, 상품가격, 상품 갯수 순으로 입력해주세요.");  
+	               System.out.println("예 ) 1, 바닐라 아이스크림, 2000, 5");
 	              
-	               String editData = sc.next();
+	               String editData = sc.nextLine().trim();
 	               
-	               String[] eData = editData.split(" ");
+	               String[] eData = editData.split(",");
 	               Product p;
+	               for(int i =0; i<eData.length;i++) {
+	            	   eData[i] = eData[i].trim();
+	               }
 	               if(eData.length == 4) {
 	                  
 	                  for (int i = 0; i < pro.size(); i++) {
-	                       if((Integer.parseInt(eData[0])) != pro.get(i).getIcode()) {
-	                          System.out.println("해당 하는 상품이 없습니다.");
-	                          return;
+	                       if((Integer.parseInt(eData[0])) == pro.get(i).getIcode()) {
+	                    	   p = new Product(Integer.parseInt(eData[0]), eData[1], Integer.parseInt(eData[2]), Integer.parseInt(eData[3]));
+	     	                  int result = dao.updateProduct(conn, p);
+	     	                  System.out.println("■■■■■■■■■■ 해당 상품 정보가 변경 되었습니다. ■■■■■■■■■■");
+	     	                  return;
+	                    	  
 	                       }
 	                    }
 	                  
-	                  
-	                  p = new Product(Integer.parseInt(eData[0]), eData[1], Integer.parseInt(eData[2]), Integer.parseInt(eData[3]));
-	                  int result = dao.updateProduct(conn, p);
-	                  System.out.println("■■■■■■■■■■ 해당 상품 정보가 변경 되었습니다. ■■■■■■■■■■");
-	                  return;
+	                  System.out.println("해당 하는 상품이 없습니다.");
+                      return;
+
 	               } else {
 	                  System.out.println("■■■■■■■■■■ 입력 형식을 올바르게 입력해주세요. ■■■■■■■■■■");
 	                  continue;
 	               }
 	            }
 	         } catch (Exception e) {
-	            e.printStackTrace();
+	            System.out.println("잘못입력하셨습니다. 이전페이지로 돌아갑니다.");
 	         }
 	      }
 	}

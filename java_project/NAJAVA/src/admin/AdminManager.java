@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 import orders.Order;
 import orders.Product;
@@ -89,9 +90,14 @@ public class AdminManager {
 			System.out.println("2021년 5월 매출을 보시려면 21/05 형식으로 입력해주세요. ");
 			String dno = sc.nextLine();
 
-			int sum = dao.getSalesMonth(conn, dno);
-
-			System.out.println("총 매출은 "+ sum + "입니다. ");
+			 boolean check = Pattern.matches("\\d{2}/\\d{2}", dno);
+	         if(check == true) {
+	            int sum = dao.getSalesMonth(conn, dno);
+	            System.out.println("총 매출은 "+ sum + "입니다. ");
+	         } else {
+	            System.out.println("입력 값이 올바르지 않습니다.");
+	            return;
+	         }
 
 
 //		} catch (SQLException e) {
@@ -114,9 +120,16 @@ public class AdminManager {
 			System.out.println("6월 1일이면 06/01 형식으로 입력해주세요. ");
 			String dday = sc.nextLine();
 
-			int sum = dao.getSalesDay(conn, dday);
+			boolean check = Pattern.matches("\\d{2}/\\d{2}", dday);
+	         
+	         if(check == true) {
+	            int sum = dao.getSalesDay(conn, dday);
 
-			System.out.println("총 매출은 "+ sum);
+	            System.out.println("총 매출은 "+ sum);
+	         } else { 
+	            System.out.println("입력 값이 올바르지 않습니다.");
+	            return;
+	         }
 
 
 //		} catch (SQLException e) {
