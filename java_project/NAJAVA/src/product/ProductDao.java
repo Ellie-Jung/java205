@@ -21,7 +21,7 @@ public class ProductDao {
 	}
 	
 	
-	// 아이스크림 메뉴 출력
+	// 상품테이블에서 모든 상품 정보 읽어오기
 	   public ArrayList<Product> getProductList(Connection conn) {
 
 	      ArrayList<Product> list = null;

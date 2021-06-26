@@ -26,7 +26,7 @@ public class ProductManager {
 		pro = new ArrayList<Product>();
 	}
 
-	//상품 테이블에서 상품의 메뉴와 재고확인
+	//상품 테이블에서 읽어온 정보로 메뉴판 보여주기
 	public void productList() {
 
 		try {

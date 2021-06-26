@@ -30,7 +30,7 @@ public class MemberMenu {
 					mManager.MemberList();
 					break;
 				case 3:
-					oMenu.oderMenu();
+					oMenu.orderMenu();
 					break;
 				case 4:
 					startMenu.FirstMenu();

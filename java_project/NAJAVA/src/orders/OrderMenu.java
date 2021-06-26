@@ -6,7 +6,7 @@ import product.ProductDao;
 
 public class OrderMenu {
 	
-	public void oderMenu() {
+	public void orderMenu() {
 		Scanner sc= new Scanner(System.in);
 		OrderManager oManager = new OrderManager(OrderDao.getInstance(), ProductDao.getInstance());
 	
@@ -18,7 +18,7 @@ public class OrderMenu {
 			System.out.println();
 			switch (input) {
 			case 1:
-				oManager.orderinsert();
+				oManager.orderInsert();
 				break;
 			case 0:
 				return;
