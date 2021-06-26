@@ -45,7 +45,7 @@ public class OrderManager {
 
 
 			while (true) {
-				or = new Order(MemberManager.idx);  //로그인한 회원의 회원코드를 주문테이블에 넣기위해 사용.
+				or = new Order(MemberManager.idx);//로그인한 회원의 회원코드를 주문테이블에 넣기위해 사용.
 				p.productList();
 				System.out.println();
 				System.out.println("▶ ▶ 주문하실 메뉴 번호를 선택해주세요.");
@@ -88,7 +88,8 @@ public class OrderManager {
 				}
 			}			
 			
-			ordercode = System.nanoTime(); //동일회원이 여러번 주문할때 한번의 주문으로 처리하기 위한 주문테이블의 임의의 키값.//구동중인 JVM에서 임의로 고정된 구간으로부터 현재 나노세컨즈nanoseconds 값을 반환
+			ordercode = System.nanoTime(); //동일회원이 여러번 주문할때 한번의 주문으로 처리하기 위한 주문테이블의 임의의 키값.
+			//구동중인 JVM에서 임의로 고정된 구간으로부터 현재 나노세컨즈nanoseconds 값을 반환
 
 			for (int i = 0; i < arr.size(); i++) { //장바구니의 길이만큼 같은 키값을 부여한다.
 
@@ -132,7 +133,10 @@ public class OrderManager {
 			for (int i = 0; i < arr.size(); i++) {
 				if(ordercode ==arr.get(i).getOrdercode()) {
 
-					System.out.printf(" 상품번호 : %d번 | 구매 수량 : %d개 | 구매가격 : %d원 | 주문날짜 :%s \n" ,arr.get(i).getIcode(),arr.get(i).getCount(),arr.get(i).getOprice(),arr.get(i).getOrderdate());
+					System.out.printf(" 상품번호 : %d번 | 구매 수량 : %d개 | 구매가격 : %d원 | 주문날짜 :%s \n" ,
+										arr.get(i).getIcode(),arr.get(i).getCount(),
+										arr.get(i).getOprice(),arr.get(i).getOrderdate());
+				
 					sum += arr.get(i).getOprice();
 
 				}

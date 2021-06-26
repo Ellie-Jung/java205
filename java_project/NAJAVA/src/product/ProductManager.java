@@ -40,7 +40,8 @@ public class ProductManager {
 
 
 			for (Product p : pro) {
-				System.out.printf("%d \t %s \t %d \t %d \n", p.getIcode(), p.getIname(),  p.getIprice(), p.getCount());
+				System.out.printf("%d \t %s \t %d \t %d \n", p.getIcode(), p.getIname(), 
+															 p.getIprice(), p.getCount());
 			}
 
 		} catch (Exception e) {

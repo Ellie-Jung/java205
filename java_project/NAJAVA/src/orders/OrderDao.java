@@ -19,7 +19,7 @@ public class OrderDao {
 		return dao;
 	}
 
-	//주문테이블에서 주문내역 읽어오기
+	//주문테이블에서 주문코드로 주문내역 읽어오기
 	public ArrayList<Order> getOrderList(Connection conn, Order order) {
 
 		ArrayList<Order> list = null;
@@ -35,7 +35,8 @@ public class OrderDao {
 			list = new ArrayList<>();
 
 			while (rs.next()) {
-				Order d = new Order(rs.getInt(1), rs.getLong(2), rs.getInt(3), rs.getInt(4), rs.getString(5), rs.getInt(6), rs.getInt(7));
+				Order d = new Order(rs.getInt(1), rs.getLong(2), rs.getInt(3), rs.getInt(4),
+									rs.getString(5), rs.getInt(6), rs.getInt(7));
 				list.add(d);
 			}
 

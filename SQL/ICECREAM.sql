@@ -42,19 +42,25 @@ drop sequence iorder_oidx_seq ;
 create sequence member_idx_seq ;
 create sequence iorder_oidx_seq ;
                               
---member dml  --idx ,id,pw, name, phonenum, email
-insert into member values (member_idx_seq.nextval, 'apple','1234','홍길동', '01012341234','fods@gmail.com');
-insert into member values (member_idx_seq.nextval, 'banana','1234','강호동', '01045741234','djwd@gmail.com');
 
 
 --product dml --- icode, iname, iprice, count
 insert into product values (1,'바닐라 아이스크림', '2000',100);
 insert into product values (2,'초코 아이스크림', '2500',100);
 insert into product values (3,'딸기 아이스크림', '2500',100);
-insert into product values (4,'바나나 아이스크림', '2700',1000);
-insert into product values (5,'커피 아이스크림', '2700',1000);
-insert into product values (6,'민트 아이스크림', '2800',1000);
-insert into product values (7,'요거트 아이스크림', '3000',1000);
+insert into product values (4,'바나나 아이스크림', '2700',100);
+insert into product values (5,'커피 아이스크림', '2700',100);
+insert into product values (6,'민트 아이스크림', '2800',100);
+insert into product values (7,'요거트 아이스크림', '3000',100);
+
+
+commit;
+
+
+--member dml  --idx ,id,pw, name, phonenum, email
+insert into member values (member_idx_seq.nextval, 'apple','1234','홍길동', '01012341234','fods@gmail.com');
+insert into member values (member_idx_seq.nextval, 'banana','1234','강호동', '01045741234','djwd@gmail.com');
+
 
 
 --iorder dml -- oidx, ordercode, icode,idx,orderdate,count,price
@@ -63,7 +69,7 @@ insert into iorder values (iorder_oidx_seq.nextval, '', 1,1,'21/06/22',5,10000);
 insert into iorder values (iorder_oidx_seq.nextval, '', 1,2,'21/05/22',5,10000);
 
 
-commit;
+
               
 update product set count=5 where icode = 1;
               
