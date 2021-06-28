@@ -61,7 +61,7 @@ public class AdminDao {
 
 		try {
 			stmt = conn.createStatement();
-			String sql = "select sum(oprice) from product join iorder using (icode)";
+			String sql = "select sum(oprice) from product ";
 
 			rs = stmt.executeQuery(sql);
 
@@ -91,7 +91,7 @@ public class AdminDao {
 		try {
 			stmt = conn.createStatement();
 
-			String sql = "select sum(oprice) from product  join iorder using (icode) where substr(orderdate,1,5) = '"+dno+"'";
+			String sql = "select sum(oprice) from product  where substr(orderdate,1,5) = '"+dno+"'";
 
 			rs = stmt.executeQuery(sql); 
 
@@ -121,7 +121,7 @@ public class AdminDao {
 		try {
 			stmt = conn.createStatement();
 
-			String sql = "select sum(oprice) from product join iorder using (icode) where substr(orderdate,4,5) = '" +dday+"'";
+			String sql = "select sum(oprice) from product where substr(orderdate,4,5) = '" +dday+"'";
 
 			
 			rs = stmt.executeQuery(sql);
