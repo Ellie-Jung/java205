@@ -84,7 +84,8 @@ public class ProductDao {
 
 	      try {
 
-	         String sql = "update product set icode=?,iname=?, iprice=?, count=? where icode ='" + product.getIcode() + "'" ;
+	         String sql = "update product set icode=?,iname=?, iprice=?, count=?"
+	         				+ " where icode ='" + product.getIcode() + "'" ;
 	         pstmt = conn.prepareStatement(sql);
 	         pstmt.setInt(1, product.getIcode());
 	         pstmt.setString(2, product.getIname());

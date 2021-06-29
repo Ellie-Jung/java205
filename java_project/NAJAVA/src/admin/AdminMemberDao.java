@@ -64,7 +64,8 @@ public class AdminMemberDao {
 
 
 		try {
-			String Sql = "UPDATE MEMBER SET ID = '0000', PW = '0000', NAME = '휴면', PHONENUM = '0000',  EMAIL = '0000' WHERE idx = ?";
+			String Sql = "UPDATE MEMBER SET ID = '0000', PW = '0000', NAME = '휴면',"
+					+ " PHONENUM = '0000',  EMAIL = '0000' WHERE idx = ?";
 
 			pstmt = conn.prepareStatement(Sql);
 			pstmt.setInt(1, member.getIdx());
