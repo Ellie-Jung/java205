@@ -6,24 +6,298 @@
     <!-- 문서의 제목 -->
     <title>HTML 기본 태그</title>
     <!-- 문서의 추가적인 속성  -->
-    <meta charset = "UTF-8">  <!--웹문서의 문자 셑 설정-->
-    <style></style>
+    <meta charset = "UTF-8"> 
+    <!--웹문서의 문자 셑 설정-->
+    
+    <style>
+           div{
+        background-color: green;
+        margin-top :10 px;
+        height : 50px;
+    }
+    span{
+        background-color: yellow;
+        margin-right : 10px;
+        height : 100px;
+    </style>
+   
     <script></script>
 
 </head>
 
 <body>
 
-    <h1>a&lt;b   b&gt;c</b> </h1>
+    <form action="#" method="get">
+ <fieldset> <!--테두리로 묶음-->
+ <legend>회원가입 폼</legend>
+ <table>
+ <tr>
+ <th><label for="userid">아이디</label></th>
+ <td>
+ <input type="text" id="userid" name="userid">
+ </td>
+ </tr>
+ <tr>
+ <th><label for="pw">비밀번호</label></th>
+ <td>
+ <input type="password" id="pw" name="pw">
+ </td>
+ </tr>
+ <tr>
+ <td></td>
+<td>
+ <input type="submit" value="로그인">
+ </td>
+ </tr>
+ </table>
+ </fieldset>
+ </form>
+ <hr>
+ <fieldset>
+ <legend>회원가입 폼</legend>
+ <form>
+ <table>
+ <tr>
+ <th><label for="userid">아이디(email)</label></th>
+ <td><input type="email" id="userid" name="userid"></td>
+ </tr>
+ <tr>
+ <th><label for="pw">비밀번호</label></th>
+ <td><input type="password" id="pw" name="pw"></td>
+ </tr>
+ <tr>
+ <th><label for="username">이름</label></th>
+ <td><input type="text" id="username" name="username"></td>
+ </tr>
+ <tr>
+ <th><label for="userPhoto">사진</label></th>
+ <td><input type="file" id="userPhoto" name="userPhoto"></td>
+ </tr>
+ <tr>
+ <th></th>
+ <td><input type="submit" value="회원가입"></td>
+ </tr>
+ </table>
+ </form>
+ </fieldset>
+
+<hr>
+
+    <!-- 서버로 전송하고자 하는 폼 데이터를 묶는다.
+ action : 데이터를 전송할 경로(위치)
+ method : 전송 방식 ( GET / POST ) -->
+ <form action="#" method="get">
+    <select name = "year">
+    <option value ="2021">2021</option>
+    <option value ="2020">2020</option>
+    <option value ="2019">2019</option>
+    <option value ="2018">2018</option>
+</select>
+ type=text : <input type="text" name="username" value="tester"> <br>
+ type=password : <input type="password" name="pw"> <br>
+ type=checkbox : <input type="checkbox" name="chk" value="ok1">
+ <input type="checkbox" name="chk" value="ok2"><br>
+ type=radio : A<input type="radio" name="choice" value="A">
+ B<input type="radio" name="choice" value="B">
+ C<input type="radio" name="choice" value="C">
+ D<input type="radio" name="choice" value="D">
+ F<input type="radio" name="choice" value="F"> <br>
+ type=color : <input type="color" name="color"> <br>
+ type=datetime-local : <input type="datetime-local" name="localDatetime"><br>
+ type=date : <input type="date" name="date"><br>
+ type=time : <input type="time" name="time"><br>
+ type=month : <input type="month"><br>
+ type=week : <input type="week"> <br>
+ type=email : <input type="email" name="email"><br>
+ type=file : <input type="file" name="userPhoto"><br>
+ type=hidden : 화면에는 표현되지 않는다.
+ <input type="hidden" name="idx" value="1"> <br>
+ type=image : <input type="image" src="mini1.jpg" height="50"><br>
+ type=number : <input type="number" name="num"> <br>
+ type=range : <input type="range" name="age" min="0" , max="150"> <br>
+ type= tel : <input type="tel"> <br>
+ type=url : <input type="url" name="url"><br> <br> <br>
+ <input type="submit"> <input type="reset">
+
+
+ </form>
+
+<hr>
+
+    <audio 
+        src = "media/old_pop.mp3" 
+                controls
+                loop
+    ></audio>
+    <video 
+        src = "media/trailer.mp4"
+            controls
+            preload="auto"
+            poster="images/심슨1.jpg"
+            loop
+            autoplay
+            width ="400"
+            height="300"
+            ></video>
+<hr>
+    <table border ="1">
+        <thead>
+            <tr>
+                <td>thead 1</td> <!--컬럼 속성-->
+                <td>thead 2</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>tbody 1-1</td> <!--행-->
+                <td>tbody 1-2</td>
+            </tr>
+            <tr>
+                <td>tbody 2-1</td>
+                <td>tbody 2-2</td>
+            </tr>
+            <tr>
+                <td>1111</td>
+                <td>2222</td>
+                <td>3333</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td> tfoot -1</td>
+                <td> tfoot -2</td>
+            </tr>
+        </tfoot>
+    </table>
+
+
+    <table border ="1">
+            <tr> <!--thead, tbody, tfoot안써도 테이블 만들어진다.-->
+                <th>thead 1</th> <!--th하면 가온데정렬, 굵게 처리됨-->
+                <th>thead 2</th>
+            </tr>
+            <tr>
+                <td>tbody 1-1</td>
+                <td>tbody 1-2</td>
+            </tr>
+            <tr>
+                <td>tbody 2-1</td>
+                <td>tbody 2-2</td>
+            </tr>
+            <tr>
+                <td>1111</td>
+                <td>2222</td>
+                <td>3333</td>
+            </tr>
+            <tr>
+                <td> tfoot -1</td>
+                <td> tfoot -2</td>
+            </tr>
+    </table>
+<hr>
+    <table border ="1"> <!--일단 먼저 표를 다 그려놓고 병합하고 삭제하자 헷갈리니깐.-->
+        <tr>
+            <td colspan="2">cell</td> <!--수평방향을 합칠때는 colspan  =합칠 행 갯수-->
+        </tr>
+        <tr>
+            <td rowspan ="3">cell</td><!--수직방향으로 합칠때는 rowpan =합칠열갯수 -->
+            <td>cell</td>
+        </tr>
+        <tr>
+            <td>cell</td>
+           
+        </tr>
+        <tr>
+            <td>cell</td>
+           
+        </tr>
+        <tr>
+            <td rowspan = "4">cell</td>
+            <td>cell</td>
+        </tr>
+        <tr>
+            <td>cell</td>
+        </tr>
+        <tr>
+            <td>cell</td>
+        </tr>
+        <tr>
+            <td>cell</td>
+        </tr>
+
+    </table>
+    <hr>
+
+<div>div 1</div><br>
+<div>div 2</div>
+<div>div 3</div>
+
+<span>span -1</span>
+<span>span -2</span>
+<span>span -3</span>
+
+<hr>
+<img src = "미니1.jpg" alt = ".미니언즈" width = "300"/> <!--너비로 맞추기, 보통은 폭을 맞춘다-->
+<img src = "슈렉1.jpg" alt = ".슈렉"  height = "450"/>  <!--높이로 맞추기-->
+<img src = "images/심슨1.jpg" alt = ".심슨" width = "300"/>
+<img src = "Nothing" alt = "그림이 존재하지 않습니다." width = "300"/>
+
+<img src = "https://t1.daumcdn.net/daumtop_chanel/op/20200723055344399.png">
+<img src = "http://placehold.it/300x200">
+
+
+    <hr>
+    <ul>
+            <li>사과</li>   <!--순서가 없는 리스트-->
+            <li>바나나</li>
+            <li>수박</li>
+    </ul>
+    <ol>
+            <li>사과</li>   <!--순서가 있는 리스트-->
+            <li>바나나</li>
+            <li>수박</li>
+    </ol>
+    <hr>
+    <a href = "http://www.bitcamp.co.kr">비트캠프</a><br>
+    <a href = "http://www.naver.com">네이버</a><br>
+    <a href = "http://daum.net">다음</a><br>
+<br>
+    <a href = "#c-1">홍차</a>
+    <a href = "#c-2">LG</a>
+    <a href = "#c-3">header tag</a>
+
+    <hr>
+
+    <h1 id = "c-1">홍차</h1>
+    <hr>
+    <h3>정의</h3>
+    <p>
+        홍차는 우롱차보다 더 많이 발효된 차의 일종이다.
+
+    </p>
+    <p>
+        <br>
+    <h3>등급</h3>
+    <p>
+        홍차는 여러 가지로 등급이 매겨진다. 
+    </p>
+    
+    <p> - 브로큰 페코</p>
+    <p> - 브로큰 페코 수숑</p>
+    <p> - 브로큰 오렌지 페코 수숑</p>
+
+    <hr>
+
+    <h1 >a&lt;b   b&gt;c</b> </h1>
     <!-- h1~h6 -> 제목표현, 글자를 굵게 표현 / 태그에 따라 크기를 다르게 표현 -->
-    <h1>header -1</h1>
+    <h1 id = "c-3">header -1</h1>
     <h2>header -2</h2>
     <h3>header - &nbsp&nbsp 3</h3>
     <h4>header -4</h4>
     <h5>header -5</h5>
     <h6>header -6</h6>
 
-    <h1>제목 글자</h1>
+    <h1 id = "c-2">제목 글자</h1>
     <hr>
  <p>Lorem ipsum dolor sit amet, consectetur adipi
 scing elit. Morbi rutrum pretium elit, at iaculis du
