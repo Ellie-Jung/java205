@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    ul{
+        overflow: hidden; /*해당 요소 안에서 그 안에 내용이 넘칠때 나머지부분을 숨겨줌*/
+    }
+    li{
+        list-style: none;
+        float: left;
+        padding: 15px;
+        color:white;
+    }
+    li:first-child{ /*모서리 두쪽을 둥글게 만들기. 첫번째 태그*/
+        border-radius: 10px 0 0 10px;  /*사각형 왼쪽위부터 시계방향으로 1 2 3 4*/
+    }
+    li:last-child{/*마지막태그*/
+        border-radius: 0 10px 10px 0;
+    }
+    li:nth-child(2n){ /*짝수번째*/
+        background-color: #ff0003;
+    }
+    li:nth-child(2n+1){/*홀수번째*/
+        background-color: #800000;
+    } 
+
+    input:not([type=password]){ /*input태그 중 type속성값이 password가 아닌 태그에 해당속성 적용*/
+        background-color: red;
+    }
+
+
+</style>
+
+</head>
+<body>
+    <input type="password"/>
+    <input type="text"/>
+    <input type="password"/>
+    <input type="text"/>
+
+
+
+    <ul>
+        <li>First</li>
+        <li>Second</li>
+        <li>Third</li>
+        <li>Fourth</li>
+        <li>Fifth</li>
+        <li>Sixth</li>
+        <li>Seventh</li>
+    </ul>
+</body>
+</html>
