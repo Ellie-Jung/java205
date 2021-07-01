@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrap{
+            width:600px;
+            height: 400px;
+            border:1px solid #ddd;
+            background-color: lemonchiffon;
+            /* 요소들의 절대좌표 기준점을 설정 */
+            position: relative;
+        }
+        div.circle{
+            /* 블럭의 사이즈 */
+            width:100px;
+            height:100px;
+            /* 원만들기 */
+            border-radius: 50%;
+            /* 테두리 */
+            border:1px solid #ddd;
+            /* 블럭이미지설정 */
+            background-image: url(../미니1.jpg);
+            background-size: contain;
+            background-position: center;
+            /* 절대좌표 위지지정 */
+            position:absolute;
+            
+        }
+        #c1{
+            left: 10px;
+            top:10px;
+        }
+        #c2{
+            right:10px;
+            top:10px;
+        }
+        #c3{
+            left:10px;
+            bottom:10px;
+        }
+        #c4{
+            right:10px;
+            bottom:10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="c1" class="circle"></div>
+        <div id="c2" class="circle"></div>
+        <div id="c3" class="circle"></div>
+        <div id="c4" class="circle"></div>
+    </div>
+</body>
+</html>

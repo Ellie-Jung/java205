@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        div.box{
+            width:100px;
+            height: 100px;
+            position: absolute; /*같은절대위치줘서 포개져보임*/
+        }
+        #b1{
+            background-color: red;
+            left:50px;/*기준에서 얼만큼 떨어지는지*/
+            top:50px;
+            z-index: 1000;/*도형순서변경시. 클수록 가장위에 위치한다.*/
+        }
+        #b2{
+            background-color: green;
+            left:100px;
+            top:100px;
+            z-index: 999;
+        }
+        #b3{
+            background-color: blue;
+            left:150px;
+            top:150px;
+            z-index: 1;
+        }
+        header{
+            font: size 2em;
+            border:1px solid #ddd;
+        }
+        footer{
+            border:1px solid #ddd;
+        }
+        #wrap{
+            height:100px;
+            width:500px;
+            border: 1px solid #ddd;
+            position: relative; /*시작을 wrap박스에서 시작함. 거기서부터절대위치로..*/
+            overflow: auto; /*영역을 벗어나면 필요에 따라 상하스크롤을 준다. 스크롤하면 상하좌우스크롤 */
+            overflow-x: scroll;
+        }
+    </style>
+</head>
+<body>
+    <h1>헤더 영역 입니다.</h1>
+    <div id="wrap">
+        <div id="b1" class="box"></div>
+        <div id="b2" class="box"></div>
+        <div id="b3" class="box"></div>
+    </div>
+    <footer>
+        푸터 영역 입니다.
+    </footer>
+</body>
+</html>
