@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div.box{
+            width:100px;
+            height:100px;
+            background-color:lightblue;
+            /* 박스의 정 가온데 텍스트가 오도록설정 */
+            text-align: center;
+            line-height: 100px;
+
+            border:3px solid #ddd;
+
+            float: left; /*항목이 왼쪽으로 붙어 올라감. 뒷항목도 영향을 받음*/
+            /* float:right; 항목이 오른쪽으로 붙어 올라감 */
+        }
+        #wrap{
+            /* float:ㅣleft항목 벗어나면 보여주지않겠다 */
+            /* overflow:hidden; */
+        }
+        #footer{
+            clear:both; /*위에꺼랑 같..이렇게 사용가능*/
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="wrap">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+    </div>
+    <div id="footer">
+        footer
+    </div>
+</body>
+</html>
