@@ -1,0 +1,47 @@
+* {
+  margin: 0 auto;
+}
+body {
+  width: 800px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+header {
+  border: 1px solid black;
+  padding: 20px;
+}
+header h1 {
+  font-size: 3em;
+}
+
+nav {
+  border: 1px solid black;
+  height: 30px;
+  padding: 10px;
+  line-height: 30px;
+}
+
+nav li {
+  list-style: none;
+  float: left;
+  padding-right: 15px;
+}
+#search {
+  float: right;
+}
+#search input[type="text"] {
+  border-radius: 10px 0 0 10px;
+}
+#search input[type="button"] {
+  border-radius: 0 10px 10px 0;
+}
+
+#main_wrap {
+  clear: both;
+  border: 5px solid red;
+  display: grid;
+  grid-template-columns: 600px 200px;
+}
+article h1 {
+  font-size: 2em;
+}
