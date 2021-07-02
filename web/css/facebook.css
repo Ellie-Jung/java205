@@ -1,1 +1,81 @@
 @charset "utf-8";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+html,
+body,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+table,
+input,
+header,
+nav,
+aside,
+section,
+article,
+footer,
+p {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+}
+
+body {
+  background-color: #f0f2f5;
+}
+/* 제일 윗부분 마진 */
+#topmargin {
+  height: 100px;
+  background-color: darkolivegreen;
+}
+
+#main_wrap {
+  width: 1000px;
+  background-color: darkgray;
+  margin: 0 auto;
+}
+/* 중간부분 영역 */
+#content_wrap {
+  overflow: hidden;
+}
+
+/* 헤더설정 */
+header {
+  float: left;
+  width: 450px;
+}
+
+/* 로그인영역 */
+#login_content {
+  float: right;
+  width: 500px;
+  background-color: darkkhaki;
+  margin: 10px;
+}
+/* 로그린 블록 하얀창 */
+#login_block {
+  background-color: white;
+  border-radius: 10px;
+}
+#login_block > input {
+  margin: 20px;
+  width: 90%;
+  height: 30px;
+}
+#login_block > p {
+  text-align: center;
+}
+
+/* 클래스모음 */
+
+/* a태그 데코레이션 없애기 */
+.a_deco_none {
+  text-decoration: none;
+}
