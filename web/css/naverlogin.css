@@ -4,16 +4,31 @@
   margin: 0;
   padding: 0;
 }
-
+html,
+body,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+input,
+header,
+footer,
+p {
+  font-size: 16px;
+  font-family: Dotum, "돋움", Helvetica, sans-serif;
+}
 body {
   width: 500px;
   margin: 0 auto;
-  font-size: 16px;
+  background-color: #f5f6f7;
 }
 
 #main_wrap {
   margin: 30px;
-  background-color: #f5f6f7;
   width: 300;
 }
 
