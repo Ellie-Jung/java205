@@ -43,7 +43,7 @@ body {
   background-color: white;
   border: 1px solid #aaa;
   border-radius: 5px; /*테두리 약간 둥글게 만들기*/
-  margin: 10px auto;
+  margin: 10px auto; /* 브라우져 크거나 작게해도 일정한 간격 유지한다.*/
   box-shadow: 2px 2px 3px #ddd; /*전체 네모에 그림자넣기 오른쪽/밑/퍼지는정도*/
   padding: 10px;
 }
