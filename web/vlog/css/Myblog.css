@@ -57,7 +57,6 @@ header {
 header > h1 {
   font-size: 2em;
 }
-
 /* 헤더끝 */
 
 /* 네비게이션 영역 */
@@ -79,9 +78,17 @@ nav > div {
 /* 작은 항목들 일자로 나열하기 */
 nav > ul > li {
   float: left;
-  padding: 0 20px; /*0(상하)하고 20픽셀(좌우)씩 떨어트린다.*/
+  /* padding: 0 20px; 0(상하)하고 20픽셀(좌우)씩 떨어트린다. 여기줬을때 a영역잡을때 영역이 패딩제외 작게 나타남*/
   height: 35px;
   line-height: 35px; /*글씨가 높이 중간에 오도록 처리*/
+}
+nav > ul > li > a {
+  display: block; /*100프로 폭을 가짐. 클릭영역많아짐*/
+  background-color: orange; /*영역확인. 패딩때문에 영역작음*/
+  padding: 0 20px; /*여기에 패딩값을 주면 영역선택할수있따. li에 패딩값주면 패딩영역제외하고 선택가능해짐*/
+}
+nav > ul > li > a:hover {
+  background-color: khaki;
 }
 
 /*  input 검색부분 만들기 */
@@ -115,10 +122,43 @@ section {
   width: 600px; /* 시이즈각각지정하기 */
 }
 
+/* aside 영역 */
 aside {
   float: right;
-  width: 170px; /* 시이즈각각지정하기 */
+  width: 150px; /* 시이즈각각지정하기 */
 }
+
+aside > h3 {
+  font-size: 1em;
+  margin-top: 20px;
+}
+aside > ul {
+  list-style: none; /*리스트의 점 없애기*/
+}
+aside > ul > li {
+  padding-left: 15px;
+  line-height: 180%; /*라인의 간격*/
+}
+a {
+  /*a태그에 밑줄 없애고 기본밑줄없애기 */
+  color: #333;
+  text-decoration: none;
+}
+a:hover {
+  /*a태그영역에 마우스대면 나타남*/
+  color: hotpink;
+  text-decoration: underline;
+}
+/*컨텐츠 영역 끝 */
+
+/* footer영역 */
+footer {
+  color: blue;
+  height: 30px;
+  line-height: 30px; /*수직방향 중간에*/
+  text-align: center; /*수평방향 중간에*/
+}
+/* footer영역 끝*/
 
 /* 중복된코드줄이기. 공통으로 사용할 클래스 만들기 */
 .font_jua {
@@ -140,6 +180,7 @@ aside {
   font-size: 1.5em;
   font-weight: bold;
   margin: 5px 0;
+  font-family: "Sunflower", sans-serif;
 }
 .date {
   font-weight: 600;
