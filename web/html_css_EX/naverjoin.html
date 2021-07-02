@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>naver Join</title>
+    <link rel="stylesheet" href="../css/naverjoin.css"
+</head>
+<body>
+    <div id="main_wrap">
+        <!-- 헤더시작 -->
+        <header>
+            <h1>
+                <img src="../images/01 NAVER Logo_Green.png" alt="naverLogo" width="200px">
+            </h1>
+        </header>
+        <!-- 헤더끝 -->
+
+        <!-- 폼시작 -->
+        <form>
+           
+                <div>
+                    <h3>아이디</h3>
+                    <input type="text" name="id">
+                </div>
+                <div>
+                    <h3>비밀번호</h3>
+                    <input type="password" name="pw">
+                </div>
+                <div>
+                    <h3>비밀번호 재확인</h3>
+                    <input type="password" name="pwchk">
+                </div>
+                <div>
+                    <h3>이름</h3>
+                    <input type="text" name="name">
+                </div>
+                <div id="birthday">
+                    <h3>생년월일</h3>
+                    <div>
+                        <input type="text" name="yy" placeholder="년(4자)" >
+                        <select class="border_1_sol_ddd">
+                            <option value>월</option>
+                            <option value="01">1</option>
+                            <option value="02">2</option>
+                            <option value="03">3</option>
+                            <option value="04">4</option>
+                            <option value="05">5</option>
+                            <option value="06">6</option>
+                            <option value="07">7</option>
+                            <option value="08">8</option>
+                            <option value="09">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+                        <input type="text" name="yy" placeholder="일" >
+                    </div>
+                </div>
+                <div id="sex">
+                    <h3>성별</h3>
+                    <select class="border_1_sol_ddd selectbox_set">
+                        <option>성별</option>
+                        <option value="남자">남자</option>
+                        <option value="여자">여자</option>
+                        <option value="선택안함">선택 안함</option>
+                    </select> 
+                </div>
+                <div id="email">
+                    <h3>본인 확인 이메일</h3>
+                    <span>(선택)</span>
+                    <input type="text" placeholder="선택입력">
+                </div>
+                <div id="phonenumber">
+                    <h3>휴대전화</h3>
+                    <select class="border_1_sol_ddd selectbox_set">
+                        <option>대한민국 +82</option>
+                        <option>미국/캐나다 +1</option>
+                    </select>
+                    <input id="phon1" type="text" placeholder="전화번호 입력">
+                    <input type="button" value="인증번호 받기">
+                    <input type="text" placeholder="인증번호 입력하세요">
+                </div>
+                <div>
+                    <input type="submit" value="가입하기">
+                </div>
+
+           
+        </form>
+        <!-- 폼끝 -->
+
+        <!-- 푸터시작 -->
+        <footer></footer>
+        <!-- 푸터끝 -->
+    </div>
+</body>
+</html>
