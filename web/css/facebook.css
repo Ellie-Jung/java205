@@ -28,54 +28,180 @@ p {
 }
 
 body {
-  background-color: #f0f2f5;
+  background-color: ;
 }
 /* 제일 윗부분 마진 */
 #topmargin {
   height: 100px;
-  background-color: darkolivegreen;
+  background-color: #f0f2f5;
 }
 
 #main_wrap {
-  width: 1000px;
-  background-color: darkgray;
+  background-color: #f0f2f5;
   margin: 0 auto;
 }
 /* 중간부분 영역 */
 #content_wrap {
+  width: 1100px;
   overflow: hidden;
+  margin: 0 auto;
 }
 
 /* 헤더설정 */
 header {
   float: left;
-  width: 450px;
+  width: 550px;
+  margin: 100px 0;
+}
+header h1 {
+  font-size: 1.9em;
+  font-weight: 500;
+  margin-top: 10px;
 }
 
 /* 로그인영역 */
 #login_content {
   float: right;
-  width: 500px;
-  background-color: darkkhaki;
-  margin: 10px;
+  width: 450px;
+  margin: 50px 10px;
 }
-/* 로그린 블록 하얀창 */
+/* 로그린 블록 하얀창 설정*/
 #login_block {
   background-color: white;
   border-radius: 10px;
-}
-#login_block > input {
-  margin: 20px;
-  width: 90%;
-  height: 30px;
-}
-#login_block > p {
+  box-shadow: 3px 3px 10px #ddd;
   text-align: center;
+  padding: 10px;
+}
+/* 로그인 블록 인풋박스 설정 */
+#login_block > input {
+  margin: 10px;
+  width: 95%;
+  height: 60px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  padding-left: 10px;
+  font-size: 1.2em;
+  color: #aaa;
+  font-weight: 200;
+}
+
+/* 인풋박스 포커스시 파란색 테두리 */
+input:focus {
+  outline: none;
+  box-shadow: 0 0 0 1px #3578e5;
+}
+/* 인풋박스 버튼 설정 */
+#login_block > input[type="button"] {
+  width: 420.5px;
+  height: 62px;
+  color: white;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+/* 비밀번호를 잊으셨나요 부분 설정 */
+#login_block p {
+  text-align: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #aaa;
+}
+#login_block > p:hover {
+  text-decoration: underline;
+}
+
+/* 새계정 만들기 버튼 */
+#login_block input[type="submit"] {
+  width: 170px;
+  color: white;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 20px 0 15px 0;
+}
+
+/* 페이지만들기부분 */
+#login_sub {
+  text-align: center;
+  margin-top: 30px;
+}
+#login_sub a:hover {
+  text-decoration: underline;
+}
+
+/* 푸터 설정 */
+footer {
+  background-color: white;
+}
+#footer_wrap {
+  width: 1200px;
+  margin: 0 auto;
+  padding: 30px;
+}
+/* a태그 설정 */
+footer a {
+  text-decoration: none;
+  color: #aaa;
+}
+footer a:hover {
+  text-decoration: underline;
+}
+/* 언어설정부분 */
+#langset {
+  overflow: hidden;
+  height: 40px;
+  line-height: 30px;
+}
+#langset > ul > li {
+  float: left;
+  margin-right: 15px;
+  font-size: 14px;
+}
+#langset input[type="button"] {
+  float: left;
+  width: 40px;
+  height: 30px;
+  font-size: 25px;
+  margin-left: 20px;
+  border: 1px solid #ddd;
+  color: rgb(53, 52, 52);
+}
+
+/*제일밑 메뉴 바로가기부분 */
+#footermenu {
+  overflow: hidden;
+}
+#footermenu > ul > li {
+  float: left;
+  margin-right: 30px;
+  font-size: 14px;
+  height: 20px;
+  line-height: 20px;
+  margin-top: 10px;
+}
+/* 최하단 로고 */
+#finallogo {
+  margin-top: 30px;
 }
 
 /* 클래스모음 */
-
 /* a태그 데코레이션 없애기 */
 .a_deco_none {
   text-decoration: none;
+  color: rgb(7, 7, 7);
+}
+/*페이스북 파란색 색상 */
+.facebookcolor {
+  background-color: #3578e5;
+}
+/* 새계정만들기 초록색 */
+.joinbtncolor {
+  background-color: #42b72a;
+}
+
+/* 리스트 점 없애기 */
+.list_style_none {
+  list-style: none;
+}
+.font_small {
+  font-size: 13px;
 }

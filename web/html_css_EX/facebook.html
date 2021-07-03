@@ -13,12 +13,12 @@
         <div id="topmargin"></div>
         <!-- content영역 -->
         <div id="content_wrap">
-
             <!-- 헤더영역 -->
             <header>
-                <img src="../images/facebooklogo2.png" width="300px">
+                <img src="../images/facebooklogo2.png" width="280px">
                 <h1>Facebook에서 전세계에 있는 친구, 가족, 지인들과 함께 이야기를 나눠보세요.</h1>
             </header>
+            <!-- 헤더끝 -->
 
             <!-- 로그인영역 -->
             <div id="login_content">
@@ -26,23 +26,25 @@
                     
                     <input type="text" placeholder="이메일 또는 전화번호">
                     <input type="text" placeholder="비밀번호">
-                    <input type="button" value="로그인">
+                    <input type="button" value="로그인" class="facebookcolor">
                     <p>
-                        <a class="a_deco_none" href="#">비밀번호를 잊으셨나요?</a>
+                        <a class="a_deco_none" href="#" style="color: #3578e5;">비밀번호를 잊으셨나요?</a>
                     </p>
-                    
-                    <input type="button" value="새 계정 만들기">
+                        <input  type="submit" value="새 계정 만들기" class="joinbtncolor">
+
                 </div>
                 <div id="login_sub">
-                    유명인, 밴드, 비즈니스를 위한 <a href="#"><b>페이지 만들기</b></a>
+                    유명인, 밴드, 비즈니스를 위한 <a href="#" class="a_deco_none"><b>페이지 만들기</b></a>
                 </div>
             </div>
         </div>
+        <!-- 컨텐츠 영역끝 -->
 
         <!-- footer영역 -->
         <footer>
-            <div>
-                <ul>
+            <div id="footer_wrap">
+            <div id="langset">
+                <ul class="list_style_none">
                     <li><a href="#">한국어</a></li>
                     <li><a href="#">English (US)</a></li>
                     <li><a href="#">Tiếng Việt</a></li>
@@ -55,10 +57,12 @@
                     <li><a href="#">Français (France)</a></li>
                     <li><a href="#">Deutsch</a></li>
                 </ul>
-                <input type="button" value="+"> 
+                    <input type="button" value="+"> 
+            
             </div>
-            <div>
-                <ul>
+            <div id="footermenu">
+                <hr>
+                <ul class="list_style_none">
                     <li><a href="#">가입하기</a></li>
                     <li><a href="#">로그인</a></li>
                     <li><a href="#">Messenger</a></li>
@@ -93,9 +97,10 @@
                     <li><a href="#">고객 센터</a></li>
                 </ul>
             </div>
-            <div>
-                Facebook © 2021
+            <div id="finallogo">
+               <div class="font_small">Facebook © 2021</div> 
             </div>
+        </div>
         </footer>
         <!-- footer 끝 -->
         
