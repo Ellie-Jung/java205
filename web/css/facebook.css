@@ -75,7 +75,7 @@ header h1 {
 }
 /* 로그인 블록 인풋박스 설정 */
 #login_block > input {
-  margin: 10px;
+  margin: 10px auto;
   width: 95%;
   height: 60px;
   border-radius: 10px;
