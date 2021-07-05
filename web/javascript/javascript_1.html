@@ -13,6 +13,36 @@
         //alert 함수는 사용자에게 경고 메세지 출력
         // alert('JavaScript Hello~!!')
     </script>
+
+    <!-- <script>
+        // 브라우저가 html문서의 내용을 모두 로드했을때 발생하는 이벤트 속성
+        // 이벤트 속성에는 핸들러(이벤트 처리 함수)를 등록한다.
+        window.onload=function(){
+
+            var list = '';
+            // list=list+'<ul>\n';
+            // list=list+' <li>Javascript</li>\n';
+            // list=list+ '<li>jQuery</li>\n';
+            // list=list +'</ul>';
+
+            list +='<ul>\n';
+            list+=' <li>Javascript</li>\n';
+            list+='<li>jQuery</li>\n';
+            list+='</ul>';
+
+            console.log('출력할 HTML : ',list); //모든 타입의 데이터를 출력
+
+            // html문서의 body태그에 list 가 가지는 문자열을 HTML 태그로 삽입
+
+            // 문서 객체 캐스팅 -> 태그를 자바스크립트의 객체로 만드는것
+            document.body.innerHTML = list;
+            document.body.innerHTML = document.body.innerHTML+list;
+
+            // 문서 객체를 캐스팅 -> html컨트롤
+
+        }
+    </script> -->
+
 </head>
 <body>
     <!-- <script>
@@ -57,9 +87,9 @@
 
     true => 1. false =>0
     alert('true > false : '+ (true> false));
- </script>  -->
+</script>  -->
 
-<script>
+<!-- <script>
     alert(true);
     alert(false);
 
@@ -77,5 +107,101 @@
 
     if(chk){
         alert('num의 값은 0보다 크고 100보다 작은 숫자다.');
+    }
+</script> -->
+
+
+<script>
+    // 자바스크립트의 변수
+    // 변수는 해당 값을 저장하는것이 아니라 값이 저장된 메모리의 주소값을 저장한다.
+
+    // 변수의 선언: var 키워드 사용
+    // var 키워드 식별자;
+    // 변수pi선언
+    // var pi; //변수 pi 생성 -> undefined 값이 초기화
+    // alert(pi); //undefined
+    // alert(pi+1); //NaN (Not a Number) 연산이안됨
+    // // 변수 pi에 값을 할당(대입)
+    // pi= 3.141592; //숫자타입의 값을 지정 -> 정수와 실수를 구분하지 않는다.
+    // alert(pi); //3.141592
+
+    // // 변수선언과 할당을 한번에 선언 
+    // var PI=3.14;
+    // alert(PI);
+
+</script>
+
+<script>
+    // 자바스크립트의 타입
+    // 1. 문자열: '',""
+    // 2. 숫자 : 정수,실수를 구분하지 않고 하나의 타입으로 처리, 8바이트 부동소숫점 형식
+    // 3. bool: true /false 논리값을 저장되
+    // 4. 함수 : 함수를 저장
+    // 5. 객체 : 객체를 저장
+    // 6, undefined : undefined 상태의 값을 저장
+
+    // var str = 'String!!!';
+    // var num= 100;
+    // var check= false;
+    // var printStr=function (){ alert('함수를 저장하는 변수로 호출')}; //익명
+    // var objectVar={}; //객체를 정의하는 간단한 방법. 
+    // var objectVar={ name:'SON', age:30, hello:function(){}}; //객체를 정의하는 간단한 방법. 
+    
+    // alert(str);
+    // alert(num);
+    // alert(check);
+    // alert(printStr);
+    // alert(objectVar);
+
+    // 함수호출
+    // printStr(); 
+    // 객체 참조
+    // alert(objectVar.name);
+    // alert(objectVar.age);
+    // objectVar.hello();
+
+    // 내장함수 객체 생성
+    // var now = new Date();
+    // alert(now);
+
+    // 객체 정의 : 속성 (객체가 가지는 변수) , 메소드 (객체가 가지는 기능(함수))
+    // var person={
+    //     name:'SON', 
+    //     age:30, 
+    //     hello:function(){
+    //     }
+    // };
+
+</script>
+
+<!-- 
+<script>
+    var value=10;
+    value +=20;
+    alert(value);
+
+    var value= 'JavaScript';
+    value= 'JavaScript~!';
+    alert(value); //이렇게 같은 변수 사용해도 문제없음
+
+
+</script> -->
+
+<script>
+
+    var func= function(){} //함수
+    var obj ={}; //객체
+
+    // 자료형의 확인(검사) :typeof
+    console.log('\'string\'의 type: ',typeof ('String')); //typeof 'String' 해도 된댜. 괄호 안해도됨
+    console.log('273의 type :', typeof(273));
+    console.log('true의 type :', typeof(true));
+    console.log('function의 type :', typeof(function(){}));
+    console.log('function의 type :', typeof(func));
+    console.log('object의 type :', typeof(obj));
+    console.log('정의되지 않은 변수 type :', typeof(value11));
+
+    if(typeof(273)=='number'){
+        alert('숫자 데이터 입니다.');
     }
 </script>
