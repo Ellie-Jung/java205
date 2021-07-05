@@ -228,26 +228,26 @@
 
 <script>
 
-    // 문자열과 다른 타입간의 덧셈 : 문자열 우선 연산
-    console.log(273+'22'); //숫자 + 문자열  ->27322 로 출력됨 ( 숫자가 문자로 형변환됨)
-    console.log('273'+22); //문자 + 숫자   ->동일 (문자+ 문자)
-    console.log('273'+'22'); //문자 + 문자   ->동일
-    console.log(273+22);   //숫자 +숫자
+    // // 문자열과 다른 타입간의 덧셈 : 문자열 우선 연산
+    // console.log(273+'22'); //숫자 + 문자열  ->27322 로 출력됨 ( 숫자가 문자로 형변환됨)
+    // console.log('273'+22); //문자 + 숫자   ->동일 (문자+ 문자)
+    // console.log('273'+'22'); //문자 + 문자   ->동일
+    // console.log(273+22);   //숫자 +숫자
 
-    //덧셈을 제외한 나머지 사칙연산의 경우 숫자 우선으로 연산
-    console.log('12*5');
-    console.log('12'*5); // 문자 * 숫자  => 숫자 * 숫자 로 처리됨
-    console.log(12*'5'); // 숫자 * 문자  => 숫자 * 숫자로 처리
-    console.log('12'*'5'); //문자 * 문자  => 숫자 * 숫자로 처리 !!!! 
+    // //덧셈을 제외한 나머지 사칙연산의 경우 숫자 우선으로 연산
+    // console.log('12*5');
+    // console.log('12'*5); // 문자 * 숫자  => 숫자 * 숫자 로 처리됨
+    // console.log(12*'5'); // 숫자 * 문자  => 숫자 * 숫자로 처리
+    // console.log('12'*'5'); //문자 * 문자  => 숫자 * 숫자로 처리 !!!! 
 
-    // var year= prompt("태어난 년도를 입력해주세요.");
-    // alert(2021-year +'살 입니다.');  //year 문자열을 숫자 타입으로 자동 형변환
-    var numberVal = Number(year); 
-    // Number() -> 숫자 타입으로 강제적인 형변환 (NaN나올수있음), 문자열이 숫자형식이 아닌경우 NaN반환
-    console.log('numberVal type : ', typeof numberVal);
-    console.log(numberVal);
-    console.log(numberVal +10);
-    console.log(isNaN(numberVal));
+    // // var year= prompt("태어난 년도를 입력해주세요.");
+    // // alert(2021-year +'살 입니다.');  //year 문자열을 숫자 타입으로 자동 형변환
+    // var numberVal = Number(year); 
+    // // Number() -> 숫자 타입으로 강제적인 형변환 (NaN나올수있음), 문자열이 숫자형식이 아닌경우 NaN반환
+    // console.log('numberVal type : ', typeof numberVal);
+    // console.log(numberVal);
+    // console.log(numberVal +10);
+    // console.log(isNaN(numberVal));
 
     // isNaN(숫자데이터) -> NaN일때 true값 반환
     // if(!isNaN(numberVal)){
