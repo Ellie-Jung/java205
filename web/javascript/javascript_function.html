@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Function</title>
+    <script>
+        // 함수 : 필요한 데이터를 받아 데이터를 처리하고, 결과를 반환하는 기능을 정한 코드의 집합
+        // function 키워드를 이용해서 정의
+        // 1. 익명함수 : 이름을 정의하지 않은 함수 -> 식별자(변수)를 통해서 정의할 때 사용
+        // 2. 명시적 선언함수 
+
+        // console.log('check', fn1);
+        // fn1(); //타입에러 ..  변수선언을 먼저하게됨. 변수가 초기화가 안되었기때문에 undefined 에러발생. 호출보다 변수 선언이 먼저되어야한다. 
+        //변수의 호이스팅 특징으로 변수는 미리 만들어진다. type에러 발생(Hoisting) 
+        //아예 없는 변수라면 레퍼런스 오류가 뜨게됨. 이경우에는 변수는 잇찌만 초기화안된상태.. 타입에러
+
+
+        // 1. 익명함수를 사용하는 예
+        var fn1 = function(){ //선언만 먼저해놓은상태..변수를.. 변수가 먼저 만들어짐. 이 전에 함수 호출시 변수에 값이 없기떄문에 오류발생
+            alert('익명함수 호출 !!!!');
+        }; //마지막에 세미콜론
+        var fn1= function(){
+            alert('재정의된 함수 호출');
+        };
+        //함수의 호출
+        // fn1(); //얘는 위에 실행시 오류남. 
+
+
+        // 함수의 호이스팅으로 함수는 미리 만들어져 저장되어있고, 함수의 선언보다 앞에서 호출이 가능하다.
+        // fn2(); //여기에서도 호출 가능
+        //2. 함수의 명시적 정의
+        function fn2(){ //함수 먼저 저장된다. 위에서도 쓸수있다. 어디서든 호출해서 사용가능. 실행하기전에 미리 만들어놓음 함수객체
+            alert('명시적 정의 함수 호출');
+        } //여기는 세미콜론 안찍
+        function fn2(){
+            alert('재정의된 명시적 함수 호출 !!');
+        }
+        //함수의 호출
+        // fn2(); //이 부분이 위로 올라가도 실행됨. 저장될때 함수객체로 먼저 저장됨 (실행전에)
+
+
+    </script>
+
+    <!-- <script>
+
+        // 매개변수, 반환값이 있는 함수 정의
+        // 매개변수 선언시에는 var 생략
+        function add(num1, num2){
+            return num1+num2;
+        }
+        alert(add(10,25)); //호출
+
+        var hello = function(name){
+            alert(name+'님 반갑습니다.');
+        }
+        hello('king'); //호출
+        hello('king', 10, 20); //호출시 매개변수 이렇게 넣어도 에러 발생하지않는다. 필요한 값만 하나 있으면.. 매개변수를 배열형태로 저장한다.
+
+
+    </script> -->
+
+    <!-- <script>
+        function sumAll(){
+            var sum=0;
+            for(var i=0; i< arguments.length ; i++){
+                sum += arguments[i];
+            }
+            return sum;
+        }
+
+        console.log('1~10 까지의 합 : ', sumAll(1,2,3,4,5,6,7,8,9,10));
+    </script> -->
+
+
+    <!-- <script>
+        // 함수에서 사용되는 return
+        // 1. 함수의 종료
+        // 2. 값을 반환 
+
+        function returnFunc(){
+            alert('AAA');
+            return; //함수의 종료
+            alert('BBB');
+        }
+        var value = returnFunc(); //AAA가 실행된다. return으로 함수의 종료
+        console.log(typeof value, value);
+        
+    </script> -->
+
+    <!-- <script>
+        // 콜백함수 -> 매개변수를 전달 받은 함수
+        // 매개변수로 전달받은 함수를 10번 실행하는 함수를 정의
+        function callTenTimes(callBackFn){
+            //데이터 처리 ...
+            for(var i = 0; i<10 ; i++){
+                callBackFn();
+            }
+        }
+
+        // function callBack(){
+        //     console.log('callBackFunction call');
+        // }
+        // 위와 아래 두가지방법으로 함수 생성 가능. (혼자서 만들때도 두개씩 여러번 만들어보자)
+        var callBack= function(){
+            console.log('callBackFunction call');
+        }
+
+        callTenTimes(callBack);
+
+    </script> -->
+
+    <!-- <script>
+        // 1초마다 시간을 출력
+        var id= setInterval(function(){
+            var html= '<h3>'+new Date()+'</h3>'
+            document.body.innerHTML = html;
+            // document.body.innerHTML = '<h3>'+new Date()+'</h3>'; 와 같다
+
+        },1000); //1초
+
+        //10초후에 인터벌 함수를 종료
+        setTimeout(function(){  //블록의 구조 먼저 잡아놓고 써넣는걸 습관화하자. 
+            clearInterval(id);
+        },10000); //10초  
+
+    </script> -->
+
+    <!-- <script>
+        //javascript 문자열을 생성
+        var jsStr = '';
+        jsStr += 'var num11 = 10;';
+        jsStr += 'alert(num11);';
+
+        //문지열을 자바 스크립트 코드로 실행
+        eval(jsStr);
+
+    </script> -->
+
+    <script>
+        var won = '1000원';
+        var dollar = '1.5$';
+        
+        console.log(Number(won)); //NaN나옴 ('원'때문에)
+        console.log(Number(dollar)); //NaN 나옴 ('$' 때문에 )
+
+        console.log(parseInt(won)); //원 뺴고 정상적으로 숫자만 변환
+        console.log(parseFloat(dollar)); // $빼고 정상적으로 숫자만 변환
+        console.log(parseInt(dollar)); // 정수 값만 가져온다.
+        
+        console.log(parseInt('0x273')); // 627출력. 16진수 표현
+        // console.log(parseInt('0273')); // 187출력. 8진수 표현 ->안됨.. 자동 형변환?
+        console.log(parseInt('273',8)); // 187출력 . 8진수 표현
+        console.log(parseInt('273',16)); // 627출력 . 16진수 표현
+        console.log(parseInt('101',2)); // 5출력. 2진수 표현
+        console.log(parseInt('1000',2)); //2진수 표현
+
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>
