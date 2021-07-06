@@ -106,7 +106,7 @@
 
     </script> -->
 
-    <script>
+    <!-- <script>
         //생성자 함수 : new 키워드로 객체를 생성해주는 함수
         //생성자 함수의 이름(식별자)는 대문자로 시작
         function Student(name,kor,eng,math){
@@ -153,7 +153,16 @@
         Student.prototype.getAvg=function(){
             return this.getSum()/3;
         }
-        Student.prototype.makeHtml=function(){
+        // Student.prototype.makeHtml=function(){
+        //     html = '';
+        //         html +='    <tr>';
+        //         html +='        <td>'+this.name+'</td>';
+        //         html +='        <td>'+this.getSum()+'</td>';
+        //         html +='        <td>'+this.getAvg()+'</td>';
+        //         html +='    </tr>';
+        //         return html;
+        // }
+        Student.prototype.toString=function(){ //위에꺼 대신 toString사용
             html = '';
                 html +='    <tr>';
                 html +='        <td>'+this.name+'</td>';
@@ -179,6 +188,10 @@
         students.push(new Student('III',80,47,90));
         students.push(new Student('JJJ',17,80,56));
 
+        students.sort(function(left,right){
+            return right.getSum()-left.getSum();
+        });
+
         var html='<table border="1">';
             html += '   <tr>';  
             html += '       <th>이름</th>';
@@ -187,7 +200,9 @@
             html += '   </tr>';
 
             for(var i = 0; i<students.length;i++) {
-                html += students[i].makeHtml();
+                // html += students[i].makeHtml();
+                html += students[i]; //toString 오버라이딩
+
             }
 
             html += '</table>';
@@ -197,9 +212,9 @@
                 document.body.innerHTML= html;
             }
 
-    </script>
+    </script> -->
 
-    <script>
+    <!-- <script>
         
         //생성자 함수에서 캡슐화 
         //변수들의 은닉 :변수에 직접 참조를 하지 못하도록 처리
@@ -227,6 +242,68 @@
         console.log('Rect(10,5) area : ', rec.getArea());
 
 
+
+    </script> -->
+
+
+    <!-- <script>
+
+        var num = 100;
+        var objNum = new Number(100);
+
+        console.log(typeof num, num);
+        console.log(typeof objNum, objNum);
+
+
+
+    </script> -->
+
+
+    <!-- <script>
+        //Number 객체
+        var number = 273.12345;
+        console.log(number);
+        console.log(typeof number);
+        var objNumber=new Number(number);
+        console.log(objNumber.toExponential()); //지수표현
+        console.log(objNumber.toFixed());//고정소숫점표시
+        console.log(objNumber.toPrecision());//표현할수있는 범위까지 표현
+
+    </script> -->
+
+    <!-- <script>
+        var str = 'hello~!!';
+        var objStr = new String('hello~!!');
+        
+        
+        console.log(typeof str, str);
+        console.log(typeof objStr, objStr);
+        console.log('str==objStr',str==objStr); //true
+        
+        var objStr = new String(str);
+
+        console.log(str.length);
+
+    </script> -->
+
+
+    <script>
+
+        var arr=[3,6,9,2,8,5];
+        
+        //sorting :정렬
+        arr.sort(function(left,right){
+            // return left-right;
+            return right-left; //내림차순
+
+        });
+
+        //높은 숫자 3개만 가지는 배열 생성
+        arr=arr.slice(0,3);
+
+        arr.forEach(function(element){
+            console.log(element);
+        })
 
     </script>
 
