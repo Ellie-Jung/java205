@@ -168,6 +168,7 @@
                 html +='        <td>'+this.name+'</td>';
                 html +='        <td>'+this.getSum()+'</td>';
                 html +='        <td>'+this.getAvg()+'</td>';
+                html +='        <td>'+Math.round(this.getAvg())+'</td>'; // 반올림
                 html +='    </tr>';
                 return html;
         }
@@ -191,6 +192,8 @@
         students.sort(function(left,right){
             return right.getSum()-left.getSum();
         });
+
+        students = students.slice(0,5); //상위 5명 
 
         var html='<table border="1">';
             html += '   <tr>';  

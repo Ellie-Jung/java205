@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- <script>
+
+         // 1초마다 시간을 출력
+         var id= setInterval(function(){
+            // var html= '<h3>'+new Date()+'</h3>'
+            // document.body.innerHTML = html;
+            // document.body.innerHTML = '<h3>'+new Date()+'</h3>'; 와 같다
+            alert('<p>'+ new Date()+ '</p>');
+
+        },1000); //1초
+
+        //10초후에 인터벌 함수를 종료
+        setTimeout(function(){  //블록의 구조 먼저 잡아놓고 써넣는걸 습관화하자. 
+            clearInterval(id);
+        },10000); //10초  
+    </script> -->
+<!-- 
+     <script>
+        //javascript 문자열을 생성
+        var jsStr = '';
+        jsStr += 'var num11 = 10;';
+        jsStr += 'alert(num11);';
+
+        //문지열을 자바 스크립트 코드로 실행
+        eval(jsStr);
+
+    </script> -->
+
+    
+    <script>
+       
+        var students = [];
+        //배열(객체)에 요소를 추가하는 메서드
+        students.push({name:'AAA', kor:90, eng:90, math:46});
+        students.push({name:'BBB', kor:60, eng:60, math:16});
+        students.push({name:'CCC', kor:70, eng:80, math:90});
+        students.push({name:'DDD', kor:80, eng:90, math:24});
+        students.push({name:'EEE', kor:40, eng:77, math:90});
+        students.push({name:'FFF', kor:60, eng:90, math:66});
+        students.push({name:'GGG', kor:96, eng:90, math:90});
+        students.push({name:'HHH', kor:24, eng:34, math:90});
+        students.push({name:'III', kor:60, eng:42, math:20});
+        students.push({name:'JJJ', kor:50, eng:88, math:90});
+
+        //각 요소 객체체에 메소드를 추가
+        //합을 구해서 반환하는 메서드
+        // 평균 값을 구해서 반환하는 메서드
+        for(var i in students){
+            students[i].getSum = function(){
+                return this.kor +this.eng+this.math;
+            };
+
+            students[i].getAverage = function(){
+                return this.getSum()/3;
+            };
+        }
+
+        
+        // for( var i=0; i<students.length;i++){
+        //     //합을 구하는 메서드
+        //     students[i].getSum = function(){
+        //         return this.kor + this.eng + this.math;
+        //     }
+        //     //평균 값을 구하는 메서드
+        //     students[i].getAvg = function(){
+        //         return this.getSum()/3;
+        //     }
+        //     //데이터 출력 메서드
+        //     students[i].print= function(){
+        //         return this.name + ' : ' + this.getSum() + ' : ' + this.getAvg();
+        //     }
+        // }
+    
+        var output = '이름\t총점\t평균\n';
+        for( var i in students){
+            with (studnets[i]){
+                output +=name+'\t'+getSum()+'\t' + getAverage()+'\n';
+            }
+        }
+        alert(output);
+
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>
