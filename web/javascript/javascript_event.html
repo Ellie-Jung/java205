@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Event</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        h1{
+            background-color: cadetblue; 
+        }
+        h2{
+            background-color: cornflowerblue;
+        }
+    </style>
+    <script>
+
+        window.onload = function(){
+            //이벤트 적용 : 캐스팅 -> 이벤트 속성에 핸들러를 할당
+            //h1 태그를 캐스팅
+            var header = document.getElementById('btn');
+            //이벤트 속성에 핸들러 할당
+            header.onclick=function(){
+                alert('h1 태그에 마우스 클릭!!!');
+
+                //이벤트 제거
+                header.onclick=null;
+            };
+           // header.addEventListener //타입을 지정해주고 처리할수 있는 리스너 추가..?
+        
+        
+            document.getElementById('btn1').onclick = function(){
+                // document.getElementById('btn1').style.backgroundColor='black';
+                // document.getElementById('btn1').style.color='white';
+                
+                //this -> 이벤트가 발생한 객체를 가르킨다.
+                this.style.backgroundColor='black';
+                this.style.color='white';
+            }
+
+
+
+            // 버튼 A와 버튼 B를 클릭할 때 클릭 횟수를 화면에서 출력
+            //버튼과 출력 영역을 캐스팅
+            var btnA = document.getElementById('btnA');
+            var btnB = document.getElementById('btnB');
+            var cntA= document.getElementById('cntA');
+            var cntB= document.getElementById('cntB');
+
+            //버튼의 클릭이벤트 연결
+            btnA.onclick= function(){
+                //카운트를 증가시키고 화면을 갱신
+                var cnt = Number(cntA.innerText) +1;  // innerHTML 해도 된다. 상황에 따라 맞는걸로..//문자열에 숫자더해주면 문자열우선. ->숫자타입으로 바꿔주기 ( Number함수이용)
+                cntA.innerText=cnt;
+
+            }
+            //위와 동일하게 처리가능
+            btnB.onclick= function(){
+            
+                cntB.innerText= Number(cntB.innerText) +1;
+
+                //이벤트 강제발생
+                btnA.onclick(); //버튼 B를 눌러도 A가 같이 증가하게된다.
+            }
+
+
+            //form 태그 캐스팅
+            var form=document.getElementById('myForm');
+            form.onsubmit=function(){
+                console.log('submit 이벤트');
+
+                var id= document.getElementById('ID').value;
+                console.log(typeof id,id);
+                if(id.length<1){
+                    alert('아이디를 입력해주세요');
+                    return false;
+                }
+
+                // return false; // 서밋이 실행되지 않도록  네이버로 가지않고 콘솔에 위에꺼출력..
+            }
+
+
+
+            ////이벤트 버블링
+            var p1= document.getElementById('p1');
+            p1.onclick= function(e){  //이벤트 e를 하나 받자.
+                var event = e || window.event;  //e가 false라면 (null이라면)  뒤 실행
+
+                alert('P Click');
+
+                //IE일때
+                event.cancelBubble = true;
+                //IE  이외의 브라우저 일때
+                if(event.stopPropagation){ //버블링을 막아준다.
+                    event.stopPropagation();
+                }
+
+
+            }
+
+
+
+
+        };
+
+        function mClick(){
+            alert('클릭했어요');
+        }
+
+    </script>
+
+</head>
+<body>
+
+    <!-- 이벤트 버블링 -->
+    <div  style="border: 1px solid black;"onclick="alert('DIV1')">
+        <div style="border: 1px solid green;" onclick="alert('DIV2')">
+            <h2  style="border: 1px solid red;" onclick="alert('H1')">
+                <!-- <p id="p1" style="border: 1px solid blue; width:50%;" onclick="alert('P')">클릭하세요</p> -->
+                <p id="p1" style="border: 1px solid blue; width:50%; background-color:greenyellow ;">클릭하세요</p>
+            </h2>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+        <!-- ?userID=cool&userPW=1234  => url에 이렇게 전송됨 (get방식) -->
+    <!-- <form id="myForm" action="http://www.naver.com" method="GET"> --> <!--GET 방식-->
+    <form id="myForm" action="http://www.naver.com" method="POST">   <!--POST방식. url에 안보이고 바디통해 정보전송함-->
+
+        id <input type="text" id="ID" name="userID"><br>
+        pw <input type="password" id="password" name="userPW"><br>
+        <input type="submit" value="로그인">
+    </form>
+
+
+
+    
+    <button id="btnA">ButtonA</button>
+    <input id="btnB" type="button" value="ButtonB">
+    <!-- <input type="submit" value="ButtonC"> 홈에서 전송해버리는거.. 나중에 사용할때 주의하자 -->
+
+    <h3>Button A- <span id="cntA">0</span></h3>
+    <h3>Button B- <span id="cntB">0</span></h3>
+
+
+
+    <h1 id='btn'>Click</h1>
+
+    <h2 onclick="alert('인라인방식의 이벤트 적용')">클릭!!!!</h2>
+    <h2 onclick="mClick();">클릭2!!!!</h2>  <!--이렇게 함수이용해서도 처리가능-->
+
+
+    <h1 id='btn1'>클릭하세용</h1>
+
+
+</body>
+</html>
