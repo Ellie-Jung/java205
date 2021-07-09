@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+    <style>
+        
+        #menu{
+            list-style: none;
+            overflow:hidden;
+        }
+        .floatLeft{
+            float: left;
+        }
+
+        h1{
+            color:darkcyan;
+        }
+
+        
+
+    </style>
+    <script>
+
+        $(document).ready(function(){
+            //버튼 캐스팅 -> 이벤트 연결
+            $('#btn01').click(function(){
+                $('#menu>li').addClass('floatLeft');
+            });
+
+            $('#btn02').click(function(){
+                $('#menu>li').removeClass('floatLeft');
+            });
+
+            //속성의 값을 반환하는 메서드
+            var srcPath= $('.img').attr('src');
+            console.log('이미지 경로', srcPath);
+
+            //속성의 값을 정의
+            // $('.img').attr('width',200); //모든 이미지에 같은 속성 적용됨
+            // $('.img').attr('width',function(index){ //이미지마다 다른 속성 적용할수있다.
+            //     return (index+1)*100;
+            // });
+            $('img').attr({ //이렇게도 가넝한 
+                width : 100,
+                // height: 200
+                height: function(index){ //이렇게도 가넝한~
+                    return (1+index)*100;
+                }
+            });
+
+            $('img').removeAttr('height'); //폭에 따른 비율 맞춰서 이미지 나오게. 하이속성 사라짐
+
+
+            //태그의 css 속성값 확인
+            console.log($('h1.title').css('color'));
+
+            //css 적용
+            // $('h1').css('background', 'pink');
+            var colors = ['black', 'orange','yellow'];
+            // $('h1').css('background', function(index){
+            //     return colors[index];
+            // });
+            $('h1').css({
+                color:'green',
+                backgroundColor:function(index){
+                    return colors[index];
+                }
+            });
+
+
+            var strHtml=$('h1').html(); //여러개의 배열중 처음에 하나의 요소 가져온다.
+            console.log('html() :',strHtml);
+
+            console.log($('#menu').html());
+            console.log($('#menu').text());
+
+
+            $('div').html(function(index,html){
+                console.log(index,html); //현재 가지고 있는 html을 받아올수 있다. get
+                $(this).html(html+'!!!!!'); //set 해줌 
+                $(this).html('<h1>'+html+'!!!!! </h1>'); //set 해줌 . 원래있던 h1태그에
+            });
+
+
+            // 메뉴삭제 ul아예 삭제함
+            $('#btn03').click(function(){
+                $('#menu').remove();
+            });
+            // ul은 남겨두고 내용만 삭제한다
+            $('#btn04').click(function(){
+                $('#menu').empty();
+            });
+
+        });
+
+    </script>
+
+
+</head>
+
+<body>
+
+    <div>DIV - 0</div>
+    <div>DIV - 0</div>
+    <div>DIV - 0</div>
+    
+    <h1 class="title">header -0</h1>
+    <h1>header -1</h1>
+    <h1>header -2</h1>
+
+
+    <img class="img" src="../images/심슨1.jpg" >
+    <img class="img" src="../images/심슨1.jpg" >
+    <img class="img" src="../images/심슨1.jpg" >
+
+    <ul id="menu">
+        <li>menu-1</li>
+        <li>menu-2</li>
+        <li>menu-3</li>
+        <li>menu-4</li>
+        <li>menu-5</li>
+    </ul>
+    <button id="btn01">변경</button>
+    <button id="btn02">초기화</button>
+    <button id="btn03">메뉴삭제</button>
+    <button id="btn04">내용삭제</button>
+</body>
+</html>
