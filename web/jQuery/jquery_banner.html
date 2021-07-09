@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+        div>img{
+            width: 200px;
+            height: 250px;
+        }
+        #banner{
+            width:200px;
+            border:10px solid #aaa;
+            height: 250px;
+
+            overflow: hidden;
+        }
+    </style>
+    <script>
+
+        $(document).ready(function(){
+
+            setInterval(function(){
+                $('#banner>img').first().appendTo('#banner');
+    
+            },6000);
+
+        })
+
+
+    </script>
+</head>
+<body>
+    
+
+    <div id="banner">
+        <img src="../슈렉1.jpg" >
+        <img src="../미니1.jpg">
+        <img src="../images/심슨1.jpg" >
+        <img src="../images/금강산.png" >
+    </div>
+</body>
+</html>
