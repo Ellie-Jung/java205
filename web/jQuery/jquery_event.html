@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+/* 1,2 */
+        h1{
+            border : 1px solid #aaa;
+        }
+        h1:hover{
+            cursor: pointer;  /*마우스 커서 손가락모양으로 바꾸기*/
+        }
+
+        .reverse{
+            background-color: cadetblue;
+            color: white;
+        }
+/* 3 */
+        div{
+            border: 3px solid #aaa;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+
+
+    </style>
+    <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+
+        //1
+            //h1 태그를 캐스팅  -> click 이벤트를 연결
+            $('h1').on('click',function(){
+                
+                //this -> 이벤트가 발생한 엘리먼트 객체를 가르킨다.
+                $(this).html(function(index,html){ 
+                    return html+'+';    //h1클릭할때마다 옆에 문자 +가  추가된다.
+            
+                });
+
+            });
+
+            $('h1').on({
+                // click: function(){}, //위에 클릭 없다면 이렇게 처리 가능
+                mouseenter: function(){ //마우스가 해당 영역에 들어갔을때 reverse 클래스 실행 (css실행)
+                    $(this).addClass('reverse');
+                },
+                mouseleave: function(){ //마우스가 해당 영역 빠져나갔을때  reverse클래스 제거
+                    $(this).removeClass('reverse');
+                }
+            });
+
+
+        //2
+            // .hover()  -> mouseenter, mouseleave 한번에 처리해주는 메서드  
+            //$(selector).hover(function(event){},function(event){});
+            $('h2').hover(function(){
+                $(this).addClass('reverse');
+            },function(){
+                $(this).removeClass('reverse');
+
+                //이벤트의 삭제
+                // $(this).off(); // 이벤트 제거 . 한번 커서가 나갔다가 들어가면 이벤트 없어짐 적용안됨
+                $(this).off('mouseleave'); //마우스리브가 삭제되서 커서 나갓따가 다시 들어가고 나가면 마우스엔터상태가 유지된다.
+            });
+
+            
+
+        //3
+            // $('div').click(function(){
+            //     //이벤트가 발생한 div -> this
+            //     //$('h3',this)  -> 이벤트가 발생한 div안에 위치한 h3을 선택
+            //     var h3=$('h3',this).text();
+            //     var p =$('p',this).text();
+                
+            //     alert(h3+'\n'+p);
+            // });
+
+        //4 이벤트 객체
+            $('div').click(function(e){
+                //이벤트가 발생한 div -> this
+                //$('h3',this)  -> 이벤트가 발생한 div안에 위치한 h3을 선택
+                var h3=$('h3',this).text();
+                var p =$('p',this).text();
+                
+                alert(h3+'\n'+p);
+
+                console.log(e);
+            });
+
+
+        //5 
+            // setInterval(function(){ //맨밑에꺼 1초에한번씩 +추가됨
+            //     $('h1').last().trigger('click');
+            // },1000);
+
+
+        //6 다시한번확인.. 에러 
+            $('a').click(function(e){
+                alert('a tag click');
+                
+                var e = e || window.event; // e가 false일때 뒤에 실행
+
+                //이벤트 버블링 제거
+                if(e.stopPropagation){
+                    e.stopPropagation();
+                }
+            
+                //기본 이벤트 제거 
+                e.preventDefault();
+
+            });
+
+
+        });
+
+    </script>
+
+
+</head>
+
+<body>
+
+
+    <div>
+        <h1><a>click </a> </h1>
+    </div>
+
+
+<!-- 3 -->
+    <div>
+        <h3>header-1</h3>
+        <p>paragraph1</p>
+        <input type="hidden" value="1">  <!--이런식으로 활용해서 사용가능하다.-->
+    </div>
+    <div>
+        <h3>header-2</h3>
+        <p>paragraph2</p>
+    </div>
+    <div>
+        <h3>header-3</h3>
+        <p>paragraph3</p>
+    </div>
+
+
+<!-- 2 -->
+    <h2>header2-0</h2>
+    <h2>header2-1</h2>
+    <h2>header2-2</h2>
+
+<!-- 1 -->
+    <h1>header-0</h1>
+    <h1>header-1</h1>
+    <h1>header-2</h1>
+
+</body>
+</html>
