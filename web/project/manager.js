@@ -97,7 +97,7 @@ window.onload = function () {
         }
 
         // 사용자 이름 정보
-        if (name.value.trim() < 1) {
+        if (name.value.trim().length < 1) {
             //alert('이름을 입력해주세요.');
             document.querySelector('#userName+div.msg').innerHTML = '필수항목입니다.'; //캐스팅
             document.querySelector('#userName+div.msg').style.display = 'block';
