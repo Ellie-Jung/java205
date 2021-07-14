@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="projectCss.css">
+
+
+</head>
+<body>
+    
+    <header class="border_bottom">
+        <h1 class="title_font">Member Manager</h1>
+    </header>
+    <div id = main_warp >
+        <div class="border_bottom">
+            <h2>회원 등록 졍보</h2>
+            <form id= "regForm" >
+            <table>
+                <tr>
+                    <td><label for="userID">아이디</label>
+                        <input type="text"  id="userID" placeholder="아이디를 입력해주세요">
+                        <div class="msg"></div>
+                    </td>
+                    <td><label for="userID">비밀번호</label>
+                        <input type="text"  id="pw" placeholder="비밀번호를 입력해주세요">
+                        <div class="msg"></div>
+                    </td>
+                    <td><label for="userID">비밀번호확인</label>
+                        <input type="text"  id="repw" placeholder="다시한번 입력해주세요">
+                        <div class="msg"></div>
+                    </td>
+                    <td><label for="userID">이름</label>
+                        <input type="text"  id="userName" placeholder="이름을 입력해주세요">
+                        <div class="msg"></div>
+                    </td>
+                    <td>
+                        <input type="submit" value="등록">
+                    </td>
+                </tr>
+            </table>
+            </form>
+
+        </div>
+        <div id="listArea" class="border_bottom" >
+            <h2>회원 리스트</h2>
+            <table>
+                <tr>
+                    <th>순번(index)</th>
+                    <th>아이디</th>
+                    <th>비밀번호</th>
+                    <th>이름</th>
+                    <th>관리</th>
+                </tr>
+            </table>
+        </div>
+
+
+    </div>
+
+</body>
+</html>
