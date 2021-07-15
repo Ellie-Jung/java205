@@ -22,8 +22,110 @@ header {
 .border_bottom {
   border-bottom: 1px solid #aaa;
 }
+
+/* 회원 가입 폼 영역 */
+
+#regFormArea {
+  padding: 20px 40px;
+  font-size: 1.2em;
+}
+form label {
+  display: block;
+  margin: 5px;
+}
 #regForm {
+  margin: 10px;
+}
+#regForm > table td {
+  width: 150px;
+  padding: 10px;
 }
 
-#listArea {
+#regForm input[type="text"],
+#regForm input[type="password"] {
+  height: 30px;
+  width: 200px;
+  font-size: 1em;
+  padding: 0 5px;
+  border-radius: 10px;
 }
+#regForm input[type="submit"] {
+  height: 55px;
+  width: 200px;
+  font-size: 1.2em;
+  margin-top: 10px;
+  background-color: darkseagreen;
+  border-radius: 10px;
+  font-family: "Do Hyeon", sans-serif;
+}
+
+div.msg {
+  color: red;
+  display: none;
+}
+
+/* 회원리스트 영역 */
+#listArea {
+  padding: 20px 40px;
+  font-size: 1.2em;
+}
+#listArea> table {
+  margin: 10px 0;
+  width: 600px;
+  font-size: 1.1em;
+  border-collapse: collapse;
+}
+
+#listArea > table td,
+#listArea > table th {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #aaa;
+}
+
+/* 회원정보 수정영역 */
+#editArea {
+  width: 350px;
+  background-color: rgb(178, 204, 178);
+  border: 1px solid #aaa;
+  border-radius: 10px;
+  padding: 20px;
+
+  position: absolute;
+  left: 50%;
+  top: 100px;
+  margin-left: -175px;
+  display: none;
+}
+
+#div_header {
+  overflow: hidden;
+  padding-bottom: 10px;
+}
+
+#div_header > h2 {
+  float: left;
+}
+#div_header > div {
+  float: right;
+}
+#editArea > table {
+  width: 100%;
+  margin-top: 15px;
+}
+#editForm > table td {
+  
+  padding: 5px 10px;
+  text-align: center;
+}
+#editArea input[type="submit"] {
+  height: 55px;
+  width: 150px;
+  font-size: 1.2em;
+  margin-top: 20px;
+  margin-left: 30%;
+  background-color: white;
+  border-radius: 10px;
+  font-family: "Do Hyeon", sans-serif;
+}
+#editArea

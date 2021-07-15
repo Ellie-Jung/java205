@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="projectCss.css">
+    <script src = "projectJs.js"></script>
 
 
 </head>
@@ -15,8 +16,8 @@
         <h1 class="title_font">Member Manager</h1>
     </header>
     <div id = main_warp >
-        <div class="border_bottom">
-            <h2>회원 등록 졍보</h2>
+        <div id= "regFormArea" class="border_bottom">
+            <h2>회원 등록 정보</h2>
             <form id= "regForm" >
             <table>
                 <tr>
@@ -24,15 +25,15 @@
                         <input type="text"  id="userID" placeholder="아이디를 입력해주세요">
                         <div class="msg"></div>
                     </td>
-                    <td><label for="userID">비밀번호</label>
+                    <td><label for="pw">비밀번호</label>
                         <input type="text"  id="pw" placeholder="비밀번호를 입력해주세요">
                         <div class="msg"></div>
                     </td>
-                    <td><label for="userID">비밀번호확인</label>
+                    <td><label for="repw">비밀번호확인</label>
                         <input type="text"  id="repw" placeholder="다시한번 입력해주세요">
                         <div class="msg"></div>
                     </td>
-                    <td><label for="userID">이름</label>
+                    <td><label for="userName">이름</label>
                         <input type="text"  id="userName" placeholder="이름을 입력해주세요">
                         <div class="msg"></div>
                     </td>
@@ -47,14 +48,52 @@
         <div id="listArea" class="border_bottom" >
             <h2>회원 리스트</h2>
             <table>
-                <tr>
-                    <th>순번(index)</th>
-                    <th>아이디</th>
-                    <th>비밀번호</th>
-                    <th>이름</th>
-                    <th>관리</th>
-                </tr>
+                <tbody id = "list">
+                    <tr>
+                        <th>순번(index)</th>
+                        <th>아이디</th>
+                        <th>비밀번호</th>
+                        <th>이름</th>
+                        <th>관리</th>
+                    </tr>
+            </tbody>
             </table>
+        </div>
+        <div id="editArea" >
+            <div id="div_header" class="border_bottom">
+                <h2>회원 정보 수정</h2>
+                <div><a href="">닫기</a></div>
+            </div>
+            <form id="editForm">
+
+                <table>
+                    <tr>
+                        <td>아이디</td>
+                        <td><input type="text" id="editId" disabled>
+                            <input type="hidden" id="index">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>비밀번호</td>
+                        <td><input type="password" id="editPw" required></td>
+                    </tr>
+                    <tr>
+                        <td>비밀번호확인</td>
+                        <td><input type="password" id="editRePw" required></td>
+                    </tr>
+                    <tr>
+                        <td>이름</td>
+                        <td><input type="text" id="editName" required></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" value="수정">
+                        </td>
+                    </tr>
+                </table>
+
+
+            </form>
         </div>
 
 
