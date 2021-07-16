@@ -2,4 +2,4 @@
     pageEncoding="UTF-8"%>
   <footer>
             비트캠프 205기
-        </footer>
+  </footer>
