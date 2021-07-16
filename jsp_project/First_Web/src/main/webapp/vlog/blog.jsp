@@ -7,8 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Blog</title>
-    <link rel="stylesheet" href="css/Myblog.css">
-    
+    <!-- http://localhost:8080/First_Web/vlog/css/Myblog.css 절대경로넣어줌(포트뒤쪽으로오는경로) -->
+    <link rel="stylesheet" href="First_Web/vlog/css/Myblog.css">
+  
 </head>
 <body>
     
