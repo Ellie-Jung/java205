@@ -1,0 +1,198 @@
+@charset "utf-8";
+@import url("https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Gothic:wght@700&family=Sunflower:wght@500&display=swap");
+
+/* 나눔고딕, 주아, 선플라워 한글폰트 */
+/* font-family: 'Jua', sans-serif;
+font-family: 'Nanum Gothic', sans-serif;
+font-family: 'Sunflower', sans-serif; */
+
+* {
+  /*브라우져마다 값이 다르기때문에 기본적으로 초기화한다.*/
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+table,
+input,
+header,
+nav,
+aside,
+section,
+article,
+p {
+  font-size: 16px;
+  font-family: "돋움체", Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: blanchedalmond;
+}
+
+/* 전체 요소를 감싸는 블록 */
+#main_wrap {
+  width: 776px; /* -10 -10패딩 -1 -1 보더 -2 그림자  :총 800px */
+  background-color: white;
+  border: 1px solid #aaa;
+  border-radius: 5px; /*테두리 약간 둥글게 만들기*/
+  margin: 10px auto; /* 브라우져 크거나 작게해도 일정한 간격 유지한다.*/
+  box-shadow: 2px 2px 3px #ddd; /*전체 네모에 그림자넣기 오른쪽/밑/퍼지는정도*/
+  padding: 10px;
+}
+
+/* 헤더영역 */
+header {
+  padding: 20px;
+}
+
+/* 헤더의 자손 h1 설정 */
+header > h1 {
+  font-size: 2em;
+}
+/* 헤더끝 */
+
+/* 네비게이션 영역 */
+nav {
+  border-top: 1px solid #aaa; /*영역 위에 구분선 긋기*/
+  overflow: hidden; /* 넘치는 부분 안보이게처리*/
+  height: 35px; /*높이를 설정한다.*/
+}
+
+/* 큰 부분 두개 왼쪽 오른쪽으로 나열하기 */
+nav > ul {
+  /*큰 목록*/
+  float: left; /*큰 항목 왼쪽으로 붙이기*/
+  list-style: none; /*리스트 앞에 버튼 없애기*/
+}
+nav > div {
+  float: right;
+}
+/* 작은 항목들 일자로 나열하기 */
+nav > ul > li {
+  float: left;
+  /* padding: 0 20px; 0(상하)하고 20픽셀(좌우)씩 떨어트린다. 여기줬을때 a영역잡을때 영역이 패딩제외 작게 나타남*/
+  height: 35px;
+  line-height: 35px; /*글씨가 높이 중간에 오도록 처리*/
+}
+nav > ul > li > a {
+  display: block; /*100프로 폭을 가짐. 클릭영역많아짐*/
+  background-color: orange; /*영역확인. 패딩때문에 영역작음*/
+  padding: 0 20px; /*여기에 패딩값을 주면 영역선택할수있따. li에 패딩값주면 패딩영역제외하고 선택가능해짐*/
+}
+nav > ul > li > a:hover {
+  background-color: khaki;
+}
+
+/*  input 검색부분 만들기 */
+nav > div > input[type="text"] {
+  height: 24px;
+  margin-top: 5px;
+  border-radius: 11px 0 0 11px;
+  padding: 0 5px; /*좌우 패딩만 준다*/
+  border: 1px solid #aaa;
+}
+nav > div > input[type="submit"] {
+  border: 1px solid #aaa;
+  height: 26px;
+  margin-top: 5px;
+  margin-left: -9px;
+  margin-right: 5px;
+  border-radius: 0 13px 13px 0;
+  padding: 0 15px; /*좌우 패딩만 준다*/
+}
+/* 네비게이션 끝 */
+
+/* 컨텐츠영역 */
+/* 먼저 섹션은 왼쪽으로 aside는 오른쪽으로 보내기 */
+#content_wrap {
+  overflow: hidden;
+  margin-top: 20px; /*nav와 컨텐츠 영역의 간격띄우기.*/
+}
+/* 폭: 전체776이였음.770잡고 section 600잡고 aside170잡아라. 중간에 6픽셀정도 버리기 */
+section {
+  float: left;
+  width: 600px; /* 시이즈각각지정하기 */
+}
+
+/* aside 영역 */
+aside {
+  float: right;
+  width: 150px; /* 시이즈각각지정하기 */
+}
+
+aside > h3 {
+  font-size: 1em;
+  margin-top: 20px;
+}
+aside > ul {
+  list-style: none; /*리스트의 점 없애기*/
+}
+aside > ul > li {
+  padding-left: 15px;
+  line-height: 180%; /*라인의 간격*/
+}
+a {
+  /*a태그에 밑줄 없애고 기본밑줄없애기 */
+  color: #333;
+  text-decoration: none;
+}
+a:hover {
+  /*a태그영역에 마우스대면 나타남*/
+  color: hotpink;
+  text-decoration: underline;
+}
+/*컨텐츠 영역 끝 */
+
+/* footer영역 */
+footer {
+  color: blue;
+  height: 30px;
+  line-height: 30px; /*수직방향 중간에*/
+  text-align: center; /*수평방향 중간에*/
+}
+/* footer영역 끝*/
+
+/* 중복된코드줄이기. 공통으로 사용할 클래스 만들기 */
+.font_jua {
+  font-family: "Jua", sans-serif; /*폰트 설정하기*/
+  font-weight: 400; /*폰트 두께 얇게 설정*/
+}
+
+/* 라인 만드는부분 클래스로 묶기 */
+.border_bottom_a {
+  border-bottom: 1px solid #aaa; /*영역 아래에 구분선 긋기*/
+}
+
+.margin_bottom_20 {
+  margin-bottom: 20px;
+}
+
+/* 클래스만들기 */
+.title {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 5px 0;
+  font-family: "Sunflower", sans-serif;
+}
+.date {
+  font-weight: 600;
+  font-style: italic;
+}
+.post_img {
+  margin: 10px 5px; /*상하 좌우*/
+  border: 0;
+}
+
+.postcontent {
+  font-family: "Nanum Gothic", sans-serif;
+  line-height: 180%; /*텍스트 라인높이*/
+  margin-bottom: 15px;
+}

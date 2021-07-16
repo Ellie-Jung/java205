@@ -9,7 +9,11 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  <!-- 서블릿 등록 -->
+  
+  
+</web-app>
+
+<!-- 서블릿 등록 -->
 <!-- <servlet>
 <servlet-name>nowServlet</servlet-name>
 <servlet-calss>firstweb.NowServlet</servlet-calss>
@@ -21,5 +25,3 @@
 <url-pattern>/now</url-pattern>
 </servlet-mapping> -->
   
-  
-</web-app>

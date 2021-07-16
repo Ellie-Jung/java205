@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+    <style>
+        /* 전체부분설정 */
+        *{
+            margin:0;
+            padding:0px;
+            font-family: 'Nanum Gothic', sans-serif;
+
+        }
+        body{
+            background-color: rgb(245, 222, 222);
+        }
+        /* 메인랩설정 */
+        #main_wrap{
+            background-color: #fff;
+            width:800px;
+            height: auto;
+            overflow:hidden;
+            border:1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin:0px auto;
+        }
+
+        /* 헤더설정 */
+        header{
+            padding: 20px;
+            width:798px;
+        }
+        
+        /* 네이게이션설정 */
+        nav{
+            width:798px;
+            /* height: auto; */
+            overflow:hidden;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+        }
+        nav ul{
+            margin:5px;
+        }
+        nav li{
+            width: auto;
+            list-style: none;
+            float:left;
+            padding: 10px;
+
+        }
+        #search_text{
+            float: right;
+            margin-top: 5px;
+        }
+        
+        #search_text input[type=text]{
+            border-radius: 10px 0 0 10px;
+            border-color: #ddd;
+            margin:-5px;
+        }
+        #search_text input[type=button]{
+            border-radius: 0 10px 10px 0;
+            background-color: #ddd;
+            
+        }
+
+        /* 섹션 설정 */
+        section{
+            width:598px;
+            float:left;
+        }
+        
+        /* 아티클설정 */
+        article{
+            border-bottom: 1px solid #ddd;
+            padding:20px;
+        }
+        article> h1{
+            font-size: 32px;
+        }
+        .cont_margin{
+            margin:10px;
+        }
+        p{
+            line-height: 180%; /*줄간격*/
+        }
+    
+        /* aside설정 */
+        aside{
+            height: 200px;
+            float:left;
+            padding: 20px;
+            
+        }
+        aside>h4{
+            text-align: center;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+        aside>ul{
+            list-style: none;
+            /* padding:20px; */
+            font-display: center;
+        }
+        aside>ul>li{
+            padding-left: 5px;
+            line-height: 180%;
+            
+        }
+        a{
+            text-decoration: none;
+            color:black;
+        }
+        
+        /* 푸터설정 */
+        footer{
+            width: 798px;
+            height: 50px;
+            line-height: 50px;
+            clear:both;
+            color:blue;
+            margin-left: 10px;
+        }
+        
+    </style>
+   
+</head>
+
+
+
+
+<body>
+    <!--전체 감싸는 블록-->
+    <div id="main_wrap">
+
+        <!--헤더-->
+        <header>
+            <h1>HTML5 Example Preview</h1>
+            <h4 >bitcamp</h4>
+        </header>
+        
+        <!--네비게이션-->
+        <nav>
+            <ul>
+                <li><a href="#">HTML5</a></li>
+                <li><a href="#">CSS3</a></li>
+                <li><a href="#">JavaScript</a></li>
+            </ul>
+            <form id="search_text">
+                <input type="text">
+                <input type="button" value="검색">
+            </form>
+        </nav>
+
+        <!--컨텐츠-->
+        <div>
+            <section>
+                <article>
+                    <h1 class="cont_margin">HTML5</h1>
+                    <h5 class="cont_margin">2021.07.01</h5>
+                    <img  class="cont_margin" src="../images/html.jpg" width="500" />
+                    <p>웹 문서를 제작하는 데 쓰이는 기본 프로그래밍 언어 HTML(hypertext markup language)의 최신규격으로, 웹페이지를 구성하는 데 있어 지배적인 역할을 하는 마크업 언어(markup language)이다. 별도 설치 없이 웹브라우저 상에서 다양한 멀티미디어 콘텐츠와 앱 등을 바로 제공할 수 있다.</p>
+                    <p>HTML 5는 별도 프로그램을 깔지 않아도 인터넷 브라우저상에서 화려한 그래픽 효과를 구현하며, 음악ㆍ동영상을 자유롭게 감상할 수 있는 마크업 언어(markup language)이다.</p>
+                </article>
+                <article>
+                    <h1 class="cont_margin">CSS</h1>
+                    <h5 class="cont_margin">2021.07.01</h5>
+                    <img class="cont_margin" src="../images/css.png" width="500" />
+                    <p>종속형 시트 또는 캐스케이딩 스타일 시트(Cascading Style Sheets, CSS)는 마크업 언어가 실제 표시되는 방법을 기술하는 언어로[1], HTML과 XHTML에 주로 쓰이며, XML에서도 사용할 수 있다. W3C의 표준이며, 레이아웃과 스타일을 정의할 때의 자유도가 높다.</p>
+    
+                    <p>마크업 언어(ex: HTML)가 웹사이트의 몸체를 담당한다면 CSS는 옷과 액세서리처럼 꾸미는 역할을 담당한다고 할 수 있다. 즉, HTML 구조는 그대로 두고 CSS 파일만 변경해도 전혀 다른 웹사이트처럼 꾸밀 수 있다.</p>
+                </article>
+            </section>
+            <aside>
+                <h4>카테고리</h4>
+                    <ul>
+                        <li><a href="#">데이터</a></li>
+                        <li><a href="#">데이터</a></li>
+                        <li><a href="#">데이터</a></li>
+                        <li><a href="#">데이터</a></li>
+                        <li><a href="#">데이터</a></li>
+                    </ul>
+                    <h4>최근글</h4>
+                    <ul>
+                        <li><a href="#">데이터</a></li>
+                        <li><a href="#">데이터</a></li>
+                        <li><a href="#">데이터</a></li>
+                        <li><a href="#">데이터</a></li>
+                        <li><a href="#">데이터</a></li>
+                    </ul>
+            </aside>
+        </div>
+
+    <!--푸터-->
+        <footer>
+            Create By SY
+        </footer>
+    </div>
+</body>
+</html>
