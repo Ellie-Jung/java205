@@ -11,8 +11,7 @@
   </welcome-file-list>
   
   
-</web-app>
-
+  
 <!-- 서블릿 등록 -->
 <!-- <servlet>
 <servlet-name>nowServlet</servlet-name>
@@ -25,3 +24,23 @@
 <url-pattern>/now</url-pattern>
 </servlet-mapping> -->
   
+  
+  
+ <!--  에러 페이지 등록 -->
+<!-- http 상태 코드로 등록 -->
+<error-page>
+	<error-code>404</error-code>
+	<location>/error/error404.jsp</location>
+</error-page>
+
+<error-page>
+	<error-code>500</error-code>
+	<location>/error/error500.jsp</location>
+</error-page>
+<!-- 에러 타입으로 등록 -->
+<error-page>
+	<exception-type>java.lang.NullPointerException</exception-type>
+	<location>/error/errortypeNull.jsp</location>
+</error-page>
+
+</web-app>
