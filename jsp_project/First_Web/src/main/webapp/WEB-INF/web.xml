@@ -10,6 +10,12 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
+  <!-- 서블릿 등록 -->
+  <servlet>
+  <servlet-name>Loader</servlet-name>
+  <servlet-class>jdbc.util.Loader</servlet-class>
+  <load-on-startup>1</load-on-startup> <!-- 톰캣이 시작할때 횟수 1번 실행한다.-->
+  </servlet>
   
   
 <!-- 서블릿 등록 -->
