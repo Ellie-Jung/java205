@@ -12,8 +12,8 @@
 
 	//dept_list.jsp -> 요청을 받고 처리. (나중에는 요청받고 처리하는걸 분리.)
 
-	// 1.드라이버 로드
-	Class.forName("com.mysql.cj.jdbc.Driver"); //mysql연결하기
+	// 1.데이터베이스 드라이버 로드:서블릿클래스 Loader에서 드라이버 로드
+	//Class.forName("com.mysql.cj.jdbc.Driver"); //mysql연결하기
 	// 2. DB연결
 	Connection conn = null; // 초기화. jsp코드는 서브릿의 메서드쪽으로들어감..
 	Statement stmt=null;

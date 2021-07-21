@@ -15,8 +15,8 @@
 	
 	
 	//전달 받은 부서번호로 부서정보를 가져온다.
-	// 1.드라이버 로드
-	Class.forName("com.mysql.cj.jdbc.Driver"); //mysql연결하기
+	// 1.데이터베이스 드라이버 로드:서블릿클래스 Loader에서 드라이버 로드
+	//Class.forName("com.mysql.cj.jdbc.Driver"); //mysql연결하기
 	// 2. DB연결
 	Connection conn = null; // 초기화. jsp코드는 서브릿의 메서드쪽으로들어감..
 	PreparedStatement pstmt=null;
