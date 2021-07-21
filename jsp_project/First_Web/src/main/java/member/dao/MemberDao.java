@@ -52,7 +52,8 @@ public class MemberDao {
 		
 		PreparedStatement pstmt = null;
 		
-		String sql = "insert into member values (0,?,?,?,?)";
+		//String sql = "insert into member values (0,?,?,?,?)";
+		String sql = "insert into member(id,pw,name) values (?,?,?)";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -60,7 +61,7 @@ public class MemberDao {
 			pstmt.setString(1, member.getId());
 			pstmt.setString(2, member.getPw());
 			pstmt.setString(3, member.getName());
-			pstmt.setTimestamp(4, member.getJoinDate());
+		//	pstmt.setTimestamp(4, member.getJoinDate());
 			
 			resultCnt = pstmt.executeUpdate();
 		} catch (SQLException e) {

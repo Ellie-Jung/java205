@@ -16,7 +16,7 @@
 	String id = request.getParameter("id");
 	String pw = request.getParameter("pw");
 	String name = request.getParameter("name");
-	Timestamp joinDate = new Timestamp(new Date().getTime());
+	//Timestamp joinDate = new Timestamp(new Date().getTime());
 			
 	int resultCnt =0;
 
@@ -26,7 +26,8 @@
 	try{
 		
 		conn = ConnectionProvider.getConnection();
-		resultCnt = dao.insertMember(conn, new Member(0, id, pw, name,joinDate));
+	//	resultCnt = dao.insertMember(conn, new Member(0, id, pw, name,joinDate));
+		resultCnt = dao.insertMember(conn, new Member(id, pw, name));
 		
 	}catch(Exception e){
 		e.printStackTrace();
