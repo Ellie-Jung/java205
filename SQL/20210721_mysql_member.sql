@@ -1,4 +1,4 @@
-drop table project.member;
+drop table if exists project.member;
 
 CREATE TABLE project.`member` (
   `idx` int AUTO_INCREMENT,
@@ -10,8 +10,24 @@ CREATE TABLE project.`member` (
   CONSTRAINT member_memberid_uq UNIQUE KEY `id_UNIQUE` (`id`)
 ) ;
 
+-- idx값을 1부터 다시 시작
 alter table project.member auto_increment = 1;
 
 commit;
 
-insert into project.member(id,pw,name) values('10','1234','길동');
+-- select
+select * from project.member;
+
+-- insert
+insert into project.member(id,pw,name) values('bit','1234','홍길동');
+insert into project.member(id,pw,name) values('camp','0000','김길동');
+insert into project.member(id,pw,name) values('star','1004','이길동');
+
+-- update
+update project.member 
+set
+pw = '1111', name ='tester'
+where idx=1;
+
+-- delete
+delete from project.member where idx=1;
