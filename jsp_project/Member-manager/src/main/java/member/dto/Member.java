@@ -73,6 +73,12 @@ public class Member {
 	}
 	
 	
+	//Member -> LoginInfo
+	public LoginInfo toLoginInfo() {
+		
+		return new LoginInfo(this.idx, this.memberid, this.memberid);
+	}
+	
 	
 	
 	

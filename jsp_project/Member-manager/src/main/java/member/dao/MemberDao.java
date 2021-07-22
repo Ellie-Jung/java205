@@ -82,5 +82,44 @@ public class MemberDao {
 		return list;
 
 	}
+	
+	
+	
+	public Member selectByIdPw(Connection conn ,String id, String pw) {
+		
+		Member member =null;
+		
+		PreparedStatement pstmt= null;
+		ResultSet rs = null;
+		
+		String sql = "select* from member where memberid=? and password=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,id);
+			pstmt.setString(2, pw);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				member = new Member();
+				member.setIdx(rs.getInt("idx"));
+				member.setMemberid(rs.getString("memberid"));
+				member.setPassword(rs.getString("password")); //비번은 가져오지않는게 좋지만 일단 해본다.
+				member.setMembername(rs.getString("membername"));
+				member.setRegdate(rs.getTimestamp("regdate"));
+			}
+					
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+		
+		
+		
+		return member;
+	}
 
 }
