@@ -2,32 +2,25 @@ package member.dto;
 import java.sql.Date;
 import java.sql.Timestamp;
 
+
 public class Member {
-
-	//변수는 모두 private처리
+	
 	private int idx;
-	private String id;
-	private String pw;
-	private String name;
-	private Timestamp joinDate;
+	private String memberid;
+	private String password;
+	private String membername;
+	private Timestamp regdate;
 	
-	public Member(){}
-	
-	public Member(String id, String pw, String name) {
-		this.id = id;
-		this.pw = pw;
-		this.name = name;
-	}
-
-	public Member(int idx, String id, String pw, String name, Timestamp joinDate) {
+	public Member(int idx, String memberid, String password, String username, Timestamp regdate) {
 		this.idx = idx;
-		this.id = id;
-		this.pw = pw;
-		this.name = name;
-		this.joinDate = joinDate;
+		this.memberid = memberid;
+		this.password = password;
+		this.membername = username;
+		this.regdate = regdate;
 	}
-
 	
+	public Member() {}
+
 	public int getIdx() {
 		return idx;
 	}
@@ -36,41 +29,52 @@ public class Member {
 		this.idx = idx;
 	}
 
-	public void setId(String id) {
-		this.id = id;
-	}
-	
-	public String getId() {
-		return this.id;
-	}
-	
-	public void setPw(String pw) {
-		this.pw=pw;
-	}
-	public String getPw() {
-		return this.pw;
-	}
-	
-	public void setName(String name) {
-		this.name= name;
-	}
-	public String getName() {
-		return this.name;
+	public String getMemberid() {
+		return memberid;
 	}
 
-	public Timestamp getJoinDate() {
-		return joinDate;
+	public void setMemberid(String memberid) {
+		this.memberid = memberid;
 	}
 
-	public void setJoinDate(Timestamp joinDate) {
-		this.joinDate = joinDate;
+	public String getPassword() {
+		return password;
 	}
 
-	//java.sql.TimeStamp -> java.util.Date
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getMembername() {
+		return membername;
+	}
+
+	public void setMembername(String membername) {
+		this.membername = membername;
+	}
+
+	public Timestamp getRegdate() {
+		return regdate;
+	}
+
+	public void setRegdate(Timestamp regdate) {
+		this.regdate = regdate;
+	}
+	
+	// java.sql.TimeStamp -> java.util.Date
 	public Date getDate() {
-		return new Date(getJoinDate().getTime());
+		return new Date(getRegdate().getTime());
+	}
+
+	@Override
+	public String toString() {
+		return "Member [idx=" + idx + ", memberid=" + memberid + ", password=" + password + ", username=" + membername
+				+ ", regdate=" + regdate + "]";
 	}
 	
 	
 	
+	
+	
+
 }
