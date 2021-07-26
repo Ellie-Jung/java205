@@ -22,6 +22,11 @@ INSERT INTO project.member
 VALUES
 ('cool', '1111', 'COOL');
 
+INSERT INTO project.member
+(memberid,password,membername)
+VALUES
+('0000', '0000', 'COOL');
+
 -- update
 update project.member
 set

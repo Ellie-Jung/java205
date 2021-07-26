@@ -13,6 +13,13 @@ public class Member {
 	
 	public Member(String name){} //디폴트 생성자가 없는 상태해서 실행해보면 오류생긴다. 
 	
+	
+	public Member(String id, String pw, String name) {
+		this.id = id;
+		this.pw = pw;
+		this.name = name;
+	}
+
 	//setter
 	public void setId(String id) {
 		this.id = id;

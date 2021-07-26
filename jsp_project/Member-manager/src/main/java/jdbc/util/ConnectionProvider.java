@@ -11,6 +11,7 @@ public class ConnectionProvider {
 		
 		//jdbcUrl
 		String jdbcUrl = "jdbc:mysql://localhost:3306/project?serverTimezone=UTC";
+	//	String jdbcUrl = "jdbc:mysql://localhost:3306/mysql";
 		String user= "bit";
 		String pw= "bit";
 		

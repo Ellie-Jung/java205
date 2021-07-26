@@ -1,31 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="<c:url value='/css/default.css'/>"> 
 <style>
 </style>
 <script>
 </script>
 </head>
 <body>
-
-<%@ include file="/WEB-INF/frame/header.jsp" %>
-
-<%@ include file="/WEB-INF/frame/nav.jsp" %>
-
-	<div class="contents">
 	
-		<h1>Index</h1>
+	${members} <br>
+	${members[0]}<br>
+	${members[1]} / ${members[1].name} /<br>
 	
 	
 	
-	</div>
-
-
+	<c:out value="${members[0].name}"/>/<br>
+	<c:out value="${members[1].name}" escapeXml="false">
+		<span style="color:red;">입력된 정보 없음.</span>
+	</c:out>
+	
 </body>
 </html>
