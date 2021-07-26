@@ -1,4 +1,4 @@
-package member.dao;
+package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,8 +7,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import jdbc.util.JdbcUtil;
-import member.dto.Member;
+
+import domain.Member;
+import util.JdbcUtil;
 
 public class MemberDao {
 
@@ -84,19 +85,17 @@ public class MemberDao {
 	}
 	
 	
-	
-	public Member selectByIdPw(Connection conn ,String id, String pw) {
+	public Member selectByIdPw(Connection conn, String id, String pw) {
 		
-		Member member =null;
-		
-		PreparedStatement pstmt= null;
+		Member member = null;
+		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select* from member where memberid=? and password=?";
+		String sql = "select * from member where memberid=? and password=?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1,id);
+			pstmt.setString(1, id);
 			pstmt.setString(2, pw);
 			rs = pstmt.executeQuery();
 			
@@ -104,22 +103,39 @@ public class MemberDao {
 				member = new Member();
 				member.setIdx(rs.getInt("idx"));
 				member.setMemberid(rs.getString("memberid"));
-				member.setPassword(rs.getString("password")); //비번은 가져오지않는게 좋지만 일단 해본다.
+				member.setPassword(rs.getString("password"));
 				member.setMembername(rs.getString("membername"));
 				member.setRegdate(rs.getTimestamp("regdate"));
 			}
-					
+			
 			
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
+		} finally {
 			JdbcUtil.close(rs);
 			JdbcUtil.close(pstmt);
 		}
 		
 		
 		
+		
 		return member;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

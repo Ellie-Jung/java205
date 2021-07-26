@@ -1,7 +1,7 @@
-<%@page import="jdbc.util.JdbcUtil"%>
+<%@page import="util.JdbcUtil"%>
 <%@page import="java.sql.SQLException"%>
-<%@page import="member.dao.MemberDao"%>
-<%@page import="jdbc.util.ConnectionProvider"%>
+<%@page import="dao.MemberDao"%>
+<%@page import="util.ConnectionProvider"%>
 <%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -29,6 +29,6 @@
 	}
 	
 %>
-<jsp:forward page="list_view2.jsp" />
+<jsp:forward page="list_view.jsp" />
 <!--  list_view.js : view 의 역할만!!!! -->
 

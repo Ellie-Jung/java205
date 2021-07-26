@@ -1,4 +1,4 @@
-package jdbc.util;
+package jdbc;
 
 import java.util.StringTokenizer;
 
@@ -6,6 +6,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+import com.mysql.cj.exceptions.ExceptionInterceptorChain;
 
 public class JdbcListener implements ServletContextListener {
 
