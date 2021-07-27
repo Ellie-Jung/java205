@@ -117,7 +117,7 @@ public class MessageDao {
 		PreparedStatement pstmt= null;
 		ResultSet rs = null;
 		
-		String sql ="select * from guestbook_message where messageid=?;";
+		String sql ="select * from guestbook_message where messageid=?";
 		
 		try {
 			
