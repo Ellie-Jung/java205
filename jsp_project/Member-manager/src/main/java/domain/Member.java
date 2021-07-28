@@ -9,16 +9,19 @@ public class Member {
 	private String memberid;
 	private String password;
 	private String membername;
+	private String memberphoto;
 	private Timestamp regdate;
 	
-	public Member(int idx, String memberid, String password, String username, Timestamp regdate) {
+	public Member(int idx, String memberid, String password, String membername, String memberphoto, Timestamp regdate) {
 		this.idx = idx;
 		this.memberid = memberid;
 		this.password = password;
-		this.membername = username;
+		this.membername = membername;
+		this.memberphoto = memberphoto;
 		this.regdate = regdate;
 	}
-	
+
+
 	public Member() {}
 
 	public int getIdx() {
@@ -53,6 +56,18 @@ public class Member {
 		this.membername = membername;
 	}
 
+	
+	
+	public String getMemberphoto() {
+		return memberphoto;
+	}
+
+
+	public void setMemberphoto(String memberphoto) {
+		this.memberphoto = memberphoto;
+	}
+
+
 	public Timestamp getRegdate() {
 		return regdate;
 	}
@@ -66,15 +81,19 @@ public class Member {
 		return new Date(getRegdate().getTime());
 	}
 
+	
+	
+	
 	@Override
 	public String toString() {
-		return "Member [idx=" + idx + ", memberid=" + memberid + ", password=" + password + ", username=" + membername
-				+ ", regdate=" + regdate + "]";
+		return "Member [idx=" + idx + ", memberid=" + memberid + ", password=" + password + ", membername=" + membername
+				+ ", memberphoto=" + memberphoto + ", regdate=" + regdate + "]";
 	}
-	
+
+
 	// Member -> LoginInfo
 	public LoginInfo toLoginInfo() {
-		return new LoginInfo(this.idx, this.memberid, this.membername);
+		return new LoginInfo(this.idx, this.memberid, this.membername, this.memberphoto);
 	}
 	
 	
