@@ -54,7 +54,7 @@ public class FrontController2 extends HttpServlet{
 		
 		try {
 			fis= new FileInputStream(configPath);
-			prop.load(fis);
+			prop.load(fis); 
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -64,15 +64,16 @@ public class FrontController2 extends HttpServlet{
 		
 		Iterator<Object> itr = prop.keySet().iterator(); //이터레이터 반환한다.
 		
+		
 		while(itr.hasNext()) {
-			String command = (String)itr.next();
-			String commandClassName = prop.getProperty(command);
+			String command = (String)itr.next(); 
+			String commandClassName = prop.getProperty(command); 
 			System.out.println(command+"="+commandClassName);
 			
 			
 			//클래스 이름으로 해당 클래스의 인스턴스 생성
 			try {
-				Class commandClass = Class.forName(commandClassName);
+				Class commandClass = Class.forName(commandClassName); 
 				
 				Command commandObj =(Command) commandClass.newInstance(); 
 				
