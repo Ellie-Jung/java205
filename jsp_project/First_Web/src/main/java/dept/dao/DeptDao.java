@@ -26,7 +26,7 @@ public class DeptDao { //메서드만 있는 클래스 => 싱글톤 패턴으로
 	}
 	
 
-	public List<Dept> getDeptList(Connection conn){
+	public List<Dept> getDeptList(Connection conn) throws SQLException{
 		
 		Statement stmt= null; 
 		ResultSet rs = null;
@@ -55,6 +55,7 @@ public class DeptDao { //메서드만 있는 클래스 => 싱글톤 패턴으로
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
+			throw e;
 		}finally {
 			
 			JdbcUtil.close(rs);
@@ -68,7 +69,7 @@ public class DeptDao { //메서드만 있는 클래스 => 싱글톤 패턴으로
 	}
 	
 	
-	public int insertDept(Connection conn, Dept dept) {
+	public int insertDept(Connection conn, Dept dept) throws SQLException {
 		
 		int resultCnt = 0;
 		
@@ -87,6 +88,7 @@ public class DeptDao { //메서드만 있는 클래스 => 싱글톤 패턴으로
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+			throw e;
 		}finally {
 			JdbcUtil.close(pstmt);
 		}
@@ -98,7 +100,7 @@ public class DeptDao { //메서드만 있는 클래스 => 싱글톤 패턴으로
 	
 	
 	
-	public int deleteDept(Connection conn, int deptno) {
+	public int deleteDept(Connection conn, int deptno)  {
 		
 		int resultCnt = 0;
 		PreparedStatement pstmt = null;
