@@ -168,7 +168,34 @@ public class MemberDao {
 	
 	
 	
-	
+	public int deleteMember(Connection conn,String memberId ) throws SQLException {
+		int cnt = 0;
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String sql = "delete from member where memberid=?";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, memberId);
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				cnt = rs.getInt(1);
+			}
+					
+			
+		}finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+		
+		
+		
+		return cnt;
+	}
 	
 	
 	
