@@ -9,7 +9,6 @@ public class RegFormCommandImpl implements Command {
 	public String getPage(HttpServletRequest request,HttpServletResponse response) {
 		
 		
-		
 		return "/WEB-INF/views/regForm.jsp";
 	}
 

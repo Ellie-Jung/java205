@@ -44,7 +44,6 @@
 			<th>관리</th>
 		</tr>
 		
-	
 				
 		<c:if test="${result ne null and not empty result }">	
 		<c:forEach items="${result}" var="member">			
@@ -65,10 +64,6 @@
 		</tr>
 		</c:forEach>
 		</c:if>
-				<%--
-			}
-		}
-	--%>
 		
 		
 	</table>
@@ -83,16 +78,6 @@
 		}
 	
 	</script>
-
-
-
-
-
-
-
-
-
-
 
 </body>
 </html>
