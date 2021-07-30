@@ -38,7 +38,7 @@
 			// ajax 비동기 통신 > id를 서버로 보내고 사용 가능 유무의 응답 코드를 받는다 -> 화면에 메시지 출력
 			
 			$.ajax({
-				url : 'idcheck.jsp',
+				url : 'idcheck.do',
 				type : 'post',
 				data : {
 					mid : $(this).val()
@@ -85,7 +85,7 @@
 
 		<h2>회원가입</h2>
 		<hr>
-		<form action="memberReg.jsp" method="post" enctype="multipart/form-data"> 
+		<form action="memberReg.do" method="post" enctype="multipart/form-data"> 
 			<table>
 				<tr>
 					<td>아이디</td>

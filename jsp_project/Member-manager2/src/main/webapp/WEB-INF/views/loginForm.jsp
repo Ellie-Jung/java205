@@ -2,11 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-	CookieBox cBox = new CookieBox(request);
-	String reid = cBox.exists("reid") ? cBox.getValue("reid") : "";
-	String checked = cBox.exists("reid") ? "checked" : "";
---%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,11 +28,11 @@
 		<h2>Login</h2>
 		<hr>
 
-		<form action="<c:url value='/login.jsp'/>" method="post">
+		<form action="<c:url value='/login.do'/>" method="post">
 
 			<table>
 				<tr>
-					<th>ID</th><%--=reid--%>
+					<th>ID</th>
 					<td><input type="text" name="memberid" value="${cookie.reid.value}"></td>
 				</tr>
 				<tr>
@@ -44,7 +40,7 @@
 					<td><input type="password" name="password"></td>
 				</tr>
 				<tr>
-					<th></th><%--=checked--%>
+					<th></th>
 					<td>
 					<input type="checkbox" name="reid" value="on" ${cookie.reid ne null ? 'checked' : ''}> 
 					아이디 기억하기

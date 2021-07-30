@@ -5,7 +5,7 @@
   <!-- /contextPath/ -> 요청일때 찾을 자원의 파일이름 -->
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>/index.jsp</welcome-file>
   </welcome-file-list>
   
   <!-- 드라이버 로드 서블릿 등록/설정 -->
@@ -61,7 +61,19 @@
   </listener>
   
   
-  
+  <servlet>
+  	<servlet-name>FrontController</servlet-name>
+  	<servlet-class>controller.FrontController</servlet-class>
+  	<init-param>
+  		<param-name>config</param-name>
+  		<param-value>/WEB-INF/command.propertise</param-value>
+  	</init-param>
+  	<load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>FrontController</servlet-name>
+  	<url-pattern>*.do</url-pattern>
+  </servlet-mapping>
   
   
   

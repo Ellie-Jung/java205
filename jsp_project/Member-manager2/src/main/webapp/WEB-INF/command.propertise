@@ -1,0 +1,11 @@
+## 메인페이지
+
+/list.do=service.ListCommandImpl
+/regForm.do=service.RegFormCommandImpl
+/memberlist.do=service.MemberlistCommandImpl
+/mypage.do=service.MypageCommandImpl
+/login.do=service.LoginCommandImpl
+/logout.do=service.LogoutCommandImpl
+/idcheck.do=service.IdcheckCommandImpl
+/loginForm.do=service.LoginFormCommandImpl
+/memberReg.do=service.MemberRegCommandImpl
