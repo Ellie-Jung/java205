@@ -59,8 +59,8 @@
 			<td>${member.membername} </td>
 			<td>${member.regdate}</td>
 			<td>
-				<a href="javascript:delDept(${member.idx})">수정</a> 
-				<a href="<c:url value="/deleteMember.do"></c:url>">삭제</a>
+				<a href="<c:url value="/deleteMember.do"/>">수정</a> 
+				<a href="javascript:delMember(${member.idx})">삭제</a>
 			</td>
 		</tr>
 		</c:forEach>
@@ -70,10 +70,11 @@
 	</table>
 	<script>
 		
-		function delDept(idx){
+		function delMember(idx){
 			
 			if(confirm('정말 삭제하시겠습니까?')){
-				location.href = '<c:url value="/deleteMember.do"/>'
+				
+				location.href = 'delete.do?idx='+idx;
 			}
 			
 		}

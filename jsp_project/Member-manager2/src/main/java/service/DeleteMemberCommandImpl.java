@@ -19,16 +19,14 @@ public class DeleteMemberCommandImpl implements Command {
 
 		int resultCnt = 0;
 		Connection conn=null;
-		Member member= new Member();
-		MemberDao dao=MemberDao.getInstance();
+		MemberDao dao=null;
 		String idx = request.getParameter("idx");
 		
 		
 		try {
 			conn = ConnectionProvider.getConnection();
-			
-			request.setAttribute("result", dao.deleteMember(conn,Integer.parseInt(idx)));
-			
+			dao=MemberDao.getInstance();
+			resultCnt=dao.deleteMember(conn,Integer.parseInt(idx));
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -38,11 +36,7 @@ public class DeleteMemberCommandImpl implements Command {
 		
 		
 		
-		
-		
-		
-		
-		
+		request.setAttribute("result", resultCnt);
 		
 		return "/WEB-INF/views/delete_view.jsp";
 	}

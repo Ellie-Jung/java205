@@ -7,13 +7,13 @@
 
 <c:if test="${result==1}">
 	<script>
-		alert('탈퇴되었습니다.'');
-		location.href='<c:url value="/index.jsp"/>';
+		alert('삭제되었습니다.'');
+		location.href='<c:url value="/memberlist.do"/>';
 	</script>
 </c:if>
 <c:if test="${result==0}">
 	<script>
-		alert('오류 발생으로 탈퇴되지 않았습니다.');
+		alert('오류 발생으로 삭제되지 않았습니다.');
 		window.history.go(-1);
 	</script>
 </c:if>
