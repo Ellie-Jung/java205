@@ -59,7 +59,7 @@
 			<td>${member.membername} </td>
 			<td>${member.regdate}</td>
 			<td>
-				<a href="<c:url value="/deleteMember.do"/>">수정</a> 
+				<a href="#"/>">수정</a> 
 				<a href="javascript:delMember(${member.idx})">삭제</a>
 			</td>
 		</tr>
@@ -74,7 +74,7 @@
 			
 			if(confirm('정말 삭제하시겠습니까?')){
 				
-				location.href = 'delete.do?idx='+idx;
+				location.href = 'deleteMember.do?idx='+idx;
 			}
 			
 		}

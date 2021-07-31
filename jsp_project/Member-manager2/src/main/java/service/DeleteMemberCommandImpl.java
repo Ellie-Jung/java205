@@ -38,7 +38,7 @@ public class DeleteMemberCommandImpl implements Command {
 		
 		request.setAttribute("result", resultCnt);
 		
-		return "/WEB-INF/views/delete_view.jsp";
+		return "/WEB-INF/views/delete.jsp";
 	}
 
 }
