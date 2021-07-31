@@ -22,6 +22,7 @@ public class DeleteMemberCommandImpl implements Command {
 		MemberDao dao=null;
 		String idx = request.getParameter("idx");
 		
+		System.out.println(idx);
 		
 		try {
 			conn = ConnectionProvider.getConnection();
