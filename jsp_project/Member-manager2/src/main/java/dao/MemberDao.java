@@ -168,16 +168,16 @@ public class MemberDao {
 	
 	
 	
-	public int deleteMember(Connection conn,String memberId ) throws SQLException {
+	public int deleteMember(Connection conn,int idx ) throws SQLException {
 		int cnt = 0;
 
 		PreparedStatement pstmt = null;
 
-		String sql = "delete from member where memberid=?";
+		String sql = "delete from member where idx=?";
 		
 		try {
 			pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1, memberId);
+			pstmt.setInt(1,idx);
 			
 			cnt=pstmt.executeUpdate();
 			

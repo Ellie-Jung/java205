@@ -2,15 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix ="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!-- <script type="text/javascript">
-var confirm = confirm('정말 탈퇴하시겠습니까?');
 
-if(confirm){
-	
-}else{
-	
-}
-</script> -->
+
 
 <c:if test="${result==1}">
 	<script>
