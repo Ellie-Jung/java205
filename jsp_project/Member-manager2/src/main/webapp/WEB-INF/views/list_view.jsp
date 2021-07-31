@@ -59,7 +59,7 @@
 			<td>${member.regdate}</td>
 			<td>
 				<a href="#">수정</a> 
-				<a href="#">삭제</a>
+				<a href="<c:url value="/deleteMember.do"></c:url>">삭제</a>
 			</td>
 		</tr>
 		</c:forEach>

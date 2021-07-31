@@ -14,6 +14,8 @@
 			<%}  else {%>
 			<li><a href="<%= request.getContextPath() %>/logout.do">로그아웃</a></li>
 			<li><a href="<%= request.getContextPath()%>/memberlist.do">회원리스트</a></li>
+		<%-- 	<li><a href="<%= request.getContextPath()%>/deleteMember.do" onclick="if(!confirm('탈퇴 하시겠습니까?'))">회원탈퇴</a></li> --%>
+			
 			<%} %>
 			<li><a href="<%= request.getContextPath()%>/mypage.do">MyPage</a></li>
 		</ul>

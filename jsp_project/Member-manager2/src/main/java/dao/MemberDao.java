@@ -172,7 +172,6 @@ public class MemberDao {
 		int cnt = 0;
 
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
 
 		String sql = "delete from member where memberid=?";
 		
@@ -180,15 +179,11 @@ public class MemberDao {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, memberId);
 			
-			rs=pstmt.executeQuery();
+			cnt=pstmt.executeUpdate();
 			
-			if(rs.next()) {
-				cnt = rs.getInt(1);
-			}
-					
+			
 			
 		}finally {
-			JdbcUtil.close(rs);
 			JdbcUtil.close(pstmt);
 		}
 		
@@ -198,7 +193,28 @@ public class MemberDao {
 	}
 	
 	
+	public int updateMember(Connection conn,Member member ) throws SQLException {
+		
+		int cnt=0;
+		PreparedStatement pstmt=null;
+		
+		String sql="update member set  password=?, membername=? WHERE idx=?";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1,member.getPassword());
+			pstmt.setString(2, member.getMembername());
+			pstmt.setInt(3, member.getIdx());
+			
+			cnt=pstmt.executeUpdate();
+			
+		}finally {
+			JdbcUtil.close(pstmt);
+		}
+		
 	
+		return cnt;
+	}
 	
 	
 	

@@ -36,7 +36,7 @@ public class MemberlistCommandImpl implements Command {
 	}
 	
 	
-	//<jsp:forward page="list_view.jsp" />
+
 	
 	
 	

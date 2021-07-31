@@ -1,6 +1,5 @@
 ## 메인페이지
 
-/list.do=service.ListCommandImpl
 /regForm.do=service.RegFormCommandImpl
 /memberlist.do=service.MemberlistCommandImpl
 /mypage.do=service.MypageCommandImpl
@@ -9,3 +8,4 @@
 /idcheck.do=service.IdcheckCommandImpl
 /loginForm.do=service.LoginFormCommandImpl
 /memberReg.do=service.MemberRegCommandImpl
+/deleteMember.do=service.DeleteMemberCommandImpl
