@@ -59,7 +59,7 @@
 			<td>${member.membername} </td>
 			<td>${member.regdate}</td>
 			<td>
-				<a href="#"/>">수정</a> 
+				<a href="#" >수정</a> 
 				<a href="javascript:delMember(${member.idx})">삭제</a>
 			</td>
 		</tr>
