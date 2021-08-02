@@ -5,7 +5,7 @@
 
 <c:if test="${result==1}">
 	<script>
-		alert('삭제되었습니다.'');
+		alert('삭제되었습니다.');
 		location.href='<c:url value="/memberlist.do"/>';
 	</script>
 </c:if>
@@ -15,3 +15,4 @@
 		window.history.go(-1);
 	</script>
 </c:if>
+  

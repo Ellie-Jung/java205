@@ -20,14 +20,16 @@ public class DeleteMemberCommandImpl implements Command {
 		int resultCnt = 0;
 		Connection conn=null;
 		MemberDao dao=null;
-		String idx = request.getParameter("idx");
+		String idx_ = request.getParameter("idx");
+		int	idx=Integer.parseInt(idx_);
+		
 		
 		System.out.println(idx);
 		
 		try {
 			conn = ConnectionProvider.getConnection();
 			dao=MemberDao.getInstance();
-			resultCnt=dao.deleteMember(conn,Integer.parseInt(idx));
+			resultCnt=dao.deleteMember(conn,idx);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -35,7 +37,7 @@ public class DeleteMemberCommandImpl implements Command {
 			JdbcUtil.close(conn);
 		}
 		
-		
+		System.out.println(resultCnt);
 		
 		request.setAttribute("result", resultCnt);
 		

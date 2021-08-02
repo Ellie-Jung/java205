@@ -9,4 +9,3 @@
 /loginForm.do=service.LoginFormCommandImpl
 /memberReg.do=service.MemberRegCommandImpl
 /deleteMember.do=service.DeleteMemberCommandImpl
-/deleteMember.do*=service.DeleteMemberCommandImpl
