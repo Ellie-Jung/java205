@@ -15,7 +15,8 @@
 	
 	<h1>LoginForm</h1>
 	<hr> 
-	<form action="<c:url value="/member/login.jsp"/>"> <!--  절대경로가 들어가야한다.  /web/member/mypage/mypage.jsp -->
+	<form method="POST"> <!--  절대경로가 들어가야한다.  /web/member/mypage/mypage.jsp.  -->
+	<!-- action="/contextPath/member/login"액션속성이없으면 자기자신한테보낸다.  -->
 		<table>
 			<tr>
 				<td>아이디</td>

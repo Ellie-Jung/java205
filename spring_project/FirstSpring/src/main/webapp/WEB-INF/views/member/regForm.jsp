@@ -15,37 +15,24 @@
 	
 	<h1>회원가입</h1>
 	<hr> 
-	<form method="POST"> 
 			<table>
 				<tr>
 					<td>아이디</td>
-					<td>
-						<input type="text" name="memberid" id="memberid">
-						<span id="msg" class="display_none"></span>
-						<img id="loadingimg" class="display_none" alt="loading" src="<c:url value="/image/loading.gif"/>"> 
-					</td>
+					<td>${regReq.memberid}</td>
 				</tr>
 				<tr>
 					<td>비밀번호</td>
-					<td><input type="password" name="password"></td>
+					<td>${regReq.password}</td>
 				</tr>
 				<tr>
 					<td>이름</td>
-					<td><input type="text" name="membername"></td>
+					<td>${regReq.membername}</td>
 				</tr>
 				<tr>
 					<td>사진</td>
-					<td><input type="file" name="photo"></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td>
-						<input type="submit">
-						<input type="reset" >
-					</td>
+					<td>${regReq.photo}</td>
 				</tr>
 			</table>
-		</form>
 	
 </body>
 </html>
