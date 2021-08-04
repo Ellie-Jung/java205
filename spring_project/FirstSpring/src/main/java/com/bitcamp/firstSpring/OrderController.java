@@ -13,7 +13,7 @@ public class OrderController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String getOrderForm() {
 		
-		return "/order/orderForm"; //    /WEB-INF/views/order/orderForm.jsp
+		return "order/orderForm"; //    /WEB-INF/views/order/orderForm.jsp
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
@@ -21,7 +21,7 @@ public class OrderController {
 		
 		System.out.println(orderCommand);
 		
-		return null; //    /WEB-INF/views/order/orderForm.jsp
+		return "order/order"; //    /WEB-INF/views/order/orderForm.jsp
 	}
 	
 	
