@@ -14,7 +14,7 @@ import com.bitcamp.mm.member.domain.Member;
 import com.bitcamp.mm.util.*;
 
 @Repository
-public class MemberDao {
+public class MemberDao implements Dao{
 
 
 	public int insertMember(Connection conn, Member member) throws SQLException {

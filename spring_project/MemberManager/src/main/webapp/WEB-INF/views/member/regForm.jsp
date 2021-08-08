@@ -34,7 +34,7 @@
 
 		<h2>회원가입</h2>
 		<hr>
-		<form method="post" enctype="multipart/form-data"> 
+		<form  method="post" enctype="multipart/form-data"> 
 			<table>
 				<tr>
 					<td>아이디</td>
