@@ -8,18 +8,18 @@ public class RegFormRequest {
 	
 	private String memberid;
 	private String password;
-	private String memberName;
-	private MultipartFile memberPhoto;
+	private String membername;
+	private MultipartFile memberphoto;
 	
 	public RegFormRequest() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public RegFormRequest(String memberid, String password, String memberName, MultipartFile memberPhoto) {
+	public RegFormRequest(String memberid, String password, String membername, MultipartFile memberphoto) {
 		this.memberid = memberid;
 		this.password = password;
-		this.memberName = memberName;
-		this.memberPhoto = memberPhoto;
+		this.membername = membername;
+		this.memberphoto = memberphoto;
 	}
 
 	public String getMemberid() {
@@ -38,26 +38,26 @@ public class RegFormRequest {
 		this.password = password;
 	}
 
-	public String getMemberName() {
-		return memberName;
+	public String getMembername() {
+		return membername;
 	}
 
-	public void setMemberName(String memberName) {
-		this.memberName = memberName;
+	public void setMembername(String membername) {
+		this.membername = membername;
 	}
 
-	public MultipartFile getMemberPhoto() {
-		return memberPhoto;
+	public MultipartFile getMemberphoto() {
+		return memberphoto;
 	}
 
-	public void setMemberPhoto(MultipartFile memberPhoto) {
-		this.memberPhoto = memberPhoto;
+	public void setMemberphoto(MultipartFile memberphoto) {
+		this.memberphoto = memberphoto;
 	}
 
 	@Override
 	public String toString() {
-		return "RegFormRequest [memberid=" + memberid + ", password=" + password + ", memberName=" + memberName
-				+ ", memberPhoto=" + memberPhoto + "]";
+		return "RegFormRequest [memberid=" + memberid + ", password=" + password + ", memberName=" + membername
+				+ ", memberphoto=" + memberphoto + "]";
 	}
 	
 	

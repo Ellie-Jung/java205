@@ -54,7 +54,7 @@
 				</tr>
 				<tr>
 					<td>사진</td>
-					<td><input type="file" name="photo"></td>
+					<td><input type="file" name="memberphoto"></td>
 				</tr>
 				<tr>
 					<td></td>
