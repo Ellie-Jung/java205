@@ -1,4 +1,4 @@
-package com.bitcamp.mm.member.controller;
+package com.bitcamp.op.member.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -8,8 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.bitcamp.mm.member.domain.RegFormRequest;
-import com.bitcamp.mm.member.service.MemberRegService;
+import com.bitcamp.op.member.domain.RegFormRequest;
+import com.bitcamp.op.member.service.MemberRegService;
+
 
 @RequestMapping("/member/regform")
 @Controller
@@ -25,13 +26,9 @@ public class MemberRegController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public String regForm(RegFormRequest regFormRequest,HttpServletRequest request,Model model) {
+	public String regForm(RegFormRequest regFormRequest,HttpServletRequest request) {
 		
 		int result=memberRegservice.regMember(regFormRequest, request);
-		
-//		request.setAttribute("result", result);
-		System.out.println(regFormRequest);
-//		request.getSession(false).setAttribute("loginInfo", );
 		
 		return "member/reg_view";
 	}
