@@ -1,7 +1,8 @@
-package com.bitcamp.mm.member.domain;
+package com.bitcamp.op.member.domain;
+
+import java.io.File;
 
 import org.springframework.web.multipart.MultipartFile;
-
 
 public class RegFormRequest {
 	
@@ -60,6 +61,11 @@ public class RegFormRequest {
 	}
 	
 	public Member toMember() {
+		if (memberphoto.getOriginalFilename()==null) {
+			System.out.println("ddddd");
+			
+		}
+		System.out.println(memberphoto.getOriginalFilename());
 		return new Member(0, memberid, password,membername,memberphoto.getOriginalFilename(),null);
 	}
 	
