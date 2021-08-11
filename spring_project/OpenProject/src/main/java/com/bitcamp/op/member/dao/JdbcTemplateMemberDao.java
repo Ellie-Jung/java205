@@ -59,7 +59,7 @@ public class JdbcTemplateMemberDao {
 		String sql1 = "insert into member (memberid,password,membername) values (?, ?, ?)"; 
 		
 		
-		// 자동 증가한 컬러므이 값을 저장할 객체
+		// 자동 증가한 컬럼의 값을 저장할 객체
 		KeyHolder holder = new GeneratedKeyHolder();
 		
 		resultCnt=template.update(
