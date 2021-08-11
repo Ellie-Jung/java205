@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.bitcamp.op.jdbc.ConnectionProvider;
+import com.bitcamp.op.member.dao.JdbcTemplateMemberDao;
 import com.bitcamp.op.member.dao.MemberDao;
 import com.bitcamp.op.member.domain.Member;
 import com.bitcamp.op.member.domain.RegFormRequest;
@@ -20,14 +21,18 @@ import com.bitcamp.op.member.domain.RegFormRequest;
 @Service
 public class MemberRegService {
 	
+	/*
+	 * @Autowired MemberDao dao;
+	 */
+	
 	@Autowired
-	MemberDao dao;
+	private JdbcTemplateMemberDao dao;
 	
 	final String UPLOAD_URI = "/uploadfile";
 
 	public int regMember(RegFormRequest regFormRequest,HttpServletRequest request) {
 		int resultCnt= 0;
-		Connection conn=null;
+	//	Connection conn=null;
 		File newFile= null;
 		
 		
@@ -57,7 +62,7 @@ public class MemberRegService {
 			}
 			
 			// 2. dao 저장
-			conn = ConnectionProvider.getConnection();
+//			conn = ConnectionProvider.getConnection();
 			
 			// Member 객체 생성 -> 저장된 파일의 이름을 set
 			Member member = regFormRequest.toMember();
@@ -75,7 +80,7 @@ public class MemberRegService {
 			 * member.setMemberphoto(regFormRequest.getMemberphoto().getOriginalFilename());
 			 * saveFile(request, regFormRequest.getMemberphoto()); }
 			 */
-			resultCnt =dao.insertMember(conn, member);
+			resultCnt =dao.insertMember(member);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -89,9 +94,6 @@ public class MemberRegService {
 			e.printStackTrace();
 		} 
 	
-		
-		request.setAttribute("result", resultCnt);
-		
 		
 		
 		return resultCnt; //정상적으로 처리되면 결과1나온다.

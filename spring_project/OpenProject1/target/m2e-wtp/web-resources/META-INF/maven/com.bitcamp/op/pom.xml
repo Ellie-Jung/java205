@@ -131,6 +131,19 @@
 	    <version>8.0.26</version>
 	</dependency>
 
+		<!-- HikariCP -->
+	<dependency>
+		<groupId>com.zaxxer</groupId>
+		<artifactId>HikariCP</artifactId>
+		<version>3.4.5</version>
+	</dependency>
+	
+	<!-- spring-jdbc -->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-jdbc</artifactId>
+		<version>${org.springframework-version}</version>
+	</dependency>
 
 	<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
 	<dependency>
@@ -153,6 +166,11 @@
 	    <version>2.7</version>
 	</dependency>
 		     
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-tx</artifactId>
+		<version>${org.springframework-version}</version>
+	</dependency>
 	</dependencies>
 	
     <build>
