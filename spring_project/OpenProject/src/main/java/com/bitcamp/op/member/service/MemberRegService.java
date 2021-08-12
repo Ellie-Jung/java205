@@ -7,13 +7,17 @@ import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.bitcamp.op.jdbc.ConnectionProvider;
 import com.bitcamp.op.jdbc.JdbcUtil;
+import com.bitcamp.op.member.dao.Dao;
 import com.bitcamp.op.member.dao.JdbcTemplateMemberDao;
 import com.bitcamp.op.member.dao.MemberDao;
+import com.bitcamp.op.member.dao.MybatisMemberDao;
 import com.bitcamp.op.member.domain.Member;
 import com.bitcamp.op.member.domain.MemberRegRequest;
 
@@ -25,8 +29,16 @@ public class MemberRegService {
 	//@Autowired
 	//private MemberDao dao;
 	
+//	@Autowired
+//	private JdbcTemplateMemberDao dao;
+	
+//	@Autowired
+//	private MybatisMemberDao dao;
+	
+	private Dao dao;
+	
 	@Autowired
-	private JdbcTemplateMemberDao dao;
+	private SqlSessionTemplate template;
 	
 	public int memberReg(
 			MemberRegRequest regRequest,
@@ -98,7 +110,12 @@ public class MemberRegService {
 			
 			
 			
-			resultCnt = dao.insertMember1(member);
+	//		resultCnt = dao.insertMember1(member);
+	//		resultCnt = dao.insertMember(member);
+			
+			dao=template.getMapper(Dao.class);
+			
+			resultCnt=dao.insertMember(member);
 			
 			System.out.println("새롭게 등록된 idx :"+member.getIdx());
 			
@@ -109,12 +126,6 @@ public class MemberRegService {
 			
 		} catch (IllegalStateException | IOException e) {
 			e.printStackTrace();
-		} catch (SQLException e) {
-			// DB 예외 발생 시 -> 저장된 파일을 삭제
-			if(newFile != null && newFile.exists() ) {
-				newFile.delete();
-			}
-			e.printStackTrace();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
@@ -122,5 +133,34 @@ public class MemberRegService {
 		
 		return resultCnt;
 	}
+	
+	// 파일의 ContentType 과 파일 확장자를 체크
+		private String chkFileType(MultipartFile file) throws Exception {
+			String extension = "";
+
+			// 업로드 파일의 contentType
+			String contentType = file.getContentType();
+			if (!(contentType.equals("image/jpeg") ||contentType.equals("image/jpg") || contentType.equals("image/png") || contentType.equals("image/gif"))) {
+				throw new Exception("허용하지 않는 파일 타입 : " + contentType);
+			}
+
+			// 파일 확장자 구하기
+			String fileName = file.getOriginalFilename();
+
+			// String[] java.lang.String.split(String regex)
+			// : 정규식의 패턴 문자열을 전달해야하기 때문에 \\. 으로 처리
+			String[] nameTokens = fileName.split("\\."); /// tet.mini2.jpg PNG png
+
+			// 토큰의 마지막 index의 문자열을 가져옴 : 배열의 개수-1
+			extension = nameTokens[nameTokens.length - 1].toLowerCase();
+
+			// 이미지 파일 이외의 파일 업로드 금지
+			// 파일 확장자 체크
+			if (!(extension.equals("jpg") || extension.equals("png") || extension.equals("gif"))) {
+				throw new Exception("허용하지 않는 파일 확장자 타입 : " + contentType);
+			}
+
+			return extension;
+		}
 
 }
