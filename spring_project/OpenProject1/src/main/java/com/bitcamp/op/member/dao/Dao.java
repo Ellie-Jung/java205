@@ -3,6 +3,7 @@ package com.bitcamp.op.member.dao;
 import java.util.List;
 
 import com.bitcamp.op.member.domain.Member;
+import com.bitcamp.op.member.domain.SearchType;
 
 public interface Dao {
 	//로그인

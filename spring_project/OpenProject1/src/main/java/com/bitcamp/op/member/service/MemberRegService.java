@@ -2,20 +2,17 @@ package com.bitcamp.op.member.service;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.bitcamp.op.jdbc.ConnectionProvider;
-import com.bitcamp.op.member.dao.JdbcTemplateMemberDao;
-import com.bitcamp.op.member.dao.MemberDao;
+import com.bitcamp.op.member.dao.Dao;
 import com.bitcamp.op.member.domain.Member;
-import com.bitcamp.op.member.domain.RegFormRequest;
+import com.bitcamp.op.member.domain.MemberRegRequest;
 
 
 @Service
@@ -25,16 +22,25 @@ public class MemberRegService {
 	 * @Autowired MemberDao dao;
 	 */
 	
-	@Autowired
-	private JdbcTemplateMemberDao dao;
+//	@Autowired
+//	private JdbcTemplateMemberDao dao;
 	
 	final String UPLOAD_URI = "/uploadfile";
-
-	public int regMember(RegFormRequest regFormRequest,HttpServletRequest request) {
-		int resultCnt= 0;
-	//	Connection conn=null;
-		File newFile= null;
+	
+	
+	private Dao dao;
+	
+	@Autowired
+	private SqlSessionTemplate template;
+	
+	public int memberReg(
+			MemberRegRequest regRequest,
+			HttpServletRequest request
+			) {
 		
+		int resultCnt = 0;
+		//Connection conn = null;
+		File newFile = null;
 		
 		try {
 			// 1. 파일 저장
@@ -50,67 +56,104 @@ public class MemberRegService {
 				System.out.println("저장 폴더를 생성했습니다.");
 			}
 			// 파일 저장시에 파일 이름이 같으면 덮어쓴다 -> 회원별 고유한 파일 이름을 만들자!!
-			String newFileName = regFormRequest.getMemberid()+System.currentTimeMillis(); 
+			String newFileName = regRequest.getMemberid()+System.currentTimeMillis(); 
 			//   cool123128936798123987
+			
+			// 파일 확장자 구하기
+			String fileName = regRequest.getPhoto().getOriginalFilename();
+			// 업로드 파일의 contentType
+			String contentType = regRequest.getPhoto().getContentType();
+			
+			// String[] java.lang.String.split(String regex) 
+			// : 정규식의 패턴 문자열을 전달해야하기 때문에 \\. 으로 처리
+			String[] nameTokens = fileName.split("\\.");   /// tet.mini2.jpg   PNG png
+			
+			// 토큰의 마지막 index의 문자열을 가져옴 : 배열의 개수-1
+			String fileType = nameTokens[nameTokens.length-1];
+			fileType = fileType.toLowerCase();
+			
+			// 이미지 파일 이외의 파일 업로드 금지
+			// 파일 확장자 체크
+//			if(!(fileType.equals("jpg")||fileType.equals("png")||fileType.equals("gif")) ) {
+//				// 파일 contentType 체크
+//				if(!(contentType.equals("image/jpg")||contentType.equals("image/png")||contentType.equals("image/gif"))) {
+//					throw new Exception("허용하지 않는 파일 타입 : " + contentType);
+//				}
+//			}
+			
+			// 새로운 파일이름에 확장자 추가
+			newFileName += "."+fileType;
 
 			// 새로운 File 객체
 			newFile = new File(newDir, newFileName);
 			
+			
+			// Member 객체 생성 -> 저장된 파일의 이름을 set
+			Member member = regRequest.toMember();
+			
+			
 			// 파일 저장
-			if(regFormRequest.getMemberphoto() != null && !regFormRequest.getMemberphoto().isEmpty()) {
-				regFormRequest.getMemberphoto().transferTo(newFile);
+			if(regRequest.getPhoto() != null && !regRequest.getPhoto().isEmpty()) {
+				regRequest.getPhoto().transferTo(newFile);
+				member.setMemberphoto(newFileName);
 			}
 			
 			// 2. dao 저장
-//			conn = ConnectionProvider.getConnection();
+			//conn = ConnectionProvider.getConnection();
 			
-			// Member 객체 생성 -> 저장된 파일의 이름을 set
-			Member member = regFormRequest.toMember();
-			member.setMemberphoto(newFileName);
-			/*
-			 * conn = ConnectionProvider.getConnection();
-			 * 
-			 * System.out.println(regFormRequest);
-			 * 
-			 * member.setMemberid(regFormRequest.getMemberid());
-			 * member.setPassword(regFormRequest.getPassword());
-			 * member.setMembername(regFormRequest.getMembername());
-			 * 
-			 * if(regFormRequest.getMemberphoto()!=null) {
-			 * member.setMemberphoto(regFormRequest.getMemberphoto().getOriginalFilename());
-			 * saveFile(request, regFormRequest.getMemberphoto()); }
-			 */
-			resultCnt =dao.insertMember(member);
 			
-		} catch (SQLException e) {
+			
+	//		resultCnt = dao.insertMember1(member);
+	//		resultCnt = dao.insertMember(member);
+			
+			dao=template.getMapper(Dao.class);
+			
+			resultCnt=dao.insertMember(member);
+			
+			System.out.println("새롭게 등록된 idx :"+member.getIdx());
+			
+			//  idx 값은 자식 테이블의 insert시 외래키로 사용
+			
+			//  자식테이블 insert 구문 ..
+			
+			
+		} catch (IllegalStateException | IOException e) {
 			e.printStackTrace();
-			
-			if (newFile !=null && newFile.exists()) {
-				//파일을삭제
-				newFile.delete();
-				System.out.println("파일삭제");
-			}
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			e.printStackTrace();
 		} 
-	
 		
-		
-		return resultCnt; //정상적으로 처리되면 결과1나온다.
+		return resultCnt;
 	}
 	
-	
-	/*
-	 * // 사용자가 업로드한 파일을 저장하는 메서드 private void saveFile(HttpServletRequest request,
-	 * MultipartFile file) throws IllegalStateException, IOException {
-	 * 
-	 * // 저장 경로 : 시스템 경로 String saveDir =
-	 * request.getSession().getServletContext().getRealPath(UPLOAD_URI); // 새롭게 저장할
-	 * 파일 File newFile = new File(saveDir ,file.getOriginalFilename() );
-	 * 
-	 * // 파일 저장 file.transferTo(newFile);
-	 * 
-	 * }
-	 */
-	
+	// 파일의 ContentType 과 파일 확장자를 체크
+		private String chkFileType(MultipartFile file) throws Exception {
+			String extension = "";
+
+			// 업로드 파일의 contentType
+			String contentType = file.getContentType();
+			if (!(contentType.equals("image/jpeg") ||contentType.equals("image/jpg") || contentType.equals("image/png") || contentType.equals("image/gif"))) {
+				throw new Exception("허용하지 않는 파일 타입 : " + contentType);
+			}
+
+			// 파일 확장자 구하기
+			String fileName = file.getOriginalFilename();
+
+			// String[] java.lang.String.split(String regex)
+			// : 정규식의 패턴 문자열을 전달해야하기 때문에 \\. 으로 처리
+			String[] nameTokens = fileName.split("\\."); /// tet.mini2.jpg PNG png
+
+			// 토큰의 마지막 index의 문자열을 가져옴 : 배열의 개수-1
+			extension = nameTokens[nameTokens.length - 1].toLowerCase();
+
+			// 이미지 파일 이외의 파일 업로드 금지
+			// 파일 확장자 체크
+			if (!(extension.equals("jpg") || extension.equals("png") || extension.equals("gif"))) {
+				throw new Exception("허용하지 않는 파일 확장자 타입 : " + contentType);
+			}
+
+			return extension;
+		}
+
 }

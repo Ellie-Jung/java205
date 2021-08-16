@@ -47,7 +47,7 @@ public class LoginController {
 		model.addAttribute("loginChk", loginChk);
 		String view="member/login";
 		
-		if(redirectUri !=null && loginChk) {
+		if(chkURI(redirectUri) && loginChk) {
 			redirectUri = redirectUri.substring(request.getContextPath().length());
 			view= "redirect: "+redirectUri;
 		}
