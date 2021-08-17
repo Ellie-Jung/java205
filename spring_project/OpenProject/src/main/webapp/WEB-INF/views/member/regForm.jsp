@@ -126,15 +126,25 @@
 	<script>
 		$(document).ready(function() {
 			$('#btnReg1').click(function() {
+				
 				var photoFile = $('#photo');
-				var file1 = photoFile[0].files[0];
+				
+				if(photoFile != null){
+					var file1 = photoFile[0].files[0];
+				}
+				
 				//console.log(file1);
 				var formData = new FormData();
 				formData.append("memberid", $('#memberid').val());
 				formData.append("password", $('#password').val());
 				formData.append("membername", $('#membername').val());
-				formData.append("photo", file1);
+				
+				if(file1 != null){
+					formData.append("photo", file1);
+				}
+				
 				console.log(formData);
+				
 				$.ajax({
 					url : '/op/members/reg1',
 					type : 'post',
