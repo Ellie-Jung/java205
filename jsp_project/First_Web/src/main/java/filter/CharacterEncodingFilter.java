@@ -1,7 +1,6 @@
 package filter;
 
 import java.io.IOException;
-import java.net.http.HttpRequest;
 
 import javax.servlet.DispatcherType;
 import javax.servlet.Filter;
