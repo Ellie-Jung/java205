@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  height: 80px;
+  padding: 0 24px;
+  display: flex;
+  align-itmes: center;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 12px;
+}
+
+.main_content {
+  width: 840px;
+  background-color: aqua;
+  min-height: calc(100vh - 80px);
+  padding-left: 24px;
+  padding-top: 60px;
+  h1 {
+    margin-top: 110px;
+  }
+}
