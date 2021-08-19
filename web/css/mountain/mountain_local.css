@@ -4,21 +4,51 @@
   margin: 0;
   padding: 0;
 }
+body {
+  color: rgb(34, 34, 34);
+  font-size: 14px;
+  letter-spacing: normal;
+  line-height: 18px;
+}
 
 .header {
   height: 80px;
   padding: 0 24px;
   display: flex;
-  align-itmes: center;
+  align-items: center;
   box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 12px;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+  background: white;
+}
+.main {
+  position: relative;
+  padding-top: 80px;
+}
+.main_map {
+  width: calc(100% - 900px);
+  background: pink;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.main_googleMap {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  top: 0;
 }
 
 .main_content {
   min-height: calc(100vh - 80px);
-  width: 840px;
-  padding-left: 24px;
-  padding-top: 60px;
-  background-color: blanchedalmond;
+  width: 850px;
+  padding: 60px 24px 0;
+  background-color: #fcfae5;
 }
 
 .main_content h1 {
@@ -35,6 +65,7 @@
   display: flex;
   align-items: center;
   padding-top: 30px;
+  padding-bottom: 30px;
 }
 .main_scarcity > span > span {
   font-weight: bold;
@@ -57,32 +88,179 @@ button {
   border-color: #222;
 }
 
-.listing_item {
+.listings_item {
   border-top: 1px solid #ebebeb;
   padding: 24px 0;
   display: flex;
 }
-.listing_image {
+.listings_item:hover .listings_image button {
+  opacity: 0.7;
+}
+.listings_image {
   width: 300px;
   height: 200px;
   border-radius: 10px;
   overflow: hidden;
+  position: relative;
 }
-.listing_image img {
+.listings_image img {
   object-fit: cover;
   height: 100%;
   width: 100%;
 }
-.listing_title {
+.listings_image button {
+  position: absolute;
+  top: 50%;
+  width: 32px;
+  height: 32px;
+  background: white;
+  border-radius: 50%;
+  overflow: hidden;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  opacity: 0;
+  transition: 0.1s ease-in;
+  cursor: pointer;
+}
+.listings_image button:hover {
+  opacity: 1 !important;
+}
+.listings_image button:first-of-type {
+  left: 10px;
+}
+.listings_image button:last-of-type {
+  right: 10px;
+}
+.listings_image button img {
+  width: 10px;
+  height: 10px;
+}
+
+.listings_title {
   display: flex;
   justify-content: space-between;
 }
-.listing_content {
-  width: calc(100% -300px);
+.listings_content {
+  width: calc(100% - 300px);
+  padding-left: 15px;
+  display: flex;
+  flex-direction: column;
+}
+.listings_text h2 {
+  padding-top: 10px;
+}
+.listings_title_icon > button {
+  background: none;
+  border: none;
+  outline: none;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.listings_title_icon button:hover:after {
+  opacity: 1;
+}
+
+.listings_title_icon button:after {
+  opacity: 0;
+  background: #f7f7f7;
+  position: absolute;
+  content: "";
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  z-index: -1;
+  cursor: pointer;
 }
 
 .greyText {
   font-size: 14px;
   line-height: 18px;
   color: #777;
+}
+
+h2 {
+  font-size: 24px;
+  color: #222;
+  margin: 5px 0 15px;
+  font-weight: 400;
+}
+.separator {
+  width: 32px;
+  height: 1px;
+  background: grey;
+}
+.listings_description {
+  padding-top: 15px;
+}
+.listings_description > span {
+  display: block;
+  margin-bottom: 5px;
+}
+/* .listings_ratings {
+  display: flex;
+  margin-top: auto;
+}
+.listings_ratings img {
+  width: 14px;
+  margin-right: 4px;
+}
+.listings_ratings span {
+  color: #222;
+}
+.listings_details {
+  display: flex;
+  justify-content: space-between;
+}
+.listings_price {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+}
+.listings_price_night {
+  font-size: 18px;
+}
+.listings_price_night span {
+  color: #484848;
+}
+.listings_price_total {
+  font-size: 14px;
+  color: #b0b0b0;
+  text-decoration: underline;
+  margin-top: 2px;
+} */
+
+footer {
+  background: rgb(214, 195, 143);
+  border-top: 1px solid #ddd;
+  padding: 30px 0;
+}
+.container {
+  max-width: 1200px;
+  padding: 24px;
+  display: flex;
+  margin: auto;
+  justify-content: space-between;
+}
+h4 {
+  text-transform: uppercase;
+  font-size: 12px;
+}
+footer ul {
+  list-style: none;
+  padding-left: 0;
+}
+footer ul li {
+  margin-bottom: 15px;
+}
+
+#map {
+  height: 100%;
+  width: 100%;
 }

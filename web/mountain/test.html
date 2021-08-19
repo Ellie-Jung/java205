@@ -1,0 +1,735 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            color: rgb(34, 34, 34);
+            font-size: 14px;
+            letter-spacing: normal;
+            line-height: 18px;
+        }
+
+        .header {
+            height: 80px;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 12px;
+            justify-content: space-between;
+            position: fixed;
+            width: 100%;
+            z-index: 2;
+            background: white;
+        }
+
+        .main {
+            position: relative;
+            padding-top: 80px;
+        }
+
+        .main_map {
+            width: calc(100% - 900px);
+            background: pink;
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+
+        .main_content {
+            min-height: calc(100vh - 80px);
+            width: 850px;
+            padding: 60px 24px 0;
+            background-color: #fcfae5;
+        }
+
+        .main_content h1 {
+            margin-top: 18px;
+            font-size: 34px;
+        }
+
+        .main_filters {
+            padding-top: 15px;
+        }
+
+        .main_filters button {
+            margin-right: 6px;
+        }
+
+        .main_scarcity {
+            display: flex;
+            align-items: center;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+
+        .main_scarcity > span > span {
+            font-weight: bold;
+        }
+
+        .main_scarcity > img {
+            margin-right: 15px;
+        }
+
+        button {
+            padding: 8px 16px;
+            outline: none;
+            background: transparent;
+            margin: 0;
+        }
+
+        .outlined {
+            border: 1px solid #b0b0b0;
+            border-radius: 30px;
+        }
+
+        .outlined:hover {
+            border-color: #222;
+        }
+
+        .listings_item {
+            border-top: 1px solid #ebebeb;
+            padding: 24px 0;
+            display: flex;
+        }
+
+        .listings_item:hover .listings_image button {
+            opacity: 0.7;
+        }
+
+        .listings_image {
+            width: 300px;
+            height: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .listings_image img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
+
+        .listings_image button {
+            position: absolute;
+            top: 50%;
+            width: 32px;
+            height: 32px;
+            background: white;
+            border-radius: 50%;
+            overflow: hidden;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            opacity: 0;
+            transition: 0.1s ease-in;
+            cursor: pointer;
+        }
+
+        .listings_image button:hover {
+            opacity: 1 !important;
+        }
+
+        .listings_image button:first-of-type {
+            left: 10px;
+        }
+
+        .listings_image button:last-of-type {
+            right: 10px;
+        }
+
+        .listings_image button img {
+            width: 10px;
+            height: 10px;
+        }
+
+        .listings_title {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .listings_content {
+            width: calc(100% - 300px);
+            padding-left: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .listings_title_icon > button {
+            background: none;
+            border: none;
+            outline: none;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .listings_title_icon button:hover:after {
+            opacity: 1;
+        }
+
+        .listings_title_icon button:after {
+            opacity: 0;
+            background: #f7f7f7;
+            position: absolute;
+            content: "";
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            z-index: -1;
+            cursor: pointer;
+        }
+
+        .greyText {
+            font-size: 14px;
+            line-height: 18px;
+            color: #777;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #222;
+            margin: 5px 0 15px;
+            font-weight: 400;
+        }
+
+        .separator {
+            width: 32px;
+            height: 1px;
+            background: grey;
+        }
+
+        .listings_description {
+            padding-top: 15px;
+        }
+
+        .listings_description > span {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .listings_ratings {
+            display: flex;
+            margin-top: auto;
+        }
+
+        .listings_ratings img {
+            width: 14px;
+            margin-right: 4px;
+        }
+
+        .listings_ratings span {
+            color: #222;
+        }
+
+        .listings_details {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .listings_price {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .listings_price_night {
+            font-size: 18px;
+        }
+
+        .listings_price_night span {
+            color: #484848;
+        }
+
+        .listings_price_total {
+            font-size: 14px;
+            color: #b0b0b0;
+            text-decoration: underline;
+            margin-top: 2px;
+        }
+
+        footer {
+            background: rgb(214, 195, 143);
+            border-top: 1px solid #ddd;
+            padding: 30px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            padding: 24px;
+            display: flex;
+            margin: auto;
+            justify-content: space-between;
+        }
+
+        h4 {
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+
+        footer ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        footer ul li {
+            margin-bottom: 15px;
+        }
+
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+
+    </style>
+</head>
+<body>
+<header class="header">
+    <div class="header__logo">
+        <img src="" alt="Logo"/>
+    </div>
+    <div class="header__search">
+        <button>selected map area</button>
+        <span></span>
+        <button></button>
+    </div>
+</header>
+<div class="main">
+
+    <div class="main_content">
+        <span>300 개의 산</span>
+        <h1>서울의 산</h1>
+        <div class="main_filters">
+            <button class="outlined curved">인기순으로 보기</button>
+            <button class="outlined curved">거리순으로 보기</button>
+            <button class="outlined curved">어쩌구저쩌구 보기</button>
+        </div>
+        <div class="main_scarcity">
+            <img src="" alt="">
+            <span>
+                    <span>
+
+                        여행 날짜와 게스트 인원수를 입력하면 1박당 총 요금을 확인할 수 있습니다.
+                    </span>
+                예약하기 전에 코로나19 관련 여행 제한 사항을 확인하세요.
+                </span>
+        </div>
+
+        <div class="listings">
+            <div class="listings_item">
+                <div class="listings_image">
+                    <button>
+                        <img src="images/icons/leftside.png" alt="Chevron Left">
+                    </button>
+                    <button>
+                        <img src="images/icons/rightside.png" alt="Chevron Right">
+                    </button>
+                    <img src="images/mountain/17.png" alt="">
+                </div>
+                <div class="listings_content">
+                    <div class="listings_title">
+                        <div class="listings_text">
+                            <span class="greyText">서울시 산 전체</span>
+                            <h2>#북한산</h2>
+                        </div>
+                        <div class="listings_title_icon">
+                            <button>
+                                <img src="images/icons/heartlike.png" alt="Heart">
+                            </button>
+
+                        </div>
+                    </div>
+                    <div class="separator"></div>
+                    <div class="listings_description">
+                        <span class="greyText">산에 대한 설명을 어쩌구저쩌구</span>
+                        <span class="greyText">설명을 이러쿵저러쿵</span>
+                    </div>
+                    <div class="listings_details">
+                        <div class="listings_ratings">
+                            <img src="" alt="">
+                            <span>5<span>(14)</span></span>
+                        </div>
+                        <div class="listings_price">
+                            <div class="listings_price_night">
+                                오백냥 <span> / 일</span>
+                            </div>
+                            <div class="listings_price_total">
+                                <span>오천냥 total</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="listings">
+            <div class="listings_item">
+                <div class="listings_image">
+                    <button>
+                        <img src="images/icons/leftside.png" alt="Chevron Left">
+                    </button>
+                    <button>
+                        <img src="images/icons/rightside.png" alt="Chevron Right">
+                    </button>
+                    <img src="images/mountain/17.png" alt="">
+                </div>
+                <div class="listings_content">
+                    <div class="listings_title">
+                        <div class="listings_text">
+                            <span class="greyText">서울시 산 전체</span>
+                            <h2>#북한산</h2>
+                        </div>
+                        <div class="listings_title_icon">
+                            <button>
+                                <img src="images/icons/heartlike.png" alt="Heart">
+                            </button>
+
+                        </div>
+                    </div>
+                    <div class="separator"></div>
+                    <div class="listings_description">
+                        <span class="greyText">산에 대한 설명을 어쩌구저쩌구</span>
+                        <span class="greyText">설명을 이러쿵저러쿵</span>
+                    </div>
+                    <div class="listings_details">
+                        <div class="listings_ratings">
+                            <img src="" alt="">
+                            <span>5<span>(14)</span></span>
+                        </div>
+                        <div class="listings_price">
+                            <div class="listings_price_night">
+                                오백냥 <span> / 일</span>
+                            </div>
+                            <div class="listings_price_total">
+                                <span>오천냥 total</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="listings">
+            <div class="listings_item">
+                <div class="listings_image">
+                    <button>
+                        <img src="images/icons/leftside.png" alt="Chevron Left">
+                    </button>
+                    <button>
+                        <img src="images/icons/rightside.png" alt="Chevron Right">
+                    </button>
+                    <img src="images/mountain/17.png" alt="">
+                </div>
+                <div class="listings_content">
+                    <div class="listings_title">
+                        <div class="listings_text">
+                            <span class="greyText">서울시 산 전체</span>
+                            <h2>#북한산</h2>
+                        </div>
+                        <div class="listings_title_icon">
+                            <button>
+                                <img src="images/icons/heartlike.png" alt="Heart">
+                            </button>
+
+                        </div>
+                    </div>
+                    <div class="separator"></div>
+                    <div class="listings_description">
+                        <span class="greyText">산에 대한 설명을 어쩌구저쩌구</span>
+                        <span class="greyText">설명을 이러쿵저러쿵</span>
+                    </div>
+                    <div class="listings_details">
+                        <div class="listings_ratings">
+                            <img src="" alt="">
+                            <span>5<span>(14)</span></span>
+                        </div>
+                        <div class="listings_price">
+                            <div class="listings_price_night">
+                                오백냥 <span> / 일</span>
+                            </div>
+                            <div class="listings_price_total">
+                                <span>오천냥 total</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="listings">
+            <div class="listings_item">
+                <div class="listings_image">
+                    <button>
+                        <img src="images/icons/leftside.png" alt="Chevron Left">
+                    </button>
+                    <button>
+                        <img src="images/icons/rightside.png" alt="Chevron Right">
+                    </button>
+                    <img src="images/mountain/17.png" alt="">
+                </div>
+                <div class="listings_content">
+                    <div class="listings_title">
+                        <div class="listings_text">
+                            <span class="greyText">서울시 산 전체</span>
+                            <h2>#북한산</h2>
+                        </div>
+                        <div class="listings_title_icon">
+                            <button>
+                                <img src="images/icons/heartlike.png" alt="Heart">
+                            </button>
+
+                        </div>
+                    </div>
+                    <div class="separator"></div>
+                    <div class="listings_description">
+                        <span class="greyText">산에 대한 설명을 어쩌구저쩌구</span>
+                        <span class="greyText">설명을 이러쿵저러쿵</span>
+                    </div>
+                    <div class="listings_details">
+                        <div class="listings_ratings">
+                            <img src="" alt="">
+                            <span>5<span>(14)</span></span>
+                        </div>
+                        <div class="listings_price">
+                            <div class="listings_price_night">
+                                오백냥 <span> / 일</span>
+                            </div>
+                            <div class="listings_price_total">
+                                <span>오천냥 total</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="listings">
+            <div class="listings_item">
+                <div class="listings_image">
+                    <button>
+                        <img src="images/icons/leftside.png" alt="Chevron Left">
+                    </button>
+                    <button>
+                        <img src="images/icons/rightside.png" alt="Chevron Right">
+                    </button>
+                    <img src="images/mountain/17.png" alt="">
+                </div>
+                <div class="listings_content">
+                    <div class="listings_title">
+                        <div class="listings_text">
+                            <span class="greyText">서울시 산 전체</span>
+                            <h2>#북한산</h2>
+                        </div>
+                        <div class="listings_title_icon">
+                            <button>
+                                <img src="images/icons/heartlike.png" alt="Heart">
+                            </button>
+
+                        </div>
+                    </div>
+                    <div class="separator"></div>
+                    <div class="listings_description">
+                        <span class="greyText">산에 대한 설명을 어쩌구저쩌구</span>
+                        <span class="greyText">설명을 이러쿵저러쿵</span>
+                    </div>
+                    <div class="listings_details">
+                        <div class="listings_ratings">
+                            <img src="" alt="">
+                            <span>5<span>(14)</span></span>
+                        </div>
+                        <div class="listings_price">
+                            <div class="listings_price_night">
+                                오백냥 <span> / 일</span>
+                            </div>
+                            <div class="listings_price_total">
+                                <span>오천냥 total</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="listings">
+            <div class="listings_item">
+                <div class="listings_image">
+                    <button>
+                        <img src="images/icons/leftside.png" alt="Chevron Left">
+                    </button>
+                    <button>
+                        <img src="images/icons/rightside.png" alt="Chevron Right">
+                    </button>
+                    <img src="images/mountain/17.png" alt="">
+                </div>
+                <div class="listings_content">
+                    <div class="listings_title">
+                        <div class="listings_text">
+                            <span class="greyText">서울시 산 전체</span>
+                            <h2>#북한산</h2>
+                        </div>
+                        <div class="listings_title_icon">
+                            <button>
+                                <img src="images/icons/heartlike.png" alt="Heart">
+                            </button>
+
+                        </div>
+                    </div>
+                    <div class="separator"></div>
+                    <div class="listings_description">
+                        <span class="greyText">산에 대한 설명을 어쩌구저쩌구</span>
+                        <span class="greyText">설명을 이러쿵저러쿵</span>
+                    </div>
+                    <div class="listings_details">
+                        <div class="listings_ratings">
+                            <img src="" alt="">
+                            <span>5<span>(14)</span></span>
+                        </div>
+                        <div class="listings_price">
+                            <div class="listings_price_night">
+                                오백냥 <span> / 일</span>
+                            </div>
+                            <div class="listings_price_total">
+                                <span>오천냥 total</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="listings">
+            <div class="listings_item">
+                <div class="listings_image">
+                    <button>
+                        <img src="images/icons/leftside.png" alt="Chevron Left">
+                    </button>
+                    <button>
+                        <img src="images/icons/rightside.png" alt="Chevron Right">
+                    </button>
+                    <img src="images/mountain/17.png" alt="">
+                </div>
+                <div class="listings_content">
+                    <div class="listings_title">
+                        <div class="listings_text">
+                            <span class="greyText">서울시 산 전체</span>
+                            <h2>#북한산</h2>
+                        </div>
+                        <div class="listings_title_icon">
+                            <button>
+                                <img src="images/icons/heartlike.png" alt="Heart">
+                            </button>
+
+                        </div>
+                    </div>
+                    <div class="separator"></div>
+                    <div class="listings_description">
+                        <span class="greyText">산에 대한 설명을 어쩌구저쩌구</span>
+                        <span class="greyText">설명을 이러쿵저러쿵</span>
+                    </div>
+                    <div class="listings_details">
+                        <div class="listings_ratings">
+                            <img src="" alt="">
+                            <span>5<span>(14)</span></span>
+                        </div>
+                        <div class="listings_price">
+                            <div class="listings_price_night">
+                                오백냥 <span> / 일</span>
+                            </div>
+                            <div class="listings_price_total">
+                                <span>오천냥 total</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <!--지도-->
+    <div class="main_map">
+<%--        <div class="main_kakaoMap">--%>
+            <div class="map" id='map'></div>
+<%--        </div>--%>
+    </div>
+</div>
+</div>
+<!--footer-->
+<footer>
+    <div class="container">
+        <div>
+            <h4>about</h4>
+            <ul>
+                <li>How we works</li>
+                <li>How we works</li>
+                <li>How we works</li>
+                <li>How we works</li>
+            </ul>
+        </div>
+        <div>
+            <h4>about</h4>
+            <ul>
+                <li>How we works</li>
+                <li>How we works</li>
+                <li>How we works</li>
+                <li>How we works</li>
+            </ul>
+        </div>
+        <div>
+            <h4>about</h4>
+            <ul>
+                <li>How we works</li>
+                <li>How we works</li>
+                <li>How we works</li>
+                <li>How we works</li>
+            </ul>
+        </div>
+        <div>
+            <h4>about</h4>
+            <ul>
+                <li>How we works</li>
+                <li>How we works</li>
+                <li>How we works</li>
+                <li>How we works</li>
+            </ul>
+        </div>
+    </div>
+
+
+</footer>
+
+
+<script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=35d3d05e2a1bb341d20b0d374beb2a05"></script>
+<script>
+    var container = document.getElementById('map');
+    var options = {
+        center: new kakao.maps.LatLng(37.65947494926604, 126.97759875364473),
+        level: 6
+    };
+
+    var map = new kakao.maps.Map(container, options);
+
+</script>
+
+
+</body>
+
+
+</html>
