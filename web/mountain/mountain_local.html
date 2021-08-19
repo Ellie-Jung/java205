@@ -14,10 +14,16 @@
         <div class="header__logo">
             <img src="" alt="Logo"/>
         </div>
-        <div class="header__search">
-            <button>selected map area</button>
-            <span></span>
-            <button></button>
+        <div class="category">
+            <ul>
+                <li id="mountain">
+                    <a href="#">
+                        mountain
+                    </a>
+                    
+                </li>
+
+            </ul>
         </div>
     </header>
     <div class="main">
@@ -25,11 +31,32 @@
         <div class="main_content">
             <span>300 개의 산</span>
             <h1>서울의 산</h1>
+            <div class="search">
+                <div class="icon"></div>
+                <div class="input">
+                    <input type="text" placeholder="산 이름을 검색하세요" id="mysearch">
+                </div>
+                <span class="clear" onclick="document.getElementById('mysearch').value=''"></span>
+            </div>
+
+
+            <script>
+                const icon=document.querySelector('.icon');
+                const search=document.querySelector('.search');
+                icon.onclick=function(){
+                    search.classList.toggle('active')
+                }
+            </script>
+
+
             <div class="main_filters">
                 <button class="outlined curved">인기순으로 보기</button>
                 <button class="outlined curved">거리순으로 보기</button>
                 <button class="outlined curved">난이도순으로 보기</button>
             </div>
+
+
+
             <div class="main_scarcity">
                 <img src="" alt="">
                 <span>
@@ -40,7 +67,7 @@
                 검색하기 전에 지도로 주변 산들을  둘러보세요.
                 </span>
             </div>
-    
+
             <div class="listings">
                 <div class="listings_item">
                     <div class="listings_image">
@@ -59,9 +86,9 @@
                                 <h2>#북한산</h2>
                             </div>
                             <div class="listings_title_icon">
-                                <button>
+                            <!--  <button>
                                     <img src="/images/icons/like_favorite_heart_5759.png" alt="Heart">
-                                </button>
+                                </button> -->
 
                             </div>
                         </div>
@@ -382,7 +409,9 @@
 
         <!--지도-->
         <div class="main_map">
+            <div class="main_kakaoMap">
                 <div class="map" id='map'></div>
+            </div>
         </div>
     </div>
 </div>
