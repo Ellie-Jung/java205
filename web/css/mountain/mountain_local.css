@@ -44,6 +44,10 @@ body {
   position: sticky;
   top: 0;
 }
+.map {
+  height: 100%;
+  width: 100%;
+}
 
 .main_content {
   min-height: calc(100vh - 80px);
@@ -355,9 +359,4 @@ footer ul {
 }
 footer ul li {
   margin-bottom: 15px;
-}
-
-#map {
-  height: 100%;
-  width: 100%;
 }

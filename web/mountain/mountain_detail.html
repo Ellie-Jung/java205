@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+            box-sizing: border-box;
+        }
+
+        .main, .mountain_basic_info, .mountain_map, .feed_container, .write {
+            display: flex;
+        }
+
+        .main {
+            flex-direction: column;
+            justify-content: center;
+            width: 1200px;
+            margin: 0 auto;
+        }
+
+        .mountain_basic_info {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .feed_container {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .write {
+            flex-direction: column;
+        }
+
+        .write_item_name {
+            margin-top: auto;
+            font-weight: bold;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .write_item_info1, .write_item_info2 {
+            font-size: 20px;
+        }
+
+        .main_item1 {
+            width: 100%;
+            margin: 30px;
+        }
+
+        .mountain_basic_info_item {
+            /*margin: 50px;*/
+        }
+
+        .mountain_basic_info_item_img {
+            width: 550px;
+            height: 400px;
+        }
+
+        .mountain_basic_info_item_write {
+            width: 550px;
+            height: 400px;
+        }
+
+        .mountain_map_item {
+            width: 1200px;
+            height: 600px;
+            /*margin: 50px;*/
+        }
+
+        .feed_item {
+            width: 250px;
+            height: 250px;
+            /*margin: 50px;*/
+        }
+
+        /*네비*/
+        .nav {
+            display: inline;
+            font-size: 15px;
+            padding-left: 10px;
+        }
+
+        header {
+            display: inline-block;
+            padding-top: 50px;
+        }
+
+        .header {
+            border-bottom: 1px solid rgb(170, 170, 170);
+        }
+
+        h1 {
+            position: absolute;
+            top: 12px;
+            left: 27px;
+            font-size: 20px;
+            padding-left: 10px;
+        }
+
+        nav {
+            display: inline-block;
+            position: absolute;
+            top: 12px;
+            right: 27px;
+        }
+
+        #profile {
+            height: 25px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <header>
+            <span id="logo">
+                <h1>오를래</h1>
+            </span>
+    </header>
+    <nav>
+        <span class="nav">MAIN</span>
+        <span class="nav">HIKING</span>
+        <span class="nav">CREW</span>
+        <span class="nav">FEED</span>
+        <span class="nav"><img id="profile" src="default.jpg"></span>
+    </nav>
+</div>
+<content>
+    <div class="main">
+        <div class="main_item1 main_item1_1 mountain_basic_info">
+            <div class="mountain_basic_info_item mountain_basic_info_item_img">
+                <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_259%2F14409922621599Cqxh_JPEG%2F11491416_1.jpg"
+                     width="100%" height="100%">
+            </div>
+            <div class="mountain_basic_info_item mountain_basic_info_item_write write">
+                <div class="write_item write_item_name">
+                    북한산
+                </div>
+                <div class="write_item write_item_info1">
+                    서울 지하철 3호선 구파발역에서 내려 1번 출구로 나와 704번 시내버스나 34번 시외버스를 타면 북한산성 입구에 도착한다.
+                </div>
+                <div class="write_item write_item_info2">
+                    백두대간에서 뻗어 나온 한북정맥은 추가령(586m)에서 남서 방향으로 굽이쳐 내려오다 경기도 양주군 서남쪽에 이르러 도봉산을 만든다.
+
+                </div>
+            </div>
+        </div>
+        <div class="main_item1 main_item1_2 mountain_map">
+            <div class="mountain_map_item" id="map">
+                <script type="text/javascript"
+                        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a5188ac15584cefe54aea3746f43ba94"></script>
+                <script>
+                    var container = document.getElementById('map');
+                    var options = {
+                        center: new kakao.maps.LatLng(37.65947494926604, 126.97759875364473),
+                        level: 6
+                    };
+
+                    var map = new kakao.maps.Map(container, options);
+
+                    var linePath = [
+                        new kakao.maps.LatLng(37.66104591233062, 126.98061806902977),
+                        new kakao.maps.LatLng(37.65851176614999, 126.98355035943321),
+                        new kakao.maps.LatLng(37.65963376520629, 126.97910305232135),
+                        new kakao.maps.LatLng(37.65595818784788, 126.98181542094453)
+                    ];
+
+                    var linePath2 = [
+                        new kakao.maps.LatLng(37.66027213644478, 126.97079489627016),
+                        new kakao.maps.LatLng(37.66139410889663, 126.97514446036858),
+                        new kakao.maps.LatLng(37.65942097361837, 126.97494897434169),
+                        new kakao.maps.LatLng(37.65911145744381, 126.97910305241321)
+                    ];
+
+                    // 지도에 표시할 선을 생성합니다
+                    var polyline = new kakao.maps.Polyline({
+                        path: linePath, // 선을 구성하는 좌표배열 입니다
+                        strokeWeight: 5, // 선의 두께 입니다
+                        strokeColor: '#44ff00', // 선의 색깔입니다
+                        strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                        strokeStyle: 'solid' // 선의 스타일입니다
+                    });
+
+                    var polyline2 = new kakao.maps.Polyline({
+                        path: linePath2, // 선을 구성하는 좌표배열 입니다
+                        strokeWeight: 5, // 선의 두께 입니다
+                        strokeColor: '#FFAE06', // 선의 색깔입니다
+                        strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                        strokeStyle: 'solid' // 선의 스타일입니다
+                    });
+
+                    // 지도에 선을 표시합니다
+                    polyline.setMap(map);
+                    polyline2.setMap(map);
+                </script>
+            </div>
+        </div>
+        <div class="main_item1 main_item1_3 feed_container">
+            <div class="feed_item feed_item_item4_1">
+                <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20191125_116%2F15746705048288V83E_JPEG%2F93SxDP1Z-5fWKoJcF8AqUtJM.jpg"
+                     width="100%" , height="100%">
+            </div>
+            <div class="feed_item feed_item_item4_2">
+                <img src="https://ldb-phinf.pstatic.net/20140407_199/1396853507116tMRGs_JPEG/%BC%AD%BF%EF_%BA%CF%C7%D1%BB%EA_17.jpg?type=m500_500"
+                     width="100%" , height="100%">
+            </div>
+            <div class="feed_item feed_item_item4_3">
+                <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fmyplace-phinf.pstatic.net%2F20210815_190%2F1629024249619aCKSR_JPEG%2Fupload_5805a121109f62266d63624f728d5b1f.jpeg"
+                     width="100%" , height="100%">
+            </div>
+            <div class="feed_item feed_item_item1_4">
+                <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAxNzEwMjdfMTg4%2FMDAxNTA5MDk2NzM0Njg1.hTDg3LherVWBH0Ugr1xzDoKXazc2yPNX3z1BNVOpy1og.A_5byUkROGAGewiIRzyfaTLyfrvwQzQQ5s56mjYazoog.JPEG.somdari496%2FIMG_6439.JPG%23966x542"
+                     width="100%" , height="100%">
+            </div>
+        </div>
+    </div>
+</content>
+</body>
+</html>
