@@ -5,12 +5,18 @@
   --background-color: #104128;
   --accent-color: #fce730;
 }
+* {
+  margin: 0;
+  padding: 0;
+}
 
 body {
   margin: 0;
 }
 a {
   text-decoration: none;
+}
+nav a {
   color: var(--text-color);
 }
 
@@ -92,3 +98,29 @@ a {
 }
 
 /*본문 컨텐츠*/
+h1 {
+  padding: 30px;
+}
+.contents {
+  margin: 50px auto;
+  width: 1200px;
+  height: 900px;
+  background: rgb(245, 243, 233);
+}
+.memberList {
+  border-collapse: collapse;
+}
+.memberList th {
+  padding: 20px;
+  color: #168;
+  border-bottom: 3px solid #168;
+  text-align: left;
+}
+.memberList td {
+  color: #669;
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+}
+.memberList tr:hover td {
+  color: #004;
+}

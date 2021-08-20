@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/manager/manager_mountain.css">
+    <script src="https://kit.fontawesome.com/8e91329278.js" crossorigin="anonymous"></script>
+    <script src="/javascript/manager/navbar.js" defer></script>
+</head>
+<body>
+    <!--헤더시작 -->
+   <nav class="navbar">
+    <div class="navbar__logo">
+     <i class="fas fa-mountain"></i>
+         <a href="#">오를래</a>
+    </div>
+
+    <ul class="navbar__menu">
+         <li><a href="">MEMBER</a></li>
+         <li><a href="">MOUATAIN</a></li>
+         <li><a href="">CREW</a></li>
+         <li><a href="">FEED</a></li>
+
+
+    </ul>
+
+    <ul class="navbar__icons">
+        <li><i class="fas fa-user"></i></li>
+        <li><a href="#">로그아웃</a></li>
+    </ul>
+
+    <a href="#" class="navbar__toogleBtn">
+     <i class="fas fa-bars"></i>
+    </a>
+
+</nav>
+<!--헤더끝-->
+
+<div class="main">
+    <div class="contents">
+        <h1>산 정보 관리</h1>
+        <div class="searchForm">
+            <h3 class="hidden">산 검색폼</h3>
+            <form >
+                <fieldset>
+                    <legend class="hidden">공지사항 검색 필드</legend>
+                    <label class="hidden">검색분류</label>
+                    <select name="f">
+                        <option  value="mountainName">산이름</option>
+                        <option  value="local">지역</option>
+                    </select> 
+                    <label class="hidden">검색어</label>
+                    <input type="text" name="q" value=""/>
+                    <input type="submit" value="검색" />
+                </fieldset>
+            </form>
+        </div>
+
+        <div class="mountainList">
+            <h3 class="hidden">공지사항 목록</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>번호</th>
+                        <th>산이름</th>
+                        <th >지역</th>
+                        <th >작성일</th>
+                        <th >공개</th>
+                        <th >삭제</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        
+                <tr>
+                    <td>8</td>
+                    <td ><a href="#">봉래산</a></td>
+                    <td>부산</td>
+                    <td>
+                        2019-08-18		
+                    </td>
+                    <td><input type="checkbox" name="open"></td>
+                    <td><input type="checkbox" name="del"></td>
+                </tr>
+                        
+                <tr>
+                    <td>8</td>
+                    <td ><a href="#">봉래산</a></td>
+                    <td>부산</td>
+                    <td>
+                        2019-08-18		
+                    </td>
+                    <td><input type="checkbox" name="open"></td>
+                    <td><input type="checkbox" name="del"></td>
+                </tr>
+
+                <tr>
+                    <td>8</td>
+                    <td ><a href="#">봉래산</a></td>
+                    <td>부산</td>
+                    <td>
+                        2019-08-18		
+                    </td>
+                    <td><input type="checkbox" name="open"></td>
+                    <td><input type="checkbox" name="del"></td>
+                </tr>
+
+                <tr>
+                    <td>8</td>
+                    <td ><a href="#">봉래산</a></td>
+                    <td>부산</td>
+                    <td>
+                        2019-08-18		
+                    </td>
+                    <td><input type="checkbox" name="open"></td>
+                    <td><input type="checkbox" name="del"></td>
+                </tr>
+
+                <tr>
+                    <td>8</td>
+                    <td ><a href="#">봉래산</a></td>
+                    <td>부산</td>
+                    <td>
+                        2019-08-18		
+                    </td>
+                    <td><input type="checkbox" name="open"></td>
+                    <td><input type="checkbox" name="del"></td>
+                </tr>
+                
+                
+                </tbody>
+            </table>
+        </div>
+
+
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
