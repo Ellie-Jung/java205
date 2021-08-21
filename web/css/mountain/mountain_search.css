@@ -51,7 +51,7 @@
   position: fixed;
   width: 100%;
   z-index: 2;
-  background: white;
+  background: rgb(252, 244, 198);
 }
 /*내용물 전체*/
 #container {
@@ -59,14 +59,12 @@
   padding-top: 150px;
   width: auto;
   height: auto;
-  background: wheat;
 }
 /*중간 검색창 부분*/
 #contents {
   width: 1000px;
   height: 600px;
   margin: 30px auto;
-  background: thistle;
 }
 h2 {
   font-size: 40px;

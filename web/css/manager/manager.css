@@ -106,13 +106,15 @@ h1 {
 }
 .contents {
   margin: 50px auto;
+  padding: 30px;
   width: 1000px;
-  height: 900px;
+  height: auto;
   background: rgb(245, 243, 233);
 }
 .memberList {
   border-collapse: collapse;
   text-align: center;
+  margin: auto;
 }
 .memberList th {
   padding: 15px;
@@ -130,7 +132,23 @@ h1 {
 }
 
 /*페이징*/
+.pres {
+  margin: 30px auto;
+  padding-left: 30px;
+}
+.delete {
+  padding-right: 50px;
+  float: right;
+}
+.delete input {
+  width: 70px;
+  height: 30px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: transparent;
+}
 .paging {
+  margin-top: 30px;
   text-align: center;
 }
 .paging li {
@@ -138,10 +156,10 @@ h1 {
 }
 .paging li.prev a,
 .paging li.next a {
-  display: block;
-  width: 30px;
-  height: 30px;
-  border: 1px solid #ddd;
   overflow: hidden;
-  color: transparent;
+  display: block;
+  width: 50px;
+  height: 25px;
+  border: 1px solid #ddd;
+  cursor: pointer;
 }
