@@ -104,13 +104,35 @@ h1 {
 }
 .contents {
   margin: 50px auto;
-  width: 1200px;
+  width: 1000px;
   height: 900px;
   background: rgb(245, 243, 233);
 }
-.memberList {
-  border-collapse: collapse;
+.mountainList {
+  text-align: center;
+
+  padding: 30px;
 }
+.mountainList table {
+  border-collapse: separate;
+  border-spacing: 0 10px;
+  margin: 30px auto;
+}
+.mountainList th {
+  padding: 20px;
+  color: #168;
+  border-bottom: 3px solid #168;
+  text-align: left;
+}
+.mountainList td {
+  color: #669;
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+}
+.mountainList tr:hover td {
+  color: #004;
+}
+
 .hidden {
   display: none;
 }
@@ -120,13 +142,4 @@ h1 {
 }
 fieldset {
   border: 0;
-}
-.mountainList {
-  padding: 30px;
-}
-.mountainList th {
-  padding: 10px;
-}
-.mountainList td {
-  padding: 10px;
 }

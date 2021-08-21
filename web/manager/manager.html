@@ -38,11 +38,12 @@
    </nav>
 <!--헤더끝-->
 
-    <div class="main">
-        <div class="contents">
+    <main class="contents">
+        <div>
             <h1>회원관리</h1>
             <table class="memberList">
                 <tr>
+                    <th>선택</th>
                     <th>IDX</th>
                     <th>아이디</th>
                     <th>이름</th>
@@ -54,6 +55,7 @@
                     <th>관리</th>
                 </tr>
                 <tr>
+                    <td><input type="checkbox" name="select"></td>
                     <td>1</td>
                     <td>cool</td>
                     <td>홍길동</td>
@@ -68,6 +70,7 @@
                     </td>
                 </tr>
                 <tr>
+                    <td><input type="checkbox" name="select"></td>
                     <td>2</td>
                     <td>cool</td>
                     <td>홍길동</td>
@@ -82,14 +85,34 @@
                     </td>
                 </tr>
             </table>
+        </div>
 
+        <!--페이징-->
+        <div >
+            <h3 class="hidden">현재 페이지</h3>
+            <div><span>1</span> / 1 pages</div>
+        </div>
 
+        <div class="delete">
+            <input type="submit" value="일괄삭제">
+        </div>
 
+        <div>
+            <ol class="paging">
+                <li class="prev"><a href="#">이전</a></li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li class="next"><a href="#">다음</a></li>
+
+            </ol>
 
         </div>
 
 
-    </div>
+
+
+    </main>
 
 
 

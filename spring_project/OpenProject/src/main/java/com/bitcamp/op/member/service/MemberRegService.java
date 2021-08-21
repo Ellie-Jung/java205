@@ -33,6 +33,19 @@ public class MemberRegService {
 	
 	@Autowired
 	private SqlSessionTemplate template;
+	
+	@Autowired
+	private MailSenderService mailSenderService;
+	
+	@Autowired
+	private Sha256 sha256;
+	
+	@Autowired
+	private AES256Util aes256Util; 
+	
+	@Autowired
+	private BCryptPasswordEncoder cryptPasswordEncoder;
+	
 
 	public int memberReg(MemberRegRequest regRequest, HttpServletRequest request) {
 
@@ -72,6 +85,36 @@ public class MemberRegService {
 				member.setMemberphoto("photo.png");
 			}
 
+			
+			//////////////////////////////////////////////////////////////////////////
+			//  암호화 처리 코드
+			//////////////////////////////////////////////////////////////////////////
+			
+			System.out.println("암호화 : " + sha256.encrypt(member.getPassword()) );
+			
+			// AES256 으로 암호화된 문자열 : insert or update
+			String epw = aes256Util.encrypt(member.getPassword());
+			// AES256으로 복호화된 문자열 : select
+			String ppw = aes256Util.decrypt(epw);
+			System.out.println("---------------------");
+			System.out.println("AES256 으로 암호화된 문자열");
+			System.out.println(epw);
+			System.out.println("AES256으로 복호화된 문자열");
+			System.out.println(ppw);
+			
+			System.out.println("--------------------------");
+			System.out.println("Spring Security BCryptPasswordEncoder 이용한 암호화");
+			String securityPw = cryptPasswordEncoder.encode(member.getPassword());
+			System.out.println(securityPw);
+			System.out.println("비밀번호 비교 메소드 : matches");
+			System.out.println(cryptPasswordEncoder.matches("111", securityPw));
+			System.out.println(cryptPasswordEncoder.matches(member.getPassword(), securityPw));
+
+			
+			
+			
+			
+			
 			// 2. dao 저장
 			// conn = ConnectionProvider.getConnection();
 			

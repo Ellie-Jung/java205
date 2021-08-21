@@ -19,6 +19,9 @@ a {
 nav a {
   color: var(--text-color);
 }
+.hidden {
+  display: none;
+}
 
 /*네이게이션 */
 
@@ -103,24 +106,42 @@ h1 {
 }
 .contents {
   margin: 50px auto;
-  width: 1200px;
+  width: 1000px;
   height: 900px;
   background: rgb(245, 243, 233);
 }
 .memberList {
   border-collapse: collapse;
+  text-align: center;
 }
 .memberList th {
-  padding: 20px;
+  padding: 15px;
   color: #168;
   border-bottom: 3px solid #168;
   text-align: left;
 }
 .memberList td {
   color: #669;
-  padding: 20px;
+  padding: 15px;
   border-bottom: 1px solid #ddd;
 }
 .memberList tr:hover td {
   color: #004;
+}
+
+/*페이징*/
+.paging {
+  text-align: center;
+}
+.paging li {
+  display: inline-block;
+}
+.paging li.prev a,
+.paging li.next a {
+  display: block;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ddd;
+  overflow: hidden;
+  color: transparent;
 }
