@@ -53,9 +53,10 @@ body {
   min-height: calc(100vh - 80px);
   width: 850px;
   padding: 60px 24px 0;
-  background-color: #fcfae5;
 }
-
+.main_content > span {
+  padding-left: 5px;
+}
 .main_content h1 {
   margin: 18px 0;
   font-size: 34px;
@@ -96,7 +97,6 @@ body {
   z-index: 1000;
   cursor: pointer;
 }
-
 .search .icon::before {
   content: "";
   position: absolute;
@@ -144,6 +144,7 @@ body {
   justify-content: center;
   align-items: center;
 }
+
 .clear::before {
   position: absolute;
   content: "";
