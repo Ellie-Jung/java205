@@ -30,22 +30,29 @@
     
         <div class="main_content">
             <span>300 개의 산</span>
-            <h1>서울의 산</h1>
+            <h1>서울</h1>
             <div class="search">
                 <div class="icon"></div>
                 <div class="input">
                     <input type="text" placeholder="산 이름을 검색하세요" id="mysearch">
                 </div>
-                <span id="clear" class="clear" onclick="document.getElementById('mysearch').value=''"></span>
+                <span id='clearIcon' class="clear" style="display:none;" onclick="document.getElementById('mysearch').value=''"></span>
             </div>
 
 
             <script>
-                const icon=document.querySelector('.icon');
-                const search=document.querySelector('.search');
-                icon.onclick=function(){
-                    search.classList.toggle('active');
-                };
+            const icon = document.querySelector('.icon');
+            const search = document.querySelector('.search');
+            const clearIcon = document.getElementById("clearIcon");
+            icon.onclick = function () {
+                search.classList.toggle('active')
+                if(clearIcon.style.display=='none'){
+                    clearIcon.style.display='block';
+                }else{
+                    clearIcon.style.display='none';
+                }
+            }
+
                 
             </script>
 

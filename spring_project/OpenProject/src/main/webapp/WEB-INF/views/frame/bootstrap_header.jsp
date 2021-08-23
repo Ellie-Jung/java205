@@ -14,13 +14,14 @@
 		<div class="navbar-collapse offcanvas-collapse"
 			id="navbarsExampleDefault">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item "> <a class="nav-link" href="<c:url value='/member/memberReg'/>">회원가입</a> </li>
-				<li class="nav-item"><a class="nav-link" href="<c:url value='/member/login'/>">로그인</a> </li>
-				<li class="nav-item"><a class="nav-link" href="<c:url value='/member/logout'/>">로그아웃</a></li>
-				<li class="nav-item"><a class="nav-link" href="<c:url value='/member/list'/>">회원리스트</a></li>
-				<li class="nav-item"><a class="nav-link" href="<c:url value='/board/list'/>">방명록</a></li>
+				<li><a href="<c:url value='/member/memberReg'/>">회원가입</a></li>
+			<li><a href="<c:url value='/member/login'/>">로그인</a></li>
+			<li><a href="<c:url value='/member/logout'/>">로그아웃</a></li>
+			<li><a href="<c:url value='/member/list'/>">회원 리스트</a></li>
+			<li><a href="<c:url value='/board/list'/>">방명록(게시판)</a></li>
 				
 			</ul>
 			
 		</div>
 	</nav>
+

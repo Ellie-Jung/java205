@@ -9,6 +9,9 @@ public class IndexController {
 	@RequestMapping("/index")
 	public void index() {
 	}
+	@RequestMapping("/index2")
+	public void index2() {
+	}
 	
 	@RequestMapping("/")
 	public String index1() {

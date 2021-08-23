@@ -8,12 +8,15 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.bitcamp.op.member.dao.Dao;
 import com.bitcamp.op.member.domain.Member;
 import com.bitcamp.op.member.domain.MemberRegRequest;
+import com.bitcamp.op.util.AES256Util;
+import com.bitcamp.op.util.Sha256;
 
 @Service
 public class MemberRegService {
@@ -34,9 +37,20 @@ public class MemberRegService {
 	@Autowired
 	private SqlSessionTemplate template;
 	
+	
+	
+
 	@Autowired
 	private MailSenderService mailSenderService;
 	
+	
+	
+	
+	
+	
+	
+	
+
 	@Autowired
 	private Sha256 sha256;
 	
@@ -44,7 +58,9 @@ public class MemberRegService {
 	private AES256Util aes256Util; 
 	
 	@Autowired
-	private BCryptPasswordEncoder cryptPasswordEncoder;
+	private BCryptPasswordEncoder cryptPasswordEncoder; 
+	
+	
 	
 
 	public int memberReg(MemberRegRequest regRequest, HttpServletRequest request) {
@@ -85,7 +101,6 @@ public class MemberRegService {
 				member.setMemberphoto("photo.png");
 			}
 
-			
 			//////////////////////////////////////////////////////////////////////////
 			//  암호화 처리 코드
 			//////////////////////////////////////////////////////////////////////////
@@ -109,7 +124,15 @@ public class MemberRegService {
 			System.out.println("비밀번호 비교 메소드 : matches");
 			System.out.println(cryptPasswordEncoder.matches("111", securityPw));
 			System.out.println(cryptPasswordEncoder.matches(member.getPassword(), securityPw));
-
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			
 			
 			
@@ -127,6 +150,11 @@ public class MemberRegService {
 			// idx 값은 자식 테이블의 insert 시 외래키로 사용
 
 			// 자식테이블 insert 구문....
+			
+			
+			int mailsendCnt = mailSenderService.send(member);
+			System.out.println("메일 발송 처리 횟수 : " + mailsendCnt);
+			
 
 		} catch (IllegalStateException | IOException e) {
 			e.printStackTrace();
