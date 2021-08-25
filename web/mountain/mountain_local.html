@@ -7,44 +7,67 @@
     <title>지역별산</title>
     <link rel = "stylesheet" href = "../css/mountain/mountain_local.css">
     <script src="https://kit.fontawesome.com/8e91329278.js" crossorigin="anonymous"></script>
-
+    <!--네비 마이페이지아이콘 스크립트-->
+    <script>
+        function menuToggle() {
+            const toggleMenu = document.querySelector('.menu');
+            toggleMenu.classList.toggle('active')
+        }
+    </script>
 </head>
 <body>
-    <header class="header">
-        <div class="header__logo">
-            <img src="" alt="Logo"/>
+     <!--헤더 네비-->
+     <div class="action">
+        <div id="home" class="big-bg">
+            <div class="header wrapper">
+                <div class="logo">
+                    <span class="oly"><i class="fas fa-seedling"></i></span>
+                    <h1><a href="#">오를래</a></h1>
+                </div>
+                <div class="nav">
+                    <ul>
+                        <li><a href="#">MAIN</a></li>
+                        <li><a href="#">HIKING</a></li>
+                        <li><a href="#">CREW</a></li>
+                        <li><a href="#">COMMUNITY</a></li>
+                        <div class="icon" onclick="menuToggle();">
+                            <a href="#"><i class="far fa-user"></i></a>
+                        </div>
+                    </ul>
+                </div>
+                <div class="menu">
+                    <ul>
+                        <li><a href="#">로그인</a></li>
+                        <li><a href="#">회원가입</a></li>
+                        <li><a href="#">내 크루</a></li>
+                        <li><a href="#">내 피드</a></li>
+                        <li><a href="#">마이페이지</a></li>
+                        <li><a href="#">로그아웃</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="category">
-            <ul>
-                <li id="mountain">
-                    <a href="#">
-                        mountain
-                    </a>
-                    
-                </li>
+    </div>
 
-            </ul>
-        </div>
-    </header>
+    <!--중간 부분 전부-->
     <div class="main">
-    
+        <!--왼쪽 컨텐츠-->
         <div class="main_content">
             <span>300 개의 산</span>
             <h1>서울</h1>
             <div class="search">
-                <div class="icon"></div>
+                <div class="iconsearch"></div>
                 <div class="input">
                     <input type="text" placeholder="산 이름을 검색하세요" id="mysearch">
                 </div>
                 <span id='clearIcon' class="clear" style="display:none;" onclick="document.getElementById('mysearch').value=''"></span>
             </div>
 
-
             <script>
-            const icon = document.querySelector('.icon');
+            const iconsearch = document.querySelector('.iconsearch');
             const search = document.querySelector('.search');
             const clearIcon = document.getElementById("clearIcon");
-            icon.onclick = function () {
+            iconsearch.onclick = function () {
                 search.classList.toggle('active')
                 if(clearIcon.style.display=='none'){
                     clearIcon.style.display='block';
@@ -81,11 +104,9 @@
                     <div class="listings_image">
                         <button>
                             <i class="fas fa-angle-left"></i>
-                         <!--    <img src="/images/icons/left.png" alt="Chevron Left"> -->
                         </button>
                         <button>
                             <i class="fas fa-angle-right"></i>
-                           <!--  <img src="/images/icons/right.png" alt="Chevron Right"> -->
                         </button>
                         <img src="/images/mountain/tj-k-4m9j8TrudRs-unsplash.jpg" alt="">
                     </div>
@@ -95,32 +116,13 @@
                                 <span class="greyText">서울시 산 전체</span>
                                 <h2>#북한산</h2>
                             </div>
-                            <div class="listings_title_icon">
-                            <!--  <button>
-                                    <img src="/images/icons/like_favorite_heart_5759.png" alt="Heart">
-                                </button> -->
-
-                            </div>
                         </div>
                         <div class="separator"></div>
                         <div class="listings_description">
                             <span class="greyText">서울시 강북구 도봉구 은평구 성북구 종로구와 경기도 고양시 덕양구 양주시 의정부시 경계에 위치</span>
                             <span class="greyText">북한산 둘레길 코스가 개방</span>
                         </div>
-                        <!-- <div class="listings_details">
-                            <div class="listings_ratings">
-                                <img src="" alt="">
-                                <span>5<span>(14)</span></span>
-                            </div>
-                            <div class="listings_price">
-                                <div class="listings_price_night">
-                                    오백냥 <span> / 일</span>
-                                </div>
-                                <div class="listings_price_total">
-                                    <span>오천냥 total</span>
-                                </div>
-                            </div>
-                        </div> -->
+                    
                     </div>
                 </div>
             </div>
@@ -323,65 +325,60 @@
             </div>
 
 
-            </div>
+        </div>
 
 
-        
-
-
-        <!--지도-->
+        <!--오른쪽 지도-->
         <div class="main_map">
             <div class="main_kakaoMap">
                 <div class="map" id='map'></div>
             </div>
         </div>
     </div>
-</div>
-    <!--footer-->
-    <footer>
-        <div class="container">
-            <div>
-                <h4>about</h4>
-                <ul>
-                    <li>How we works</li>
-                    <li>How we works</li>
-                    <li>How we works</li>
-                    <li>How we works</li>
-                </ul>
-            </div>
-            <div>
-                <h4>about</h4>
-                <ul>
-                    <li>How we works</li>
-                    <li>How we works</li>
-                    <li>How we works</li>
-                    <li>How we works</li>
-                </ul>
-            </div>
-            <div>
-                <h4>about</h4>
-                <ul>
-                    <li>How we works</li>
-                    <li>How we works</li>
-                    <li>How we works</li>
-                    <li>How we works</li>
-                </ul>
-            </div>
-            <div>
-                <h4>about</h4>
-                <ul>
-                    <li>How we works</li>
-                    <li>How we works</li>
-                    <li>How we works</li>
-                    <li>How we works</li>
-                </ul>
-            </div>
-        </div>
         
+            <!--footer-->
+    <div class="footer">
+        <div class="footer-col">
+            <ul>
+                <h3>MY ACCOUNT</h3>
+                <li><a href="#">footer</a></li>
+                <li><a href="#">footer</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <ul>
+                <h3>MY ACCOUNT</h3>
+                <li><a href="#">footer</a></li>
+                <li><a href="#">footer</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <ul>
+                <h3>MY ACCOUNT</h3>
+                <li><a href="#">MY PAGE</a></li>
+                <li><a href="#">MY ORDER</a></li>
+                <li><a href="#">MEMBERSHIP</a></li>
+                <li><a href="#">LOGIN</a></li>
+                <li><a href="#">JOIN US</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <ul>
+                <h3>MY ACCOUNT</h3>
+                <li><a href="#">footer</a></li>
+                <li><a href="#">footer</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <ul>
+                <h3>MY ACCOUNT</h3>
+                <li><a href="#">footer</a></li>
+                <li><a href="#">footer</a></li>
+            </ul>
+        </div>
+    </div>
 
-    </footer>
-
-
+    <!--카카오 지도 스크립트 -->
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=35d3d05e2a1bb341d20b0d374beb2a05"></script>
     <script>
         var container = document.getElementById('map');
@@ -389,10 +386,9 @@
             center: new kakao.maps.LatLng(37.65947494926604, 126.97759875364473),
         level: 6
     };
-
-    
         var map = new kakao.maps.Map(container, options);
     </script>
+
 
 
 </body>

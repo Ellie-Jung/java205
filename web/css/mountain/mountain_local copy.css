@@ -7,13 +7,12 @@ body {
   font-size: 14px;
   letter-spacing: normal;
   line-height: 18px;
-  font-family: var(--text-sans);
-  background-color: var(--background-color);
+  font-family: "Noto Sans KR", sans-serif;
 }
 
 .main_content {
   min-height: calc(100vh - 80px);
-  width: 800px;
+  width: 830px;
   padding: 60px 30px 0;
 }
 .main_content > span {
@@ -37,10 +36,9 @@ body {
   height: 50px;
   border-radius: 60px;
   transition: 0.5s;
-  box-shadow: 0 0 0 1px #ebebeb;
+  box-shadow: 0 0 0 3px #ebebeb;
   display: flex;
   float: right;
-  margin-right: 30px;
   background: #fff;
   overflow: hidden;
 }
@@ -107,7 +105,7 @@ body {
   justify-content: center;
   align-items: center;
 }
-/*검색창 안 엑스*/
+
 .clear::before {
   position: absolute;
   content: "";
@@ -198,6 +196,10 @@ button {
 .listings_image button:last-of-type {
   right: 10px;
 }
+/* .listings_image button img {
+  width: 10px;
+  height: 10px;
+} */
 
 .listings_title {
   display: flex;
@@ -212,7 +214,33 @@ button {
 .listings_title h2 {
   padding-top: 10px;
 }
+/* .listings_title_icon > button {
+  background: none;
+  border: none;
+  outline: none;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+} */
+/* 
+.listings_title_icon button:hover::after {
+  opacity: 1;
+}
 
+.listings_title_icon button:after {
+  opacity: 0;
+  background: #f7f7f7;
+  position: absolute;
+  content: "";
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  z-index: -1;
+  cursor: pointer;
+}
+ */
 .greyText {
   font-size: 14px;
   line-height: 18px;
@@ -237,6 +265,38 @@ h2 {
   display: block;
   margin-bottom: 5px;
 }
+/* .listings_ratings {
+  display: flex;
+  margin-top: auto;
+}
+.listings_ratings img {
+  width: 14px;
+  margin-right: 4px;
+}
+.listings_ratings span {
+  color: #222;
+}
+.listings_details {
+  display: flex;
+  justify-content: space-between;
+}
+.listings_price {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+}
+.listings_price_night {
+  font-size: 18px;
+}
+.listings_price_night span {
+  color: #484848;
+}
+.listings_price_total {
+  font-size: 14px;
+  color: #b0b0b0;
+  text-decoration: underline;
+  margin-top: 2px;
+} */
 
 /*지도*/
 .main {
@@ -244,7 +304,8 @@ h2 {
   padding-top: 80px;
 }
 .main_map {
-  width: calc(100% - 850px);
+  width: calc(100% - 880px);
+  background: pink;
   position: absolute;
   right: 0;
   top: 0;
