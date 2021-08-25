@@ -239,10 +239,10 @@ button {
 .listings_image button:last-of-type {
   right: 10px;
 }
-.listings_image button img {
+/* .listings_image button img {
   width: 10px;
   height: 10px;
-}
+} */
 
 .listings_title {
   display: flex;
