@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/manager/managerIndex.css">
+    <title>Nav bar</title>
+    <script src="https://kit.fontawesome.com/8e91329278.js" crossorigin="anonymous"></script>
+    <style>
+        .memberList td {
+         max-width: 500px;
+        }
+    </style>
+
+</head>
+<body>
+<!--헤더시작 -->
+<nav class="navbar">
+    <div class="navbar__logo">
+        <i class="fas fa-mountain"></i>
+        <a href="#">오를래</a>
+    </div>
+
+    <ul class="navbar__menu">
+        <li><a href="">MEMBER</a></li>
+        <li><a href="">MOUATAIN</a></li>
+        <li><a href="">CREW</a></li>
+        <li><a href="">FEED</a></li>
+
+
+    </ul>
+
+    <ul class="navbar__icons">
+        <li><a href="#">로그아웃</a></li>
+    </ul>
+
+    <a href="#" class="navbar__toogleBtn">
+        <i class="fas fa-bars"></i>
+    </a>
+
+</nav>
+<!--헤더끝-->
+
+<main class="contents">
+    <div>
+        <h1>사진게시판 관리</h1>
+        <table class="memberList">
+            <tr>
+                <th>선택</th>
+                <th>IDX</th>
+                <th>사진</th>
+                <th>작성자</th>
+                <th>한줄평</th>
+                <th>생성일</th>
+                <th>관리</th>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="select"></td>
+                <td>1</td>
+                <td><img src="../images/mountain/1.png" width="40px"></td>
+                <td>tester</td>
+                <td style="max-width: 50px">재밌었고 또 가고싶다 ㅎㅎㅎ</td>
+                <td>2021-08-20</td>
+                <td>
+                    <a href="#">삭제</a>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="select"></td>
+                <td>1</td>
+                <td><img src="../images/mountain/1.png" width="40px"></td>
+                <td>tester</td>
+                <td>재밌었고 또 가고싶다 ㅎㅎㅎ 더길게만들기 ㅎㅎㅎ 더길게만들기 ㅎㅎㅎ 더길게만들기 ㅎㅎㅎ 더길게만들기ㅎㅎㅎ 더길게만들기 ㅎㅎㅎ 더길게만들기 ㅎㅎㅎ 더길게만들기 ㅎㅎㅎ 더길게만들기ㅎㅎㅎ 더길게만들기 ㅎㅎㅎ 더길게만들기 ㅎㅎㅎ 더길게만들기 ㅎㅎㅎ 더길게만들기ㅎㅎㅎ 더길게만들기 ㅎㅎㅎ 더길게만들기 ㅎㅎㅎ 더길게만들기 ㅎㅎㅎ 더길게만들기ㅎㅎㅎ 더길게만들기 ㅎㅎㅎ 더길게만들기 ㅎㅎㅎ 더길게만들기 ㅎㅎㅎ 더길게만들기ㅎㅎㅎ 더길게만들기 ㅎㅎㅎ 더길게만들기 ㅎㅎㅎ 더길게만들기 ㅎㅎㅎ 더길게만들기</td>
+                <td>2021-08-20</td>
+                <td>
+                    <a href="#">삭제</a>
+                </td>
+            </tr>
+            
+        </table>
+        </div>
+         <!--페이징-->
+         <div class="delete">
+             <input type="submit" value="일괄삭제">
+         </div>
+         <div class="pres">
+            <h4 class="hidden">현재 페이지</h4>
+            <div><span>1</span> / 1 pages</div>
+        </div>
+
+
+        <div>
+            <ol class="paging">
+                <li class="prev"><a href="#a"><i class="fas fa-angle-left"></i></a></li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li class="next"><a href="#a"><i class="fas fa-angle-right"></i></a></li>
+            </ol>
+
+        </div>
+
+
+</main>
+
+
+<script>
+    const toggleBtn = document.querySelector('.navbar__toogleBtn');
+    const menu = document.querySelector('.navbar__menu');
+    const icons = document.querySelector('.navbar__icons');
+
+    toggleBtn.addEventListener('click', () => {
+        menu.classList.toggle('active');
+        icons.classList.toggle('active');
+    });
+</script>
+
+</body>
+</html>
+

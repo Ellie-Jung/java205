@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/manager/manager.css">
+    <link rel="stylesheet" href="/css/manager/managerIndex.css">
     <title>Nav bar</title>
     <script src="https://kit.fontawesome.com/8e91329278.js" crossorigin="anonymous"></script>
-    <script src="/javascript/manager/navbar.js" defer></script>
+  
 </head>
 <body>
     <!--헤더시작 -->
@@ -27,7 +27,6 @@
        </ul>
 
        <ul class="navbar__icons">
-           <li><i class="fas fa-user"></i></li>
            <li><a href="#">로그아웃</a></li>
        </ul>
 
@@ -95,7 +94,6 @@
                     <td>2021-08-20</td>
                     <td>2000-10-10</td>
                     <td>
-                        <a href="#">수정</a>
                         <a href="#">삭제</a>
                     </td>
                 </tr>
@@ -120,14 +118,14 @@
         </div>
 
         <!--페이징-->
-        <div class="pres">
-            <h3 class="hidden">현재 페이지</h3>
-            <div><span>1</span> / 1 pages</div>
-        </div>
-
         <div class="delete">
             <input type="submit" value="일괄삭제">
         </div>
+        <div class="pres">
+            <h4 class="hidden">현재 페이지</h4>
+            <div><span>1</span> / 1 pages</div>
+        </div>
+
 
         <div>
             <ol class="paging">
@@ -145,7 +143,16 @@
 
     </main>
 
-
+    <script>
+        const toggleBtn = document.querySelector('.navbar__toogleBtn');
+        const menu = document.querySelector('.navbar__menu');
+        const icons = document.querySelector('.navbar__icons');
+    
+        toggleBtn.addEventListener('click', () => {
+            menu.classList.toggle('active');
+            icons.classList.toggle('active');
+        });
+    </script>
 
 
 

@@ -1,26 +1,38 @@
 @charset "utf-8";
+/*폰트 스타일넣기*/
+/*로고폰트*/
+@font-face {
+  font-family: "Cafe24SsurroundAir";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+/*본문 폰트*/
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR&display=swap");
 
 :root {
-  --text-color: #f0f4f5;
-  --background-color: #104128;
-  --accent-color: #fce730;
+  --background-color: #f8f8f8;
+  --yello-color: #fdef7b;
+  --footer-color: #cac0ae;
+  --point-color: #785024;
+  --manager-color: #104128;
+  --text-sans: "Noto Sans KR ", sans-serif;
+  --text-logo: "Cafe24SsurroundAir";
+  --text-color-white: #f0f4f5;
 }
 * {
   margin: 0;
   padding: 0;
 }
 
-body {
-  margin: 0;
-}
 a {
   text-decoration: none;
+  color: var(--manager-color);
 }
+
 nav a {
-  color: var(--text-color);
-}
-.hidden {
-  display: none;
+  color: var(--text-color-white);
 }
 
 /*네이게이션 */
@@ -29,15 +41,16 @@ nav a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--background-color);
+  background-color: var(--manager-color);
   padding: 8px 12px;
+  font-family: var(--text-logo);
+  color: var(--text-color-white);
 }
 .navbar__logo {
   font-size: 24px;
-  color: var(--text-color);
 }
 .navbar__logo i {
-  color: var(--accent-color);
+  color: var(--yello-color);
 }
 .navbar__menu {
   display: flex;
@@ -52,20 +65,19 @@ nav a {
   border-radius: 4px;
 }
 .navbar__icons {
-  padding-left: 0;
+  padding-right: 20px;
   list-style: none;
-  color: var(--text-color);
   display: flex;
 }
-.navbar__icons li {
-  padding: 8px 12px;
+.navbar__icons li a {
+  color: var(--point-color);
+  color: #fdef7b;
 }
 .navbar__toogleBtn {
   display: none;
   position: absolute;
   right: 32px;
   font-size: 24px;
-  color: var(--text-color);
 }
 
 /*반응형 웹 만들기*/
@@ -99,7 +111,6 @@ nav a {
     display: flex;
   }
 }
-
 /*본문 컨텐츠*/
 h1 {
   padding: 30px;
@@ -109,6 +120,7 @@ h1 {
   padding: 30px;
   width: 1000px;
   height: auto;
+  font-family: var(--text-sans);
 }
 .memberList {
   border-collapse: collapse;
@@ -136,10 +148,11 @@ h1 {
   padding-left: 40px;
 }
 .delete {
-  padding-right: 50px;
-  position: relative;
-  left: 900px;
+  /*  padding-right: 50px; */
+  margin: 25px;
+  float: right;
 }
+
 .delete input {
   width: 70px;
   height: 30px;
@@ -156,15 +169,4 @@ h1 {
 .paging li {
   display: inline-block;
   margin: 5px;
-}
-/* .paging li.prev a,
-.paging li.next a {
-  display: block;
-  width: 30px;
-  height: 30px;
-  border: 1px solid #ddd;
-  overflow: hidden;
-  color: transparent;
-} */
-.paging i {
 }

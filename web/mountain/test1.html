@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FEED MAIN</title>
+    <link rel="stylesheet" href="/css/layout.css">
+    <style>
+
+
+/
+.container {
+   /*  background-color: gray;
+    position: relative;
+    margin-top: 10%; */
+    margin:0 auto;
+    background-color: ;
+}
+ 
+
+
+.mountainbox {
+    background-color: gray;
+  /*   width: 1000px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%; */
+}
+.mountain-img {
+    width: 100px;
+  /*   position: absolute;
+    left: 95%; */
+}
+
+
+
+.feed-nav {
+   /*  position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%; */
+    margin-top: 130px;
+    width: 1000px;
+    height: 60px;
+    border-bottom: 1px solid #C9C0AE;
+}
+.keywordbox {
+    background-color: greenyellow;
+  /*   position: absolute;
+    left: 1%; */
+}
+a.keyword {
+    margin-right: 15px;
+    color: gray;
+}
+a.keyword:hover {
+    color: gray;
+    font-weight: bold;
+    border: 1px solid grey;
+    padding: 5px 10px;
+}
+/* 키워드 선택시 박스 처리 */
+
+
+
+.searchbox {
+  /*   position: absolute;
+    transform: translate(-50%, -50%); */
+    left: 92%;
+    top: 10px;
+    width: 150px;
+    height: 25px;
+    border: 1px solid #C9C0AE;
+    border-radius: 10px;
+}
+input {
+    border: 0;
+    width: 100px;
+    height: 25px;
+    outline: none;
+    border-radius: 8px;
+    margin-left: 10px;
+    color: #C9C0AE;
+}
+button {
+    border: 0;
+    width: 40px;
+    height: 25px;
+    background-color: #00ff0000;
+    float: right;
+}
+.search {
+    width: 23px;
+    float: right;
+    margin-right: 5px;
+}
+
+
+
+.feedbox {
+    width: 1000px;
+  /*   position: absolute; */
+  /*   transform: translate(-50%, -50%); */
+  /*   left: 50%; */
+  /*   top: 820px; */
+}
+.feedbox>div {
+    display: flex;
+    justify-content: space-between;
+}
+.feed-size {
+    width: 310px;
+    height: 310px;
+}
+.feed {
+    position: relative;
+    margin-bottom: 80px;
+}
+/* 사이즈 맞춰 자르기 추가 */
+.feed-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+}
+.feed-nickname {
+    position: absolute;
+    font-size: 20px;
+    top: 330px;
+    left: 10px;
+}
+
+/* 좋아요 누르면 이미지 변경 */
+.like-img {
+    width: 35px;
+    position: absolute;
+    right: 10px;
+    /* bottom: 0px; */
+}
+
+
+
+.pages {
+    width: 300px;
+   /*  top: 1500px; */
+  /*   position: absolute; */
+   /*  transform: translate(-50%, -50%);
+    left: 50%; */
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+.page {
+    padding: 15px;
+    /* color: gray; */
+}
+/* 현재 페이지 표시 */
+.page:hover {
+    font-weight: bold;
+}
+
+a.category {
+    color: white;
+    font-weight: bold;
+    font-size: 17px;
+    line-height: 2;
+}
+a.content {
+    color: white;
+    padding-top: 30px;
+    line-height: 1.5;
+}
+    </style>
+</head>
+
+<body>
+
+    <!--헤더 네비-->
+    <div class="action">
+        <div id="home" class="big-bg">
+            <div class="header wrapper">
+                <div class="logo">
+                    <span class="oly"><i class="fas fa-seedling"></i></span>
+                    <h1><a href="#">오를래</a></h1>
+                </div>
+                <div class="nav">
+                    <ul>
+                        <li><a href="#">MAIN</a></li>
+                        <li><a href="#">HIKING</a></li>
+                        <li><a href="#">CREW</a></li>
+                        <li><a href="#">COMMUNITY</a></li>
+                        <div class="icon" onclick="menuToggle();">
+                            <a href="#"><i class="far fa-user"></i></a>
+                        </div>
+                    </ul>
+                </div>
+                <div class="menu">
+                    <ul>
+                        <li><a href="#">로그인</a></li>
+                        <li><a href="#">회원가입</a></li>
+                        <li><a href="#">내 크루</a></li>
+                        <li><a href="#">내 피드</a></li>
+                        <li><a href="#">마이페이지</a></li>
+                        <li><a href="#">로그아웃</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- 최신/인기 표시 -->
+    <!-- 페이징 표시 -->
+    <!-- 좋아요 표시 -->
+    <div class="container">
+        <div class="mountainbox">
+            <img src="/images/mountain/" class="mountain-img" alt="mountain-img">
+        </div>
+
+        <section class="feed-nav">            
+            <div class="keywordbox">
+                
+                <a href="#" class="keyword">최신</a>
+                <a href="#" class="keyword">인기</a>
+            </div>
+
+            <div class="searchbox">
+                <input type="text" /*placeholder="search"*/>
+                <button type="submit">
+                    <img src="/FEED/images/search.png" class="search" alt="search-img">
+                </button>
+            </div>
+        </section>
+        
+        <section class="feedbox">
+            <div>
+                <div class="feed">
+                    <div class="feed-size">
+                        <a href="#"><img src="/images/mountain/tj-k-4m9j8TrudRs-unsplash.jpg" class="feed-img" alt="feed-img"></a>
+                    </div>
+                    <a href="#" class="feed-nickname">NICKNAME</a>
+                    <button><img src="/FEED/images/nolike.png" class="like-img" alt="like-img"></button>
+                </div>
+
+                <div class="feed">
+                    <div class="feed-size">
+                        <a href="#"><img src="/images/mountain/tj-k-4m9j8TrudRs-unsplash.jpg" class="feed-img" alt="feed-img"></a>
+                    </div>
+                    <a href="#" class="feed-nickname">NICKNAME</a>
+                    <button><img src="/FEED/images/nolike.png" class="like-img" alt="like-img"></button>
+                </div>
+
+                <div class="feed">
+                    <div class="feed-size">
+                        <a href="#"><img src="/images/mountain/tj-k-4m9j8TrudRs-unsplash.jpg" class="feed-img" alt="feed-img"></a>
+                    </div>
+                    <a href="#" class="feed-nickname">NICKNAME</a>
+                    <button><img src="/images/mountain/tj-k-4m9j8TrudRs-unsplash.jpg" class="like-img" alt="like-img"></button>
+                </div>
+            </div>
+
+            <div>
+                <div class="feed">
+                    <div class="feed-size">
+                        <a href="#"><img src="/images/mountain/tj-k-4m9j8TrudRs-unsplash.jpg" class="feed-img" alt="feed-img"></a>
+                    </div>
+                    <a href="#" class="feed-nickname">NICKNAME</a>
+                    <button><img src="/FEED/images/nolike.png" class="like-img" alt="like-img"></button>
+                </div>
+                <div class="feed">
+                    <div class="feed-size">
+                        <a href="#"><img src="/images/mountain/tj-k-4m9j8TrudRs-unsplash.jpg" class="feed-img" alt="feed-img"></a>
+                    </div>
+                    <a href="#" class="feed-nickname">NICKNAME</a>
+                    <button><img src="/FEED/images/nolike.png" class="like-img" alt="like-img"></button>
+                </div>
+                <div class="feed">
+                    <div class="feed-size">
+                        <a href="#"><img src="/images/mountain/tj-k-4m9j8TrudRs-unsplash.jpg" class="feed-img" alt="feed-img"></a>
+                    </div>
+                    <a href="#" class="feed-nickname">NICKNAME</a>
+                    <button><img src="/FEED/images/nolike.png" class="like-img" alt="like-img"></button>
+                </div>
+            </div>
+
+            <div>
+                <div class="feed">
+                    <div class="feed-size">
+                        <a href="#"><img src="/images/mountain/tj-k-4m9j8TrudRs-unsplash.jpg" class="feed-img" alt="feed-img"></a>
+                    </div>
+                    <a href="#" class="feed-nickname">NICKNAME</a>
+                    <button><img src="/FEED/images/nolike.png" class="like-img" alt="like-img"></button>
+                </div>
+                <div class="feed">
+                    <div class="feed-size">
+                        <a href="#"><img src="/images/mountain/tj-k-4m9j8TrudRs-unsplash.jpg" class="feed-img" alt="feed-img"></a>
+                    </div>
+                    <a href="#" class="feed-nickname">NICKNAME</a>
+                    <button><img src="/FEED/images/nolike.png" class="like-img" alt="like-img"></button>
+                </div>
+                <div class="feed">
+                    <div class="feed-size">
+                        <a href="#"><img src="/images/mountain/tj-k-4m9j8TrudRs-unsplash.jpg" class="feed-img" alt="feed-img"></a>
+                    </div>
+                    <a href="#" class="feed-nickname">NICKNAME</a>
+                    <button><img src="/FEED/images/nolike.png" class="like-img" alt="like-img"></button>
+                </div>
+            </div>
+        </section>
+        
+        <section class="pages">
+            <div class="page"><a href="#">1</a></div>
+            <div class="page"><a href="#">2</a></div>
+            <div class="page"><a href="#">3</a></div>
+        </section>
+
+    </div>
+
+
+          <!--footer-->
+          <div class="footer">
+            <div class="footer-col">
+                <ul>
+                    <h3>MY ACCOUNT</h3>
+                    <li><a href="#">footer</a></li>
+                    <li><a href="#">footer</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <ul>
+                    <h3>MY ACCOUNT</h3>
+                    <li><a href="#">footer</a></li>
+                    <li><a href="#">footer</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <ul>
+                    <h3>MY ACCOUNT</h3>
+                    <li><a href="#">MY PAGE</a></li>
+                    <li><a href="#">MY ORDER</a></li>
+                    <li><a href="#">MEMBERSHIP</a></li>
+                    <li><a href="#">LOGIN</a></li>
+                    <li><a href="#">JOIN US</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <ul>
+                    <h3>MY ACCOUNT</h3>
+                    <li><a href="#">footer</a></li>
+                    <li><a href="#">footer</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <ul>
+                    <h3>MY ACCOUNT</h3>
+                    <li><a href="#">footer</a></li>
+                    <li><a href="#">footer</a></li>
+                </ul>
+            </div>
+        </div>
+
+</body>
+</html>
