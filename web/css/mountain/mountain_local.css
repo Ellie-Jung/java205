@@ -9,6 +9,10 @@ body {
   font-family: var(--text-sans);
   background-color: var(--background-color);
 }
+.main {
+  position: relative;
+  padding-top: 80px;
+}
 
 .main_content {
   min-height: calc(100vh - 80px);
@@ -238,10 +242,7 @@ h2 {
 }
 
 /*지도*/
-.main {
-  position: relative;
-  padding-top: 80px;
-}
+
 .main_map {
   width: calc(100% - 850px);
   position: absolute;

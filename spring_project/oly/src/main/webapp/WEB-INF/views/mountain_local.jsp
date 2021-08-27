@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -132,11 +134,9 @@
                     <div class="listings_image">
                         <button>
                             <i class="fas fa-angle-left"></i>
-                        <!--    <img src="/images/icons/left.png" alt="Chevron Left"> -->
                         </button>
                         <button>
                             <i class="fas fa-angle-right"></i>
-                        <!--  <img src="/images/icons/right.png" alt="Chevron Right"> -->
                         </button>
                         <img src="/images/mountain/tj-k-4m9j8TrudRs-unsplash.jpg" alt="">
                     </div>
@@ -147,9 +147,6 @@
                                 <h2>#북한산</h2>
                             </div>
                             <div class="listings_title_icon">
-                            <!--  <button>
-                                    <img src="/images/icons/like_favorite_heart_5759.png" alt="Heart">
-                                </button> -->
 
                             </div>
                         </div>
@@ -158,20 +155,6 @@
                             <span class="greyText">서울시 강북구 도봉구 은평구 성북구 종로구와 경기도 고양시 덕양구 양주시 의정부시 경계에 위치</span>
                             <span class="greyText">북한산 둘레길 코스가 개방</span>
                         </div>
-                        <!-- <div class="listings_details">
-                            <div class="listings_ratings">
-                                <img src="" alt="">
-                                <span>5<span>(14)</span></span>
-                            </div>
-                            <div class="listings_price">
-                                <div class="listings_price_night">
-                                    오백냥 <span> / 일</span>
-                                </div>
-                                <div class="listings_price_total">
-                                    <span>오천냥 total</span>
-                                </div>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
             </div>
@@ -181,11 +164,9 @@
                     <div class="listings_image">
                         <button>
                             <i class="fas fa-angle-left"></i>
-                         <!--    <img src="/images/icons/left.png" alt="Chevron Left"> -->
                         </button>
                         <button>
                             <i class="fas fa-angle-right"></i>
-                           <!--  <img src="/images/icons/right.png" alt="Chevron Right"> -->
                         </button>
                         <img src="/images/mountain/tj-k-4m9j8TrudRs-unsplash.jpg" alt="">
                     </div>
@@ -196,9 +177,6 @@
                                 <h2>#북한산</h2>
                             </div>
                             <div class="listings_title_icon">
-                            <!--  <button>
-                                    <img src="/images/icons/like_favorite_heart_5759.png" alt="Heart">
-                                </button> -->
 
                             </div>
                         </div>
@@ -207,20 +185,6 @@
                             <span class="greyText">서울시 강북구 도봉구 은평구 성북구 종로구와 경기도 고양시 덕양구 양주시 의정부시 경계에 위치</span>
                             <span class="greyText">북한산 둘레길 코스가 개방</span>
                         </div>
-                        <!-- <div class="listings_details">
-                            <div class="listings_ratings">
-                                <img src="" alt="">
-                                <span>5<span>(14)</span></span>
-                            </div>
-                            <div class="listings_price">
-                                <div class="listings_price_night">
-                                    오백냥 <span> / 일</span>
-                                </div>
-                                <div class="listings_price_total">
-                                    <span>오천냥 total</span>
-                                </div>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
             </div>
@@ -231,11 +195,9 @@
                     <div class="listings_image">
                         <button>
                             <i class="fas fa-angle-left"></i>
-                         <!--    <img src="/images/icons/left.png" alt="Chevron Left"> -->
                         </button>
                         <button>
                             <i class="fas fa-angle-right"></i>
-                           <!--  <img src="/images/icons/right.png" alt="Chevron Right"> -->
                         </button>
                         <img src="/images/mountain/tj-k-4m9j8TrudRs-unsplash.jpg" alt="">
                     </div>
@@ -246,9 +208,6 @@
                                 <h2>#북한산</h2>
                             </div>
                             <div class="listings_title_icon">
-                            <!--  <button>
-                                    <img src="/images/icons/like_favorite_heart_5759.png" alt="Heart">
-                                </button> -->
 
                             </div>
                         </div>
@@ -257,20 +216,6 @@
                             <span class="greyText">서울시 강북구 도봉구 은평구 성북구 종로구와 경기도 고양시 덕양구 양주시 의정부시 경계에 위치</span>
                             <span class="greyText">북한산 둘레길 코스가 개방</span>
                         </div>
-                        <!-- <div class="listings_details">
-                            <div class="listings_ratings">
-                                <img src="" alt="">
-                                <span>5<span>(14)</span></span>
-                            </div>
-                            <div class="listings_price">
-                                <div class="listings_price_night">
-                                    오백냥 <span> / 일</span>
-                                </div>
-                                <div class="listings_price_total">
-                                    <span>오천냥 total</span>
-                                </div>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
             </div>
@@ -280,11 +225,9 @@
                     <div class="listings_image">
                         <button>
                             <i class="fas fa-angle-left"></i>
-                         <!--    <img src="/images/icons/left.png" alt="Chevron Left"> -->
                         </button>
                         <button>
                             <i class="fas fa-angle-right"></i>
-                           <!--  <img src="/images/icons/right.png" alt="Chevron Right"> -->
                         </button>
                         <img src="/images/mountain/tj-k-4m9j8TrudRs-unsplash.jpg" alt="">
                     </div>
@@ -295,9 +238,6 @@
                                 <h2>#북한산</h2>
                             </div>
                             <div class="listings_title_icon">
-                            <!--  <button>
-                                    <img src="/images/icons/like_favorite_heart_5759.png" alt="Heart">
-                                </button> -->
 
                             </div>
                         </div>
@@ -306,20 +246,6 @@
                             <span class="greyText">서울시 강북구 도봉구 은평구 성북구 종로구와 경기도 고양시 덕양구 양주시 의정부시 경계에 위치</span>
                             <span class="greyText">북한산 둘레길 코스가 개방</span>
                         </div>
-                        <!-- <div class="listings_details">
-                            <div class="listings_ratings">
-                                <img src="" alt="">
-                                <span>5<span>(14)</span></span>
-                            </div>
-                            <div class="listings_price">
-                                <div class="listings_price_night">
-                                    오백냥 <span> / 일</span>
-                                </div>
-                                <div class="listings_price_total">
-                                    <span>오천냥 total</span>
-                                </div>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
             </div>

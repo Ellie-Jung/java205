@@ -4,12 +4,18 @@
   background-color: var(--footer-color);
   flex-wrap: wrap;
   display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+}
+.footer ol,
+.footer ul {
+  padding-left: 0;
 }
 
 .footer-col {
-  width: 30%;
+  width: 20%;
   text-align: center;
-  padding-left: 50px;
 }
 
 .footer-col h3 {
@@ -30,12 +36,19 @@
 .footer-col h3::before {
   content: "";
   position: absolute;
-  left: 10;
+  left: 9;
   height: 2px;
-  bottom: -10px;
+  bottom: -7px;
   box-sizing: border-box;
   background-color: white;
-  width: 120px;
+  width: 80px;
+}
+.footer-col .footer-01::before {
+  width: 160px;
+}
+
+.footer-col .footer-02::before {
+  width: 100px;
 }
 
 .footer-col ul li a {
