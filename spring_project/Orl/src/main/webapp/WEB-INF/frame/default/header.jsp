@@ -23,7 +23,7 @@
 			<div class="nav">
 				<ul>
 					<li><a href="<c:url value='/'/>">MAIN</a></li>
-					<li><a href="<c:url value='/'/>">MOUNTAIN</a></li>
+					<li><a href="<c:url value='/mountain/mountainAllInfo/'/>">MOUNTAIN</a></li>
 					<li><a href="<c:url value='/crew/list'/>">CREW</a></li>
 					<li><a href="<c:url value='/'/>">FEED</a></li>
 					<li><div class="icon" onclick="menuToggle();">
