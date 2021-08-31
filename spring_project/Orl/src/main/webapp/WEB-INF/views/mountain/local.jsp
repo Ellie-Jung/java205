@@ -12,6 +12,93 @@
     <title>지역별산</title>
     <link rel="stylesheet" href="<c:url value='/css/mountain/local.css'/>">
     <link rel="stylesheet" href="<c:url value='/css/default/default.css'/>">
+    
+    
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>
+    
+    function mountainList(){
+    	$.ajax({
+    		url:'<c:url value="/mountain/height"/>',
+			type:'GET',
+			data:{
+				loc:'${loc}' 
+			},
+			success:function(data){
+				console.log(data);
+					var html='<div id="listings" class="listings">';
+				$.each(data,function(index,item){
+					console.log(index,item);
+					
+					html+=' <div class="listings_item">';
+					html+=' <div class="listings_image">';
+					html+=' <img src="https://www.forest.go.kr/images/data/down/mountain/'+item.img+'" alt="">';
+					html+='</div>'
+					html+=' <div class="listings_content">'
+					html+=' <div class="listings_title">'
+					html+=' <div class="listings_text">'
+					html+='   <span class="greyText">${loc} 산 전체</span>'
+					html+=' <h2>#${mountainLocInfo.mountainName}</h2>'
+					html+='</div>'
+					html+='</div>'
+					html+='<div class="listings_description">'
+					html+='   <span >${mountainLocInfo.mountainAddress}</span>'
+					html+=' <span class="greyText">${mountainLocInfo.mountainInfo}</span>'
+					html+='  </div>'
+					html+='</div>'
+					html+='</div>'
+					html+='</div>'
+					
+				
+					
+
+						$('#listings').html(html);
+					
+					
+				})
+			}
+    	})
+    }
+    
+    	$(document).ready(function(){
+    		$('#heightlist').click(function(){
+    			$.ajax({
+    				url:'<c:url value="/mountain/height"/>',
+    				type:'GET',
+    				data:{
+    					loc:'${loc}' 
+    				},
+    				success:function(data){
+    					$.each(data,function(index,item){
+    						
+    						mountainList()
+    						
+    						/* var html=' <div class="listings_item">';
+    						html+=' <div class="listings_image">';
+    						html+=' <img src="https://www.forest.go.kr/images/data/down/mountain/'+item.img+'" alt="">';
+    						html+='</div>';
+    						html+=' <div class="listings_content">';
+    						html+=' <div class="listings_title">';
+    						html+=' <div class="listings_text">';
+    						html+='   <span class="greyText">${loc} 산 전체</span>';
+    						html+=' <h2>#${mountainLocInfo.mountainName}</h2>';
+    						html+='</div>';
+    						html+='</div>';
+    						html+='<div class="listings_description">';
+    						html+='   <span >${mountainLocInfo.mountainAddress}</span>';
+    						html+=' <span class="greyText">${mountainLocInfo.mountainInfo}</span>';
+    						html+='  </div>';
+    						html+='</div>';
+    						html+='</div>';
+    						*/
+    					
+    					})
+    				}
+    			});
+    		})
+    	})
+    </script>
+    
 </head>
 <body>
 <%@ include file="/WEB-INF/frame/default/header.jsp" %>
@@ -47,8 +134,8 @@
 
 
         <div class="main_filters">
-            <button class="outlined curved">이름순으로 보기</button>
-            <button class="outlined curved">높이순으로 보기</button>
+            <button class="outlined curved" id="namelist">이름순으로 보기</button>
+            <button class="outlined curved" id="heightlist">높이순으로 보기</button>
             <button class="outlined curved">인기순으로 보기</button>
         </div>
 
@@ -63,44 +150,37 @@
                 검색하기 전에 지도로 주변 산들을  둘러보세요.
                 </span>
         </div>
-        <%
+ <%--        <%
             List<MountainLocInfo> mountainLocInfoList = (List<MountainLocInfo>) request.getAttribute("mountainLocInfoList");
             for (int i = 0; i < mountainLocInfoList.size(); i++) {
                 request.setAttribute("mountainLocInfo", mountainLocInfoList.get(i));
 
-        %>`
-
-        <div class="listings">
+        %> --%>
+		<c:forEach items="${mountainLocInfoList}" var="list">
+        <div id="listings" class="listings">
+        
             <div class="listings_item">
                 <div class="listings_image">
-                   <!--  <button>
-                        <i class="fas fa-angle-left"></i>
-                    </button>
-                    <button>
-                        <i class="fas fa-angle-right"></i>
-                    </button> -->
                     <img src="https://www.forest.go.kr/images/data/down/mountain/${mountainLocInfo.img}" alt="">
                 </div>
                 <div class="listings_content">
                     <div class="listings_title">
                         <div class="listings_text">
                             <span class="greyText">${loc} 산 전체</span>
-                            <h2>#${mountainLocInfo.mountainName}</h2>
+                            <h2>#${list.mountainName}</h2>
                         </div>
                     </div>
-                    <div class="separator"></div>
                     <div class="listings_description">
-                        <span >${mountainLocInfo.mountainAddress}</span>
-                        <span class="greyText">${mountainLocInfo.mountainInfo}</span>
+                        <span >${list.mountainAddress}</span>
+                        <span class="greyText">${list.mountainInfo}</span>
                     </div>
-
                 </div>
             </div>
         </div>
-
-        <%
+</c:forEach>
+      <%--   <%
             }
-        %>
+        %> --%>
     </div>
 
 

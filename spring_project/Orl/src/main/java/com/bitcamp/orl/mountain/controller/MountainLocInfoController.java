@@ -31,4 +31,6 @@ public class MountainLocInfoController {
 		return "mountain/local";
 	}
 	
+	
+	
 }
