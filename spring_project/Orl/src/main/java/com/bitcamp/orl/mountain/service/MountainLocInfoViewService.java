@@ -20,10 +20,14 @@ public class MountainLocInfoViewService {
 	//지역별 산 리스트
 	public List<MountainLocInfo> getMountainLocInfo(String loc){
 		List<MountainLocInfo> mountainLocInfoList = null;
-		if (loc != null) {
-			dao = template.getMapper(Dao.class);
-			mountainLocInfoList = dao.selectByLocName(loc);
-		}
+		 if (loc != null) {
+	            dao = template.getMapper(Dao.class);
+	            if (loc.equals("서울경기")) {
+	                mountainLocInfoList = dao.selectByLocNameSeoul();
+	            } else {
+	                mountainLocInfoList = dao.selectByLocName(loc);
+	            }
+	        }
 		return mountainLocInfoList;
 	};
 	
@@ -31,11 +35,16 @@ public class MountainLocInfoViewService {
 	
 	//지역별 산 갯수
 	public int getCountLoc(String loc) {
-		int result = 0;
-		if(loc !=null) {
-			dao= template.getMapper(Dao.class);
-			result=dao.countByLocName(loc);
-		}
+		 int result = 0;
+	        if (loc != null) {
+	            this.dao = (Dao)this.template.getMapper(Dao.class);
+	            if(loc.equals("서울경기")){
+	                result = this.dao.countByLocNameSeoul();
+	            }else{
+	                result = this.dao.countByLocName(loc);
+	            }
+	        }
+
 		return result;
 	}
 
