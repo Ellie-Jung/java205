@@ -33,12 +33,5 @@ public class MountainRestService {
 			return mountainLocInfoList;
 		};
 	
-	/*
-	 * //지역별 산 리스트 높이순 public List<MountainLocInfo> getSortingHeight(String loc){
-	 * List<MountainLocInfo> mountainLocInfoList = null;
-	 * dao=template.getMapper(Dao.class); mountainLocInfoList =
-	 * dao.selectByLocName2(loc); System.out.println(mountainLocInfoList); return
-	 * mountainLocInfoList; };
-	 */
-	
+
 }

@@ -29,14 +29,7 @@ public class MountainRestController {
 	}
 	
 	
-	/*
-	 * @GetMapping("/mountain/height")
-	 * 
-	 * @CrossOrigin public List<MountainLocInfo> getSortingHeight(String loc){
-	 * System.out.println(restService.getSortingHeight(loc)); return
-	 * restService.getSortingHeight(loc); }
-	 */
-	
+
 	
 	
 }

@@ -32,7 +32,9 @@
    					$.each(data,function(index,item){
 							html+=' <div class="listings_item">';
    						html+=' <div class="listings_image">';
+   					  	html+='<a href="${pageContext.request.contextPath}/mountain/mountainDetailInfo?mountainName='+item.mountainName+'">';
    						html+=' <img src="https://www.forest.go.kr/images/data/down/mountain/'+item.img+'" alt="">';
+   						html+='</a>';
    						html+='</div>';
    						html+=' <div class="listings_content">';
    						html+=' <div class="listings_title">';
@@ -42,7 +44,7 @@
    						html+='</div>';
    						html+='</div>';
    						html+='<div class="listings_description">';
-   						html+='   <span >'+item.mountainAddress+'</span>';
+   						html+='   <span >'+item.mountainAddress+'(높이 : ' + item.height + 'm)</span>';
    						html+=' <span class="greyText">'+item.mountainInfo+'</span>';
    						html+='  </div>';
    						html+='</div>';
@@ -68,7 +70,9 @@
     					$.each(data,function(index,item){
 							html+=' <div class="listings_item">';
     						html+=' <div class="listings_image">';
+    						html+='<a href="${pageContext.request.contextPath}/mountain/mountainDetailInfo?mountainName='+item.mountainName+'">';
     						html+=' <img src="https://www.forest.go.kr/images/data/down/mountain/'+item.img+'" alt="">';
+    						html+='</a>';
     						html+='</div>';
     						html+=' <div class="listings_content">';
     						html+=' <div class="listings_title">';
@@ -78,7 +82,7 @@
     						html+='</div>';
     						html+='</div>';
     						html+='<div class="listings_description">';
-    						html+='   <span >'+item.mountainAddress+'</span>';
+    						html+='   <span >'+item.mountainAddress+'(높이 : ' + item.height + 'm)</span>';
     						html+=' <span class="greyText">'+item.mountainInfo+'</span>';
     						html+='  </div>';
     						html+='</div>';
@@ -153,7 +157,9 @@
 	        
 	            <div class="listings_item">
 	                <div class="listings_image">
+	                	 <a href="${pageContext.request.contextPath}/mountain/mountainDetailInfo?mountainName=${list.mountainName}">
 	                    <img src="https://www.forest.go.kr/images/data/down/mountain/${list.img}" alt="">
+	                    </a>
 	                </div>
 	                <div class="listings_content">
 	                    <div class="listings_title">
@@ -163,7 +169,7 @@
 	                        </div>
 	                    </div>
 	                    <div class="listings_description">
-	                        <span >${list.mountainAddress}</span>
+	                        <span >${list.mountainAddress} (높이 : ${list.height}m)</span>
 	                        <span class="greyText">${list.mountainInfo}</span>
 	                    </div>
 	                </div>
@@ -184,6 +190,10 @@
 
 <%@ include file="/WEB-INF/frame/default/footer.jsp" %>
 
+<%
+    List<MountainLocInfo> mountainLocInfoList = (List<MountainLocInfo>) request.getAttribute("mountainLocInfoList");
+%>
+
 <!--카카오 지도 스크립트 -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a5188ac15584cefe54aea3746f43ba94"></script>
 <script>
@@ -193,6 +203,44 @@
         level: 6
     };
     var map = new kakao.maps.Map(container, options);
+    
+    
+    
+    // 마커를 표시할 위치와 title 객체 배열입니다
+    var positions = [
+            <%
+            for(int i = 0; i < mountainLocInfoList.size(); i++) {
+                %>{
+            title: '<%=mountainLocInfoList.get(i).getMountainName()%>',
+            lating: new kakao.maps.LatLng(<%=mountainLocInfoList.get(i).getLongitude()%>, <%=mountainLocInfoList.get(i).getLatitude()%>)
+        },
+        <%
+        }
+        %>
+    ];
+
+    // 마커 이미지의 이미지 주소입니다
+    var imageSrc = "${pageContext.request.contextPath}/images/mountain/seedling-solid.png";
+
+    for (var i = 0; i < positions.length; i++) {
+
+        // 마커 이미지의 이미지 크기 입니다
+        var imageSize = new kakao.maps.Size(20, 20);
+
+        // 마커 이미지를 생성합니다
+        var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+
+        // 마커를 생성합니다
+        var marker = new kakao.maps.Marker({
+            map: map, // 마커를 표시할 지도
+            position: positions[i].lating, // 마커를 표시할 위치
+            title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+            image: markerImage // 마커 이미지
+        });
+    }
+
+    
+    
 </script>
 
 

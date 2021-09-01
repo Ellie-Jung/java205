@@ -27,12 +27,7 @@ public class MountainLocInfoViewService {
 		return mountainLocInfoList;
 	};
 	
-	/*
-	 * //지역별 산 리스트 높이순 public List<MountainLocInfo> getMountainLocInfo2(String loc){
-	 * List<MountainLocInfo> mountainLocInfoList = null; if (loc != null) { dao =
-	 * template.getMapper(Dao.class); mountainLocInfoList =
-	 * dao.selectByLocName2(loc); } return mountainLocInfoList; };
-	 */
+	
 	
 	//지역별 산 갯수
 	public int getCountLoc(String loc) {
