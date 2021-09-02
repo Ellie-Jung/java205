@@ -80,11 +80,18 @@
             </script>
 
 
-            <div class="main_filters">
-                <button class="outlined curved">이름순으로 보기</button>
-                <button class="outlined curved">높이순으로 보기</button>
-                <button class="outlined curved">인기순으로 보기</button>
-            </div>
+             <div class="main_filters">
+		<form method="post">
+        	  <input type="hidden" id=name style="display:none" name="namelist" value="namelist">
+            <button class="outlined curved" id="namelist" type="submit" value="namelist">이름순으로 보기</button>
+          </form>  
+          <form method="post">
+		  <input type="hidden" id="height" style="display:hidden" name="heightlist"  value="heightlist"> 
+            <button class="outlined curved" id="heightlist"  type="submit" value="heightlist">높이순으로 보기</button>
+           <!--  <button class="outlined curved">인기순으로 보기</button> -->
+		</form> 
+        </div>
+
 
 
 

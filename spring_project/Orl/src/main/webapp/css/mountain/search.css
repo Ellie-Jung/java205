@@ -58,9 +58,17 @@ body {
   padding-right: 15px;
   font-size: 30px;
   color: #424242;
+  cursor:pointer;
 }
 
 /*검색 결과 리스트*/
+.selectArea{
+	margin:10px;
+}
+h3{
+	font-size:30px;
+	margin:10px;
+}
 #selectList {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

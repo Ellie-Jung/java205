@@ -20,7 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	</resultMap>
 	
-	<!-- 지역별 산 리스트 -->
+	<!-- 지역별 산 리스트(이름순) -->
     <select
             id="selectByLocName"
             resultType="com.bitcamp.orl.mountain.domain.MountainLocInfo">
@@ -46,6 +46,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         FROM mountain
         where mname = #{mountainName};
     </select>
+     <!-- 이름들어가는 맞는 산 -->
+     <select
+            id="selectByName1"
+            resultType="com.bitcamp.orl.mountain.domain.MountainLocInfo">
+        SELECT mname,  mcode, address, x, y,info, height, detail,transport,img
+        FROM mountain
+        where mname regexp #{mountainName};
+    </select>
+    
+    
 
     <!-- 해당지역의 산 갯수 카운트 -->
     <select id="countByLocName"

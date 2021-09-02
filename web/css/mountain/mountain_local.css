@@ -28,6 +28,7 @@ body {
 }
 .main_filters {
   padding-top: 15px;
+  display: flex;
 }
 .main_filters button {
   margin-right: 6px;

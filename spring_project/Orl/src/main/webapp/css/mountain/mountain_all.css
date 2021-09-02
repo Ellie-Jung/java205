@@ -11,7 +11,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    background-image: url("../images/mountain/background2.jpg");
+    background-image: url("../../images/mountain/background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
@@ -67,6 +67,12 @@
 
 .search_input:focus {
     outline: none;
+}
+
+i{
+	 font-size: 30px;
+  color: #424242;
+  cursor:pointer;
 }
 
 .main_item_2{

@@ -17,10 +17,14 @@ public interface Dao {
 	List<MountainLocInfo> selectByLocName2(String var1);
 	List<MountainLocInfo> selectByLocNameSeoul2();
 	
+	List<MountainLocInfo> selectByName1(String var1);
 	
 	MountainLocInfo selectByName(@Param("mountainName")String mountainName);
 	
 	//지역별 산 갯수
 	int countByLocName(@Param("locName")String var1);
 	int countByLocNameSeoul();
+	
+	
+	
 }

@@ -12,28 +12,18 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
-public class MountainLocInfoController {
+public class MountainLocInfoController3 {
 
 	@Autowired
 	private MountainLocInfoViewService service;
 	
-	@RequestMapping("/mountain/mountainLocInfo")
+	@RequestMapping("/mountain/mountainLocInfo3")
 	public String getMountainLoc(HttpServletRequest request, Model model) {
 
 		String loc = null;
 		loc = request.getParameter("locName");
 		List<MountainLocInfo> mountainLocInfoList = null;
-		
-		String heightlist=request.getParameter("heightlist");
-		String namelist=request.getParameter("namelist");
-		
-		if(heightlist!=null) {
-			mountainLocInfoList = service.getMountainNameInfo(loc);
-		}else {
-			mountainLocInfoList = service.getMountainLocInfo(loc);
-		}
-		
-		
+		mountainLocInfoList = service.getMountainLocInfo(loc);
 		int countLoc = service.getCountLoc(loc);
 		model.addAttribute("mountainLocInfoList",mountainLocInfoList);
 		model.addAttribute("loc", loc);
