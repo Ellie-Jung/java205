@@ -251,7 +251,7 @@ h2 {
   bottom: 0;
 }
 .main_kakaoMap {
-  height: 100vh;
+  height: calc(100vh - 100px);
   display: flex;
   align-items: center;
   justify-content: center;

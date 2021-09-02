@@ -61,20 +61,28 @@
                 <h2>SEARCH</h2>
             </div>
 
+            <form id="frm">
             <div class="boxContainer">
                 <table class="elementsContainer">
                     <tr>
                         <td>
-                            <input type="text" placeholder="검색하실 내용을 입력해주세요. " class="search">
+                            <input type="text" placeholder="검색하실 내용을 입력해주세요. " class="search" name="mysearch">
                         </td>
                         <td>
-                            <a href="#">
-                              <i class="fas fa-search"></i>
-                                </a>
+                              <i id="submit" class="fas fa-search"></i>
                         </td>
                     </tr>
                 </table>
+                <script>
+                    document.getElementById('submit').onclick=function(){
+                        document.getElementById('frm').submit();
+                        return false;
+                    }
+                </script>
             </div>
+        </form>
+
+        <h3 class="selectArea">해당 산의 검색결과</h3>
             <div id="selectList">
                 <div class="item">
                     <a><img class="img" src="/images/mountain/tj-k-4m9j8TrudRs-unsplash.jpg" ></a>

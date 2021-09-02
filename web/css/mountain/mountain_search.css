@@ -60,9 +60,16 @@ body {
   padding-right: 15px;
   font-size: 30px;
   color: #424242;
+  cursor: pointer;
 }
 
 /*검색 결과 리스트*/
+h3 {
+  font-size: 28px;
+}
+.selectArea {
+  margin: 10px;
+}
 #selectList {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
