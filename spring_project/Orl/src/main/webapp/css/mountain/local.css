@@ -263,3 +263,12 @@ h2 {
   height: 100%;
   width: 100%;
 }
+
+/*날'씨*/
+.nameAndWeather{
+    display: flex;
+}
+
+.weather{
+    margin-left: 100px;
+}

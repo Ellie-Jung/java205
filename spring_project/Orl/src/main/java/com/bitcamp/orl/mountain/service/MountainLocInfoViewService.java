@@ -31,30 +31,13 @@ public class MountainLocInfoViewService {
 		return mountainLocInfoList;
 	};
 	
-	
-	
-	//높이순으로 정렬한 지역산 리스트
-		public List<MountainLocInfo> getMountainNameInfo(String loc){
-			List<MountainLocInfo> mountainLocInfoList = null;
-			 if (loc != null) {
-		            dao = template.getMapper(Dao.class);
-		            if (loc.equals("서울경기")) {
-		                mountainLocInfoList = dao.selectByLocNameSeoul2();
-		            } else {
-		                mountainLocInfoList = dao.selectByLocName2(loc);
-		            }
-		        }
-			return mountainLocInfoList;
-		};
-	
+
 	//이름검색시 산 리스트
 			public List<MountainLocInfo> getMountainName1(String mname){
 				List<MountainLocInfo> mountainLocInfoList = null;
 				 if (mname != null) {
 			            dao = template.getMapper(Dao.class);
-			          
 			                mountainLocInfoList = dao.selectByName1(mname);
-			            
 			        }
 				return mountainLocInfoList;
 			};
@@ -77,4 +60,40 @@ public class MountainLocInfoViewService {
 		return result;
 	}
 
+	public String getLocEn(String loc){
+        String locEn = "";
+        switch (loc){
+            case "서울경기":
+                locEn = "seoul";
+                break;
+            case "강원":
+                locEn = "wonju";
+                break;
+            case "충청남도":
+                locEn = "gongju";
+                break;
+            case "충청북도":
+                locEn = "cheongju";
+                break;
+            case "경상북도":
+                locEn = "ulsan";
+                break;
+            case "경상남도":
+                locEn = "busan";
+                break;
+            case "전라북도":
+                locEn = "jeonju";
+                break;
+            case "전라남도":
+                locEn = "mokpo";
+                break;
+            default:
+                locEn = "jeju";
+        }
+
+        return locEn;
+    }
+
+	
+	
 }

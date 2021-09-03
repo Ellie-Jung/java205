@@ -16,16 +16,11 @@ public class MountainRestController {
 	@Autowired
 	private MountainRestService restService;
 	
+
 	@GetMapping("/mountain/height")
 	@CrossOrigin
 	public List<MountainLocInfo> getSortingHeight(String loc){
 		return restService.getSortingHeight(loc);
-	}
-	
-	@GetMapping("/mountain/height2")
-	@CrossOrigin
-	public List<MountainLocInfo> getSortingHeight2(String loc){
-		return restService.getSortingHeight2(loc);
 	}
 	
 	

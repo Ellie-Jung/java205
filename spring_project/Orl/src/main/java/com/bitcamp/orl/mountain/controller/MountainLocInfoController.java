@@ -24,20 +24,12 @@ public class MountainLocInfoController {
 		loc = request.getParameter("locName");
 		List<MountainLocInfo> mountainLocInfoList = null;
 		
-		String heightlist=request.getParameter("heightlist");
-		String namelist=request.getParameter("namelist");
-		
-		if(heightlist!=null) {
-			mountainLocInfoList = service.getMountainNameInfo(loc);
-		}else {
-			mountainLocInfoList = service.getMountainLocInfo(loc);
-		}
-		
-		
 		int countLoc = service.getCountLoc(loc);
-		model.addAttribute("mountainLocInfoList",mountainLocInfoList);
+		String locEn = service.getLocEn(loc);
 		model.addAttribute("loc", loc);
 		model.addAttribute("countLoc",countLoc);
+		model.addAttribute("locEn", locEn);
+
 		return "mountain/local";
 	}
 	

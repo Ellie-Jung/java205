@@ -13,14 +13,11 @@ import com.bitcamp.orl.mountain.domain.MountainLocInfo;
 import com.bitcamp.orl.mountain.service.MountainLocInfoViewService;
 
 @Controller
-/* @RequestMapping("/mountain/search") */
 public class SearchController {
 
 
 	@Autowired
 	private MountainLocInfoViewService locService;
-	
-
 	
 	
 	@RequestMapping("/mountain/search")
@@ -35,12 +32,7 @@ public class SearchController {
 			List<MountainLocInfo> mountainLocInfoList2 = null;
 			
 			mountainLocInfoList = locService.getMountainName1(search);
-			
 			mountainLocInfoList2 = locService.getMountainLocInfo(search);
-			
-			
-			
-			
 			
 			model.addAttribute("mountainList",mountainLocInfoList);
 			model.addAttribute("mountainList2",mountainLocInfoList2);

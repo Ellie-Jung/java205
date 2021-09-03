@@ -17,21 +17,22 @@ public class MountainRestService {
 	@Autowired
 	private SqlSessionTemplate template;
 	
-	//지역별 산 리스트 높이순
-	public List<MountainLocInfo> getSortingHeight(String loc){
-		List<MountainLocInfo> mountainLocInfoList = null;
-		dao=template.getMapper(Dao.class);
-		mountainLocInfoList = dao.selectByLocName2(loc);
-		return mountainLocInfoList;
-	};
 	
-	//이름별 산 리스트 높이순
-		public List<MountainLocInfo> getSortingHeight2(String loc){
-			List<MountainLocInfo> mountainLocInfoList = null;
-			dao=template.getMapper(Dao.class);
-			mountainLocInfoList = dao.selectByLocName(loc);
-			return mountainLocInfoList;
-		};
+	 //이름별 산 리스트 높이순
+    public List<MountainLocInfo> getSortingHeight(String loc){
+        List<MountainLocInfo> mountainLocInfoList = null;
+        dao=template.getMapper(Dao.class);
+        if (loc.equals("서울경기")) {
+            mountainLocInfoList = dao.selectByLocNameSeoul();
+        }else{
+            mountainLocInfoList = dao.selectByLocName(loc);
+        }
+        return mountainLocInfoList;
+    }
 	
+		
+		
+		
+		
 
 }
