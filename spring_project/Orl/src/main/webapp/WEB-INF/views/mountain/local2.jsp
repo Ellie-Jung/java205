@@ -83,8 +83,8 @@
 				type:'GET',
 				data:{ loc:'${loc}'	},
 				success:function(data){
-				 	var html='<div id="listings" class="listings">'; 
 					$.each(data,function(index,item){
+				 	var html='<div id="listings" class="listings">'; 
 						html+=' <div class="listings_item">';
 						html+=' <div class="listings_image">';
 						html+='<a href="${pageContext.request.contextPath}/mountain/mountainDetailInfo?mountainName='+item.mountainName+'">';

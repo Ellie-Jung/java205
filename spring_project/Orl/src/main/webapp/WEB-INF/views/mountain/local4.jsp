@@ -13,96 +13,7 @@
     <link rel="stylesheet" href="<c:url value='/css/mountain/local.css'/>">
     <link rel="stylesheet" href="<c:url value='/css/default/default.css'/>">
     
-   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-  <script type="text/javascript">
-  	
-  	
-  	$(document).ready(function(){
-  		
- 		 var mlist=[];
-  		
-  		$.ajax({
-  			url:'<c:url value="/mountain/height2"/>',
-			type:'GET',
-			data:{ loc:'${loc}'	},
-			dataType : 'json',
-			success:function(data){
-				mlist = data;
-				mountainList(mlist);
-			}
-  			
-  		})
-  		
-  		
-  		
-  	  	
-  	  	$('#heightlist').click(function(){
-  	  		
-  	  		
-  	  		mlist.sort(function(left,right){
-  	  			return right.height-left.height;
-  	  		})
-  	  		
-  	  		console.log("높이순으로정렬");
-  	  		console.log(mlist);
-  	  		mountainList(mlist);
-  	  	})
-  	  	
-  	  	
-  	  	$('#namelist').click(function(){
-  	  		console.log(" 이름순으로정렬");
-  	  		console.log(mlist);
-  	    		mlist.sort(function(a,b){
-  	    			return a.mountainName<b.mountainName?-1:a.mountainName>b.mountainName?1:0;
-  	    		})
-  	    		mountainList(mlist);
-  	    	})
-  	    	
-  	   	
-  		
-  		
-  		
-  		
-  		
-  	});
-  	
-  	function mountainList(mlist){
-  		var mmlist=[];
-  		mmlist=mlist;
-  		console.log("리스트 함수 호출");
-  		console.log(mmlist);
-			var html='<div id="listings" class="listings">'; 
-  			$.each(mmlist,function(index,item){
-					html+=' <div class="listings_item">';
-					html+=' <div class="listings_image">';
-					html+='<a href="${pageContext.request.contextPath}/mountain/mountainDetailInfo?mountainName='+item.mountainName+'">';
-					html+=' <img src="https://www.forest.go.kr/images/data/down/mountain/'+item.img+'" alt="">';
-					html+='</a>';
-					html+='</div>';
-					html+=' <div class="listings_content">';
-					html+=' <div class="listings_title">';
-					html+=' <div class="listings_text">';
-					html+='   <span class="greyText">${loc} 산 전체</span>';
-					html+=' <h2>#'+item.mountainName+'</h2>';
-					html+='</div>';
-					html+='</div>';
-					html+='<div class="listings_description">';
-					html+='   <span >'+item.mountainAddress+'(높이 : ' + item.height + 'm)</span>';
-					html+=' <span class="greyText">'+item.mountainInfo+'</span>';
-					html+='  </div>';
-					html+='</div>';
-					html+='</div>';
-					html+='</div>';
-					
-					$('#mlist').html(html); 
-  			})
-  	}
-  	
-
-  	
-  	
-  	
-  </script>  
+    
     
     
 </head>
@@ -142,8 +53,14 @@
 
 
         <div class="main_filters">
+		<form method="post">
+        	 <input type="hidden" id=name style="display:none" name="namelist" value="namelist">
             <button class="outlined curved" id="namelist" type="submit" value="namelist">이름순으로 보기</button>
+        </form>  
+        <form method="post">
+		  	<input type="hidden" id="height" style="display:hidden" name="heightlist"  value="heightlist"> 
 	        <button class="outlined curved" id="heightlist"  type="submit" value="heightlist">높이순으로 보기</button>
+		</form> 
           <!--  <button class="outlined curved">인기순으로 보기</button> -->
         </div>
 
@@ -160,8 +77,30 @@
         </div>
         
         <div id="mlist">
-		
-		
+		<c:forEach items="${mountainLocInfoList}" var="list">
+	        <div class="listings">
+	        
+	            <div class="listings_item">
+	                <div class="listings_image">
+	                	 <a href="${pageContext.request.contextPath}/mountain/mountainDetailInfo?mountainName=${list.mountainName}">
+	                    <img src="https://www.forest.go.kr/images/data/down/mountain/${list.img}" alt="">
+	                    </a>
+	                </div>
+	                <div class="listings_content">
+	                    <div class="listings_title">
+	                        <div class="listings_text">
+	                            <span class="greyText">${loc} 산 전체</span>
+	                            <h2>#${list.mountainName}</h2>
+	                        </div>
+	                    </div>
+	                    <div class="listings_description">
+	                        <span >${list.mountainAddress} (높이 : ${list.height}m)</span>
+	                        <span class="greyText">${list.mountainInfo}</span>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+		</c:forEach>
 		</div>
     </div>
 	
@@ -202,7 +141,7 @@
         <c:forEach items="${mountainLocInfoList}" var="list">
         {
             title:'${list.mountainName}',
-            lating: new kakao.maps.LatLng('${list.longitude}','${list.latitude}')
+            lating: new kakao.maps.LatLng(${list.longitude},${list.latitude})
         },
         </c:forEach>
 
