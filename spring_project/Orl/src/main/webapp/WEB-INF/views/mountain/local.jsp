@@ -274,8 +274,8 @@
 
 
         <div class="main_filters">
-            <button class="outlined curved" id="namelist" type="submit" value="namelist">이름순으로 보기</button>
-            <button class="outlined curved" id="heightlist" type="submit" value="heightlist">높이순으로 보기</button>
+            <button class="outlined curved" id="namelist"  value="namelist">이름순으로 보기</button>
+            <button class="outlined curved" id="heightlist"  value="heightlist">높이순으로 보기</button>
             <!--  <button class="outlined curved">인기순으로 보기</button> -->
         </div>
 
