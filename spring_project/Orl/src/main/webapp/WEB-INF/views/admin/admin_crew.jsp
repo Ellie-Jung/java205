@@ -4,11 +4,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>회원관리</title>
+  <title>크루 관리</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="<c:url value='/css/default/default.css'/>">
-  <link rel="stylesheet" href="<c:url value='/css/admin/member.css'/>">
+  <link rel="stylesheet" href="<c:url value='/css/admin/crew.css'/>">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -19,7 +19,7 @@
 
 
 <div class="container">
-  <h2>회원관리</h2>
+  <h2>크루 관리</h2>
   <p>Type something in the input field to search the table for first names, last names or emails:</p>  
   <input class="form-control" id="myInput" type="text" placeholder="Search..">
   <br>
@@ -28,33 +28,31 @@
       <tr>
         <th>선택</th>
         <th>IDX</th>
-        <th>아이디</th>
         <th>이름</th>
-        <th>Email</th>
-        <th>프로필사진</th>
-        <th>닉네임</th>
-        <th>가입일</th>
-        <th>생일</th>
+        <th>사진</th>
+        <th>설명</th>
+        <th>생성일</th>
+        <th>해시태그</th>
+        <th>크루장</th>
         <th>관리</th>
-        <th>피드</th>
+        <th>관리</th>
       </tr>
     </thead>
     <tbody id="myTable">
-    <c:forEach items="${memberList}" var="list">
+    <c:forEach items="${crewList}" var="list">
       <tr>
       	<td><input type="checkbox" name="select"></td>
-        <td>${list.memberIdx}</td>
-        <td>${list.memberId}</td>
-        <td>${list.memberName}</td>
-        <td>${list.memberEmail}</td>
-        <td>${list.memberProfile}</td>
-        <td>${list.memberNickname}</td>
-        <td>${list.memberRegdate}</td>
-        <td>${list.memberBirth}</td>
+        <td><p class="text-center">${list.crewIdx}</p></td>
+        <td>${list.crewName}</td>
+        <td>${list.crewPhoto}</td>
+        <td style="max-width:400px">${list.crewDiscription}</td>
+        <td style="max-width:100px">${list.crewCreatedate}</td>
+        <td style="max-width:300px">${list.crewTag}</td>
+        <td><p class="text-center">${list.memberIdx}</p></td>
         <td>
-            <a href="#">삭제</a>
+            <a href="#">수정</a>
         </td>
-        <td>
+           <td>
         	
 <!-- Trigger the modal with a button -->
 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
