@@ -3,12 +3,11 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-
 <mapper namespace="com.bitcamp.orl.member.dao.Dao">
 
  <!-- insert -->
 	<insert
-		id="insertMemeber"
+		id="insertMember"
 		parameterType="com.bitcamp.orl.member.domain.Member"
 		useGeneratedKeys="true"
 		keyProperty="memberIdx">

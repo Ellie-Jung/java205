@@ -87,6 +87,8 @@ nav a {
   .navbar__icons.active {
     display: flex;
   }
+
+  
   
   /*페이징*/
 .pres {

@@ -29,7 +29,7 @@
                 url: '<c:url value="/mountain/height"/>',
                 type: 'GET',
                 data: {loc: '${loc}'},
-                dataType: 'json',
+               /*  dataType: 'json', */
                 success: function (data) {
                     mlist = data;
                     mountainList(mlist);
@@ -46,15 +46,13 @@
                     return right.height - left.height;
                 })
 
-                console.log("높이순으로정렬");
-                console.log(mlist);
+                
                 mountainList(mlist);
             })
 
 
             $('#namelist').click(function () {
-                console.log(" 이름순으로정렬");
-                console.log(mlist);
+               
                 mlist.sort(function (a, b) {
                     return a.mountainName < b.mountainName ? -1 : a.mountainName > b.mountainName ? 1 : 0;
                 })
@@ -166,8 +164,7 @@
         function mountainList(mlist) {
             var mmlist = [];
             mmlist = mlist;
-            console.log("리스트 함수 호출");
-            console.log(mmlist);
+           
             var html = '<div id="listings" class="listings">';
             $.each(mmlist, function (index, item) {
                 html += ' <div class="listings_item">';
@@ -180,7 +177,9 @@
                 html += ' <div class="listings_title">';
                 html += ' <div class="listings_text">';
                 html += '  <span class="greyText">${loc} 산 전체</span>';
+                html += '<a href="${pageContext.request.contextPath}/mountain/mountainDetailInfo?mountainName=' + item.mountainName + '">';
                 html += ' <h2>#' + item.mountainName + '</h2>';
+                html += '</a>';
                 html += '</div>';
                 html += '</div>';
                 html += '<div class="listings_description">';
@@ -257,7 +256,7 @@
             <span id='clearIcon' class="clear" style="display:none;"
                   onclick="document.getElementById('mysearch').value=''"></span>
         </div>
-
+	<!-- 검색 아이콘 -->
         <script>
             const iconsearch = document.querySelector('.iconsearch');
             const search = document.querySelector('.search');

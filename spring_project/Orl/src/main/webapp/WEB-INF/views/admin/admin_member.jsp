@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="<c:url value='/css/default/default.css'/>">
-  <link rel="stylesheet" href="<c:url value='/css/admin/admin.css'/>">
+  <link rel="stylesheet" href="<c:url value='/css/admin/member.css'/>">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -36,6 +36,7 @@
         <th>가입일</th>
         <th>생일</th>
         <th>관리</th>
+        <th>피드</th>
       </tr>
     </thead>
     <tbody id="myTable">
@@ -51,8 +52,56 @@
         <td>${list.memberRegdate}</td>
         <td>${list.memberBirth}</td>
         <td>
-            <a href="#">수정</a>
             <a href="#">삭제</a>
+        </td>
+        <td>
+        	
+<!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">피드 미리보기</h4>
+      </div>
+      <div class="modal-body selectList">
+                <div class="item">
+	                 <img class="img" src="" alt="" width="80px" height="80px">
+                    <span>#이름</span>
+                </div>
+                 <div class="item">
+	                 <img class="img" src="" alt="" width="80px" height="80px">
+                    <span>#이름</span>
+                </div>
+                 <div class="item">
+	                 <img class="img" src="" alt="" width="80px" height="80px">
+                    <span>#이름</span>
+                </div>
+      			 <div class="item">
+	                 <img class="img" src="" alt="" width="80px" height="80px">
+                    <span>#이름</span>
+                </div>
+      			 <div class="item">
+	                 <img class="img" src="" alt="" width="80px" height="80px">
+                    <span>#이름</span>
+                </div>
+       
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" >save changes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+        
+        
         </td>
       </tr>
       </c:forEach>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link rel="stylesheet" href="<c:url value='/css/admin/admin.css'/>">
 
 </head>
 <body>
@@ -10,11 +10,11 @@
    <nav class="navbar ">
        <div class="navbar__logo">
         <i class="fas fa-mountain"></i>
-            <a href="#">오를래</a>
+            <a href="<c:url value='/admin/member/'/>">오를래</a>
        </div>
 
        <ul class="navbar__menu">
-            <li><a href="">MEMBER</a></li>
+            <li><a href="<c:url value='/admin/member/'/>">MEMBER</a></li>
             <li><a href="">MOUATAIN</a></li>
             <li><a href="">CREW</a></li>
             <li><a href="">FEED</a></li>
