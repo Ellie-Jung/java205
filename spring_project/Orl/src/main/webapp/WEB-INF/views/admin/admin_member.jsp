@@ -52,7 +52,7 @@
         <td>${list.memberRegdate}</td>
         <td>${list.memberBirth}</td>
         <td>
-            <a href="#">삭제</a>
+            <a href="<c:url value='/admin/member/delete?memberIdx=${list.memberIdx}'/>">삭제</a>
         </td>
         <td>
         	
