@@ -13,6 +13,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="https://kit.fontawesome.com/cccee664d4.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 </head>
 <body>
 <%@ include file="/WEB-INF/frame/admin/header.jsp" %>
@@ -26,7 +27,6 @@
   <table class="table table-bordered table-striped table-hover">
     <thead>
       <tr>
-        <th>선택</th>
         <th>IDX</th>
         <th>아이디</th>
         <th>이름</th>
@@ -42,17 +42,16 @@
     <tbody id="myTable">
     <c:forEach items="${memberList}" var="list">
       <tr>
-      	<td><input type="checkbox" name="select"></td>
         <td>${list.memberIdx}</td>
         <td>${list.memberId}</td>
         <td>${list.memberName}</td>
         <td>${list.memberEmail}</td>
-        <td>${list.memberProfile}</td>
+        <td><img src="<c:url value='/images/member/${list.memberProfile}'/>" style="width:100px"></td>
         <td>${list.memberNickname}</td>
         <td>${list.memberRegdate}</td>
         <td>${list.memberBirth}</td>
         <td>
-            <a href="<c:url value='/admin/member/delete?memberIdx=${list.memberIdx}'/>">삭제</a>
+            <a id = "deleteId" href="<c:url value='/admin/member/delete?memberIdx=${list.memberIdx}'/>" onclick="if(!confirm('삭제하시겠습니까?')){return false;}">삭제</a>
         </td>
         <td>
         	
@@ -115,9 +114,9 @@
   
 
  <!--페이징-->
-        <div class="delete pull-right">
+        <!-- <div class="delete pull-right">
        		<input class="btn btn-default" type="submit" value="일괄삭제">
-        </div>
+        </div> -->
         <div class="pres">
             <h4 class="hidden">현재 페이지</h4>
             <div><span>1</span> / 1 pages</div>

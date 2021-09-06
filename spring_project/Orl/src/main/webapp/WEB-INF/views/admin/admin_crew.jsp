@@ -20,13 +20,12 @@
 
 <div class="container">
   <h2>크루 관리</h2>
-  <p>Type something in the input field to search the table for first names, last names or emails:</p>  
+  <p> 찾을 내용을 입력해주세요. Type something in the input field to search the table for first names, last names or emails:</p>  
   <input class="form-control" id="myInput" type="text" placeholder="Search..">
   <br>
   <table class="table table-bordered table-striped table-hover">
     <thead>
       <tr>
-        <th>선택</th>
         <th>IDX</th>
         <th>이름</th>
         <th>사진</th>
@@ -41,8 +40,7 @@
     <tbody id="myTable">
     <c:forEach items="${crewList}" var="list">
       <tr>
-      	<td><input type="checkbox" name="select"></td>
-        <td><p class="text-center">${list.crewIdx}</p></td>
+        <td>${list.crewIdx}</td>
         <td>${list.crewName}</td>
         <td>${list.crewPhoto}</td>
         <td style="max-width:400px">${list.crewDiscription}</td>
@@ -50,7 +48,7 @@
         <td style="max-width:300px">${list.crewTag}</td>
         <td><p class="text-center">${list.memberIdx}</p></td>
         <td>
-            <a href="#">수정</a>
+             <a id = "deleteId" href="<c:url value='/admin/member/delete?memberIdx=${list.memberIdx}'/>" onclick="if(!confirm('삭제하시겠습니까?')){return false;}">삭제</a>
         </td>
            <td>
         	
@@ -113,9 +111,9 @@
   
 
  <!--페이징-->
-        <div class="delete pull-right">
+        <!-- <div class="delete pull-right">
        		<input class="btn btn-default" type="submit" value="일괄삭제">
-        </div>
+        </div> -->
         <div class="pres">
             <h4 class="hidden">현재 페이지</h4>
             <div><span>1</span> / 1 pages</div>

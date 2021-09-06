@@ -42,6 +42,7 @@ public class LoginController {
 		boolean loginChk = loginservice.login(request, response, memberId, memberPw, reid);
 		model.addAttribute("loginChk", loginChk);
 		
+		
 		String view = "member/login";
 		
 		if(loginservice.chkURI(redirectUri) && loginChk) {

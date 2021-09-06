@@ -23,7 +23,7 @@
        </ul>
 
        <ul class="navbar__icons">
-           <li><a href="#">로그아웃</a></li>
+           <li><a href="<c:url value='/admin/logout'/>">로그아웃</a></li>
        </ul>
 
        <a href="#" class="navbar__toogleBtn">

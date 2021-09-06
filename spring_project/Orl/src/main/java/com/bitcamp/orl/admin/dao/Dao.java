@@ -6,5 +6,5 @@ import com.bitcamp.orl.crew.domain.Crew;
 
 public interface Dao {
 
-	List<Crew> selectAll();
+	
 }
