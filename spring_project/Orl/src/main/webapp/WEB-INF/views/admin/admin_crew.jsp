@@ -46,7 +46,7 @@
         <td style="max-width:400px">${list.crewDiscription}</td>
         <td style="max-width:100px">${list.crewCreatedate}</td>
         <td style="max-width:300px">${list.crewTag}</td>
-        <td><p class="text-center">${list.memberIdx}</p></td>
+        <td><p class="text-center">${list.memberNickName}</p></td>
         <td>
              <a id = "deleteId" href="<c:url value='/admin/member/delete?memberIdx=${list.memberIdx}'/>" onclick="if(!confirm('삭제하시겠습니까?')){return false;}">삭제</a>
         </td>

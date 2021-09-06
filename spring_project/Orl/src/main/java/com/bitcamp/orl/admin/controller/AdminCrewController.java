@@ -19,7 +19,7 @@ public class AdminCrewController {
 	private CrewListViewService crewservice;
 	
 	@RequestMapping("/admin/crew")
-	public String MemberList(HttpServletRequest request, Model model) {
+	public String CrewList(HttpServletRequest request, Model model) {
 		
 		List<Crew> crewList = null;
 		

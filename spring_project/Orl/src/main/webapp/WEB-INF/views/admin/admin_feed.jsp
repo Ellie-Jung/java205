@@ -4,11 +4,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>피드관리</title>
+  <title>크루 관리</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="<c:url value='/css/default/default.css'/>">
-  <link rel="stylesheet" href="<c:url value='/css/admin/admin.css'/>">
+  <link rel="stylesheet" href="<c:url value='/css/admin/crew.css'/>">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -19,40 +19,85 @@
 
 
 <div class="container">
-  <h2>회원관리</h2>
-  <p>Type something in the input field to search the table for first names, last names or emails:</p>  
+  <h2>피드 관리</h2>
+  <p> 찾을 내용을 입력해주세요. Type something in the input field to search the table for first names, last names or emails:</p>  
   <input class="form-control" id="myInput" type="text" placeholder="Search..">
   <br>
-  <table class="table table-bordered table-striped">
+  <table class="table table-bordered table-striped table-hover">
     <thead>
       <tr>
-        <th>선택</th>
         <th>IDX</th>
-        <th>아이디</th>
         <th>이름</th>
-        <th>Email</th>
-        <th>프로필사진</th>
-        <th>닉네임</th>
-        <th>가입일</th>
-        <th>생일</th>
+        <th>사진</th>
+        <th>설명</th>
+        <th>생성일</th>
+        <th>해시태그</th>
+        <th>크루장</th>
+        <th>관리</th>
         <th>관리</th>
       </tr>
     </thead>
     <tbody id="myTable">
-    <c:forEach items="${memberList}" var="list">
+    <c:forEach items="${crewList}" var="list">
       <tr>
-      	<td><input type="checkbox" name="select"></td>
-        <td>${list.memberIdx}</td>
-        <td>${list.memberId}</td>
-        <td>${list.memberName}</td>
-        <td>${list.memberEmail}</td>
-        <td>${list.memberProfile}</td>
-        <td>${list.memberNickname}</td>
-        <td>${list.memberRegdate}</td>
-        <td>${list.memberBirth}</td>
+        <td>${list.crewIdx}</td>
+        <td>${list.crewName}</td>
+        <td>${list.crewPhoto}</td>
+        <td style="max-width:400px">${list.crewDiscription}</td>
+        <td style="max-width:100px">${list.crewCreatedate}</td>
+        <td style="max-width:300px">${list.crewTag}</td>
+        <td><p class="text-center">${list.memberNickName}</p></td>
         <td>
-            <a href="#">수정</a>
-            <a href="#">삭제</a>
+             <a id = "deleteId" href="<c:url value='/admin/member/delete?memberIdx=${list.memberIdx}'/>" onclick="if(!confirm('삭제하시겠습니까?')){return false;}">삭제</a>
+        </td>
+           <td>
+        	
+<!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">피드 미리보기</h4>
+      </div>
+      <div class="modal-body selectList">
+                <div class="item">
+	                 <img class="img" src="" alt="" width="80px" height="80px">
+                    <span>#이름</span>
+                </div>
+                 <div class="item">
+	                 <img class="img" src="" alt="" width="80px" height="80px">
+                    <span>#이름</span>
+                </div>
+                 <div class="item">
+	                 <img class="img" src="" alt="" width="80px" height="80px">
+                    <span>#이름</span>
+                </div>
+      			 <div class="item">
+	                 <img class="img" src="" alt="" width="80px" height="80px">
+                    <span>#이름</span>
+                </div>
+      			 <div class="item">
+	                 <img class="img" src="" alt="" width="80px" height="80px">
+                    <span>#이름</span>
+                </div>
+       
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" >save changes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+        
+        
         </td>
       </tr>
       </c:forEach>
@@ -66,9 +111,9 @@
   
 
  <!--페이징-->
-        <div class="delete pull-right">
+        <!-- <div class="delete pull-right">
        		<input class="btn btn-default" type="submit" value="일괄삭제">
-        </div>
+        </div> -->
         <div class="pres">
             <h4 class="hidden">현재 페이지</h4>
             <div><span>1</span> / 1 pages</div>
