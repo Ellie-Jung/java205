@@ -38,6 +38,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         where address regexp '서울|경기';
     </select>
 	
+	<!-- 전국 산 리스트 -->
+	<select id="selectAllMountain"
+			resultMap="MountainListResult">
+		SELECT mname, mcode, address, x, y, info,height, detail,transport, img
+        FROM mountain;
+	</select>
+	
 	  <!-- 이름에 맞는 산 -->
     <select
             id="selectByName"

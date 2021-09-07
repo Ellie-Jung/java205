@@ -30,7 +30,13 @@ public class MountainRestService {
         return mountainLocInfoList;
     }
 	
-		
+	//모든 산 리스트
+    public List<MountainLocInfo> getMountainAllList(){
+    	 List<MountainLocInfo> mountainLocInfoList = null;
+         dao=template.getMapper(Dao.class);
+         mountainLocInfoList=dao.selectAllMountain();
+         return mountainLocInfoList;
+    }
 		
 		
 		

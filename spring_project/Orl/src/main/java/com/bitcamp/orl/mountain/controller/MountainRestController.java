@@ -23,8 +23,12 @@ public class MountainRestController {
 		return restService.getSortingHeight(loc);
 	}
 	
+	@GetMapping("/mountain/all")
+	@CrossOrigin
+	public List<MountainLocInfo> getMountainAll(){
+		return restService.getMountainAllList();
+	}
 	
-
 	
 	
 }

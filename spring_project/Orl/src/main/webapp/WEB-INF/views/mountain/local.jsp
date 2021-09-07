@@ -24,6 +24,7 @@
         $(document).ready(function () {
 
             var mlist = [];
+            var alllist = [];
 
             $.ajax({
                 url: '<c:url value="/mountain/height"/>',
@@ -36,7 +37,23 @@
                 }
 
             })
-
+ 
+         	 $.ajax({
+                  url: '<c:url value="/mountain/all"/>',
+                  type: 'GET',
+                  success: function (data) {
+                  	console.log(data);
+                  	alllist = data;
+                  }
+              }) 
+           
+            
+            $('#mapbutton1').click(function(){
+            	map(alllist);
+            })
+             $('#mapbutton2').click(function(){
+            	map(mlist);
+            })
 
             $('#heightlist').click(function () {
 
@@ -58,6 +75,8 @@
                 mountainList(mlist);
             })
 
+
+        });
             function map(mlist) {
                 var container = document.getElementById('map');
                 let x = mlist[0].longitude;
@@ -106,24 +125,16 @@
                         // 마커에 표시할 인포윈도우를 생성합니다
                         var infowindow = new kakao.maps.InfoWindow({
                             content:  // 인포윈도우에 표시할 내용
-                                '<div class="listings_item">' +
-                                '<div class="listings_image">' +
-                                '<a href="${pageContext.request.contextPath}/mountain/mountainDetailInfo?mountainName=' + positions[i].title + '">' +
-                                '<img src="https://www.forest.go.kr/images/data/down/mountain/' + positions[i].content.img + '" alt="">' +
-                                '</a>' +
-                                '</div>' +
-                                '<div class="listings_content">' +
-                                '<div class="listings_title">' +
-                                '<div class="listings_text">' +
-                                '<h2>#' + positions[i].content.mountainName + '</h2>' +
-                                '</div>' +
-                                '</div>' +
-                                '<div class="listings_description">' +
-                                '<span >' + positions[i].content.mountainAddress + '(높이 : ' + positions[i].content.height + 'm)</span>' +
-                                '</div>' +
-                                '</div>' +
-                                '</div>' +
-                                '</div>'
+                              
+                                '<div class="infowindow">'+
+			                        '<div class="mapimage">'+
+			                            '<img src="https://www.forest.go.kr/images/data/down/mountain/' + positions[i].content.img + '" alt="">'+
+			                        '</div>'+
+			                        '<div class="mapcontent">'+
+			                            '<div class="mtitle">#' + positions[i].content.mountainName + '</div>'+
+			                            '<div>' + positions[i].content.mountainAddress + '(높이 : ' + positions[i].content.height + 'm)</div>' +
+			                        '</div>'+
+		                    	'</div>'
                         });
 
                         var mName = positions[i].title;
@@ -158,8 +169,6 @@
                 }
             }
 
-        });
-
         function mountainList(mlist) {
             var mmlist = [];
             mmlist = mlist;
@@ -193,6 +202,7 @@
             })
         }
 
+        /* 날씨 api */
         let weatherIcon = {
             '01': 'fas fa-sun',
             '02': 'fas fa-cloud-sun',
@@ -308,8 +318,12 @@
         <div class="main_kakaoMap">
             <div class="map" id='map'></div>
         </div>
+<button id="mapbutton1" class="mapbutton mapbutton1">전국 산 보기</button>
+<button id="mapbutton2" class="mapbutton mapbutton2">지역별 산 보기</button>
     </div>
+    
 </div>
+
 
 <%@ include file="/WEB-INF/frame/default/footer.jsp" %>
 

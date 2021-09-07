@@ -3,11 +3,11 @@
 /*네이게이션 */
 a {
   text-decoration: none;
-  color: var(--manager-color);
+  color: #104128;
 }
 
 nav a {
-  color: var(--text-color-white);
+  color: #f0f4f5;
 }
 .navbar {
   display: flex;

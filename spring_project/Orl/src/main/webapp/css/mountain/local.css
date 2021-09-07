@@ -176,7 +176,7 @@ button {
   height: 100%;
   width: 100%;
 }
-.listings_image button {
+/* .listings_image button {
   position: absolute;
   top: 50%;
   width: 32px;
@@ -201,7 +201,7 @@ button {
 }
 .listings_image button:last-of-type {
   right: 10px;
-}
+} */
 
 .listings_title {
   display: flex;
@@ -263,6 +263,55 @@ h2 {
   height: 100%;
   width: 100%;
 }
+.mapbutton{
+	position:fixed;
+	right:100px;
+	top:120px;
+	z-index:100;
+	background-color:var(--yello-color);
+	border: 1px solid #b0b0b0;
+  	border-radius: 5px;
+  	height:45px;
+  	font-weight:bold;
+  	cursor:pointer;
+}
+.mapbutton1{
+	right:150px;
+}
+.mapbutton2{
+	right:15px;
+}
+.mapbutton:hover {
+  border-color: #222;
+}
+/*맵 인포윈도우*/
+.infowindow{
+  width:370px;
+  height: 160px;
+  display: flex;
+  padding:10px;
+  }
+.mapimage img{
+     width:200px;
+     height: 130px;
+     margin-top: 4px;
+     margin-left:3px;
+     border-radius: 5px;
+ }
+ .mapimage{
+     display: inline-block;
+     
+ }
+ .mapcontent{
+     margin-left: 10px;
+ }
+.mtitle{
+    font-size: 20px;
+     margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+
 
 /*날씨*/
 .nameAndWeather, .weather{
@@ -298,3 +347,4 @@ h2 {
     font-size: 20px;
     margin-top: 10px;
 }
+

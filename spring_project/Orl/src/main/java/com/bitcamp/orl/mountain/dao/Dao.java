@@ -12,7 +12,10 @@ public interface Dao {
 	// 지역별 산 리스트
 	List<MountainLocInfo> selectByLocName(String var1);
 	List<MountainLocInfo> selectByLocNameSeoul();
-
+	
+	//전국 모든 산 리스트
+	List<MountainLocInfo> selectAllMountain();
+	
 	
 	List<MountainLocInfo> selectByName1(String var1);
 	
