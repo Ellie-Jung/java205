@@ -61,7 +61,7 @@ public class CrewRequest {
 
 	@Override
 	public String toString() {
-		return "CrewRequest [crewId=" + crewName + ", crewPhoto=" + crewPhoto + ", crewDiscription=" + crewDiscription
+		return "CrewRequest [crewName=" + crewName + ", crewPhoto=" + crewPhoto + ", crewDiscription=" + crewDiscription
 				+ ", crewTag=" + crewTag + "]";
 	};
 	

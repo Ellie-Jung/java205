@@ -7,24 +7,13 @@
 <meta charset="UTF-8">
  <script src="https://kit.fontawesome.com/cccee664d4.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="stylesheet" href="<c:url value='/css/crew/list.css'/>">
+    <link rel="stylesheet" href="<c:url value='/css/crew/crew-list.css'/>">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <title>Insert title here</title>
 </head>
-<style>
- .justify-content-center {
-    justify-content: flex-start;
-}
-.nav{
-padding-left: 50%;
-}
-.logo{
-padding-top: 10px;
-} 
 
-</style>
 <script>
 $(document).ready(function(){
 	var cList=[];

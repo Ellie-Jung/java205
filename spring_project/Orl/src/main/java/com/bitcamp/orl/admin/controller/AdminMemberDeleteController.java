@@ -16,7 +16,7 @@ public class AdminMemberDeleteController {
 	private AdminMemberService service;
 	
 	@RequestMapping("/admin/member/delete")
-	public String MemberList(HttpServletRequest request, Model model) {
+	public String MemberDelete(HttpServletRequest request, Model model) {
 		
 		model.addAttribute("idx",request.getParameter("memberIdx"));
 		int memberIdx= Integer.parseInt(request.getParameter("memberIdx"));

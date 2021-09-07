@@ -29,9 +29,9 @@ public class CrewInsertController {
 			HttpServletRequest request,
 			Model model
 			) {
-		System.out.println(crewRequest);
+		
 		int result = regService.reg(crewRequest,request);
-		System.out.println("insert결과:"+result);
+		
 		model.addAttribute("result", result);
 		
 		return "crew/insert";

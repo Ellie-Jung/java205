@@ -11,20 +11,12 @@ import com.bitcamp.orl.member.domain.Member;
 
 public interface Dao {
 
-
-	int insertCrew(Crew crew);
+List<Crew> selectAll();
 	
-	int getCrewListCnt();
-	
-	int selectByCrewName(String crewName);
-	
-	//전체 크루 수
-	List<Crew> selectAll();	
-	//검색을 통한 crew 리스트 
-	List<Crew> selectCrewAll(SearchType searchType);
-	//크루 이름순
 	List<Crew> selectAll(String crewName);
 	
+	//검색을 통한 crew 리스트 
+	List<Crew> selectCrewAll(SearchType searchType);
 	
 	List<Crew> selectMyCrewList(@Param("memberIdx")int memberIdx);
 
@@ -48,8 +40,11 @@ public interface Dao {
 	
 	List <CrewComment> selectCrewCommentPaging(@Param("crewIdx")int crewIdx, @Param("firstRow")int firstRow, @Param("amountPerPage")int amountPerPage);
 
-
+	int insertCrew(Crew crew);
 	
+	int selectByCrewName(@Param("crewName")String crewName);
+	
+	int deleteCrew(@Param("crewIdx")int crewIdx);
 	
 	
 }

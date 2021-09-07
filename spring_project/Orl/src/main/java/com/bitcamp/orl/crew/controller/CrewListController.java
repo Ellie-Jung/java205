@@ -19,7 +19,7 @@ import com.bitcamp.orl.crew.service.CrewListViewService;
 
 @Controller
 @RequestMapping("/crew/list")
-public class CrewListController{
+public class CrewListController {
 	
 	@Autowired
 	CrewListViewService service;

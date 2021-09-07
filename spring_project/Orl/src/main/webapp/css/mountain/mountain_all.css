@@ -69,8 +69,8 @@
     outline: none;
 }
 
-i{
-	 font-size: 30px;
+#submit{
+	font-size: 30px;
   color: #424242;
   cursor:pointer;
 }
