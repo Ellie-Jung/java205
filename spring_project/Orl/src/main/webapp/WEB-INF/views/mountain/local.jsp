@@ -12,8 +12,7 @@
     <title>지역별산</title>
     <link rel="stylesheet" href="<c:url value='/css/mountain/local.css'/>">
     <link rel="stylesheet" href="<c:url value='/css/default/default.css'/>">
-
-
+	
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
     <!--카카오 지도 스크립트 -->
@@ -22,73 +21,79 @@
             src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a5188ac15584cefe54aea3746f43ba94"></script>
     <script>
         $(document).ready(function () {
+			
+        	
+            var mList = [];
+            var allList = [];
 
-            var mlist = [];
-            var alllist = [];
-
+            // 시작할때 비동기통신으로 지역별 산 리스트 받아와서 mList배열에 저장
             $.ajax({
-                url: '<c:url value="/mountain/height"/>',
+                url: '<c:url value="/mountain/local"/>',
                 type: 'GET',
                 data: {loc: '${loc}'},
                 success: function (data) {
-                    mlist = data;
-                    mountainList(mlist);
-                    map(mlist);
+                    mList = data;
+                    mountainList(mList);
+                    map(mList);
                 }
 
             })
- 
+ 	
+             // 시작할때 비동기통신으로 전국 산 리스트 받아와서 allList배열에 저장
          	 $.ajax({
                   url: '<c:url value="/mountain/all"/>',
                   type: 'GET',
                   success: function (data) {
-                  	console.log(data);
-                  	alllist = data;
+                  	allList = data;
                   }
               }) 
            
-            
+            // 지도 상단 전국 산보기버튼 클릭시 전국산 마킹되어있는 지도 세팅
             $('#mapbutton1').click(function(){
-            	map(alllist);
+            	map(allList);
             })
+            // 지도 상단 지역별 산보기버튼 클릭시 지역별산 마킹되어있는 지도 세팅
              $('#mapbutton2').click(function(){
-            	map(mlist);
+            	map(mList);
             })
 
+            // 높이순으로 보기 클릭시 mList 높이순으로 정렬
             $('#heightlist').click(function () {
 
 
-                mlist.sort(function (left, right) {
+                mList.sort(function (left, right) {
                     return right.height - left.height;
                 })
-
-                
-                mountainList(mlist);
+                mountainList(mList);
             })
 
 
+            // 이름순으로 보기 클릭시 mList 이름순으로 정렬
             $('#namelist').click(function () {
                
-                mlist.sort(function (a, b) {
+                mList.sort(function (a, b) {
                     return a.mountainName < b.mountainName ? -1 : a.mountainName > b.mountainName ? 1 : 0;
                 })
-                mountainList(mlist);
+                mountainList(mList);
             })
 
 
         });
-            function map(mlist) {
+        
+        // 카카오 맵에 산리스트 마킹 후 지도 보여주기
+            function map(mList) {
                 var container = document.getElementById('map');
-                let x = mlist[0].longitude;
-                let y = mlist[0].latitude;
+                let x = mList[0].longitude;
+                let y = mList[0].latitude;
                 var options = {
                     center: new kakao.maps.LatLng(x, y),
                     level: 12
                 };
                 var map = new kakao.maps.Map(container, options);
 
+             // 마커를 표시할 위치와 title 객체 배열입니다
                 var positions = [];
-                for (const x of mlist) {
+                for (const x of mList) {
                     positions.push({
                         title: x.mountainName,
                         lating: new kakao.maps.LatLng(x.longitude, x.latitude),
@@ -100,7 +105,7 @@
                         }
                     });
                 }
-                // 마커를 표시할 위치와 title 객체 배열입니다
+                
 
 
                 // 마커 이미지의 이미지 주소입니다
@@ -146,7 +151,7 @@
                         kakao.maps.event.addListener(marker, 'click', link(mName));
                     }
 
-//
+					// 마커아이콘 클릭시 상세 산 보기 페이지로 넘어감
                     function link(name) {
                         return function () {
                             location.href = '${pageContext.request.contextPath}/mountain/mountainDetailInfo?mountainName=' + name;
@@ -169,12 +174,13 @@
                 }
             }
 
-        function mountainList(mlist) {
-            var mmlist = [];
-            mmlist = mlist;
+        // 지역별 산 리스트 출력하는 함수
+        function mountainList(mList) {
+            var mountainList = [];
+            mountainList = mList;
            
             var html = '<div id="listings" class="listings">';
-            $.each(mmlist, function (index, item) {
+            $.each(mountainList, function (index, item) {
                 html += ' <div class="listings_item">';
                 html += ' <div class="listings_image">';
                 html += '<a href="${pageContext.request.contextPath}/mountain/mountainDetailInfo?mountainName=' + item.mountainName + '">';
@@ -198,7 +204,7 @@
                 html += '</div>';
                 html += '</div>';
 
-                $('#mlist').html(html);
+                $('#mList').html(html);
             })
         }
 
@@ -284,11 +290,10 @@
             }
         </script>
 
-
+		<!-- 정렬을 위한 버튼 (이름순, 높이순) -->
         <div class="main_filters">
             <button class="outlined curved" id="namelist"  value="namelist">이름순으로 보기</button>
             <button class="outlined curved" id="heightlist"  value="heightlist">높이순으로 보기</button>
-            <!--  <button class="outlined curved">인기순으로 보기</button> -->
         </div>
 
 
@@ -302,10 +307,11 @@
                 </span>
         </div>
 
-        <div id="mlist">
-
+		<!-- 지역별 산 리스트 출력되는 공간 -->
+        <div id="mList">
 
         </div>
+        
     </div>
 
     <script type="text/javascript">
@@ -318,8 +324,8 @@
         <div class="main_kakaoMap">
             <div class="map" id='map'></div>
         </div>
-<button id="mapbutton1" class="mapbutton mapbutton1">전국 산 보기</button>
-<button id="mapbutton2" class="mapbutton mapbutton2">지역별 산 보기</button>
+		<button id="mapbutton1" class="mapbutton mapbutton1">전국 산 보기</button>
+		<button id="mapbutton2" class="mapbutton mapbutton2">지역별 산 보기</button>
     </div>
     
 </div>

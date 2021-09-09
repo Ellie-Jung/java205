@@ -37,9 +37,7 @@ public class RegService {
 			resultCnt=dao.insertMember(member);
 			
 			
-			
-		} catch (ParseException e) {
-			e.printStackTrace();
+		
 		}catch (Exception e) {
 			e.printStackTrace();
 		}

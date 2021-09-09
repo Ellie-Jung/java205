@@ -3,18 +3,17 @@ package com.bitcamp.orl.crew.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.bitcamp.orl.crew.domain.Crew;
 import com.bitcamp.orl.crew.domain.SearchType;
 import com.bitcamp.orl.crew.service.CrewRestService;
 
-@Controller
 @RestController
-public class CrewRestController {
-
+public class CrewListRestController {
+	
 	@Autowired
 	private CrewRestService restService;
 	

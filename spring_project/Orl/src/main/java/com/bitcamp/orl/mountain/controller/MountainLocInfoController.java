@@ -17,12 +17,14 @@ public class MountainLocInfoController {
 	@Autowired
 	private MountainLocInfoViewService service;
 	
+	//겟방식으로 들어왔을때 전국 지도로 return
 	@RequestMapping(value ="/mountain/mountainLocInfo",method = RequestMethod.GET)
 	public String getMountainLocGet() {
 
 		return "mountain/mountain_all";
 	}
 
+	//포스트 방식으로 들어왔을때 지역별 산 리스트페이지로 이동
 	@RequestMapping(value ="/mountain/mountainLocInfo",method = RequestMethod.POST)
 	public String getMountainLocPost(HttpServletRequest request, Model model) {
 

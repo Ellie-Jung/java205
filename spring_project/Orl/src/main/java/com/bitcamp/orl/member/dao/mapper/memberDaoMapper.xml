@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <!DOCTYPE mapper 
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+<!-- 인터페이스의 full name을 namespace로 설정해야한다!!! -->
 <mapper namespace="com.bitcamp.orl.member.dao.Dao">
 
- <!-- insert 회원가입 -->
+	 <!-- insert 회원가입 -->
 	<insert
 		id="insertMember"
 		parameterType="com.bitcamp.orl.member.domain.Member"
@@ -48,6 +50,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectById" resultType="int">
 		select count(*) from member where memberId=#{memberId}
 	</select>	
+	<!--select nickname체크 -->
+	<select id="selectByNickName" resultType="int">
+		select count(*) from member where memberNickname=#{memberNickname}
+	</select>	
 
 	
 	<!-- 회원 삭제 -->
@@ -60,8 +66,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			parameterType="com.bitcamp.orl.member.domain.Member">
 		update member 
 		set memberName=#{memberName}, memberPw=#{memberPw},memberEmail=#{memberEmail},
-			memberNickname=#{memberNickname}, memberBirth=#{memberBirth}
+			memberNickname=#{memberNickname}, memberBirth=#{memberBirth},memberProfile=#{memberProfile}
 		where memberIdx=#{memberIdx}
 	</update>
 
+	<!-- select -->
+	<select
+			id="selectByIdx"
+			resultType="com.bitcamp.orl.member.domain.Member">
+		select * from member
+		where memberIdx=#{idx}
+	</select>
+	
 </mapper>

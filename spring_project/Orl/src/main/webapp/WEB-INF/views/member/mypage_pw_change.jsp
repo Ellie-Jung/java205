@@ -15,29 +15,29 @@
 		<div class="box">
 			<%@ include file="/WEB-INF/frame/member/member-mypage-nav.jsp"%>
 			<div class="edit_section">
-				<form>
+				<form method="post">
 					<table>
 						<tr>
-							<td><img id="profile2"
-								src="<c:url value='/images/default.jpg'/>"></td>
+							<td><img id="profile"
+								src="<c:url value='/images/member/profile/${member.memberProfile}'/>"></td>
 							<td>
-								<p id="id" class="text_bold">idid1234</p>
+								<p id="id" class="text_bold">${member.memberNickname}</p>
 							</td>
 						</tr>
 						<tr>
 							<td><label for="pw">이전 비밀번호</label></td>
 							<td><input type="password" id="pw" name="pw"
-								class="form-control"></td>
+								class="form-control" required></td>
 						</tr>
 						<tr>
 							<td><label for="newpw">새 비밀번호</label></td>
 							<td><input type="password" id="newpw" name="newpw"
-								class="form-control"></td>
+								class="form-control" required></td>
 						</tr>
 						<tr>
 							<td><label for="newpw2">새 비밀번호 확인</label></td>
 							<td><input type="password" id="newpw2" name="newpw2"
-								class="form-control"></td>
+								class="form-control" required></td>
 						</tr>
 						<tr>
 							<td></td>
@@ -45,7 +45,7 @@
 								class="form-control btn-secondary"></td>
 						</tr>
 						<tr>
-							<td colspan="2"><a href="#">
+							<td colspan="2"><a href="<c:url value="/member/mypage/forgotPw"/>">
 									<p class="pw_link">비밀번호를 잊으셨나요?</p>
 							</a></td>
 						</tr>

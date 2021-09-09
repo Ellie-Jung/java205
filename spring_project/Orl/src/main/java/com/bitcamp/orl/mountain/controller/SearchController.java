@@ -20,6 +20,7 @@ public class SearchController {
 	private MountainLocInfoViewService locService;
 	
 	
+	// 검색시 검색결과보여주는 컨트롤러
 	@RequestMapping("/mountain/search")
 	public String search(HttpServletRequest request,Model model
 		) {
@@ -28,14 +29,14 @@ public class SearchController {
 		search=request.getParameter("mysearch"); 
 		
 	
-			List<MountainLocInfo> mountainLocInfoList = null;
-			List<MountainLocInfo> mountainLocInfoList2 = null;
+			List<MountainLocInfo> mountainListByName = null;
+			List<MountainLocInfo> mountainListByLoc = null;
 			
-			mountainLocInfoList = locService.getMountainName1(search);
-			mountainLocInfoList2 = locService.getMountainLocInfo(search);
+			mountainListByName = locService.getMountainSearchName(search);
+			mountainListByLoc= locService.getMountainLocInfo(search);
 			
-			model.addAttribute("mountainList",mountainLocInfoList);
-			model.addAttribute("mountainList2",mountainLocInfoList2);
+			model.addAttribute("mountainListByName",mountainListByName);
+			model.addAttribute("mountainListByLoc",mountainListByLoc);
 			return "mountain/search";
 			
 		

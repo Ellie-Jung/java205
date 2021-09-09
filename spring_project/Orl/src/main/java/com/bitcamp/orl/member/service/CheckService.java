@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.bitcamp.orl.member.dao.Dao;
 
 @Service
-public class IdCheckService {
+public class CheckService {
 
 	private Dao dao;
 	@Autowired
@@ -18,13 +18,21 @@ public class IdCheckService {
 		String result ="Y";
 		dao=template.getMapper(Dao.class);
 		
-		if(dao.selectById(id)>0 ||id ==null || id.equals("")) {
+		if(dao.selectById(id)>0 ||id ==null || id.trim().equals("")) {
 			result="N";
 		}
-		
-		
-		System.out.println("서비스"+result);
 		return result;
 	}
+	
+	public String nickNameCheck(String nickname) {
+		
+		String result ="Y";
+		dao=template.getMapper(Dao.class);
+		
+		if(dao.selectByNickName(nickname)>0 ||nickname ==null || nickname.trim().equals("")) {
+			result="N";
+		}
+		return result;
+	} 
 	
 }

@@ -1,6 +1,5 @@
 package com.bitcamp.orl.crew.controller;
 
-
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,10 +15,9 @@ import com.bitcamp.orl.crew.domain.Crew;
 import com.bitcamp.orl.crew.domain.SearchType;
 import com.bitcamp.orl.crew.service.CrewListViewService;
 
-
 @Controller
 @RequestMapping("/crew/list")
-public class CrewListController {
+public class CrewListViewController {
 	
 	@Autowired
 	CrewListViewService service;
@@ -28,30 +26,22 @@ public class CrewListController {
 	public String getCrewList(
 			HttpServletRequest request,
 			Model model,
-			@ModelAttribute("searchType")
-			SearchType searchType
+			@ModelAttribute("searchType")SearchType searchType
 			) {
 		
-		System.out.println(searchType);
+		//내 크루 리스트 처리//
+		List<Crew> myCrewList = null;
+		myCrewList = service.getMyCrewList(request);
+		model.addAttribute("myCrewList", myCrewList);
 		
-		//크루 검색		
+		//크루 검색기능 더해서 전체 크루 리스트 처리		
 		List<Crew> list = null;
 		if(searchType.getKeyword() !=null && searchType.getKeyword().trim().length() > 0) {
 			list= service.getCrewListAll(searchType);
 		} else {
 			list = service.getCrewListAll();
 		}
-		model.addAttribute("crewList",list);
-	
-		//내 크루 리스트 처리//
-		List<Crew> myCrewList = null;
-		myCrewList = service.getMyCrewList(request);
-		model.addAttribute("myCrewList", myCrewList);
-		
-		//전체 크루 리스트 처리//
-		List<Crew> crewListAll = null;
-		crewListAll = service.getCrewListAll();
-		model.addAttribute("crewListAll", crewListAll);
+		model.addAttribute("crewList", list);
 		
 		return "crew/list";
 	}

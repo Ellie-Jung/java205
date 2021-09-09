@@ -6,12 +6,13 @@ import org.apache.ibatis.annotations.Param;
 
 import com.bitcamp.orl.crew.domain.Crew;
 import com.bitcamp.orl.crew.domain.CrewComment;
+import com.bitcamp.orl.crew.domain.CrewMemberList;
 import com.bitcamp.orl.crew.domain.SearchType;
 import com.bitcamp.orl.member.domain.Member;
 
 public interface Dao {
-
-List<Crew> selectAll();
+	
+	List<Crew> selectAll();
 	
 	List<Crew> selectAll(String crewName);
 	
@@ -46,5 +47,10 @@ List<Crew> selectAll();
 	
 	int deleteCrew(@Param("crewIdx")int crewIdx);
 	
+	int updateCrew(@Param("crewName")String crewName, @Param("crewPhoto")String crewPhoto, @Param("crewDiscription")String crewDiscription, @Param("crewTag")String crewTag, @Param("crewIdx")int crewIdx);
+
+	int updateCrewWithoutPhoto(@Param("crewName")String crewName, @Param("crewDiscription")String crewDiscription, @Param("crewTag")String crewTag, @Param("crewIdx")int crewIdx);
+	
+	List<CrewMemberList> selectCrewMemberList(@Param("crewIdx")int crewIdx);
 	
 }

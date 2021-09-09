@@ -35,6 +35,7 @@
             </form>
         </div>
 
+		<!-- 전국지도 이미지 -->
         <div class="main_item main_item_2">
             <img src="${pageContext.request.contextPath}/images/mountain/map_color.png" width="700px" height="700px"
                  usemap="#location">

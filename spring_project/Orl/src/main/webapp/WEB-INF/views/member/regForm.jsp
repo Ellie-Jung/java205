@@ -63,6 +63,8 @@
 					
 						<input type="text" name="memberNickname" id="nickname" autocomplete="off" required> 
 						<label for="nickname">닉네임</label>
+						<span id="msg2" class="display_none"></span><img id="loadingimg2" class="display_none" alt="loading"
+						src="<c:url value="/images/default/loading.gif"/>">
 							
 					</div>
 					<div class="birth">
@@ -116,7 +118,7 @@
 			
 			$.ajax({
 				url:'<c:url value="/member/idCheck"/>',
-				type:'post',
+				type:'get',
 				data:{
 					mid:$(this).val()
 				},
@@ -146,6 +148,58 @@
 				}
 			});
 		});
+		
+		
+		
+		
+		
+		$('#nickname').focusin(function(){
+			$('#msg2').addClass('display_none');
+			$('#msg2').removeClass('color_yellow');
+			$('#msg2').removeClass('color_red');
+			$(this).val('');
+		});
+		$('#nickname').focusout(function(){
+			
+			$.ajax({
+				url:'<c:url value="/member/nickNameCheck"/>',
+				type:'get',
+				data:{
+					nickname:$(this).val()
+				},
+				beforeSend:function(){
+					$('#loadingimg2').removeClass('display_none');
+				},
+				success : function(data) {
+					// data : Y / N
+					if (data == 'Y') {
+						$('#msg2').html('사용가능');
+						$('#msg2').addClass('color_yellow');
+						$('#msg2').removeClass('display_none');
+					} else {
+						$('#msg2').html('사용 불가능');
+						$('#msg2').addClass('color_red');
+						$('#msg2').removeClass('display_none');
+					}
+				},
+				error : function(request, status, error) {
+					alert('서버 통신에 문제가 발생했습니다. 다시 실행해주세요.');
+					console.log(request);
+					console.log(status);
+					console.log(error);
+				},
+				complete : function() {
+					$('#loadingimg2').addClass('display_none');
+				}
+			});
+		});
+		
+		
+		
+		
+		
+		
+		
 	});
 
 </script>
