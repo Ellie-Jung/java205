@@ -5,18 +5,19 @@
 
 #all{
     font-family:  var(--text-sans);
-   display:flex;
+   	display:flex;
     justify-content: center;
     align-items: center;
     height:100vh;
-     background:url("../../images/member/main.jpg") no-repeat center;
+    background:url("../../images/member/main.jpg") no-repeat center;
     background-size: cover;
 }
 
 
 #all::before{
     content:"";
-    position:absolute; z-index:1;
+    position:absolute; 
+    z-index:1;
     top:0;
     right:0;
     bottom:0;
@@ -36,7 +37,7 @@
     text-align:center;
     letter-spacing: 5px;
     margin-bottom:5px;
-    margin-top:15px;
+    margin-top:77px;
 }
 
 /* input박스 전체 사이즈, 위치 설정 */
@@ -48,13 +49,14 @@
 /* input 설정  */
 .input-area input{
     width:100%;
-    padding:17px 10px 10px;
+    padding:20px 10px 10px;
     background-color: transparent;
     border:none;
     border-bottom: 1px solid #999;
     font-size: 17px;
     color:#fff;
     margin-top: 20px;
+    margin-bottom:5px;
    
 }
 /* input label 설정->NAME, E-MAIL */
@@ -137,7 +139,7 @@
 	display: none;
 }
 .color_blue {
-	color: rgb(0, 153, 255);
+	color: #FDEF7B;
 	padding-left:10px;
 	font-size:12px;
 }

@@ -12,17 +12,19 @@
     <link rel="stylesheet" href="<c:url value='/css/default/default.css'/>">
 </head>
 <body>
+<%@ include file="/WEB-INF/frame/default/header.jsp"%>
+<div id="all">
     <section class="forgot-id">
         <h1>FORGOT ID</h1>
-        <form>
+        <form method="post">
             <div class="input-area">
-                <input tpye="text" name="name" autocomplete="off" required>
-                <label for="name">NAME</label>
+                <input type="text" id="memberName" name="memberName" autocomplete="off" required>
+                <label for="memberName">NAME</label>
             </div>
 
             <div class="input-area">
-                <input type="text" name="email" autocomplete="off" required>
-                <label for="email">E-MAIL</label>
+                <input type="text" id="memberEmail" name="memberEmail" autocomplete="off" required>
+                <label for="memberEmail">E-MAIL</label>
             </div>
 
             <div class="btn-area">
@@ -31,6 +33,6 @@
         </form>
 
     </section>
-    
+    </div>
 </body>
 </html>

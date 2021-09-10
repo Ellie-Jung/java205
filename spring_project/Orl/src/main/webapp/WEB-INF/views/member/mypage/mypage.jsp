@@ -11,19 +11,19 @@
 <link rel="stylesheet" href="<c:url value='/css/member/mypage.css'/>">
 <link rel="stylesheet" href="<c:url value='/css/default/default.css'/>">
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script defer src="<c:url value='/js/member/insert.js'/>"></script>
 </head>
 <body>
 <%@ include file="/WEB-INF/frame/default/header.jsp"%>
 	<div id="all">
 		<section class="forgot-pw">
 			<h1>MyPage</h1>
-			<h1>MyPage</h1>
 			<form method="post" enctype="multipart/form-data">
 				<div class="input-area" id="wrapImg">
 					<img id="profile"
 						src="<c:url value='/images/member/profile/${member.memberProfile}'/>"
 						onclick="doImgPop(this.src)">
-						<span id="id">닉네임${member.memberNickname}</span>
+						<span id="id">${member.memberNickname}</span>
 						<input type="file" id="memberPhoto" name="memberPhoto" style="display: none">
 						<label for="memberPhoto" class="changeProfile" style="color:#FDEF7B">프로필사진바꾸기</label> 
 				</div>
@@ -59,15 +59,10 @@
 						value="${member.memberBirth}" required>
 					<label>생년월일</label> 
 				</div>
-				<div class="input-area">
-					<input type="text" id="email"
-						name="memberEmail" class="form-control" autocomplete="off"
-						value="${member.memberEmail}" required>
-					<label for="email">이메일</label> 
-				</div>
+				
 
 			<div class="caption">
-					 <a href="<c:url value='/member/mypage_pw_change'/>">비밀번호 변경하기</a>
+					 <a href="<c:url value='/member/mypage/pwchange'/>">비밀번호 변경하기</a>
 				</div>
 
 

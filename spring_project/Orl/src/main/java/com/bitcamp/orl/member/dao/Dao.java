@@ -14,6 +14,12 @@ public interface Dao {
 		//로그인
 		Member selectByIdPw(@Param("memberId")String memberId, @Param("memberPw")String memberPw);
 		
+		//아이디찾기
+		String selectByIdEmail(@Param("memberName")String memberName, @Param("memberEmail")String memberEmail);
+		
+		//비밀번호 찾기 
+		String selectPw(@Param("memberId")String memberId,@Param("memberName")String memberName, @Param("memberEmail")String memberEmail);
+		
 		//아이디체크
 		int selectById(String memberId);
 		

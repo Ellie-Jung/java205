@@ -47,7 +47,7 @@
 		</form>
 		
 		<div class="caption">
-			<a href="<c:url value='/member/mypage/forgotId'/>">아이디 찾기 &nbsp|&nbsp</a> <a href="<c:url value='/member/mypage/forgotPw'/>">비밀번호 찾기</a>
+			<a href="<c:url value='/member/forgotId'/>">아이디 찾기 &nbsp|&nbsp</a> <a href="<c:url value='/member/forgotPw'/>">비밀번호 찾기</a>
 		</div>
 		<!-- 네이버로 로그인 영역
 		<form class="naver-login">

@@ -41,7 +41,7 @@
 								class="form-control btn-secondary">
             </div>
             	<div class="caption">
-					<a href="<c:url value="/member/mypage/forgotPw"/>">
+					<a href="<c:url value="/member/forgotPw"/>">
 									<p class="pw_link">비밀번호를 잊으셨나요?
 				</div>
         </form>

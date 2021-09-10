@@ -16,21 +16,21 @@
 <div id="all">
     <section class="forgot-pw">
         <h1>FORGOT PW</h1>
-        <form>
+        <form method="post">
             <div class="input-area">
-                <input tpye="text" name="id" autocomplete="off" required>
-                <label for="id">ID</label>
+                <input type="text" id="memberId" name="memberId" autocomplete="off" required>
+                <label for="memberId">ID</label>
             </div>
 
             <div class="input-area">
-                <input type="text" name="name" autocomplete="off" required>
-                <label for="name">NAME</label>
+                <input type="text" id="memberName" name="memberName" autocomplete="off" required>
+                <label for="memberName">NAME</label>
             </div>
 
             
             <div class="input-area">
-                <input type="text" name="email" autocomplete="off" required>
-                <label for="email">E-MAIL</label>
+                <input type="text" id="memberEmail" name="memberEmail" autocomplete="off" required>
+                <label for="memberEmail">E-MAIL</label>
             </div>
 
             <div class="btn-area">

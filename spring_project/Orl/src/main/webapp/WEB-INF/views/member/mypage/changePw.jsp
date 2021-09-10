@@ -8,7 +8,7 @@
 <c:if test="${result>0}">
    <script>
       alert('비밀변호가 변경되었습니다.');
-      location.href = '<c:url value="/member/mypage"/>';
+      location.href = '<c:url value="/member/logout"/>';
    </script>
 </c:if>
 <c:if test="${result eq 0}">
