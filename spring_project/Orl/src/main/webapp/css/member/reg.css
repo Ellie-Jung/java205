@@ -176,12 +176,10 @@ a:visited {
 }
 .color_yellow{
 	color:  #FDEF7B;
-	padding-left:15px;
 }
 .color_red {
 	color: red;
-	padding-left:15px;
 }
-#loadingimg,#loadingimg2 {
+#loadingimg,#loadingimg2,#loadingimg3 {
 	height: 20px;
 }
