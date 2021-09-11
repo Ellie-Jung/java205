@@ -11,8 +11,10 @@
     <link rel="stylesheet" href="<c:url value='/css/member/reg.css'/>">
     <link rel="stylesheet" href="<c:url value='/css/default/default.css'/>">
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 </head>
 <body>
+<div id="all">
 <div class="reg_box">
     <div class="box2">
         <div class="logo">
@@ -21,10 +23,23 @@
             </h1>
             <p>새로운 회원들과 함께 산을 탐험해보세요!</p>
         </div>
-        <div class="naver_login">
+        <div class="naver_login"  id="naver_id_login">
             <button class="naver_btn">네이버로 로그인</button>
         </div>
-        <div class="etc">또는</div>
+        <!-- 네이버아이디로로그인 버튼 노출 영역 -->
+	<script type="text/javascript">
+ 		var naver_id_login = new naver_id_login("6J4mY4LYbek5rnae50Dm", "http://localhost:8080/orl/member/naver");	// Client ID, CallBack URL 삽입
+											// 단 'localhost'가 포함된 CallBack URL
+ 		var state = naver_id_login.getUniqState();
+		
+ 		naver_id_login.setButton("green",3, 40);
+ 		naver_id_login.setDomain("http://localhost:8080/orl/member/reg");	//  URL
+ 		naver_id_login.setState(state);
+ 		naver_id_login.setPopup();
+ 		naver_id_login.init_naver_id_login();
+	</script>
+        
+      <!--   <div class="etc">또는</div> -->
         <div class="sign_section">
             <form method="post">
                 <div class="int-area">
@@ -113,7 +128,7 @@
     // 이름
     var nameJ = /^[가-힣]{2,6}$/;
     // 닉네임
-    var ninkJ = /^[가-힣][A-Za-z0-9]{4,12}$/;
+    var ninkJ = /^[가-힣][A-Za-z0-9]{2,12}$/;
     // 이메일 검사
     var mailJ = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 
@@ -126,7 +141,7 @@
             $('#msg').removeClass('color_yellow');
             $('#msg').removeClass('color_red');
             $('#msgchk').addClass('display_none');
-            $(this).val('');
+           /*  $(this).val(''); */
         });
 
         //1. 아이디 유효성 체크
@@ -180,7 +195,7 @@
 
       $('#pw').focusin(function () {
          $('#msgchk2').addClass('display_none');
-         $(this).val('');
+     	/*   $(this).val(''); */
       });
 
 
@@ -192,7 +207,7 @@
                 /*    alert('비밀번호는 8자 이상이어야 하며, 숫자/소문자/특수문자를 모두 포함해야 합니다.'); */
             $('#msgchk2').removeClass('display_none');
             $('#msgchk2').text('숫자/소문자/특수문자를 모두 포함한 8자리 이상이여야합니다.');
-                $('#msgchk2').css('color', '#f82a2aa3');
+            $('#msgchk2').css('color', '#f82a2aa3');
             }
         });
 
@@ -208,7 +223,7 @@
                 $('#msgchk3').css('color', '#f82a2aa3');
             } else {
                 $('#msgchk3').html('비밀번호가 일치합니다.');
-                $('#msgchk3').css('color', '#199894b3');
+                $('#msgchk3').css('color', '#FDEF7B');
             }
 
         });
@@ -216,7 +231,7 @@
         // 4. 이름 체크
       $('#name').focusin(function () {
          $('#msgchk4').addClass('display_none');
-         $(this).val('');
+       /*   $(this).val(''); */
       });
 
       $("#name").blur(function () {
@@ -238,7 +253,7 @@
          $('#msg3').addClass('display_none');
          $('#msg3').removeClass('color_yellow');
          $('#msg3').removeClass('color_red');
-         $(this).val('');
+        /*  $(this).val(''); */
       });
 
       $("#email").blur(function () {
@@ -287,11 +302,11 @@
       // 6. 닉네임 체크
 
         $('#nickname').focusin(function () {
-         $('#msgchk6').addClass('display_none');
-         $('#msg2').addClass('display_none');
-            $('#msg2').removeClass('color_yellow');
-            $('#msg2').removeClass('color_red');
-            $(this).val('');
+	         $('#msgchk6').addClass('display_none');
+	         $('#msg2').addClass('display_none');
+	         $('#msg2').removeClass('color_yellow');
+	         $('#msg2').removeClass('color_red');
+	        /*  $(this).val(''); */
         });
       $("#nickname").blur(function () {
          if (ninkJ.test($(this).val())) {
@@ -329,9 +344,9 @@
                   }
                });
          } else {
-            /* alert('이름은 4자 이상 12자 이하여야 하며, 한글/소문자/대문자만을 사용해야 합니다.'); */
+            /* alert('이름은 2자 이상 12자 이하여야 하며, 한글/소문자/대문자만을 사용해야 합니다.'); */
             $('#msgchk6').removeClass('display_none');
-            $('#msgchk6').text('닉네임은 4자 이상 12자 이하여야 하며, 한글/소문자/대문자만을 사용해야 합니다.');
+            $('#msgchk6').text('닉네임은 2자 이상 12자 이하, 한글/소문자/대문자만을 사용해야 합니다.');
             $('#msgchk6').css('color', '#f82a2aa3');
          }
       });
@@ -340,6 +355,6 @@
     });
 
 </script>
-
+</div>
 </body>
 </html>

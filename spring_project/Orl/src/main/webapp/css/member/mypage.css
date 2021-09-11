@@ -131,14 +131,13 @@
 	font-size : 20px;
 	line-height : 90px;
 }
-.profileSection{
-}
+
 
 /*비동기통신*/
 .display_none {
 	display: none;
 }
-.color_blue {
+.color_yellow{
 	color: #FDEF7B;
 	padding-left:10px;
 	font-size:12px;
@@ -148,6 +147,6 @@
 	padding-left:12px;
 	font-size:12px;
 }
-#loadingimg{
+#loadingimg,#loadingimg2,#loadingimg3 {
 	height: 20px;
 }
