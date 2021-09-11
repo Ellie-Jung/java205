@@ -43,8 +43,9 @@
 	</interceptors>
 	
 	
-	<context:component-scan base-package="com.bitcamp.orl" />
+	<beans:bean id="naverLoginBO" class="com.bitcamp.orl.member.domain.NaverLoginBO"/>
 	
+	<context:component-scan base-package="com.bitcamp.orl" />
 	
 	
 	

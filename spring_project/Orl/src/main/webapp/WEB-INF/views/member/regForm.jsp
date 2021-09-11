@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="<c:url value='/css/member/reg.css'/>">
     <link rel="stylesheet" href="<c:url value='/css/default/default.css'/>">
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+    <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.2.js" charset="utf-8"></script>
 </head>
 <body>
 <div id="all">
@@ -23,21 +23,7 @@
             </h1>
             <p>새로운 회원들과 함께 산을 탐험해보세요!</p>
         </div>
-        <div class="naver_login"  id="naver_id_login">
-            <button class="naver_btn">네이버로 로그인</button>
-        </div>
-        <!-- 네이버아이디로로그인 버튼 노출 영역 -->
-	<script type="text/javascript">
- 		var naver_id_login = new naver_id_login("6J4mY4LYbek5rnae50Dm", "http://localhost:8080/orl/member/naver");	// Client ID, CallBack URL 삽입
-											// 단 'localhost'가 포함된 CallBack URL
- 		var state = naver_id_login.getUniqState();
-		
- 		naver_id_login.setButton("green",3, 40);
- 		naver_id_login.setDomain("http://localhost:8080/orl/member/reg");	//  URL
- 		naver_id_login.setState(state);
- 		naver_id_login.setPopup();
- 		naver_id_login.init_naver_id_login();
-	</script>
+      
         
       <!--   <div class="etc">또는</div> -->
         <div class="sign_section">
@@ -109,8 +95,12 @@
                         <label for="date">일</label>
                     </div>
                 </div>
-                <div class="btn-area">
-                    <input type="submit" value="가입">
+                <div class="loginbtn">
+	                <div class="btn-area">
+	                    <input type="submit" value="가입">
+	                </div>
+	                <div id="naver_id_login" style="text-align:center"><a href="${url}">
+	                <img width="189.5" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a></div>
                 </div>
             </form>
         </div>
