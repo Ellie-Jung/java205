@@ -75,7 +75,6 @@ public class NaverLoginController {
 			memberRequest.setMemberName((String) response.get("name"));
 			memberRequest.setMemberEmail((String) response.get("email"));
 			memberRequest.setMemberNickname((String) response.get("nickname")); //닉네임 수정!!
-			/* member.setGender((String)response.get("gender"));*/
 			memberRequest.setYear((String) response.get("birthyear"));
 			String month=((String) response.get("birthday")).substring(0,2);
 			String date=((String) response.get("birthday")).substring(3);
