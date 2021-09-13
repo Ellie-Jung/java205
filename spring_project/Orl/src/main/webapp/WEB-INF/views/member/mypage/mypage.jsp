@@ -64,6 +64,7 @@
 						name="birth" class="form-control" autocomplete="off"
 						value="${member.memberBirth}" required>
 					<label>생년월일</label> 
+					<span id="msgchk7"></span> 
 				</div>
 				
 
@@ -86,14 +87,34 @@
     //모든 공백 체크 정규식
     var empJ = /\s/g;
     // 이름
-    var nameJ = /^[가-힣]{2,6}$/;
+    var nameJ = /^[가-힣A-Za-z]{2,6}$/;
     // 닉네임
-    var ninkJ = /^[가-힣][A-Za-z0-9]{4,12}$/;
+    var ninkJ = /^[가-힣A-Za-z0-9]{2,12}$/;
     // 이메일 검사
     var mailJ = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+    // 생년월일
+    var birthJ = /^(19[0-9][0-9]|20\d{2})-(0[0-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/;
 
 
     $(document).ready(function () {
+
+    	//생년월일 체크
+      $('#memberBirth').focusin(function () {
+         $('#msgchk7').addClass('display_none');
+      });
+
+
+        $("#memberBirth").blur(function () {
+            if (birthJ.test($(this).val())) {
+                console.log(birthJ.test($(this).val()));
+                $("#msgchk7").text('');
+            } else {
+                /*    alert('생년월일은 1996-03-04 형식으로 작성해야합니다'); */
+            $('#msgchk7').removeClass('display_none');
+            $('#msgchk7').text('생년월일은 1996-03-04 형식으로 작성해야합니다');
+                $('#msgchk7').css('color', '#f82a2aa3');
+            }
+        });
 
        
 

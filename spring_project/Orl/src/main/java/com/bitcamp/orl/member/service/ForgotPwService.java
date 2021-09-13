@@ -19,6 +19,7 @@ import com.bitcamp.orl.member.dao.Dao;
 
 @Service
 public class ForgotPwService {
+	
 
 	  private Dao dao;
 	   
@@ -28,6 +29,7 @@ public class ForgotPwService {
 	   public String FindPw( HttpServletRequest request,String memberId, String membername,
 		         String memberEmail
 		         ) {
+		   
 		   String findPw=null;
 		   
 		   dao=template.getMapper(Dao.class);
@@ -45,6 +47,7 @@ public class ForgotPwService {
 	   }
 	   
 	   public void mailSender(String pw, String email) throws AddressException, MessagingException {
+		   
 	        System.out.println("메일 시작");
 	        // 네이버일 경우 smtp.naver.com 을 입력합니다.// Google일 경우 smtp.gmail.com 을 입력합니다.
 	        String host = "smtp.naver.com";

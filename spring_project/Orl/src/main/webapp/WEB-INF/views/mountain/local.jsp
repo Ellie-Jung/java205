@@ -21,7 +21,7 @@
             src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a5188ac15584cefe54aea3746f43ba94"></script>
     <script>
         $(document).ready(function () {
-			
+		
         	
             var mList = [];
             var allList = [];
@@ -205,9 +205,15 @@
                 html += '</div>';
 
                 $('#mList').html(html);
+            	
             })
         }
-
+	
+    
+        function testss(){
+        	console.log("gdgdgdgdgdgdgdgdgd")
+        }
+    	
         /* 날씨 api */
         let weatherIcon = {
             '01': 'fas fa-sun',
