@@ -43,7 +43,7 @@
     <c:forEach items="${memberList}" var="list">
       <tr>
         <td>${list.memberIdx}</td>
-        <td>${list.memberId}</td>
+        <td style="max-width:150px;overflow:auto">${list.memberId}</td>
         <td>${list.memberName}</td>
         <td>${list.memberEmail}</td>
         <td><img src="<c:url value='/images/member/${list.memberProfile}'/>" style="width:100px"></td>

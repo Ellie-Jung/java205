@@ -187,7 +187,7 @@
             <version>1.4.7</version>
         </dependency>
 		
-		<!-- naver --> 
+		<!-- naver 아이디로 로그인 --> 
 		<dependency> 
 			<groupId>com.github.scribejava</groupId> 
 			<artifactId>scribejava-core</artifactId> 

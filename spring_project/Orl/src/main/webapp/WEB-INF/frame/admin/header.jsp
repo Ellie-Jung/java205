@@ -15,7 +15,6 @@
 
        <ul class="navbar__menu">
             <li><a href="<c:url value='/admin/member/'/>">MEMBER</a></li>
-            <li><a href="">MOUATAIN</a></li>
             <li><a href="<c:url value='/admin/crew/'/>">CREW</a></li>
             <li><a href="">FEED</a></li>
 
