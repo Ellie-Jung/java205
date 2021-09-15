@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.bitcamp.orl.admin.service.AdminCrewService;
 import com.bitcamp.orl.crew.domain.Crew;
 import com.bitcamp.orl.crew.service.CrewListViewService;
 
@@ -24,7 +23,7 @@ public class AdminCrewController {
 		
 		List<Crew> crewList = null;
 		
-		crewList=service.getCrewListAll();
+		crewList=service.getCrewListAdmin();
 		
 		model.addAttribute("crewList",crewList);
 		

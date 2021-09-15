@@ -35,7 +35,7 @@ public class ForgotPwService {
 		   dao=template.getMapper(Dao.class);
 		   
 		  if(memberId!=null && membername != null && memberEmail != null&& 
-			  memberId.trim().length() > 2 && membername.trim().length() > 2
+			  memberId.trim().length() > 1 && membername.trim().length() > 1
 			  && memberEmail.trim().length() > 2) {
 			  
 			  
@@ -52,7 +52,7 @@ public class ForgotPwService {
 	        // 네이버일 경우 smtp.naver.com 을 입력합니다.// Google일 경우 smtp.gmail.com 을 입력합니다.
 	        String host = "smtp.naver.com";
 	        final String username = "orullay"; // 네이버 아이디를 입력해주세요. @nave.com은 입력하지 마시구요.
-	        final String password = "bitcamp205";   // 네이버 이메일 비밀번호를 입력해주세요.
+	        final String password = "bitcamp205!";   // 네이버 이메일 비밀번호를 입력해주세요.
 	        int port = 465;   // 포트번호
 	// 메일 내용
 	        String recipient = email; //받는 사람의 메일주소를 입력해주세요.

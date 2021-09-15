@@ -91,10 +91,10 @@ public class LoginService {
    }
 
    public boolean chkURI(String uri) {
-      boolean chk = true;
+      boolean chk = false;
 
       if (!uri.startsWith("/orl/member/login")) {
-         chk = false;
+         chk = true;
       }
       return chk;
    }

@@ -9,23 +9,23 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.bitcamp.orl.crew.domain.Crew;
-import com.bitcamp.orl.crew.service.CrewListViewService;
+import com.bitcamp.orl.admin.service.AdminFeedService;
+import com.bitcamp.orl.feed.domain.FeedView;
 
 @Controller
 public class AdminFeedController {
 
 	@Autowired
-	private CrewListViewService crewservice;
+	private AdminFeedService feedservice;
 	
 	@RequestMapping("/admin/feed")
 	public String FeedList(HttpServletRequest request, Model model) {
 		
-		List<Crew> crewList = null;
+		// 전체 피드 리스트 (최신순)
+		List<FeedView> feedList=null;
+		feedList=feedservice.selectAllFeed();
 		
-		crewList=crewservice.getCrewListAll();
-		
-		model.addAttribute("crewList",crewList);
+		model.addAttribute("feedList",feedList);
 		
 		
 		return "admin/admin_feed";

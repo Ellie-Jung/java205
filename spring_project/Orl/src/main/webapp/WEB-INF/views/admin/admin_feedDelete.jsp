@@ -11,7 +11,7 @@
 	<script>
 		alert('삭제되었습니다.');
 	</script>
-	<% response.sendRedirect("/orl/admin/crew"); %>
+	<% response.sendRedirect("/orl/admin/feed"); %>
 </c:if>
 
 <c:if test="${result eq 0}">
