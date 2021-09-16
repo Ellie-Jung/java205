@@ -72,7 +72,7 @@
     width: 100%;
     min-height: 100vh;
     color: white;
-    padding-top: 15%;
+    padding-top: 200px;
     position: absolute;
     right: 55%;
     max-width: 750px;
@@ -91,6 +91,7 @@
     letter-spacing: 2px;
     transition: 0.2s;
 }
+
 
 .home-content a:hover {
     letter-spacing: 6px;

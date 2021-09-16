@@ -52,22 +52,22 @@
 				</ul>
             </div>
         </div>
-                    <div class="home_video">
-                        <video loop autoplay="autoplay" muted="muted"src="<c:url value="/video/Hiking.mp4"/>"></video>
+                      <div class="home_video">
+                        <video loop autoplay="autoplay" muted="muted"src="<c:url value="/video/hikingg.mov"/>"></video>
                     </div>
                     <div class="home-content wrapper">
                         <h2 class="page-title">
-                            LET'S CLIMB TOGETHER
+                            <!-- LET'S <br>CLIMB <br>TOGETHER -->
+                             <img src="<c:url value='/images/crew/font.png'/>">
                         </h2>
-                        <p>
-                            산에 오르는(登) 것. 취미활동 목적의 놀이, 신체단련을 위한 운동이나 스포츠, 탐험 등 까지 전반을 아우르는 말이다. 산에 오르는 것 자체를 즐기는 것,
-                            다이어트나 체력 단련을 위한 운동, 정상의 경치를 즐기는 것, 하산의 상쾌함을 즐기는
-                            것, 체력을 소모한 뒤 산에서 먹는 식사를 즐기는 것</p>
-                        <a href="#">HIKING</a>
+                        <span class="main-button">
+                        <a href="<c:url value='/mountain/mountainAllInfo/'/>">MOUNTAIN</a>
+                        </span>
                     </div>
                 </div>
             </div>
         </section>
+
         <section class="section">
 
             <div id="home_2" class="big-bg">
