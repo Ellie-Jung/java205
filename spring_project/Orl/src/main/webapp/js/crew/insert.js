@@ -1,4 +1,3 @@
-
 var sel_file;
 var nickJ = /^[가-힣A-Za-z0-9]{4,12}$/;
 var checkNick = true;
@@ -10,11 +9,12 @@ function form_submit(form) {
         return false;
     }
 }
+
 $(document).ready(function () {
-    // 비동기통신 스타일 속성
+ // 비동기통신 스타일 속성
     $('#crewName').focusin(function () {
         $('#msg').addClass('display_none');
-        $('#msg').removeClass('color_yellow');
+        $('#msg').removeClass('color_blue');
         $('#msg').removeClass('color_red');
         $(this).val('');
     });
@@ -37,7 +37,7 @@ $(document).ready(function () {
                     // data : Y / N
                     if (data == 'Y') {
                         $('#msg').html('사용가능');
-                        $('#msg').addClass('color_yellow');
+                        $('#msg').addClass('color_blue');
                         $('#msg').removeClass('display_none');
                         checkNick = true;
                     } else {
@@ -65,14 +65,10 @@ $(document).ready(function () {
                 checkNick = false;
             }
         });
-        
-
-    
     $("#crewPhoto").on("change", handleImgFileSelect);
-
- 
 });
 
+//img preview
 function handleImgFileSelect(e) {
     var files = e.target.files;
     var filesArr = Array.prototype.slice.call(files);
@@ -121,7 +117,7 @@ function viewImage(img) {
     imgWin.document.close();
 }
 
-///////////////////////
+///////////////////////hashtaging////////////////////
 
 $(document).ready(function () {
 
@@ -167,7 +163,6 @@ $(document).ready(function () {
             e.preventDefault(); // SpaceBar 시 빈공간이 생기지 않도록 방지
         }
     });
-
     // 삭제 버튼 
     // 인덱스 검사 후 삭제
     $(document).on("click", ".del-btn", function (e) {
@@ -175,6 +170,4 @@ $(document).ready(function () {
         tag[index] = "";
         $(this).parent().remove();
     });
-
-
-})
+});

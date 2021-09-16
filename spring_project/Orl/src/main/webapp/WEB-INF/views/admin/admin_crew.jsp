@@ -114,7 +114,7 @@
         <!-- <div class="delete pull-right">
        		<input class="btn btn-default" type="submit" value="일괄삭제">
         </div> -->
-        <div class="pres">
+      <!--   <div class="pres">
             <h4 class="hidden">현재 페이지</h4>
             <div><span>1</span> / 1 pages</div>
         </div>
@@ -134,7 +134,7 @@
 		    </li>
 		  </ul>
 	</nav>
-     </div>   
+     </div>    -->
 </div>
 
 

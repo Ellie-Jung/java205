@@ -44,7 +44,7 @@
       <tr>
         <td>${list.memberIdx}</td>
         <td style="max-width:150px;overflow:auto">${list.memberId}</td>
-        <td><img src="<c:url value='/images/member/profile/${list.memberProfile}'/>" style="width:100px"></td>
+        <td><img src="<c:url value='/images/member/profile/${list.memberProfile}'/>" style="width:80px; height:80px;border-radius: 50%;"></td>
         <td>${list.memberName}</td>
         <td>${list.memberEmail}</td>
         <td>${list.memberNickname}</td>
@@ -56,10 +56,10 @@
         <td>
         	
 <!-- Trigger the modal with a button -->
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal${list.memberIdx}">Open Modal</button>
 
 <!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
+<div id="myModal${list.memberIdx}" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -69,23 +69,16 @@
         <h4 class="modal-title">피드 미리보기</h4>
       </div>
       <div class="modal-body selectList">
-      
-      
-      
-      
-      <c:forEach items="${feedList}" var="fList">
-	      <c:if test="${memberList.memberIdx eq feedList.memberIdx}">
+     <c:forEach items="${feedList}" var="fList">
+	      <c:if test="${list.memberIdx eq fList.memberIdx}">
 	                <div class="item">
-	                	 <img class="img" src="<c:url value='/images/member/${list.memberProfile}'/>"  width="80px" height="80px">
+	                	 <img alt="gggg" class="img" src="<c:url value='/images/feed/feedw/uploadfile/${fList.boardPhoto}'/>"  width="80px" height="80px">
 	                    <span># ${fList.boardIdx}</span>
 	                </div>
 	      </c:if>
       </c:forEach>
-               
-       
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" >save changes</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
@@ -106,31 +99,6 @@
   
   
 
- <!--페이징-->
-        <!-- <div class="delete pull-right">
-       		<input class="btn btn-default" type="submit" value="일괄삭제">
-        </div> -->
-        <div class="pres">
-            <h4 class="hidden">현재 페이지</h4>
-            <div><span>1</span> / 1 pages</div>
-        </div>
-
-
-      <div class="text-center">
-      <nav aria-label="Page navigation example">
-		  <ul class="pagination  justify-content-center">
-		    <li class="page-item disabled">
-		      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-		    </li>
-		    <li class="page-item"><a class="page-link" href="#">1</a></li>
-		    <li class="page-item"><a class="page-link" href="#">2</a></li>
-		    <li class="page-item"><a class="page-link" href="#">3</a></li>
-		    <li class="page-item">
-		      <a class="page-link" href="#">Next</a>
-		    </li>
-		  </ul>
-	</nav>
-     </div>   
 </div>
 
 

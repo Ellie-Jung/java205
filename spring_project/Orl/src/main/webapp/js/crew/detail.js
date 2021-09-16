@@ -55,7 +55,7 @@ $(document).ready(function(){
  	//Joining the crew. 
      $('#joinToCrew').on('click', 'button', function(){
 		if(memberIdx==''){
-			window.location.href="http://localhost:8080/orl/member/login";
+			window.location.href="/orl/member/login?referer=/orl/crew/detail?crewIdx="+crewIdx+"";
 		} else {
 			$.ajax({
 				url: 'http://localhost:8080/orl/crew/joinToCrewMemberList',
@@ -79,7 +79,7 @@ $(document).ready(function(){
 	//Leaving the crew.
 	$('#outFromCrew').on('click', 'button', function(){
 		if(memberIdx==''){
-			window.location.href="http://localhost:8080/orl/member/login";
+			window.location.href="/orl/member/login?referer=/orl/crew/detail?crewIdx="+crewIdx+"";
 		} else {
 			$.ajax({
 				url: 'http://localhost:8080/orl/crew/deleteCrewMemberFromList',

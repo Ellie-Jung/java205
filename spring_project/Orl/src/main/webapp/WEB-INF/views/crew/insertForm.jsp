@@ -12,8 +12,8 @@
 <script defer src="https://kit.fontawesome.com/cccee664d4.js" crossorigin="anonymous"></script>
 <script defer src="https://code.jquery.com/jquery-1.12.4.js"
         integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
-<script defer type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" charset="utf-8"></script>
-<script defer src="<c:url value='/js/crew/insert.js'/>"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" charset="utf-8"></script>
+<script src="<c:url value='/js/crew/insert.js'/>"></script>
 </head>
 <body>
 <%@ include file="/WEB-INF/frame/default/header.jsp" %>
@@ -22,16 +22,21 @@
     	<div class="edit_section">
         <form method="post" enctype="multipart/form-data" id="tag-form">
         	 <table>
-           	<div class="create">
-            	<h1>생성하기</h1>
-            </div>
+        		 <tr>
+	        		 <td>
+			           <div class="create">
+			           	<h1>생성하기</h1>
+			           </div>
+		           </td>
+	           </tr>
             <tr>
             	<td>
               	<label for="crewName">크루명</label>
               </td>
               <td>
-              	<input type="text" id="crewname" name="crewName" class="form-control" required="required">
+              	<input type="text" id="crewName" name="crewName" class="form-control" required="required">
               	<span id="msg" class="display_none"></span>
+              	<font id="crewName_check" size="2"></font>
               </td>
             </tr>
           	<tr>
