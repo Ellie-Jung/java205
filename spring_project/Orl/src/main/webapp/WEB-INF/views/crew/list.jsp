@@ -9,14 +9,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>크루</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+	crossorigin="anonymous">
 <link rel="stylesheet" href="<c:url value='/css/crew/crew-list.css'/>">
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script>
-let cList = [];
-const searchType = '${searchType}';
-const	keyword = '${keyword}';
+	let cList = [];
+	const searchType = '${searchType}';
+	const keyword = '${keyword}';
+	const url = '${pageContext.request.contextPath}';
 </script>
 <script src="<c:url value='/js/crew/list.js'/>"></script>
 </head>
@@ -28,8 +32,9 @@ const	keyword = '${keyword}';
 			<h1>MY CREW</h1>
 			<div class="article-crew">
 				<div>
-					<a href="<c:url value='/crew/insert'/>"> <img
-						src="<c:url value='/images/crew/new.JPG'/>"></a>
+					<a href="<c:url value='/crew/insert'/>">
+					<img src="<c:url value='/images/crew/new.JPG'/>">
+					</a>
 				</div>
 				<a href="<c:url value='/crew/insert'/>" class="text-bold">나의 크루
 					만들기</a>
@@ -53,41 +58,44 @@ const	keyword = '${keyword}';
 			<div class="search-box">
 				<div class="dropdown">
 					<h1>CREW</h1>
-					<button class="curved" id="nameList">이름순으로 보기</button>
-					<button class="curved" id="newestList">최신순으로 보기</button>
-					<button class="curved" id="oldList">오랜된 순으로 보기</button>
+					<div class="dropdown-button">
+						<button class="curved" id="newestList">최신순 보기</button>
+						<button class="curved" id="nameList">이름순 보기</button>
+						<button class="curved" id="oldList">오래된 순 보기</button>
+					</div>
 				</div>
 				<form action="" name="frm" id="form">
 					<div class="search-drop">
 						<div class="searchType">
-							<select name="searchType" id="selectSearch">
-								<option value="name">크루 이름</option>
+							<label for="selectbox">크루이름</label> <select name="searchType"
+								id="selectSearch" title="검색">
+								<option value="name" selected="selected">크루 이름</option>
 								<option value="nickName">닉네임</option>
 								<option value="tag">해시태그</option>
 							</select>
-							<div class="boxSearch">
-								<span class="icon">
-									<i id="searchType" class="fa fa-search" aria-hidden="true"></i>
-								</span>
-								<input id="search" class="search" type="text" name="keyword" placeholder="Type to search">
-							</div>
 						</div>
+						<div class="boxSearch">
+							<span class="icon"> <label for="button"> <i
+									id="searchType" class="fas fa-search" aria-hidden="true"></i>
+							</label> <input type="submit" id="button" style="display: none">
+							</span> <input autocomplete="off" id="search" class="search" type="text"
+								name="keyword" placeholder="Type to search">
+						</div>
+
 					</div>
 				</form>
 			</div>
-			
-			<div id="cList">
-			</div>
+
+			<div id="cList"></div>
 			<div class="paging-div">
 				<nav aria-label="Page navigation example">
 					<ul class="pagination" id="pagination">
 					</ul>
 				</nav>
 			</div>
-		
-		</div> <!-- container -->
+		</div>
+		<!-- container -->
 	</div>
-
 	<%@ include file="/WEB-INF/frame/default/footer.jsp"%>
 </body>
 </html>

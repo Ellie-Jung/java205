@@ -3,15 +3,16 @@ var nickJ = /^[가-힣A-Za-z0-9]{4,12}$/;
 var checkNick = true;
 
 function form_submit(form) {
-    if (checkNick){
+    if (checkNick) {
         form.submit();
-    }else{
+    } else {
         return false;
     }
 }
 
+
 $(document).ready(function () {
- // 비동기통신 스타일 속성
+    // 비동기통신 스타일 속성
     $('#crewName').focusin(function () {
         $('#msg').addClass('display_none');
         $('#msg').removeClass('color_blue');
@@ -25,10 +26,10 @@ $(document).ready(function () {
             $("#crewName_check").text('');
             // 유효성 체크 되면 비동기통신으로  id 중복 체크
             $.ajax({
-                url: 'http://localhost:8080/orl/crew/nameCheck',
+                url: url+'/crew/nameCheck',
                 type: 'get',
                 data: {
-                    crewName : $(this).val()
+                    crewName: $(this).val()
                 },
                 beforeSend: function () {
                     $('#loadingimg').removeClass('display_none');
@@ -55,18 +56,38 @@ $(document).ready(function () {
                 },
                 complete: function () {
                     $('#loadingimg').addClass('display_none');
-                }   
+                }
             });
-            } else {
-                /*    alert('아이디는 4자 이상 12자 이하여야하며 ,대문자/소문자/숫자만 사용할 수 있습니다.'); */
-                $('#crewName_check').removeClass('display_none');
-                $('#crewName_check').text('닉네임을 다시 입력해주세요.');
-                $('#crewName_check').css('color', '#f82a2aa3');
-                checkNick = false;
-            }
-        });
+        } else {
+            /*    alert('아이디는 4자 이상 12자 이하여야하며 ,대문자/소문자/숫자만 사용할 수 있습니다.'); */
+            $('#crewName_check').removeClass('display_none');
+            $('#crewName_check').text('크루명을 다시 입력해주세요.');
+            $('#crewName_check').css('color', '#f82a2aa3');
+            checkNick = false;
+        }
+    });
     $("#crewPhoto").on("change", handleImgFileSelect);
-});
+
+
+    $('#crewintro').on('keyup', function () {
+        $('#crewintro_cnt').html("(" + $(this).val().length + " / 150)");
+
+        //글자 수를 0에 대입시켜서 바꿔보이게 150자이상작성하면 짤림
+        if ($(this).val().length > 150) {
+            //substring으로 문자열을 0부터150까지만 나오고 자름
+            $(this).val($(this).val().substring(0, 150));
+            $('#crewintro_cnt').html("(150 / 150)");
+            alert("150자 이내로 작성해주세요")
+        }
+    });
+
+    // 개행문자 = textarea의 엔터를 br태그로 바꿔서 db에 보냄 
+    $("form").submit(function () {
+        var html = $("#crewintro").val().replace(/(?:\r\n|\r|\n)/g, '<br />');
+
+    });
+
+});//ready end
 
 //img preview
 function handleImgFileSelect(e) {
@@ -152,8 +173,8 @@ $(document).ready(function () {
 
                 // 해시태그가 중복되었는지 확인
                 if (result.length == 0) {
-                    $("#tag-list").append("<li class='tag-item'>" + tagValue + "<span class='del-btn' idx='" + counter + "'>x"+
-                    "</span><input type='hidden' name='crewTag' id='rdTag' value="+tagValue+"></li>");
+                    $("#tag-list").append("<li class='tag-item'>" + tagValue + "<span class='del-btn' idx='" + counter + "'>x" +
+                        "</span><input type='hidden' name='crewTag' id='rdTag' value=" + tagValue + "></li>");
                     addTag(tagValue);
                     self.val("");
                 } else {
