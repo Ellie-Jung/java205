@@ -21,6 +21,11 @@
     <script type="text/javascript"
             src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a5188ac15584cefe54aea3746f43ba94"></script>
     <script>
+    //부트서버
+    const url1 = 'http://localhost:8081';
+    //레거시 서버
+    const url2 ='${pageContext.request.contextPath}';
+    
         $(document).ready(function () {
 
             var mList = [];
@@ -28,7 +33,7 @@
 
             // 시작할때 비동기 통신으로 지역별 산 리스트 받아와서 mList에 저장
             $.ajax({
-                url: '${pageContext.request.contextPath}/mountain/local',
+                url: 'http://localhost:8081/mountain/local',
                 type: 'POST',
                 data: {loc: '${loc}'},
                 success: function (data) {
@@ -41,7 +46,7 @@
 
             // 시작할때 비동기 통신으로 전국 산 리스트 받아와서 allList에 저장
             $.ajax({
-                url: '${pageContext.request.contextPath}/mountain/all',
+                url:  'http://localhost:8081/mountain/all',
                 type: 'GET',
                 success: function (data) {
                     console.log(data);
