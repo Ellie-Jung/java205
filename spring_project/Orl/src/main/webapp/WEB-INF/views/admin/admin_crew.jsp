@@ -94,34 +94,7 @@
   
   <p>Note that we start the search in tbody, to prevent filtering the table headers.</p>
   
-  
-  
 
- <!--페이징-->
-        <!-- <div class="delete pull-right">
-       		<input class="btn btn-default" type="submit" value="일괄삭제">
-        </div> -->
-      <!--   <div class="pres">
-            <h4 class="hidden">현재 페이지</h4>
-            <div><span>1</span> / 1 pages</div>
-        </div>
-
-
-      <div class="text-center">
-      <nav aria-label="Page navigation example">
-		  <ul class="pagination  justify-content-center">
-		    <li class="page-item disabled">
-		      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-		    </li>
-		    <li class="page-item"><a class="page-link" href="#">1</a></li>
-		    <li class="page-item"><a class="page-link" href="#">2</a></li>
-		    <li class="page-item"><a class="page-link" href="#">3</a></li>
-		    <li class="page-item">
-		      <a class="page-link" href="#">Next</a>
-		    </li>
-		  </ul>
-	</nav>
-     </div>    -->
 </div>
 
 

@@ -5,14 +5,15 @@ import java.io.UnsupportedEncodingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.bitcamp.orl.member.domain.MemberDto;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bitcamp.orl.member.dao.Dao;
 import com.bitcamp.orl.member.domain.Member;
+import com.bitcamp.orl.member.domain.MemberDto;
 import com.bitcamp.orl.member.util.CookieBox;
+import com.bitcamp.orl.member.util.Sha256;
 
 @Service
 public class LoginService {
@@ -21,6 +22,10 @@ public class LoginService {
    
    @Autowired
    private SqlSessionTemplate template;
+   
+   @Autowired
+	private Sha256 sha256;
+   
    
    boolean loginChk;
 
@@ -38,6 +43,7 @@ public class LoginService {
       dao = template.getMapper(Dao.class);
       Member member=null;
       if (memberId != null && memberPw != null && memberId.trim().length() > 2 && memberPw.trim().length() > 2) {
+    	 memberPw = sha256.encrypt(memberPw);
          member = dao.selectByIdPw(memberId, memberPw);
          if (member != null) {
             MemberDto  memberVo= member.memberToMemberVo();

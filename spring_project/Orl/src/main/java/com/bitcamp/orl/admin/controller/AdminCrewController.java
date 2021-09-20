@@ -25,15 +25,16 @@ public class AdminCrewController {
 	private AdminCrewService regListService;
 	
 	@RequestMapping("/admin/crew")
-	public String CrewList(HttpServletRequest request, Model model) {
+	public String CrewList() {
 		
-		List<Crew> crewList = null;
-		List<CrewMemberList> crewRegList= null;
-		
-		crewList=service.getCrewListAdmin();
-		crewRegList=regListService.getCrewRegList();
-		model.addAttribute("crewList",crewList);
-		model.addAttribute("crewRegList",crewRegList);
+		/*
+		 * List<Crew> crewList = null; List<CrewMemberList> crewRegList= null;
+		 * 
+		 * crewList=service.getCrewListAdmin();
+		 * crewRegList=regListService.getCrewRegList();
+		 * model.addAttribute("crewList",crewList);
+		 * model.addAttribute("crewRegList",crewRegList);
+		 */
 		
 		return "admin/admin_crew";
 	}

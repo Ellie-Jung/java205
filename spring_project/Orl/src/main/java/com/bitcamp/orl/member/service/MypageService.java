@@ -3,6 +3,7 @@ package com.bitcamp.orl.member.service;
 import com.bitcamp.orl.member.dao.Dao;
 import com.bitcamp.orl.member.domain.Member;
 import com.bitcamp.orl.member.domain.MemberEditRequest;
+import com.bitcamp.orl.member.util.Sha256;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,9 @@ public class MypageService {
    
    @Autowired
    private SqlSessionTemplate template;
+   
+   @Autowired
+	private Sha256 sha256;
 
    public Member getMemberSelectByIdx(int memberIdx){
 
@@ -70,11 +74,11 @@ public class MypageService {
 
    public int editPw(String oldPw,String newPw,String newPw2,Member member) {
 	   int resultCnt = 0;
-	   
+	   oldPw= sha256.encrypt(oldPw);
 	   if( member.getMemberPw().equals(oldPw)) {
 		   
 		   if(newPw.equals(newPw2)) {
-			   member.setMemberPw(newPw);
+			   member.setMemberPw(sha256.encrypt(newPw));
 			   dao=template.getMapper(Dao.class);
 			   resultCnt=dao.updateMember(member);
 		   }

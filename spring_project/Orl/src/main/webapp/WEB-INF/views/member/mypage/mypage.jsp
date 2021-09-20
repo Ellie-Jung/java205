@@ -169,7 +169,8 @@
             console.log(mailJ.test($(this).val()));
             $("#msgchk5").text('');
                $.ajax({
-                  url: '<c:url value="/member/emailCheck"/>',
+                //  url: '<c:url value="/member/emailCheck"/>',
+                   url: 'http://localhost:8087/member/emailCheck',
                   type: 'get',
                   data: {
                      email: $(this).val()
@@ -225,7 +226,8 @@
             console.log(ninkJ.test($(this).val()));
             $("#msgchk6").text('');
                $.ajax({
-                  url: '<c:url value="/member/nickNameCheck"/>',
+                //  url: '<c:url value="/member/nickNameCheck"/>',
+                   url: 'http://localhost:8087/member/nickNameCheck',
                   type: 'get',
                   data: {
                      nickname: $(this).val()
