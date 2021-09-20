@@ -7,7 +7,7 @@ import com.bitcamp.orl.mountain.domain.MountainLocInfo;
 import org.apache.ibatis.annotations.Param;
 
 
-public interface MountainDao {
+public interface Dao {
 	
 	// 지역별 산 리스트
 	List<MountainLocInfo> selectByLocName(String var1);

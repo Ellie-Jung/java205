@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -17,13 +18,13 @@ public class MountainRestController {
 	private MountainRestService restService;
 	
 	//지역별 산 리스트
-	@GetMapping("/mountain/local")
+	@PostMapping("/mountain/local")
 	@CrossOrigin
 	public List<MountainLocInfo> getMountainLoc(String loc){
 		return restService.getMountainLocList(loc);
 	}
 	
-	// 전국 산 리스트
+	// 전국 산 리스트S
 	@GetMapping("/mountain/all")
 	@CrossOrigin
 	public List<MountainLocInfo> getMountainAll(){
