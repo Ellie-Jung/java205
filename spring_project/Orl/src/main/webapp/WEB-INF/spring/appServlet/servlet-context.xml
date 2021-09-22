@@ -48,11 +48,11 @@
 	
 	
 	<beans:bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-		<beans:property name="host" value="smtp.gmail.com" />
-		<beans:property name="port" value="587" />
+		<beans:property name="host" value="smtp.naver.com" />
+		<beans:property name="port" value="465" />
 		<beans:property name="username"
-			value="bitcamp.java205.email@gmail.com" />
-		<beans:property name="password" value="" />
+			value="orullay@naver.com" />
+		<beans:property name="password" value="bitcamp205!" />
 		<beans:property name="defaultEncoding" value="utf-8" />
 		<beans:property name="javaMailProperties">
 			<beans:props>
@@ -62,7 +62,7 @@
 				<beans:prop key="mail.debug">true</beans:prop>
 				
 				<!-- 20210819 추가 -->
-				<beans:prop key="mail.smtp.ssl.trust">smtp.gmail.com</beans:prop>
+				<beans:prop key="mail.smtp.ssl.trust">smtp.naver.com</beans:prop>
 				<beans:prop key="mail.smtp.starttls.required">true</beans:prop>
 				<beans:prop key="mail.smtp.ssl.protocols">TLSv1.2</beans:prop>
 				<beans:prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</beans:prop>
