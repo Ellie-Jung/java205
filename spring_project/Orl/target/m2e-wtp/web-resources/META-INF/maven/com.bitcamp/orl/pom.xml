@@ -225,6 +225,15 @@
 			<version>${org.springframework-version}</version>
 		</dependency>
 
+		
+		<!-- commons-codec : 암호화 처리시에 사용 -->
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.15</version>
+		</dependency>
+
+
 
 		<dependency>
 			<groupId>Spring-AOP</groupId>

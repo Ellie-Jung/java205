@@ -32,6 +32,31 @@
 		p:defaultEncoding="utf-8" p:maxUploadSize="10000000">
 	</beans:bean>
 	
+	<!-- 메일 -->
+	<beans:bean id="mailSender"
+				class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<beans:property name="host" value="smtp.naver.com" />
+		<beans:property name="port" value="465" /><!-- 587 or 25-->
+		<beans:property name="username" value="orullay" />
+		<beans:property name="password" value="bitcamp205~" />
+		<beans:property name="defaultEncoding" value="utf-8" />
+		<beans:property name="javaMailProperties">
+			<beans:props>
+				<beans:prop key="mail.debug">true</beans:prop>
+				<beans:prop key="mail.smtp.starttls.enable">true</beans:prop>
+				<beans:prop key="mail.smtps.ssl.checkserveridentity">true</beans:prop>
+				<beans:prop key="mail.smtp.auth">true</beans:prop>
+				<beans:prop key="mail.smtps.ssl.trust">*</beans:prop>
+				<beans:prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</beans:prop>
+				<beans:prop key="mail.transport.protocol">smtp</beans:prop>
+				<beans:prop key="mail.smtp.ssl.enable">true</beans:prop>
+				<beans:prop key="mail.smtp.ssl.protocols">TLSv1.2</beans:prop>
+			</beans:props>
+		</beans:property>
+	</beans:bean>
+	
+	
+	
 	<!-- 로그인 체크 인터셉터 등록-->
 	<interceptors>
 		<interceptor>

@@ -21,11 +21,7 @@
     <script type="text/javascript"
             src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a5188ac15584cefe54aea3746f43ba94"></script>
     <script>
-    //부트서버
-    const url1 = 'http://localhost:8085';
-    //레거시 서버
-    const url2 ='${pageContext.request.contextPath}';
-    
+   
         $(document).ready(function () {
 
             var mList = [];

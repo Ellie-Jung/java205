@@ -70,6 +70,8 @@
 
          <div class="caption">
                 <a href="<c:url value='/member/mypage/pwchange'/>">비밀번호 변경하기</a>
+                <a > &nbsp |  &nbsp</a>
+                <a href="<c:url value='/member/delete?memberIdx=${member.memberIdx}'/>" onclick="if(!confirm('정말 탈퇴하시겠습니까?')){return false;}">탈퇴하기</a>
             </div>
 
 

@@ -1,6 +1,7 @@
 package com.bitcamp.orl.member.service;
 
 import java.io.UnsupportedEncodingException;
+import java.security.GeneralSecurityException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,8 +13,8 @@ import org.springframework.stereotype.Service;
 import com.bitcamp.orl.member.dao.Dao;
 import com.bitcamp.orl.member.domain.Member;
 import com.bitcamp.orl.member.domain.MemberDto;
+import com.bitcamp.orl.member.util.AES256Util;
 import com.bitcamp.orl.member.util.CookieBox;
-import com.bitcamp.orl.member.util.Sha256;
 
 @Service
 public class LoginService {
@@ -23,9 +24,9 @@ public class LoginService {
    @Autowired
    private SqlSessionTemplate template;
    
+   //암호화처리코드
    @Autowired
-	private Sha256 sha256;
-   
+	private AES256Util aes256Util; 
    
    boolean loginChk;
 
@@ -43,16 +44,21 @@ public class LoginService {
       dao = template.getMapper(Dao.class);
       Member member=null;
       if (memberId != null && memberPw != null && memberId.trim().length() > 2 && memberPw.trim().length() > 2) {
-    	 memberPw = sha256.encrypt(memberPw);
-         member = dao.selectByIdPw(memberId, memberPw);
-         if (member != null) {
-            MemberDto  memberVo= member.memberToMemberVo();
-            request.getSession().setAttribute("memberVo", memberVo);
-            loginChk = true;
-         }
+    	 try {
+			memberPw = aes256Util.encrypt(memberPw);
+			member = dao.selectByIdPw(memberId, memberPw);
+			if (member != null) {
+				MemberDto  memberVo= member.memberToMemberVo();
+				request.getSession().setAttribute("memberVo", memberVo);
+				loginChk = true;
+			}
+		} catch (UnsupportedEncodingException | GeneralSecurityException e) {
+			e.printStackTrace();
+		}
       }
       return loginChk;
    }
+   
    
    public boolean naverLogin(
 	         HttpServletRequest request, 
