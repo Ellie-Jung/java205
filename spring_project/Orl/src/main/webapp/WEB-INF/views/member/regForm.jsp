@@ -160,7 +160,7 @@
                     // 유효성 체크 되면 비동기통신으로  id 중복 체크
                     $.ajax({
                      //   url: '<c:url value="/member/idCheck"/>',
-                        url: 'http://localhost:8087/member/idCheck',
+                        url: 'http://13.125.199.218:8087/member/idCheck',
                         type: 'get',
                         data: {
                             mid: $(this).val()
@@ -278,7 +278,7 @@
                     $("#msgchk5").text('');
                     $.ajax({
                        // url: '<c:url value="/member/emailCheck"/>',
-                          url: 'http://localhost:8087/member/emailCheck',
+                          url: 'http://13.125.199.218:8087/member/emailCheck',
                         type: 'get',
                         data: {
                             email: $(this).val()
@@ -334,7 +334,7 @@
                     $("#msgchk6").text('');
                     $.ajax({
                       //  url: '<c:url value="/member/nickNameCheck"/>',
-                        url: 'http://localhost:8087/member/nickNameCheck',
+                        url: 'http://13.125.199.218:8087/member/nickNameCheck',
                         type: 'get',
                         data: {
                             nickname: $(this).val()

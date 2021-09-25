@@ -53,6 +53,9 @@ public class MypageService {
          Member editMember = member;
 
          if (memberEditRequest.getMemberPhoto() != null && !memberEditRequest.getMemberPhoto().isEmpty()) {
+        	 if(selectThatFile(member.getMemberIdx(),request) != null) {
+         		selectThatFile(member.getMemberIdx(),request).delete();
+         	}
             newFile = saveProfileFile(request,memberEditRequest.getMemberPhoto());
             editMember.setMemberProfile(newFile.getName());
          }
@@ -124,7 +127,12 @@ public class MypageService {
       return newFile;
    }
    
-   
-   
+   public File selectThatFile(int memberIdx, HttpServletRequest request) {
+	   	dao = template.getMapper(Dao.class);
+	   	Member member = dao.selectByIdx(memberIdx);
+	   	String fileName = member.getMemberProfile();
+	   	String dirpath = request.getSession().getServletContext().getRealPath(PROFILE_URI);
+	   	return new File(dirpath, fileName);
+	   }
    
 }

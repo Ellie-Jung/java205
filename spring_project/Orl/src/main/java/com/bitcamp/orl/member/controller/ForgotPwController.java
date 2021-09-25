@@ -33,17 +33,21 @@ public class ForgotPwController {
 			@RequestParam("memberName") String memberName,
 			@RequestParam("memberEmail") String memberEmail) {
 		
+		  Member member= service.FindPw(request,memberId, memberName, memberEmail);
+	      String newPw = null;
+	      try {
+	         newPw = service.getRamdomPassword(member.getMemberPw());
+	         service.mailSender(member, newPw);
+	      }catch (NullPointerException e){
+	         System.out.println("null");
+	         e.printStackTrace();
+	      }
 
-		Member member= service.FindPw(request,memberId, memberName, memberEmail);
-		String newPw=service.getRamdomPassword(member.getMemberPw());
-		service.mailSender(member, newPw);
-
-		model.addAttribute("findPw",newPw);
+	      model.addAttribute("findPw",newPw);
 
 
 
-
-		return "member/findPw";
+	      return "member/findPw";
 	}
 	
 

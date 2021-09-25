@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.bitcamp.orl.admin.domain.FeedView;
 import com.bitcamp.orl.member.domain.Member;
 
 public interface Dao {
@@ -41,5 +42,8 @@ public interface Dao {
     // idx에 해당하는 member
     Member selectByIdx(int idx);
 
+    
+    // 전체 피드 리스트
+ 	List<FeedView> selectAllFeed();
 
 }

@@ -97,5 +97,17 @@
       select * from member
       where memberIdx=#{idx}
    </select>
+   
+   <!--관리자용 추가0915 -->
+	<!-- 모든 항목가져오는 전체 피드 리스트 -->
+	<select id="selectAllFeed"
+		resultType="com.bitcamp.orl.admin.domain.FeedView">
+		SELECT B.boardIdx, B.boardPhoto, B.boardDiscription,
+		B.hashtag, B.tag, M.memberIdx, M.memberNickname, M.memberProfile
+		FROM
+		final.photoBoard AS B NATURAL JOIN final.member AS M ORDER BY
+		B.boardIdx DESC;
+	</select>
+   
 
 </mapper>

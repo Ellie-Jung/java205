@@ -13,7 +13,7 @@ button, input {
 	border: 0;
 	background-color: #00ff0000;
 }
-button:hover, input:hover, a:hover {
+button:hover, input:hover, a:hover, h1:hover {
 	cursor: pointer;
 }
 textarea {
@@ -86,16 +86,17 @@ textarea:focus {
 .hashTag::-webkit-scrollbar {
 	display: none;
 }
-.hashTag a {
-	background-color: rgb(253, 239, 123);
-	color: #000;
-	border-radius: 5px;
-	display: inline-block;
-	padding: 5px 8px;
-	padding-top: 5px;
-	font-size: 13px;
-	margin-right: 5px;
-	margin-top: 5px;
+.hashTag h1 {
+  background-color: rgb(253, 239, 123);
+  color: #000;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 5px 8px;
+  padding-top: 5px;
+  font-size: 13px;
+  font-weight: 400;
+  margin-right: 5px;
+  margin-top: 5px;
 }
 /* 태그 아이콘 */
 #tag {
@@ -113,7 +114,7 @@ textarea:focus {
 	border-radius: 10px;
 	padding: 8px 12px;;
 }
-.tag-item {
+.tag-item, .hashtag-item {
 	color: #fdef7b;
 	padding-right: 5px;
 }
@@ -159,11 +160,11 @@ textarea:focus {
 
 /* 수정 버튼 위치 */
 .edit_div {
-	position:absolute;
-	right:100px;
-	background-color: #fdef7b;
-	border-radius: 5px;
-	top: 30px;
+    position:absolute;
+    right:100px;
+    background-color: #fdef7b;
+    border-radius: 5px;
+    top: 30px;
 }
 
 /* 삭제 버튼 위치 */
@@ -201,9 +202,9 @@ textarea:focus {
 	line-height: 1.5;
 	font-size: 15px;
 	background-color: transparent;
-	width: 100%;
-	overflow: auto;
-	-ms-overflow-style : none; /* 스크롤 체크 */
+    width: 100%;
+    overflow: auto;
+    -ms-overflow-style : none; /* 스크롤 체크 */
 }
 
 /* 댓글 영역 */
@@ -247,7 +248,7 @@ textarea:focus {
 	font-size: 15px;
 	overflow: hidden;
 	height: auto;
-	width: 350px;
+    width: 350px;
 }
 .v_nickname {
 	padding-right: 10px;
@@ -255,7 +256,7 @@ textarea:focus {
 }
 /* 댓글 삭제 영역 */
 .comment_delete {
-
+		
 }
 .delete_icon {
 	width: 17px;

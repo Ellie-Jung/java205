@@ -14,7 +14,7 @@ spring:
     template-resolver-order: 0
        
 mybatis:
-  mapper-locations: com/bitcamp/orl/**/mapper/**/*.xml
+  mapper-locations: com/bitcamp/orl/**/**/**/**.xml
      
 server:
   port: 8085

@@ -20,7 +20,7 @@ public class AdminMemberDeleteController {
 
 		model.addAttribute("idx",request.getParameter("memberIdx"));
 		int memberIdx= Integer.parseInt(request.getParameter("memberIdx"));
-		int result =service.deleteMember(memberIdx);
+		int result =service.deleteMember(memberIdx,request);
 		model.addAttribute("result",result);
 
 		return "admin/admin_memberDelete";

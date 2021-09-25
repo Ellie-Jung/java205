@@ -14,6 +14,86 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="https://kit.fontawesome.com/cccee664d4.js" crossorigin="anonymous"></script>
 </head>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+	/*부트서버*/
+	const url = 'http://localhost:8086';
+	/*뷰 서버*/	
+	const url2 = '${pageContext.request.contextPath}';
+	$(document).ready(function () {
+	    $.ajax({
+	    	url: url + '/admin/crew/getAllInfo',
+	        type: 'get',
+	        success: function (data) {
+	        	let html = '';
+	        	$.each(data.crewList, function(index, item){
+					html += '<tr>';
+					html += '<td>'+item.crewIdx+'</td>';
+					html += '<td>'+item.crewName+'</td>';
+					html += '<td><img src="'+url2+'/images/crew/'+item.crewPhoto+'"';
+					html += 'style="width: 100px; height: 100px"></td>';
+					html += '<td style="max-width: 350px; overflow: auto">'+item.crewDiscription+'</td>';
+					html += '<td style="max-width: 100px">'+item.crewCreatedate+'</td>';
+					html += '<td style="max-width: 200px">'+item.crewTag+'</td>';
+					html += '<td><p class="text-center">'+item.memberNickName+'</p></td>';
+					html += '<td style="width: 50px">';
+					html += '<a id="deleteId" href="#"';
+					html += 'onclick="javascript:isDelete('+item.crewIdx+')">삭제</a></td>';
+					html += '<td>';
+					
+					// Trigger the modal with a button
+					html += '<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal'+item.crewIdx+'"';
+					html += 'style="width: 110px; height: 40px; font-size: 15px; font-weight: bold; background-color: cadetblue;">';
+					html += '크루원 목록</button>';
+					
+					// Modal
+					html += '<div id="myModal'+item.crewIdx+'" class="modal fade" role="dialog">';
+					html += '<div class="modal-dialog">';
+					// Modal content
+					html += '<div class="modal-content">';
+					html += '<div class="modal-header">';
+					html += '<button type="button" class="close" data-dismiss="modal">&times;</button>';
+					html += '<h4 class="modal-title">크루원 보기</h4>';
+					html += '</div>';
+					html += '<div class="modal-body selectList">';
+		
+					$.each(data.crewRegList, function(index, item2){
+		        		if(item.crewIdx == item2.crewIdx) {
+		        			html += '<div class="item">';
+							html += '<img alt="" class="img" src="'+url2+'/images/member/profile/'+item2.memberProfile+'"';
+							html += 'width="80px" height="80px" style="border-radius: 50%">';
+						html += '<span># '+item2.memberNickName+'</span>';
+								html += '</div>';
+		        		}
+		        	});
+					
+					html += '</div>';
+					html += '<div class="modal-footer">';
+					html += '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>';
+					html += '</div></div></div></div></td></tr>';
+	        	});
+				$('#myTable').html(html);				
+	        }//success end
+					
+	   	}); //ajax end
+	    
+	   		
+	    $("#myInput").on("keyup", function() {
+		    var value = $(this).val().toLowerCase();
+		    $("#myTable tr").filter(function() {
+		      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+		    });
+		});
+	    
+	}); //document ready end
+	function isDelete(crewIdx){
+		if(confirm("삭제하시겠습니까?")) {
+			window.location.href = url2+'/admin/crew/delete?crewIdx='+crewIdx;
+		} else{
+			return false;
+		}
+	}
+</script>
 <body>
 <%@ include file="/WEB-INF/frame/admin/header.jsp" %>
 
@@ -38,79 +118,16 @@
       </tr>
     </thead>
     <tbody id="myTable">
-    <c:forEach items="${crewList}" var="list">
-      <tr>
-        <td>${list.crewIdx}</td>
-        <td>${list.crewName}</td>
-        <td><img src="<c:url value='/images/crew/${list.crewPhoto}'/>" style="width:100px; height:100px"></td>
-        <td style="max-width:350px;overflow:auto">${list.crewDiscription}</td>
-        <td style="max-width:100px">${list.crewCreatedate}</td>
-        <td style="max-width:200px">${list.crewTag}</td>
-        <td><p class="text-center">${list.memberNickName}</p></td>
-        <td style="width:50px">
-             <a id = "deleteId" href="<c:url value='/admin/crew/delete?crewIdx=${list.crewIdx}'/>" onclick="if(!confirm('삭제하시겠습니까?')){return false;}">삭제</a>
-        </td>
-           <td>
-        	
-<!-- Trigger the modal with a button -->
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal${list.crewIdx}" style="width:110px; height:40px; font-size:15px; font-weight:bold; background-color:cadetblue;">크루원 목록</button>
-
-<!-- Modal -->
-<div id="myModal${list.crewIdx}" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">크루원 보기</h4>
-      </div>
-      <div class="modal-body selectList">
-          <c:forEach items="${crewRegList}" var="cList">
-	      <c:if test="${list.crewIdx eq cList.crewIdx}">
-	                <div class="item">
-	                	 <img alt="" class="img" src="<c:url value='/images/member/profile/${cList.memberProfile}'/>"  width="80px" height="80px" style="border-radius:50%">
-	                    <span># ${cList.memberNickName}</span>
-	                </div>
-	      </c:if>
-      </c:forEach>     
-       
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-        
-        
-        </td>
-      </tr>
-      </c:forEach>
     
     </tbody>
   </table>
   
-  <p>Note that we start the search in tbody, to prevent filtering the table headers.</p>
+ 
   
 
 </div>
 
 
-
-
-
-<script>
-$(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#myTable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
-</script>
 
 </body>
 </html>
