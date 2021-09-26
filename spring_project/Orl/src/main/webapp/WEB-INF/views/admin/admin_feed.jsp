@@ -16,12 +16,20 @@
 </head>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script>
-	/*부트서버*/
-	const url = 'http://3.36.48.110:8083';
-	/*뷰 서버*/	
-	const url2 = '${pageContext.request.contextPath}';
+/*부트서버*/
+const url = 'http://3.36.48.110:8083';
+/*뷰 서버*/	
+const url2 = '${pageContext.request.contextPath}';
 
-	$(document).ready(function(){
+const adminIdx = '${sessionScope.memberVo.memberIdx}';
+
+
+$(document).ready(function () {
+	
+	if(adminIdx != 92){
+		alert('해당 페이지에 접근할 권한이 없습니다.');
+		window.location.href = url2 + '/';
+	}
 		$.ajax({
 			url:url+'/admin/feed/getAllInfo',
 			type:'get',
@@ -30,9 +38,9 @@
 				$.each(data, function(index,item){
 					html+=	   '<tr>'
 					html+= '<td>'+item.boardIdx+'</td>'
-					html+='<td><img src="'+url2+'/images/feed/feedw/uploadfile/'+item.boardPhoto+'/>" width="100px" height="100px" ></td>'
+					html+='<td><img src="'+url2+'/images/feed/feedw/uploadfile/'+item.boardPhoto+'" width="100px" height="100px" ></td>'
 					html+='<td style="max-width:100px">'+item.memberIdx+'${list.memberNickname}</td>'
-					html+='<td><img src="'+url2+'/images/member/'+item.memberProfile+'/>" style="width:80px; height:80px;border-radius: 50%;"></td>'
+					html+='<td><img src="'+url2+'/images/member/'+item.memberProfile+'" style="width:80px; height:80px;border-radius: 50%;"></td>'
 					html+='<td style="max-width:400px">'+item.boardDiscription+'</td>'
 					html+='<td style="max-width:300px">'+item.hashtag+'</td>'
 					html+='<td>'
@@ -94,7 +102,19 @@ $(document).ready(function(){
 });
 function isDelete(boardIdx){
 	if(confirm("삭제하시겠습니까?")) {
-		window.location.href = url2+'/admin/feed/delete?boardIdx='+boardIdx;
+		 $.ajax({
+				url: url+'/admin/crew/deleteFeed',
+			 	data: {boardIdx : boardIdx},
+			 	type: 'get',
+		        success: function (data) {
+		        	if(data!=0){
+		        		alert('삭제했습니다.');
+		        		history.go(0);
+		        	} else {
+		        		alert('삭제에 실패했습니다.');
+		        	}
+		        }
+			 });
 	} else{
 		return false;
 	}

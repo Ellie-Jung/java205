@@ -21,7 +21,15 @@
 	/*뷰 서버*/	
 	const url2 = '${pageContext.request.contextPath}';
 
-	$(document).ready(function(){
+	const adminIdx = '${sessionScope.memberVo.memberIdx}';
+
+	$(document).ready(function () {
+		
+		if(adminIdx != 92){
+			alert('해당 페이지에 접근할 권한이 없습니다.');
+			window.location.href = url2 + '/';
+		}
+		
 		$.ajax({
 			url:url+'/admin/member/getAllInfo',
 			type:'get',
@@ -32,7 +40,7 @@
 					html +=  '<tr>'
 					html +=  '<td>'+item.memberIdx+'</td>'
 					html +=   ' <td style="max-width:150px;overflow:auto">'+item.memberId+'</td>'
-					html +=  '  <td><img src="'+url2+'/images/member/profile/'+item.memberProfile+'/>" style="width:80px; height:80px;border-radius: 50%;"></td>'
+					html +=  '  <td><img src="'+url2+'/images/member/profile/'+item.memberProfile+'" style="width:80px; height:80px;border-radius: 50%;"></td>'
 					html +=   ' <td>'+item.memberName+'</td>'
 					html +=    '<td>'+item.memberEmail+'</td>'
 					html +=   ' <td>'+item.memberNickname+'</td>'
@@ -61,7 +69,7 @@
 				    $.each(data.feedList,function(index, item2){
 				    	if(item.memberIdx == item2.memberIdx){
 				    		html += '<div class="item">'
-						    html +=    '<img alt="" class="img" src="'+url2+'/images/feed/feedw/uploadfile/'+item2.boardPhoto+'/>"  width="80px" height="80px">'
+						    html +=    '<img alt="" class="img" src="'+url2+'/images/feed/feedw/uploadfile/'+item2.boardPhoto+'"  width="80px" height="80px">'
 						    html +=    '<span># '+item2.boardIdx+'</span>'
 						    html +=    '</div>'
 				    	}
@@ -125,7 +133,20 @@ $(document).ready(function(){
 });
 function isDelete(memberIdx){
 	if(confirm("삭제하시겠습니까?")) {
-		window.location.href = url2+'/admin/member/delete?memberIdx='+memberIdx;
+		$.ajax({
+			url: url+'/admin/member/deleteMember',
+		 	data: {memberIdx : memberIdx},
+		 	type: 'get',
+	        success: function (data) {
+	        	if(data!=0){
+	        		alert('삭제했습니다.');
+	        		history.go(0);
+	        	} else {
+	        		alert('삭제에 실패했습니다.');
+	        	}
+	        }
+		 });
+		
 	} else{
 		return false;
 	}
