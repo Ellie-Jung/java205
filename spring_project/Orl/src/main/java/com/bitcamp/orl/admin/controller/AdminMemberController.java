@@ -15,12 +15,4 @@ public class AdminMemberController {
 		return "admin/admin_member";
 	}
 	
-	@RequestMapping("/admin/member/delete")
-	public String MemberDelete(@RequestParam("memberIdx")int memberIdx, Model model) {
-		
-		model.addAttribute("memberIdx",memberIdx);
-		
-		return "admin/admin_memberDelete";
-	}
-	
 }

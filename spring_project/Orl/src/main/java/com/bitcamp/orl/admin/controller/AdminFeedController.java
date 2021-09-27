@@ -14,11 +14,5 @@ public class AdminFeedController {
 		return "admin/admin_feed";
 	}
 	
-	@RequestMapping("admin/feed/delete")
-	public String CrewDelete(@RequestParam("boardIdx")int boardIdx, Model model) {
-		
-		model.addAttribute("boardIdx", boardIdx);
-		return "admin/admin_feedDelete";
-	}
 	
 }
