@@ -39,7 +39,7 @@ const url2 = '${pageContext.request.contextPath}';
 					<table>
 						<tr>
 							<td><label for="crewName">크루명</label></td>
-							<td><input type="text" id="crewName" name="crewName" class="form-control" required="required">
+							<td><input type="text" autocomplete="off" id="crewName" name="crewName" class="form-control" required="required">
 								<div id="msg" class="display_none"></div>
 								<font id="crewName_check" size="2"></font></td>
 						</tr>
@@ -68,7 +68,7 @@ const url2 = '${pageContext.request.contextPath}';
 							<td>
 								<ul id="tag-list"></ul>
 								<div class="form-group">
-									<input type="text" id="tag" size="7" placeholder="#" style="width: 300px;" />
+									<input type="text" autocomplete="off" id="tag" size="7" placeholder="#" style="width: 300px;" />
 								</div>
 							</td>
 						</tr>

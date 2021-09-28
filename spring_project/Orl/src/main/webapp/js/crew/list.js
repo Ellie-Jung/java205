@@ -1,7 +1,9 @@
 $(document).ready(function () {
 
     $('#newestList').addClass('clicked');
-    getMyList();
+    if(memberIdx != ''){
+        getMyList();
+    }
     getList(searchType, keyword, 1);
 
     $('#nameList').click(function () {
@@ -74,7 +76,6 @@ function getMyList() {
     $.ajax({
         url: url + '/crew/getMyCrewList',
         type: 'post',
-        contentType: 'application/x-www-form-urlencoded; charset=euc-kr',
         data: {
             memberIdx: memberIdx
         },
@@ -110,14 +111,12 @@ function getMyList() {
 }
 //ajax rest - all crew list
 function getList(parameter1, parameter2, parameter3) {
-
-    
+    let keyword = encodeURIComponent(parameter2);
 
     if (parameter2 == '') {
         $.ajax({
             url: url + '/crew/searchList',
             type: 'post',
-            contentType: 'application/x-www-form-urlencoded; charset=euc-kr',
             data: {
                 page: parameter3,
             },
@@ -130,11 +129,10 @@ function getList(parameter1, parameter2, parameter3) {
         $.ajax({
             url: url + '/crew/searchList',
             type: 'post',
-            contentType: 'application/x-www-form-urlencoded; charset=euc-kr',
             data: {
                 searchType: parameter1,
-                keyword: parameter2,
-                page: parameter3,
+                keyword: keyword,
+                page: parameter3
             },
             success: function (data) {
                 cList = data.crewList;

@@ -16,7 +16,7 @@ button, input {
 	background-color: #00ff0000;
 }
 
-button:hover, span:hover {
+button:hover, span:hover, input:hover {
 	cursor: pointer;
 }
 textarea {

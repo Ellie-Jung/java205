@@ -272,7 +272,7 @@
             <div class="iconsearch"></div>
             <form action="${pageContext.request.contextPath}/mountain/search" method="post">
                 <div class="input">
-                    <input type="text" placeholder="산 이름을 검색하세요" id="mysearch" name="mysearch" required>
+                    <input type="text" autocomplete="off" placeholder="산 이름을 검색하세요" id="mysearch" name="mysearch" required>
                 </div>
             </form>
             <span id='clearIcon' class="clear" style="display:none;"

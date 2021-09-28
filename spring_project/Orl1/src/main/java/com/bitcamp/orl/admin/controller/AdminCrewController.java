@@ -13,11 +13,5 @@ public class AdminCrewController {
 		
 		return "admin/admin_crew";
 	}
-	@RequestMapping("admin/crew/delete")
-	public String CrewDelete(
-			@RequestParam("crewIdx")int crewIdx,
-			Model model) {
-		model.addAttribute("crewIdx", crewIdx);
-		return "admin/admin_crewDelete";
-	}
+	
 }

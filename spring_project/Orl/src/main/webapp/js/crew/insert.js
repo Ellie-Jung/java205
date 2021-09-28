@@ -115,8 +115,8 @@ $(document).ready(function () {
             for (var i = 1; i < tags.length; i++) {
                 tagString += ',';
                 tagString += ($(tags[i]).val());
-                formData.append("crewTag", tagString);
             }
+            formData.append("crewTag", tagString);
         } else {
             formData.append("crewTag", null);
         }

@@ -59,7 +59,7 @@ const crewFileUrl = 'https://minju-aws-bucket.s3.ap-northeast-2.amazonaws.com//f
 						<button class="curved" id="oldList">오래된 순 보기</button>
 					</div>
 				</div>
-				<form action="" name="frm" id="form">
+				<form method="post" name="frm" id="form">
 					<div class="search-drop">
 						<div class="searchType">
 							<label for="selectbox">크루이름</label> <select name="searchType"
@@ -69,15 +69,14 @@ const crewFileUrl = 'https://minju-aws-bucket.s3.ap-northeast-2.amazonaws.com//f
 								<option value="tag">해시태그</option>
 							</select>
 						</div>
-						<div class="boxSearch">
-							<span class="icon"> <label for="button"> <i
-									id="searchType" class="fas fa-search" aria-hidden="true"></i>
-							</label> <input type="submit" id="button" style="display: none">
-							</span> <input autocomplete="off" id="search" class="search" type="text"
-								name="keyword" placeholder="Type to search">
+							<div class="boxSearch">
+								<span class="icon"> <label for="button"> <i
+										id="searchType" class="fas fa-search" aria-hidden="true"></i>
+								</label> <input type="submit" id="button" style="display: none">
+								</span> <input autocomplete="off" id="search" class="search" type="text"
+									name="keyword" autocomplete="off" placeholder="Type to search">
+							</div>
 						</div>
-
-					</div>
 				</form>
 			</div>
 

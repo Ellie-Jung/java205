@@ -10,8 +10,7 @@
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
 		<java-version>1.8</java-version>
-		<!-- 3.1.1 -> 4.3.18(Rest구현 목적) -> 5.0.7(Security 사용) -->
-	<org.springframework-version>4.3.18.RELEASE</org.springframework-version>
+		<org.springframework-version>4.3.18.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
@@ -146,13 +145,6 @@
 			<artifactId>HikariCP</artifactId>
 			<version>3.4.5</version>
 		</dependency>
-		
-		<!-- spring-jdbc -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-jdbc</artifactId>
-			<version>${org.springframework-version}</version>
-		</dependency>
 
 		<!-- mybatis // dao -->
 		<dependency>
@@ -216,16 +208,16 @@
 			<artifactId>json-simple</artifactId>
 			<version>1.1.1</version>
 		</dependency>
-		
-		
-		<!-- spring-context-support -->
+
+
+<!-- 9월 23일 추가 2개 -->
+		<!-- spring-context-support:mail하려고 추가 -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
 
-		
 		<!-- commons-codec : 암호화 처리시에 사용 -->
 		<dependency>
 			<groupId>commons-codec</groupId>
@@ -233,13 +225,6 @@
 			<version>1.15</version>
 		</dependency>
 
-
-
-		<dependency>
-			<groupId>Spring-AOP</groupId>
-			<artifactId>Spring-AOP</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
 	</dependencies>
 	<build>
 		<plugins>

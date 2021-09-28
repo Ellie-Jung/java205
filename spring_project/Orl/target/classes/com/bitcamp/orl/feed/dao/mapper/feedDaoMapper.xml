@@ -46,7 +46,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 용민 -->
 	<!-- 산별 피드보기 -->
-	<!-- <select id="selectNewFeedByMountain"
+	<select id="selectNewFeedByMountain"
 		resultType="com.bitcamp.orl.feed.domain.NewFeedList">
 		select
 		P.boardIdx, P.boardPhoto, P.boardDate, M.memberIdx, M.memberNickname
@@ -54,7 +54,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where
 		P.hashtag regexp #{mName}
 		order by P.boardIdx DESC;
-	</select> -->
+	</select>
 
 
 

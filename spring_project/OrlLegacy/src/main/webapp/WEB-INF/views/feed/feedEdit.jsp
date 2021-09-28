@@ -129,6 +129,14 @@
 	/* 저장된 해시태그 */
 	const hashTag = '${selectFeedView.hashtag}';
 	
+	/* Feedview back */
+	var view = '${selectFeedView.memberIdx}&${selectFeedView.boardIdx}';
+	
+	/* 뒤로 가기 (피드메인 or 유저 피드) */
+	$('#pageBack').click(function(){
+		location.href = '<c:url value="/feed/feedview/'+view+'"/>';
+	});
+	
 	/* 수정 확인 */
 	function edit_submit(){
 		alert('수정되었습니다');

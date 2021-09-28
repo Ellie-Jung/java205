@@ -73,7 +73,7 @@ public interface FeedDao {
 	// 피드 삭제
 	int deleteFeedByAdmin(@Param("boardIdx") int boardIdx);
 
-//	// 산별 피드보기(용민)
+	// 산별 피드보기(용민)
 //	List<NewFeedList> selectNewFeedByMountain(@Param("mName") String mName);
 
 	// crew 민주 추가 09 24

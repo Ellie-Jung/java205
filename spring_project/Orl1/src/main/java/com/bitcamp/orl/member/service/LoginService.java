@@ -2,6 +2,7 @@ package com.bitcamp.orl.member.service;
 
 import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
+import java.security.NoSuchAlgorithmException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -71,15 +72,30 @@ public class LoginService {
 	      dao = template.getMapper(Dao.class);
 	      Member member=null;
 	      if (memberId != null && memberPw != null && memberId.trim().length() > 2 && memberPw.trim().length() > 2) {
-	         member = dao.selectByIdPw(memberId, memberPw);
-	         if (member != null) {
-	            MemberDto  memberVo= member.memberToMemberVo();
-	            request.getSession().setAttribute("memberVo", memberVo);
-	            loginChk = true;
-	         }
+	    	  try {
+				memberPw = aes256Util.encrypt(memberPw);
+				System.out.println(memberPw);
+				member = dao.selectByIdPw(memberId, memberPw);
+				if (member != null) {
+					MemberDto  memberVo= member.memberToMemberVo();
+					request.getSession().setAttribute("memberVo", memberVo);
+					loginChk = true;
+				}
+			} catch (NoSuchAlgorithmException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (GeneralSecurityException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	      }
 	      return loginChk;
 	   }
+   
+   
    
    
    
