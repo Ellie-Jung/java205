@@ -63,6 +63,7 @@
 			<mapping path="/crew/memberReg/**" />
 			<mapping path="/member/mypage/**" />
 			<mapping path="/feed/userFeed/**"/>
+			<mapping path="/admin/**"/>
       <mapping path="/feed/feedview/**"/>
 			<beans:bean
 				class="com.bitcamp.orl.interceptor.LoginCheckInterceptor" />
