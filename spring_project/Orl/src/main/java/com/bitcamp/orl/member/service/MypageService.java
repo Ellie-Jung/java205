@@ -132,6 +132,11 @@ public class MypageService {
 	   	Member member = dao.selectByIdx(memberIdx);
 	   	String fileName = member.getMemberProfile();
 	   	String dirpath = request.getSession().getServletContext().getRealPath(PROFILE_URI);
+		
+    	File thatFile = null;
+    	if(!fileName.equals("default.jpg")) {
+    		thatFile = new File(dirpath, fileName);
+    	}
 	   	return new File(dirpath, fileName);
 	   }
    
