@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bitcamp.ex.board.dao.Dao">
+
+<!-- select 결과 매핑하는 설정 -->
+<select id="boardList" resultType="com.bitcamp.ex.board.domain.Board">
+	select * from board
+</select>
+
+<!-- insert -->
+<insert id="insertBoard" parameterType="com.bitcamp.ex.board.domain.Board"
+						 useGeneratedKeys="true"
+						 keyProperty="idx">
+	insert into board (guestname,password,message) values(#{guestname},#{password},#{message})
+</insert>
+
+<!-- update -->
+<update id="updateBoard" parameterType="com.bitcamp.ex.board.domain.Board"> 
+	update board
+	set guestname=#{guestname}, password=#{password}, message=#{message}
+	where idx=#{idx}
+</update>
+
+<!-- delete -->
+<delete id="deleteBoard">
+	delete from board where idx=#{idx}
+</delete>
+
+</mapper>
